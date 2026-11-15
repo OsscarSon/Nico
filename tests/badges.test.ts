@@ -1,0 +1,45 @@
+import { describe, it, expect } from "vitest";
+import { badges, evaluateBadges } from "../src/progress/badges";
+import { completeLesson, emptyProgress } from "../src/progress/store";
+
+const day = (s: string) => new Date(`${s}T12:00:00`);
+const done = (ids: string[]) =>
+  ids.reduce(
+    (p, id) => completeLesson(p, id, { firstTryCorrect: 1, quizTotal: 1 }, day("2026-11-14")),
+    emptyProgress(),
+  );
+const byId = (list: ReturnType<typeof evaluateBadges>, id: string) => list.find((b) => b.id === id)!;
+
+describe("badges", () => {
+  it("nothing is earned with no progress", () => {
+    expect(evaluateBadges(emptyProgress(), day("2026-11-14")).some((b) => b.earned)).toBe(false);
+  });
+  it("first-bit is earned only after completing A01", () => {
+    const list = evaluateBadges(done(["a01-binary"]), day("2026-11-14"));
+    expect(byId(list, "first-bit").earned).toBe(true);
+    expect(byId(list, "gatekeeper").earned).toBe(false);
+  });
+  it("a badge whose lessons do not exist yet is not obtainable and never earned", () => {
+    // 即使进度里伪造了这些课时，课程没开放也不发徽章
+    const forged = done(["a03-logic-gates", "a04-adder"]);
+    const list = evaluateBadges(forged, day("2026-11-14"));
+    expect(byId(list, "gatekeeper").obtainable).toBe(false);
+    expect(byId(list, "gatekeeper").earned).toBe(false);
+  });
+  it("a badge becomes earned when all required lessons exist and are complete", () => {
+    const p = done(["a03-logic-gates", "a04-adder"]);
+    const list = evaluateBadges(p, day("2026-11-14"), () => true);
+    expect(byId(list, "gatekeeper").earned).toBe(true);
+  });
+  it("streak badge needs 7 consecutive days", () => {
+    const days = ["08", "09", "10", "11", "12", "13", "14"].map((d) => `2026-11-${d}`);
+    expect(byId(evaluateBadges({ ...emptyProgress(), activeDays: days }, day("2026-11-14")), "streak-7").earned).toBe(true);
+    expect(byId(evaluateBadges({ ...emptyProgress(), activeDays: days.slice(1) }, day("2026-11-14")), "streak-7").earned).toBe(false);
+  });
+  it("every badge has artwork file name and a human-readable condition", () => {
+    for (const b of badges) {
+      expect(b.art.endsWith(".png")).toBe(true);
+      expect(b.how.length > 0).toBe(true);
+    }
+  });
+});

@@ -1,0 +1,29 @@
+/* Nico 设计令牌 —— 与 docs/blueprint/05_UI_UX_SPEC.md 保持一致 */
+:root {
+  --paper: #f2f4f7;
+  --grid: #dce2ea;
+  --panel: #ffffff;
+  --ink: #14213d;
+  --muted: #5b6577;
+  --trace: #2457f5;
+  --trace-soft: #e6ecff;
+  --signal: #ffb020;
+  --signal-soft: #fff3d6;
+  --pass: #0e8a59;
+  --pass-soft: #e0f5ec;
+  --fault: #d63a40;
+  --fault-soft: #fde8e9;
+
+  --font-ui: "Noto Sans SC", system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-display: "Bricolage Grotesque", "Noto Sans SC", system-ui, "PingFang SC", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --r-panel: 6px;
+  --r-button: 10px;
+  --r-pill: 999px;
+
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 40px;
+
+  --device-shadow: 4px 4px 0 var(--ink);
+}
+html[data-font="large"] { font-size: 112.5%; }
