@@ -219,3 +219,20 @@ a.pm-card:hover { border-color: var(--trace); }
 .truth.results td:last-child { font-size: inherit; color: inherit; min-width: 0; text-align: center; font-weight: 700; }
 .truth.results td.pass { color: var(--pass); }
 .truth.results td.fail { color: var(--fault); }
+
+/* ===== 迷你 CPU ===== */
+.cpu-regs { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s2); margin-bottom: var(--s3); }
+.cpu-reg { display: flex; flex-direction: column; align-items: center; padding: var(--s2); border: 2px solid var(--ink); border-radius: var(--r-panel); background: var(--paper); text-align: center; min-width: 0; }
+.cpu-reg-name { font-family: var(--font-display); font-weight: 700; color: var(--trace); }
+.cpu-reg-val { font-size: 1.125rem; font-weight: 700; word-break: keep-all; }
+.cpu-reg-hint { font-size: 0.6875rem; color: var(--muted); line-height: 1.3; }
+.cpu-mem { list-style: none; margin: 0 0 var(--s3); padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.cpu-cell { display: flex; flex-direction: column; align-items: center; padding: 4px 2px; border: 1px solid var(--grid); border-radius: 6px; background: var(--panel); min-width: 0; }
+.cpu-cell.instr { background: var(--trace-soft); }
+.cpu-cell .cpu-addr { font-size: 0.6875rem; color: var(--muted); }
+.cpu-cell .cpu-content { font-size: 0.8125rem; font-weight: 700; white-space: nowrap; }
+.cpu-cell .cpu-tag { font-size: 0.625rem; min-height: 1em; color: var(--ink); font-weight: 700; }
+.cpu-cell.hot { border: 2px solid var(--ink); background: var(--signal-soft); }
+.cpu-cell.wrote { background: var(--pass-soft); }
+.cpu-note { min-height: 3.2em; margin: 0 0 var(--s3); padding: var(--s2) var(--s3); background: var(--paper); border-left: 4px solid var(--signal); border-radius: 0 6px 6px 0; font-size: 0.9375rem; }
+.cpu-steps { font-size: 0.875rem; }

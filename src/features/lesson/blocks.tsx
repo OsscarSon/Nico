@@ -4,6 +4,7 @@ import { Callout, Device, Feedback, RichText } from "../../components/ui";
 import { BitSwitches } from "../../sims/BitSwitches";
 import { LogicGateSim } from "../../sims/LogicGateSim";
 import { HalfAdderSim } from "../../sims/HalfAdderSim";
+import { MiniCpuSim } from "../../sims/MiniCpuSim";
 import { gradeChoice, gradeNumber, REVEAL_AFTER_WRONG } from "../../grading/quiz";
 
 export type QuizStats = { firstTryCorrect: number; total: number };
@@ -44,6 +45,8 @@ export function SimBlock({
           <LogicGateSim mode={block.mode} gates={block.gates} onSolved={onDone} />
         ) : block.sim === "half-adder" ? (
           <HalfAdderSim mode={block.mode} onSolved={onDone} />
+        ) : block.sim === "mini-cpu" ? (
+          <MiniCpuSim mode={block.mode} onSolved={onDone} />
         ) : (
           <BitSwitches mode={block.mode} targets={block.targets} onSolved={onDone} />
         )}

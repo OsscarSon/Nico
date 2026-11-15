@@ -46,7 +46,7 @@ export const tracks: Track[] = [
       L("a02-hex-encoding", "十六进制与文字编码", "a1", "available"),
       L("a03-logic-gates", "逻辑门：AND、OR、NOT、XOR", "a1", "available"),
       L("a04-adder", "用门搭一个加法器", "a1", "available"),
-      L("a05-cpu-cycle", "CPU：取指、译码、执行", "a2"),
+      L("a05-cpu-cycle", "CPU：取指、译码、执行", "a2", "available"),
       L("a06-memory", "内存与存储为什么要分层", "a2"),
       L("a07-os", "操作系统做什么", "a2"),
       L("a08-command-line", "命令行第一步", "a2"),

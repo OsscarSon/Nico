@@ -28,7 +28,7 @@ export const blockSchema = z.discriminatedUnion("type", [
   }),
   z.object({
     type: z.literal("sim"),
-    sim: z.enum(["bit-switches", "logic-gate", "half-adder"]),
+    sim: z.enum(["bit-switches", "logic-gate", "half-adder", "mini-cpu"]),
     mode: z.enum(["free", "challenge"]),
     title: z.string().min(1),
     intro: z.string().min(1),
@@ -89,7 +89,7 @@ export const lessonSchema = z
             ? (b.targets?.length ?? 0) > 0
             : b.sim === "logic-gate"
               ? (b.gates?.length ?? 0) > 0
-              : true),
+              : true), // half-adder、mini-cpu 的挑战不需要额外配置
       ),
     "互动挑战必须提供目标（targets 或 gates）",
   )

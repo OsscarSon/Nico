@@ -157,8 +157,8 @@ check("记录了真实的一次性答对数（3 道选择题 2 对 + 迁移题�
 await page.goto(`${BASE}/#/paths/a`);
 await soon("路线页头有徽记且图片加载成功", async () => (await page.locator(".track-head img").count()) === 1 && (await imagesOk()));
 await soon("路线地图显示已完成", async () => (await page.locator(".pm-card .pill.done").count()) === 1);
-await soon("路线地图里有 16 个规划中的课", async () => (await page.locator(".pm-card.planned").count()) === 16);
-await soon("路线地图上 A02、A03、A04 显示『可以开始』", async () => (await page.locator(".pm-card .pill.available").count()) === 3);
+await soon("路线地图里有 15 个规划中的课", async () => (await page.locator(".pm-card.planned").count()) === 15);
+await soon("路线地图上 A02 到 A05 显示『可以开始』", async () => (await page.locator(".pm-card .pill.available").count()) === 4);
 await page.goto(`${BASE}/#/`);
 await soon("首页现在显示已完成 1 课", async () => (await text(".stats")).includes("1"));
 await soon("首页推荐下一课 A02", async () => (await text(".today")).includes("十六进制") && (await text(".today")).includes("下一课"));
@@ -339,13 +339,88 @@ await btn("检查答案").click();
 await soon("A04 迁移题答对", async () => (await text(".feedback")).includes("答对了"));
 await nextBtn().click(); // -> 小结
 check("A04 小结有三点", (await page.locator(".points li").count()) === 3);
-check("A04 之后没有可学的课：回到路线", (await page.getByRole("link", { name: "回到路线" }).count()) === 1);
-check("A04 提示下一课还在准备中", (await text(".lesson-wrap")).includes("下一课还在准备中"));
+check("A04 小结的『下一课』指向 A05", (await page.getByRole("link", { name: "下一课", exact: true }).count()) === 1);
 const saved4 = await page.evaluate(() => JSON.parse(localStorage.getItem("nico-progress") ?? "null"));
 check("A04 完成后进度已保存（第一次答对 2 / 4）", saved4?.lessons?.["a04-adder"]?.firstTryCorrect === 2 && saved4?.lessons?.["a04-adder"]?.quizTotal === 4, JSON.stringify(saved4?.lessons));
 
 await page.goto(`${BASE}/#/`);
 await soon("首页现在显示已完成 4 课", async () => (await text(".stats .stat strong")) === "4");
+await soon("首页推荐下一课 A05", async () => (await text(".today")).includes("CPU") && (await text(".today")).includes("下一课"));
+
+// ---- A05 CPU：取指、译码、执行 ----
+await page.goto(`${BASE}/#/lesson/a05-cpu-cycle`);
+await soon("进入 A05", async () => (await text("h1")).includes("CPU"));
+check("A05 显示为草稿", (await page.locator(".pill.draft").count()) === 1);
+for (let i = 0; i < 3; i++) await nextBtn().click(); // 开场 → 讲解 ×2 → 第 3 段讲解（有简化提示）
+check("A05 简化提示（callout）出现", (await page.locator(".callout").count()) === 1);
+await nextBtn().click(); // -> 单步运行
+const cpuStep = () => page.getByRole("button", { name: /^下一步：/ });
+const reg = (name) => text(`.cpu-reg[data-reg="${name}"] .cpu-reg-val`);
+check("手机宽度无横向溢出：A05 单步运行", await noOverflow());
+check("初始：PC=0、IR 为空、ACC=0，按钮是『下一步：取指』", (await reg("PC")) === "0" && (await reg("IR")) === "空" && (await reg("ACC")) === "0" && (await cpuStep().innerText()).includes("取指"));
+await cpuStep().click();
+await soon("取指后 IR=LOAD 6、PC=1，说明里写明了取指", async () => (await reg("IR")) === "LOAD 6" && (await reg("PC")) === "1" && (await text(".cpu-note")).includes("取指：PC 指向第 0 格"));
+check("按钮变成『下一步：译码』", (await cpuStep().innerText()).includes("译码"));
+await cpuStep().click();
+await soon("译码只解释，不改 ACC", async () => (await text(".cpu-note")).includes("译码：IR 里是「LOAD 6」") && (await reg("ACC")) === "0");
+await cpuStep().click();
+await soon("执行 LOAD 6 后 ACC=5，第 6 格标『被读』", async () => (await reg("ACC")) === "5" && (await page.locator(".cpu-cell", { hasText: "被读" }).count()) === 1);
+for (let i = 0; i < 9; i++) await cpuStep().click();
+await soon("走完 12 步后程序停止", async () => (await text(".cpu-steps")).includes("已走 12 步") && (await text(".cpu-steps")).includes("程序已停止"));
+check("5 + 3 = 8 写进了第 8 格", (await page.locator('.cpu-cell[aria-label^="第 8 格"]').getAttribute("aria-label"))?.includes("数据 8") === true);
+check("停止后『下一步』按钮被禁用", await cpuStep().isDisabled());
+await btn("重置").click();
+await soon("重置后回到初始状态", async () => (await reg("PC")) === "0" && (await text(".cpu-steps")).includes("已走 0 步"));
+await nextBtn().click(); // -> 挑战
+
+check("A05 挑战未完成时『下一步』被禁用", await nextBtn().isDisabled());
+check("手机宽度无横向溢出：A05 挑战", await noOverflow());
+const guessBox = () => page.getByRole("textbox");
+const checkGuess = () => btn("检查预测").click();
+await guessBox().fill("很多"); await checkGuess();
+await soon("非整数输入给出提示", async () => (await text(".feedback")).includes("请输入一个整数"));
+await guessBox().fill("7"); await checkGuess();
+await soon("程序 1 预测错：提示去跟着 ACC 走", async () => (await text(".feedback")).includes("跟着 ACC"));
+await guessBox().fill("8"); await checkGuess();
+await soon("程序 1 预测对，并列出每条指令的变化", async () => { const t = await text(".feedback"); return t.includes("对了") && t.includes("LOAD 6：ACC 变成 5") && t.includes("STORE 8：第 8 格变成 8"); });
+await btn("下一个程序").click();
+await guessBox().fill("11"); await checkGuess();
+await soon("程序 2 预测对（11）", async () => (await text(".feedback")).includes("对了"));
+await btn("下一个程序").click();
+await guessBox().fill("8"); await checkGuess(); // 陷阱：以为第 7 格还是 3
+await soon("程序 3 掉进陷阱（填 8）会被指出", async () => (await text(".feedback")).includes("还不对"));
+check("答错 1 次还不能直接看答案", (await btn("看答案").count()) === 0);
+await guessBox().fill("3"); await checkGuess();
+await soon("答错 2 次后可以看答案", async () => (await btn("看答案").count()) === 1);
+await guessBox().fill("10"); await checkGuess();
+await soon("程序 3 预测对（10），并讲清楚 STORE 7 覆盖了数据", async () => { const t = await text(".feedback"); return t.includes("对了") && t.includes("STORE 7：第 7 格变成 5") && t.includes("ADD 7：ACC 变成 10"); });
+await btn("完成").click();
+await soon("三个程序完成后门控解除", () => nextBtn().isEnabled());
+await nextBtn().click(); // -> 检查题
+await opt("停下来等待").click();
+await soon("A05 Q1 选错给出诊断", async () => (await text(".feedback")).includes("只有遇到 HALT"));
+await opt("回到取指，按 PC 取下一条指令").click();
+await btn("下一题").click();
+await opt("下一条要取的指令在内存的第几格").click();
+await btn("下一题").click();
+await opt("8").click();
+await btn("完成检查").click();
+await soon("A05 检查完成：第一次答对 2 / 3", async () => (await text(".feedback")).includes("第一次就答对 2 / 3"));
+await nextBtn().click(); // -> 迁移题
+await page.getByRole("textbox").fill("9");
+await btn("检查答案").click();
+await soon("A05 迁移题答错给出提示", async () => (await text(".feedback")).includes("先数指令有几条"));
+await page.getByRole("textbox").fill("12");
+await btn("检查答案").click();
+await soon("A05 迁移题答对（12，和单步运行的真实步数一致）", async () => (await text(".feedback")).includes("答对了"));
+await nextBtn().click(); // -> 小结
+check("A05 小结有三点", (await page.locator(".points li").count()) === 3);
+check("A05 之后没有可学的课：回到路线", (await page.getByRole("link", { name: "回到路线" }).count()) === 1);
+check("A05 提示下一课还在准备中", (await text(".lesson-wrap")).includes("下一课还在准备中"));
+const saved5 = await page.evaluate(() => JSON.parse(localStorage.getItem("nico-progress") ?? "null"));
+check("A05 完成后进度已保存（第一次答对 2 / 4）", saved5?.lessons?.["a05-cpu-cycle"]?.firstTryCorrect === 2 && saved5?.lessons?.["a05-cpu-cycle"]?.quizTotal === 4, JSON.stringify(saved5?.lessons));
+await page.goto(`${BASE}/#/`);
+await soon("首页现在显示已完成 5 课", async () => (await text(".stats .stat strong")) === "5");
 await soon("首页诚实说明没有下一课可学", async () => (await text(".today")).includes("目前可学的课都学完了"));
 
 // ---- 完成后徽章按真实条件点亮 ----
@@ -359,14 +434,14 @@ await soon("作品页空状态插图加载成功", async () => (await page.locat
 await page.goto(`${BASE}/#/nonsense`);
 await soon("404 页插图加载成功", async () => (await page.locator(".empty-art").count()) === 1 && (await imagesOk()));
 
-for (const p of ["/paths", "/paths/a", "/paths/c", "/lab", "/projects", "/me", "/lesson/a05-cpu-cycle", "/nonsense"]) {
+for (const p of ["/paths", "/paths/a", "/paths/c", "/lab", "/projects", "/me", "/lesson/a06-memory", "/nonsense"]) {
   await page.goto(`${BASE}/#${p}`);
   await page.waitForTimeout(50);
   check(`手机宽度无横向溢出：${p}`, await noOverflow());
   check(`页面非空：${p}`, (await text("main")).length > 20);
 }
 await soon("未知地址显示找不到页面", async () => (await text("main")).includes("找不到这个页面"));
-await page.goto(`${BASE}/#/lesson/a05-cpu-cycle`);
+await page.goto(`${BASE}/#/lesson/a06-memory`);
 await soon("规划中的课不会显示假内容", async () => (await text("main")).includes("还没有开放"));
 
 // ---- 清除数据需要二次确认 ----

@@ -4,8 +4,9 @@ import { a01 } from "./lessons/a01-binary";
 import { a02 } from "./lessons/a02-hex-encoding";
 import { a03 } from "./lessons/a03-logic-gates";
 import { a04 } from "./lessons/a04-adder";
+import { a05 } from "./lessons/a05-cpu-cycle";
 
-export const lessons: Record<string, Lesson> = { [a01.id]: a01, [a02.id]: a02, [a03.id]: a03, [a04.id]: a04 };
+export const lessons: Record<string, Lesson> = { [a01.id]: a01, [a02.id]: a02, [a03.id]: a03, [a04.id]: a04, [a05.id]: a05 };
 
 export const getLesson = (id: string): Lesson | undefined => lessons[id];
 
