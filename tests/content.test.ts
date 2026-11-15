@@ -47,8 +47,11 @@ describe("content", () => {
 
 import { nextAvailableAfter } from "../src/content";
 describe("next lesson", () => {
-  it("skips planned lessons and finds the next available one", () => {
-    expect(nextAvailableAfter("a01-binary")?.id).toBe("a03-logic-gates");
+  it("A01 is followed directly by A02", () => {
+    expect(nextAvailableAfter("a01-binary")?.id).toBe("a02-hex-encoding");
+  });
+  it("A02 is followed directly by A03", () => {
+    expect(nextAvailableAfter("a02-hex-encoding")?.id).toBe("a03-logic-gates");
   });
   it("A03 is followed directly by A04", () => {
     expect(nextAvailableAfter("a03-logic-gates")?.id).toBe("a04-adder");

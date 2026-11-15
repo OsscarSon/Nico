@@ -43,7 +43,7 @@ export const tracks: Track[] = [
     ],
     lessons: [
       L("a01-binary", "二进制：电脑只认 0 和 1", "a1", "available"),
-      L("a02-hex-encoding", "十六进制与文字编码", "a1"),
+      L("a02-hex-encoding", "十六进制与文字编码", "a1", "available"),
       L("a03-logic-gates", "逻辑门：AND、OR、NOT、XOR", "a1", "available"),
       L("a04-adder", "用门搭一个加法器", "a1", "available"),
       L("a05-cpu-cycle", "CPU：取指、译码、执行", "a2"),

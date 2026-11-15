@@ -201,7 +201,7 @@ export function TransferBlock({
           检查答案
         </button>
       </div>
-      {status === "invalid" && <Feedback ok={false}>请输入一个整数，例如 128。</Feedback>}
+      {status === "invalid" && <Feedback ok={false}>请输入一个整数，只写数字。</Feedback>}
       {status === "wrong" && (
         <Feedback ok={false}>
           还不对。{block.hint ?? "再想一想。"}

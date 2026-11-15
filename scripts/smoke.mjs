@@ -148,9 +148,7 @@ await nextBtn().click(); // -> 小结
 
 // ---- 小结与完成 ----
 check("小结有三点", (await page.locator(".points li").count()) === 3);
-check("按顺序的下一课未开放时，不放指向它的『下一课』链接", (await page.getByRole("link", { name: "下一课", exact: true }).count()) === 0);
-check("改为推荐已开放的 A03", (await page.getByRole("link", { name: /继续：逻辑门/ }).count()) === 1);
-check("说明按顺序的下一课还在制作中", (await text(".lesson-wrap")).includes("按顺序的下一课「十六进制与文字编码」还在制作中"));
+check("A01 小结的『下一课』指向已开放的 A02", (await page.getByRole("link", { name: "下一课", exact: true }).count()) === 1);
 const saved = await page.evaluate(() => JSON.parse(localStorage.getItem("nico-progress") ?? "null"));
 check("完成后进度已保存", saved?.lessons?.["a01-binary"]?.quizTotal === 4, JSON.stringify(saved));
 check("记录了真实的一次性答对数（3 道选择题 2 对 + 迁移题错过 → 2/4）", saved?.lessons?.["a01-binary"]?.firstTryCorrect === 2, JSON.stringify(saved?.lessons));
@@ -159,10 +157,55 @@ check("记录了真实的一次性答对数（3 道选择题 2 对 + 迁移题�
 await page.goto(`${BASE}/#/paths/a`);
 await soon("路线页头有徽记且图片加载成功", async () => (await page.locator(".track-head img").count()) === 1 && (await imagesOk()));
 await soon("路线地图显示已完成", async () => (await page.locator(".pm-card .pill.done").count()) === 1);
-await soon("路线地图里有 17 个规划中的课", async () => (await page.locator(".pm-card.planned").count()) === 17);
-await soon("路线地图上 A03、A04 显示『可以开始』", async () => (await page.locator(".pm-card .pill.available").count()) === 2);
+await soon("路线地图里有 16 个规划中的课", async () => (await page.locator(".pm-card.planned").count()) === 16);
+await soon("路线地图上 A02、A03、A04 显示『可以开始』", async () => (await page.locator(".pm-card .pill.available").count()) === 3);
 await page.goto(`${BASE}/#/`);
 await soon("首页现在显示已完成 1 课", async () => (await text(".stats")).includes("1"));
+await soon("首页推荐下一课 A02", async () => (await text(".today")).includes("十六进制") && (await text(".today")).includes("下一课"));
+
+// ---- A02 十六进制与文字编码 ----
+await page.goto(`${BASE}/#/lesson/a02-hex-encoding`);
+await soon("进入 A02", async () => (await text("h1")).includes("十六进制"));
+check("A02 显示为草稿", (await page.locator(".pill.draft").count()) === 1);
+for (let i = 0; i < 4; i++) await nextBtn().click(); // 开场 -> 讲解 1..4
+check("A02 简化提示（callout）出现", (await page.locator(".callout").count()) === 1);
+await nextBtn().click(); // -> 挑战
+check("A02 挑战未完成时『下一步』被禁用", await nextBtn().isDisabled());
+check("手机宽度无横向溢出：A02 挑战", await noOverflow());
+for (const [target, pvs, last] of [[10, [8, 2], false], [65, [64, 1], false], [97, [64, 32, 1], true]]) {
+  for (const pv of pvs) await sw(pv).click();
+  await btn("检查").click();
+  check(`A02 拨对目标 ${target}`, (await text(".feedback")).includes("正确"));
+  await btn(last ? "完成" : "下一个目标").click();
+}
+await soon("A02 三个目标完成后门控解除", () => nextBtn().isEnabled());
+await nextBtn().click(); // -> 检查题
+await page.getByRole("button", { name: /^17/ }).click(); // 第 1 题故意选错
+await soon("A02 Q1 选错给出诊断", async () => (await text(".feedback")).includes("分量是 16"));
+await page.getByRole("button", { name: /^47/ }).click();
+await soon("A02 Q1 选对显示解释", async () => (await text(".feedback")).includes("32 + 15 = 47"));
+await btn("下一题").click();
+await page.getByRole("button", { name: "红色", exact: true }).click();
+await btn("下一题").click();
+await page.getByRole("button", { name: /^因为 1 位十六进制/ }).click();
+await btn("完成检查").click();
+await soon("A02 检查完成：第一次答对 2 / 3", async () => (await text(".feedback")).includes("第一次就答对 2 / 3"));
+await nextBtn().click(); // -> 迁移题
+await page.getByRole("textbox").fill("abc");
+await btn("检查答案").click();
+await soon("A02 无效输入的提示不泄露答案", async () => { const t = await text(".feedback"); return t.includes("请输入一个整数") && !t.includes("128"); });
+await page.getByRole("textbox").fill("80");
+await btn("检查答案").click();
+await soon("A02 迁移题答错给出提示", async () => (await text(".feedback")).includes("别把 80"));
+await page.getByRole("textbox").fill("128");
+await btn("检查答案").click();
+await soon("A02 迁移题答对", async () => (await text(".feedback")).includes("答对了"));
+await nextBtn().click(); // -> 小结
+check("A02 小结有三点", (await page.locator(".points li").count()) === 3);
+check("A02 小结的『下一课』指向 A03", (await page.getByRole("link", { name: "下一课", exact: true }).count()) === 1);
+const saved2 = await page.evaluate(() => JSON.parse(localStorage.getItem("nico-progress") ?? "null"));
+check("A02 完成后进度已保存（选择题错 1 次、迁移题错 1 次 → 第一次答对 2 / 4）", saved2?.lessons?.["a02-hex-encoding"]?.firstTryCorrect === 2 && saved2?.lessons?.["a02-hex-encoding"]?.quizTotal === 4, JSON.stringify(saved2?.lessons));
+await page.goto(`${BASE}/#/`);
 await soon("首页推荐下一课 A03", async () => (await text(".today")).includes("逻辑门") && (await text(".today")).includes("下一课"));
 
 // ---- A03 逻辑门 ----
@@ -244,7 +287,7 @@ const saved3 = await page.evaluate(() => JSON.parse(localStorage.getItem("nico-p
 check("A03 完成后进度已保存（选择题错 1 次、迁移题错 1 次 → 第一次答对 2 / 4）", saved3?.lessons?.["a03-logic-gates"]?.firstTryCorrect === 2 && saved3?.lessons?.["a03-logic-gates"]?.quizTotal === 4, JSON.stringify(saved3?.lessons));
 
 await page.goto(`${BASE}/#/`);
-await soon("首页现在显示已完成 2 课", async () => (await text(".stats")).includes("2"));
+await soon("首页现在显示已完成 3 课", async () => (await text(".stats .stat strong")) === "3");
 await soon("首页推荐下一课 A04", async () => (await text(".today")).includes("用门搭一个加法器") && (await text(".today")).includes("下一课"));
 
 // ---- A04 半加器 ----
@@ -299,7 +342,7 @@ const saved4 = await page.evaluate(() => JSON.parse(localStorage.getItem("nico-p
 check("A04 完成后进度已保存（第一次答对 2 / 4）", saved4?.lessons?.["a04-adder"]?.firstTryCorrect === 2 && saved4?.lessons?.["a04-adder"]?.quizTotal === 4, JSON.stringify(saved4?.lessons));
 
 await page.goto(`${BASE}/#/`);
-await soon("首页现在显示已完成 3 课", async () => (await text(".stats")).includes("3"));
+await soon("首页现在显示已完成 4 课", async () => (await text(".stats .stat strong")) === "4");
 await soon("首页诚实说明没有下一课可学", async () => (await text(".today")).includes("目前可学的课都学完了"));
 
 // ---- 完成后徽章按真实条件点亮 ----
@@ -313,14 +356,14 @@ await soon("作品页空状态插图加载成功", async () => (await page.locat
 await page.goto(`${BASE}/#/nonsense`);
 await soon("404 页插图加载成功", async () => (await page.locator(".empty-art").count()) === 1 && (await imagesOk()));
 
-for (const p of ["/paths", "/paths/a", "/paths/c", "/lab", "/projects", "/me", "/lesson/a02-hex-encoding", "/nonsense"]) {
+for (const p of ["/paths", "/paths/a", "/paths/c", "/lab", "/projects", "/me", "/lesson/a05-cpu-cycle", "/nonsense"]) {
   await page.goto(`${BASE}/#${p}`);
   await page.waitForTimeout(50);
   check(`手机宽度无横向溢出：${p}`, await noOverflow());
   check(`页面非空：${p}`, (await text("main")).length > 20);
 }
 await soon("未知地址显示找不到页面", async () => (await text("main")).includes("找不到这个页面"));
-await page.goto(`${BASE}/#/lesson/a02-hex-encoding`);
+await page.goto(`${BASE}/#/lesson/a05-cpu-cycle`);
 await soon("规划中的课不会显示假内容", async () => (await text("main")).includes("还没有开放"));
 
 // ---- 清除数据需要二次确认 ----
