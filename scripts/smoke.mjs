@@ -166,6 +166,7 @@ await soon("首页推荐下一课 A02", async () => (await text(".today")).inclu
 // ---- A02 十六进制与文字编码 ----
 await page.goto(`${BASE}/#/lesson/a02-hex-encoding`);
 await soon("进入 A02", async () => (await text("h1")).includes("十六进制"));
+await soon("A02 课头插图加载成功", async () => (await page.locator(".lesson-art").count()) === 1 && (await imagesOk()));
 check("A02 显示为草稿", (await page.locator(".pill.draft").count()) === 1);
 for (let i = 0; i < 4; i++) await nextBtn().click(); // 开场 -> 讲解 1..4
 check("A02 简化提示（callout）出现", (await page.locator(".callout").count()) === 1);
@@ -211,6 +212,7 @@ await soon("首页推荐下一课 A03", async () => (await text(".today")).inclu
 // ---- A03 逻辑门 ----
 await page.goto(`${BASE}/#/lesson/a03-logic-gates`);
 await soon("进入 A03", async () => (await text("h1")).includes("逻辑门"));
+await soon("A03 课头插图加载成功", async () => (await page.locator(".lesson-art").count()) === 1 && (await imagesOk()));
 check("A03 显示为草稿", (await page.locator(".pill.draft").count()) === 1);
 for (let i = 0; i < 4; i++) await nextBtn().click(); // -> 自由练习
 const swIn = (name) => page.getByRole("switch", { name: new RegExp(`输入 ${name}，`) });
@@ -293,6 +295,7 @@ await soon("首页推荐下一课 A04", async () => (await text(".today")).inclu
 // ---- A04 半加器 ----
 await page.goto(`${BASE}/#/lesson/a04-adder`);
 await soon("进入 A04", async () => (await text("h1")).includes("加法器"));
+await soon("A04 课头插图加载成功", async () => (await page.locator(".lesson-art").count()) === 1 && (await imagesOk()));
 check("A04 显示为草稿", (await page.locator(".pill.draft").count()) === 1);
 for (let i = 0; i < 3; i++) await nextBtn().click(); // 开场 → 讲解 ×2 → 半加器自由练习
 await soon("自由练习：0 + 0 = 00", async () => (await text(".adder-equation")).includes("0 + 0 = 00"));

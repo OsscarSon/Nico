@@ -2,13 +2,14 @@ import { lessonSchema, type Lesson } from "../schema";
 
 /**
  * A03。状态为 draft：没有真实学习者试学记录，来源尚未补齐。
- * 课头插图暂不使用（现有的 lesson-a03 图看不出门的形状，等重出）。
+ * 课头插图：GPT 重出的四种门符号图（AND、OR、NOT、XOR 的传统形状）。
  */
 export const a03: Lesson = lessonSchema.parse({
   id: "a03-logic-gates",
   track: "a",
   unit: "a1",
   title: "逻辑门：AND、OR、NOT、XOR",
+  art: "lesson-a03-logic-gates.png",
   objectives: [
     "能说出 AND、OR、NOT、XOR 分别在什么情况下输出 1",
     "能读懂两输入逻辑门的真值表",

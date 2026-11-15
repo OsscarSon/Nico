@@ -6,6 +6,7 @@ export const a04: Lesson = lessonSchema.parse({
   track: "a",
   unit: "a1",
   title: "用门搭一个加法器",
+  art: "lesson-a04-adder.png",
   objectives: [
     "能写出两个 1 位二进制数相加的四种结果，并说明什么时候需要进位",
     "能说出半加器里「和」与「进位」分别由哪种逻辑门产生",
