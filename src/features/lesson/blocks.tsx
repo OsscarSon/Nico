@@ -3,6 +3,7 @@ import type { Block, QuizItem } from "../../content/schema";
 import { Callout, Device, Feedback, RichText } from "../../components/ui";
 import { BitSwitches } from "../../sims/BitSwitches";
 import { LogicGateSim } from "../../sims/LogicGateSim";
+import { HalfAdderSim } from "../../sims/HalfAdderSim";
 import { gradeChoice, gradeNumber, REVEAL_AFTER_WRONG } from "../../grading/quiz";
 
 export type QuizStats = { firstTryCorrect: number; total: number };
@@ -41,6 +42,8 @@ export function SimBlock({
       <Device title={block.title} label="模拟">
         {block.sim === "logic-gate" ? (
           <LogicGateSim mode={block.mode} gates={block.gates} onSolved={onDone} />
+        ) : block.sim === "half-adder" ? (
+          <HalfAdderSim mode={block.mode} onSolved={onDone} />
         ) : (
           <BitSwitches mode={block.mode} targets={block.targets} onSolved={onDone} />
         )}

@@ -159,8 +159,8 @@ check("记录了真实的一次性答对数（3 道选择题 2 对 + 迁移题�
 await page.goto(`${BASE}/#/paths/a`);
 await soon("路线页头有徽记且图片加载成功", async () => (await page.locator(".track-head img").count()) === 1 && (await imagesOk()));
 await soon("路线地图显示已完成", async () => (await page.locator(".pm-card .pill.done").count()) === 1);
-await soon("路线地图里有 18 个规划中的课", async () => (await page.locator(".pm-card.planned").count()) === 18);
-await soon("路线地图上 A03 显示『可以开始』", async () => (await page.locator(".pm-card .pill.available").count()) === 1);
+await soon("路线地图里有 17 个规划中的课", async () => (await page.locator(".pm-card.planned").count()) === 17);
+await soon("路线地图上 A03、A04 显示『可以开始』", async () => (await page.locator(".pm-card .pill.available").count()) === 2);
 await page.goto(`${BASE}/#/`);
 await soon("首页现在显示已完成 1 课", async () => (await text(".stats")).includes("1"));
 await soon("首页推荐下一课 A03", async () => (await text(".today")).includes("逻辑门") && (await text(".today")).includes("下一课"));
@@ -239,19 +239,73 @@ await btn("检查答案").click();
 await soon("A03 迁移题答对", async () => (await text(".feedback")).includes("答对了"));
 await nextBtn().click(); // -> 小结
 check("A03 小结有三点", (await page.locator(".points li").count()) === 3);
-check("A03 之后没有可学的课：回到路线", (await page.getByRole("link", { name: "回到路线" }).count()) === 1);
-check("A03 提示下一课还在准备中", (await text(".lesson-wrap")).includes("下一课还在准备中"));
+check("A03 小结的『下一课』指向 A04", (await page.getByRole("link", { name: "下一课", exact: true }).count()) === 1);
 const saved3 = await page.evaluate(() => JSON.parse(localStorage.getItem("nico-progress") ?? "null"));
 check("A03 完成后进度已保存（选择题错 1 次、迁移题错 1 次 → 第一次答对 2 / 4）", saved3?.lessons?.["a03-logic-gates"]?.firstTryCorrect === 2 && saved3?.lessons?.["a03-logic-gates"]?.quizTotal === 4, JSON.stringify(saved3?.lessons));
 
 await page.goto(`${BASE}/#/`);
 await soon("首页现在显示已完成 2 课", async () => (await text(".stats")).includes("2"));
+await soon("首页推荐下一课 A04", async () => (await text(".today")).includes("用门搭一个加法器") && (await text(".today")).includes("下一课"));
+
+// ---- A04 半加器 ----
+await page.goto(`${BASE}/#/lesson/a04-adder`);
+await soon("进入 A04", async () => (await text("h1")).includes("加法器"));
+check("A04 显示为草稿", (await page.locator(".pill.draft").count()) === 1);
+for (let i = 0; i < 3; i++) await nextBtn().click(); // 开场 → 讲解 ×2 → 半加器自由练习
+await soon("自由练习：0 + 0 = 00", async () => (await text(".adder-equation")).includes("0 + 0 = 00"));
+check("自由练习显示两个门符号", (await page.locator(".gate-symbol").count()) === 2);
+check("手机宽度无横向溢出：A04 自由练习", await noOverflow());
+await swIn("A").click();
+await swIn("B").click();
+await soon("1 + 1 = 10（进位 1，和 0）", async () => { const t = await text(".adder-equation"); return t.includes("1 + 1 = 10") && t.includes("进位 1") && t.includes("和 0"); });
+await nextBtn().click(); // -> 挑战
+check("搭电路挑战未完成时『下一步』被禁用", await nextBtn().isDisabled());
+check("手机宽度无横向溢出：A04 挑战", await noOverflow());
+await btn("测试电路").click();
+await soon("两个都用 OR：3 种输入不对，先指出进位", async () => { const t = await text(".feedback"); return t.includes("有 3 种输入不对") && t.includes("「进位」这一位不对"); });
+check("测试结果表里有 3 行不对", (await page.getByText("✗ 不对").count()) === 3);
+const pickGate = (group, name) => page.getByRole("group", { name: group }).getByRole("button", { name, exact: true }).click();
+await pickGate("和用哪个门", "XOR");
+await soon("改选门后旧的测试结果被清除", async () => (await page.locator(".truth").count()) === 0 && (await page.locator(".feedback").count()) === 0);
+await btn("测试电路").click();
+await soon("和选对后只剩进位不对", async () => { const t = await text(".feedback"); return t.includes("「进位」这一位不对") && !t.includes("「和」"); });
+await pickGate("进位用哪个门", "AND");
+await btn("测试电路").click();
+await soon("XOR + AND 四种输入全部通过", async () => (await text(".feedback")).includes("四种输入全部正确"));
+check("测试结果表里 4 行都通过", (await page.getByText("✓ 通过").count()) === 4);
+await soon("搭对后门控解除", () => nextBtn().isEnabled());
+await nextBtn().click(); // -> 检查题
+await opt("2").click();
+await soon("A04 Q1 选错给出诊断", async () => (await text(".feedback")).includes("二进制里没有数字 2"));
+await opt("10").click();
+await btn("下一题").click();
+await opt("AND").click();
+await btn("下一题").click();
+await opt("和 0，进位 1").click();
+await btn("完成检查").click();
+await soon("A04 检查完成：第一次答对 2 / 3", async () => (await text(".feedback")).includes("第一次就答对 2 / 3"));
+await nextBtn().click(); // -> 迁移题
+await page.getByRole("textbox").fill("8");
+await btn("检查答案").click();
+await soon("A04 迁移题答错给出提示", async () => (await text(".feedback")).includes("255 + 255 = 510"));
+await page.getByRole("textbox").fill("9");
+await btn("检查答案").click();
+await soon("A04 迁移题答对", async () => (await text(".feedback")).includes("答对了"));
+await nextBtn().click(); // -> 小结
+check("A04 小结有三点", (await page.locator(".points li").count()) === 3);
+check("A04 之后没有可学的课：回到路线", (await page.getByRole("link", { name: "回到路线" }).count()) === 1);
+check("A04 提示下一课还在准备中", (await text(".lesson-wrap")).includes("下一课还在准备中"));
+const saved4 = await page.evaluate(() => JSON.parse(localStorage.getItem("nico-progress") ?? "null"));
+check("A04 完成后进度已保存（第一次答对 2 / 4）", saved4?.lessons?.["a04-adder"]?.firstTryCorrect === 2 && saved4?.lessons?.["a04-adder"]?.quizTotal === 4, JSON.stringify(saved4?.lessons));
+
+await page.goto(`${BASE}/#/`);
+await soon("首页现在显示已完成 3 课", async () => (await text(".stats")).includes("3"));
 await soon("首页诚实说明没有下一课可学", async () => (await text(".today")).includes("目前可学的课都学完了"));
 
 // ---- 完成后徽章按真实条件点亮 ----
 await page.goto(`${BASE}/#/me`);
-await soon("完成 A01 后只获得『第一个比特』", async () => (await page.locator(".badge.earned").count()) === 1 && (await text(".badge.earned")).includes("第一个比特"));
-check("课程未开放的徽章如实标注", (await page.getByText("对应课程尚未开放").count()) === 6);
+await soon("完成 A01、A03、A04 后获得『第一个比特』和『守门人』", async () => (await page.locator(".badge.earned").count()) === 2 && (await page.locator(".badge.earned", { hasText: "第一个比特" }).count()) === 1 && (await page.locator(".badge.earned", { hasText: "守门人" }).count()) === 1);
+check("课程未开放的徽章如实标注", (await page.getByText("对应课程尚未开放").count()) === 5);
 check("连续七天徽章未获得但可获得", (await page.locator(".badge", { hasText: "连续七天" }).getByText("未获得").count()) === 1);
 
 await page.goto(`${BASE}/#/projects`);

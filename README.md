@@ -2,7 +2,7 @@
 
 边学边做的电脑科技实验室。手机优先的网页应用，用于和朋友一起学电脑、网络、编程、AI、游戏开发和效率自动化。
 
-当前进度：Phase 0 + Phase 1 完成，Phase 2 已开始：可学 **A01 二进制** 和 **A03 逻辑门**。详见 `docs/STATUS.md`。
+当前进度：Phase 0 + Phase 1 完成，Phase 2 已开始：可学 **A01 二进制**、**A03 逻辑门**、**A04 用门搭一个加法器**。详见 `docs/STATUS.md`。
 
 ## 运行
 
@@ -35,12 +35,19 @@ npm run smoke
 
 > Windows 上用 pnpm 可能因为"创建符号链接被拒绝（os error 5）"安装失败，所以本项目统一用 npm。
 
+## 发布到 GitHub Pages
+
+1. 仓库 Settings → Pages → Build and deployment → Source 选 **GitHub Actions**（不要选 "Deploy from a branch"，那样发布的是源代码，页面会一片空白）。
+2. 推送到 `main` 分支后，`.github/workflows/deploy.yml` 会自动测试、构建并发布 `dist`。在仓库的 Actions 页面可以看进度，通常 1 到 2 分钟。
+3. 网址是 `https://用户名.github.io/仓库名/`。路由用 hash（`#/`），子路径下刷新也不会 404。
+4. 注意：免费的 GitHub Pages 网站是公开的，任何拿到链接的人都能打开。
+
 ## 结构
 
 ```
 src/app/         外壳、导航、hash 路由
 src/features/    lesson（课时播放器）、path（走线路线图）
-src/sims/        互动模拟（位开关、逻辑门）
+src/sims/        互动模拟（位开关、逻辑门、半加器）
 src/content/     课时数据 + Zod 校验 + 目录
 src/grading/     判分纯函数（有单元测试）
 src/progress/    进度存储（localStorage，带版本与损坏备份）

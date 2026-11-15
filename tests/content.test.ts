@@ -50,8 +50,11 @@ describe("next lesson", () => {
   it("skips planned lessons and finds the next available one", () => {
     expect(nextAvailableAfter("a01-binary")?.id).toBe("a03-logic-gates");
   });
+  it("A03 is followed directly by A04", () => {
+    expect(nextAvailableAfter("a03-logic-gates")?.id).toBe("a04-adder");
+  });
   it("returns undefined when nothing later is available", () => {
-    expect(nextAvailableAfter("a03-logic-gates")).toBe(undefined);
+    expect(nextAvailableAfter("a04-adder")).toBe(undefined);
   });
   it("returns undefined for unknown ids", () => {
     expect(nextAvailableAfter("zz99-nope")).toBe(undefined);
@@ -62,6 +65,11 @@ describe("next lesson", () => {
     if (sim?.type !== "sim") throw new Error("no challenge");
     delete sim.gates;
     expect(lessonSchema.safeParse(bad).success).toBe(false);
+  });
+  it("a04 transfer answer: 255 + 255 needs 9 bits", () => {
+    const t = lessons["a04-adder"]!.blocks.find((b) => b.type === "transfer");
+    expect(t?.type === "transfer" && t.answer).toBe(9);
+    expect(255 + 255 < 2 ** 9 && 255 + 255 >= 2 ** 8).toBe(true);
   });
   it("a03 transfer answer is 2^4", () => {
     const t = lessons["a03-logic-gates"]!.blocks.find((b) => b.type === "transfer");

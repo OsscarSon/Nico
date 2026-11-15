@@ -206,3 +206,16 @@ a.pm-card:hover { border-color: var(--trace); }
 .truth th { font-weight: 700; color: var(--muted); }
 .truth tr.current td { background: var(--signal-soft); font-weight: 700; }
 .truth td:last-child { text-align: left; font-size: 0.8125rem; color: var(--muted); min-width: 64px; }
+
+/* ===== 半加器 ===== */
+.adder-inputs { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s4); margin-bottom: var(--s3); }
+.adder-equation { margin: 0; font-size: 1.25rem; font-weight: 700; }
+.adder-equation .muted { font-size: 0.875rem; font-weight: 400; margin-left: var(--s2); }
+.adder-row { padding: var(--s3) 0; border-top: 1px solid var(--grid); }
+.adder-row h4 { margin: 0 0 var(--s2); font-size: 1rem; }
+.adder-row p { margin: 0 0 var(--s2); }
+.truth.results { width: 100%; }
+.truth.results th, .truth.results td { padding: 6px var(--s2); white-space: nowrap; }
+.truth.results td:last-child { font-size: inherit; color: inherit; min-width: 0; text-align: center; font-weight: 700; }
+.truth.results td.pass { color: var(--pass); }
+.truth.results td.fail { color: var(--fault); }

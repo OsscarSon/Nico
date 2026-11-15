@@ -8,7 +8,7 @@ import { GateSymbol } from "./GateSymbol";
 
 type Props = { mode: "free" | "challenge"; gates?: GateId[]; onSolved?: () => void };
 
-function InputSwitch({ label, value, onToggle }: { label: string; value: Bit; onToggle: () => void }) {
+export function InputSwitch({ label, value, onToggle }: { label: string; value: Bit; onToggle: () => void }) {
   return (
     <div className="gate-input">
       <span className="pv">{label}</span>
