@@ -185,3 +185,24 @@ a.pm-card:hover { border-color: var(--trace); }
 .track-head { display: flex; align-items: center; gap: var(--s4); }
 .track-head h1 { margin-bottom: var(--s1); }
 .track-head p { margin: 0; }
+
+/* ===== 逻辑门 ===== */
+.gate-picker { display: flex; flex-wrap: wrap; gap: var(--s2); margin: var(--s3) 0; }
+.gate-picker .btn { min-width: 72px; padding: var(--s2) var(--s4); }
+.gate-stage { display: flex; align-items: center; gap: var(--s3); flex-wrap: wrap; margin: var(--s3) 0; }
+.gate-inputs { display: flex; gap: var(--s3); }
+.gate-input, .gate-out { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.gate-input .switch { max-width: 52px; min-height: 68px; }
+.gate-symbol { width: 160px; height: 80px; flex: none; }
+.gate-box {
+  width: 120px; height: 80px; display: grid; place-items: center; flex: none;
+  border: 2px dashed var(--ink); border-radius: var(--r-panel); background: var(--paper);
+  font-family: var(--font-display); font-size: 2rem; font-weight: 700;
+}
+.lamp { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--ink); background: var(--paper); }
+.lamp.on { background: var(--signal); }
+.truth { border-collapse: collapse; margin: var(--s3) 0; font-family: var(--font-mono); min-width: 220px; }
+.truth th, .truth td { padding: 6px var(--s4); text-align: center; border-bottom: 1px solid var(--grid); }
+.truth th { font-weight: 700; color: var(--muted); }
+.truth tr.current td { background: var(--signal-soft); font-weight: 700; }
+.truth td:last-child { text-align: left; font-size: 0.8125rem; color: var(--muted); min-width: 64px; }

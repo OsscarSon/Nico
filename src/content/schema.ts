@@ -28,11 +28,14 @@ export const blockSchema = z.discriminatedUnion("type", [
   }),
   z.object({
     type: z.literal("sim"),
-    sim: z.enum(["bit-switches"]),
+    sim: z.enum(["bit-switches", "logic-gate"]),
     mode: z.enum(["free", "challenge"]),
     title: z.string().min(1),
     intro: z.string().min(1),
+    /** bit-switches 挑战：依次要拨出的数 */
     targets: z.array(z.number().int().nonnegative()).optional(),
+    /** logic-gate 挑战：依次出现的神秘门 */
+    gates: z.array(z.enum(["and", "or", "not", "xor"])).optional(),
   }),
   z.object({ type: z.literal("quiz"), items: z.array(quizItemSchema).min(1) }),
   z.object({
@@ -75,6 +78,16 @@ export const lessonSchema = z
         l.blocks.some((b) => b.type === t),
       ),
     "课时模板要求：至少一个互动、一组检查题、一道迁移题",
+  )
+  .refine(
+    (l) =>
+      l.blocks.every(
+        (b) =>
+          b.type !== "sim" ||
+          b.mode !== "challenge" ||
+          (b.sim === "bit-switches" ? (b.targets?.length ?? 0) > 0 : (b.gates?.length ?? 0) > 0),
+      ),
+    "互动挑战必须提供目标（targets 或 gates）",
   )
   .refine(
     (l) =>

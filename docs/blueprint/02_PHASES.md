@@ -7,7 +7,7 @@
 ## Phase 0 — 决策与地基（约 1 周）
 **目标**：定好规则，再动手。
 - 确认名称、五条路线、PWA 方案（见 01）。
-- 建仓库：React + Vite + TypeScript + pnpm；ESLint、Prettier、Vitest、Playwright。
+- 建仓库：React + Vite + TypeScript + npm；ESLint、Prettier、Vitest、Playwright。
 - 设计令牌（颜色/字体/间距）落成 CSS 变量（见 05）。
 - **课时数据格式**（见 04）：用 Zod 校验，内容与组件分离。
 - CI：typecheck、lint、test、build 全绿才算通过。

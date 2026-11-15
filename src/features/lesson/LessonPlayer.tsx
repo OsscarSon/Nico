@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { getLesson } from "../../content";
+import { allCatalogLessons, getLesson, nextAvailableAfter } from "../../content";
 import { getTrack } from "../../content/catalog";
 import type { Block } from "../../content/schema";
 import { Link } from "../../app/router";
@@ -92,8 +92,14 @@ function Player({ lessonId }: { lessonId: string }) {
   };
 
   const canNext = done[step] === true;
-  const nextId = lesson.blocks.at(-1)?.type === "summary" ? (lesson.blocks.at(-1) as Extract<Block, { type: "summary" }>).next : undefined;
-  const nextAvailable = nextId ? Boolean(getLesson(nextId)) : false;
+  const summaryBlock = lesson.blocks.at(-1);
+  const declaredNext = summaryBlock?.type === "summary" ? summaryBlock.next : undefined;
+  const declaredReady = Boolean(declaredNext && getLesson(declaredNext));
+  // 按顺序的下一课还没做时，推荐目录里之后第一个已开放的课，而不是让学习者卡住
+  const fallback = declaredReady ? undefined : nextAvailableAfter(lessonId);
+  const declaredTitle = declaredNext
+    ? allCatalogLessons().find((l) => l.id === declaredNext)?.title
+    : undefined;
 
   const content = (() => {
     switch (block.type) {
@@ -140,8 +146,10 @@ function Player({ lessonId }: { lessonId: string }) {
             上一步
           </button>
           {isLast ? (
-            nextAvailable ? (
-              <Link to={`/lesson/${nextId}`} className="btn">下一课</Link>
+            declaredReady ? (
+              <Link to={`/lesson/${declaredNext}`} className="btn">下一课</Link>
+            ) : fallback ? (
+              <Link to={`/lesson/${fallback.id}`} className="btn">继续：{fallback.title}</Link>
             ) : (
               <Link to={`/paths/${lesson.track}`} className="btn">回到路线</Link>
             )
@@ -162,9 +170,13 @@ function Player({ lessonId }: { lessonId: string }) {
             完成这一步的练习后，才能继续。
           </p>
         )}
-        {isLast && !nextAvailable && (
+        {isLast && !declaredReady && (
           <p className="muted" style={{ maxWidth: "68ch" }}>
-            下一课还在准备中。
+            {fallback
+              ? declaredTitle
+                ? `按顺序的下一课「${declaredTitle}」还在制作中，你可以先学这一课。`
+                : "按顺序的下一课还在制作中，你可以先学这一课。"
+              : "下一课还在准备中。"}
           </p>
         )}
       </div>

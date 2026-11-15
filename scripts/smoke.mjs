@@ -1,6 +1,8 @@
 // 浏览器冒烟测试：把 A01 整节课从头点到尾，并检查手机宽度、续学、404。
-// 用法：先 `pnpm build && pnpm preview`，再 `BASE_URL=http://localhost:4173 pnpm smoke`
-// 首次需要：pnpm exec playwright install chromium
+// 用法：先 `npm run build && npm run preview`（保持运行），再在另一个终端：
+//   PowerShell：$env:BASE_URL = "http://localhost:4173"; npm run smoke
+//   macOS/Linux：BASE_URL=http://localhost:4173 npm run smoke
+// 首次需要：npx playwright install chromium
 const { chromium } = await import(process.env.PW_PATH ?? "playwright");
 const BASE = process.env.BASE_URL ?? "http://localhost:4173";
 
@@ -146,19 +148,104 @@ await nextBtn().click(); // -> 小结
 
 // ---- 小结与完成 ----
 check("小结有三点", (await page.locator(".points li").count()) === 3);
-check("下一课未开放时不放假链接", (await page.getByRole("link", { name: "下一课", exact: true }).count()) === 0);
-check("提示下一课还在准备中", (await text(".lesson-wrap")).includes("下一课还在准备中"));
+check("按顺序的下一课未开放时，不放指向它的『下一课』链接", (await page.getByRole("link", { name: "下一课", exact: true }).count()) === 0);
+check("改为推荐已开放的 A03", (await page.getByRole("link", { name: /继续：逻辑门/ }).count()) === 1);
+check("说明按顺序的下一课还在制作中", (await text(".lesson-wrap")).includes("按顺序的下一课「十六进制与文字编码」还在制作中"));
 const saved = await page.evaluate(() => JSON.parse(localStorage.getItem("nico-progress") ?? "null"));
 check("完成后进度已保存", saved?.lessons?.["a01-binary"]?.quizTotal === 4, JSON.stringify(saved));
 check("记录了真实的一次性答对数（3 道选择题 2 对 + 迁移题错过 → 2/4）", saved?.lessons?.["a01-binary"]?.firstTryCorrect === 2, JSON.stringify(saved?.lessons));
 
 // ---- 路线地图 / 首页 / 其它页面 ----
-await page.getByRole("link", { name: "回到路线" }).click();
+await page.goto(`${BASE}/#/paths/a`);
 await soon("路线页头有徽记且图片加载成功", async () => (await page.locator(".track-head img").count()) === 1 && (await imagesOk()));
 await soon("路线地图显示已完成", async () => (await page.locator(".pm-card .pill.done").count()) === 1);
-await soon("路线地图里有 19 个规划中的课", async () => (await page.locator(".pm-card.planned").count()) === 19);
+await soon("路线地图里有 18 个规划中的课", async () => (await page.locator(".pm-card.planned").count()) === 18);
+await soon("路线地图上 A03 显示『可以开始』", async () => (await page.locator(".pm-card .pill.available").count()) === 1);
 await page.goto(`${BASE}/#/`);
 await soon("首页现在显示已完成 1 课", async () => (await text(".stats")).includes("1"));
+await soon("首页推荐下一课 A03", async () => (await text(".today")).includes("逻辑门") && (await text(".today")).includes("下一课"));
+
+// ---- A03 逻辑门 ----
+await page.goto(`${BASE}/#/lesson/a03-logic-gates`);
+await soon("进入 A03", async () => (await text("h1")).includes("逻辑门"));
+check("A03 显示为草稿", (await page.locator(".pill.draft").count()) === 1);
+for (let i = 0; i < 4; i++) await nextBtn().click(); // -> 自由练习
+const swIn = (name) => page.getByRole("switch", { name: new RegExp(`输入 ${name}，`) });
+const outDigit = () => text(".gate-out .digit");
+await soon("自由练习默认 AND，输出 0", async () => (await outDigit()) === "0" && (await page.getByRole("button", { name: "AND", exact: true }).getAttribute("aria-pressed")) === "true");
+check("手机宽度无横向溢出：A03 自由练习", await noOverflow());
+await swIn("A").click();
+await swIn("B").click();
+await soon("AND 两个输入都开时输出 1", async () => (await outDigit()) === "1");
+check("真值表标出当前行", (await page.locator('tr[aria-current="true"]').count()) === 1 && (await text('tr[aria-current="true"]')).includes("现在"));
+check("门符号有图", (await page.locator(".gate-symbol").count()) === 1);
+await page.getByRole("button", { name: "XOR", exact: true }).click();
+await soon("切到 XOR，11 时输出 0", async () => (await outDigit()) === "0");
+await page.getByRole("button", { name: "NOT", exact: true }).click();
+await soon("NOT 只有一个输入（没有 B 开关）", async () => (await page.getByRole("switch", { name: /输入 B，/ }).count()) === 0);
+await nextBtn().click(); // -> 神秘门
+
+// ---- 神秘门挑战：NOT、OR、XOR ----
+check("神秘门未完成时『下一步』被禁用", await nextBtn().isDisabled());
+check("手机宽度无横向溢出：A03 挑战", await noOverflow());
+const guessBtns = () => page.getByRole("group", { name: "猜这是哪个门" }).getByRole("button");
+const guess = (name) => page.getByRole("group", { name: "猜这是哪个门" }).getByRole("button", { name, exact: true }).click();
+check("没试完所有输入前不能猜", await guessBtns().first().isDisabled());
+await swIn("A").click(); // 神秘门 1（NOT）：试过 0 和 1
+await soon("试完输入后可以猜", () => guessBtns().first().isEnabled());
+await guess("AND");
+await soon("猜错时说明输入个数不符，且不泄露答案", async () => { const t = await text(".feedback"); return t.includes("只有一个输入") && !t.includes("NOT"); });
+await guess("NOT");
+await soon("猜对神秘门 1", async () => (await text(".feedback")).includes("对了"));
+await btn("下一个神秘门").click();
+
+await soon("神秘门 2 开始时表格只揭开了当前行", async () => (await page.locator(".truth tbody td:nth-child(3)").allInnerTexts()).filter((t) => t.trim() === "?").length === 3);
+await swIn("A").click(); await swIn("B").click(); await swIn("A").click(); // 10, 11, 01
+await soon("试完 4 种输入后可以猜", () => guessBtns().first().isEnabled());
+await guess("AND");
+await soon("猜错时指出一条矛盾的行", async () => { const t = await text(".feedback"); return t.includes("A=0，B=1") && t.includes("应该输出 0") && t.includes("你看到的是 1"); });
+await guess("OR");
+await soon("猜对神秘门 2", async () => (await text(".feedback")).includes("对了"));
+await btn("下一个神秘门").click();
+
+await soon("神秘门 3 开始时 00 行已经揭开", async () => (await page.locator(".truth tbody td:nth-child(3)").allInnerTexts()).filter((t) => t.trim() === "?").length === 3);
+await swIn("A").click(); await swIn("B").click(); await swIn("A").click();
+await soon("神秘门 3 可以猜", () => guessBtns().first().isEnabled());
+await guess("OR");
+await soon("猜错 OR 时指出 11 这一行", async () => { const t = await text(".feedback"); return t.includes("A=1，B=1") && t.includes("应该输出 1") && t.includes("你看到的是 0"); });
+await guess("XOR");
+await soon("猜对神秘门 3", async () => (await text(".feedback")).includes("对了"));
+await btn("完成").click();
+await soon("三个神秘门完成后门控解除", () => nextBtn().isEnabled());
+await nextBtn().click(); // -> 检查题
+
+// ---- A03 检查题 ----
+const opt = (name) => page.getByRole("button", { name, exact: true });
+await opt("AND 和 OR").click();
+await soon("Q1 选错给出诊断", async () => (await text(".feedback")).includes("AND 需要两个输入都是 1"));
+await opt("OR 和 XOR").click();
+await btn("下一题").click();
+await opt("XOR").click();
+await btn("下一题").click();
+await opt("OR").click();
+await btn("完成检查").click();
+await soon("A03 检查完成：第一次答对 2 / 3", async () => (await text(".feedback")).includes("第一次就答对 2 / 3"));
+await nextBtn().click(); // -> 迁移题
+await page.getByRole("textbox").fill("8");
+await btn("检查答案").click();
+await soon("A03 迁移题答错给出提示", async () => (await text(".feedback")).includes("连乘"));
+await page.getByRole("textbox").fill("16");
+await btn("检查答案").click();
+await soon("A03 迁移题答对", async () => (await text(".feedback")).includes("答对了"));
+await nextBtn().click(); // -> 小结
+check("A03 小结有三点", (await page.locator(".points li").count()) === 3);
+check("A03 之后没有可学的课：回到路线", (await page.getByRole("link", { name: "回到路线" }).count()) === 1);
+check("A03 提示下一课还在准备中", (await text(".lesson-wrap")).includes("下一课还在准备中"));
+const saved3 = await page.evaluate(() => JSON.parse(localStorage.getItem("nico-progress") ?? "null"));
+check("A03 完成后进度已保存（选择题错 1 次、迁移题错 1 次 → 第一次答对 2 / 4）", saved3?.lessons?.["a03-logic-gates"]?.firstTryCorrect === 2 && saved3?.lessons?.["a03-logic-gates"]?.quizTotal === 4, JSON.stringify(saved3?.lessons));
+
+await page.goto(`${BASE}/#/`);
+await soon("首页现在显示已完成 2 课", async () => (await text(".stats")).includes("2"));
 await soon("首页诚实说明没有下一课可学", async () => (await text(".today")).includes("目前可学的课都学完了"));
 
 // ---- 完成后徽章按真实条件点亮 ----

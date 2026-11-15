@@ -2,30 +2,45 @@
 
 边学边做的电脑科技实验室。手机优先的网页应用，用于和朋友一起学电脑、网络、编程、AI、游戏开发和效率自动化。
 
-当前进度：**Phase 0 + Phase 1**（学习外壳 + 一节完整的示范课 A01）。详见 `docs/STATUS.md`。
+当前进度：Phase 0 + Phase 1 完成，Phase 2 已开始：可学 **A01 二进制** 和 **A03 逻辑门**。详见 `docs/STATUS.md`。
 
 ## 运行
 
-```bash
-pnpm install
-pnpm dev          # 开发：http://localhost:5173
-pnpm test         # 单元测试
-pnpm build        # 类型检查 + 构建
-pnpm preview      # 预览构建结果（默认 4173 端口）
+需要 Node.js 22 或更新（nodejs.org 下载 LTS 版）。
 
-# 浏览器冒烟测试（首次需 pnpm exec playwright install chromium）
-pnpm preview &
-BASE_URL=http://localhost:4173 pnpm smoke
+```bash
+npm install
+npm run dev        # 开发：http://localhost:5173
+npm test           # 单元测试
+npm run build      # 类型检查 + 构建
+npm run preview    # 预览构建结果：http://localhost:4173
 ```
 
-第一次 `pnpm install` 后请把生成的 `pnpm-lock.yaml` 一起提交。
+浏览器冒烟测试（把课程从头点到尾）需要**两个终端窗口**：
+
+```bash
+# 首次：安装测试用的浏览器
+npx playwright install chromium
+
+# 窗口 1：保持运行
+npm run preview
+
+# 窗口 2：Windows PowerShell
+$env:BASE_URL = "http://localhost:4173"
+npm run smoke
+# macOS / Linux：BASE_URL=http://localhost:4173 npm run smoke
+```
+
+第一次 `npm install` 后，请把生成的 `package-lock.json` 一起提交到 Git。
+
+> Windows 上用 pnpm 可能因为"创建符号链接被拒绝（os error 5）"安装失败，所以本项目统一用 npm。
 
 ## 结构
 
 ```
 src/app/         外壳、导航、hash 路由
 src/features/    lesson（课时播放器）、path（走线路线图）
-src/sims/        互动模拟（目前：位开关）
+src/sims/        互动模拟（位开关、逻辑门）
 src/content/     课时数据 + Zod 校验 + 目录
 src/grading/     判分纯函数（有单元测试）
 src/progress/    进度存储（localStorage，带版本与损坏备份）

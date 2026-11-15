@@ -44,3 +44,27 @@ describe("content", () => {
     expect(t?.type === "transfer" && t.answer).toBe(1024);
   });
 });
+
+import { nextAvailableAfter } from "../src/content";
+describe("next lesson", () => {
+  it("skips planned lessons and finds the next available one", () => {
+    expect(nextAvailableAfter("a01-binary")?.id).toBe("a03-logic-gates");
+  });
+  it("returns undefined when nothing later is available", () => {
+    expect(nextAvailableAfter("a03-logic-gates")).toBe(undefined);
+  });
+  it("returns undefined for unknown ids", () => {
+    expect(nextAvailableAfter("zz99-nope")).toBe(undefined);
+  });
+  it("a challenge sim without its targets or gates fails the schema", () => {
+    const bad = structuredClone(lessons["a03-logic-gates"]!);
+    const sim = bad.blocks.find((b) => b.type === "sim" && b.mode === "challenge");
+    if (sim?.type !== "sim") throw new Error("no challenge");
+    delete sim.gates;
+    expect(lessonSchema.safeParse(bad).success).toBe(false);
+  });
+  it("a03 transfer answer is 2^4", () => {
+    const t = lessons["a03-logic-gates"]!.blocks.find((b) => b.type === "transfer");
+    expect(t?.type === "transfer" && t.answer).toBe(2 ** 4);
+  });
+});

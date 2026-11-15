@@ -1,8 +1,9 @@
 import { tracks, type CatalogLesson } from "./catalog";
 import type { Lesson } from "./schema";
 import { a01 } from "./lessons/a01-binary";
+import { a03 } from "./lessons/a03-logic-gates";
 
-export const lessons: Record<string, Lesson> = { [a01.id]: a01 };
+export const lessons: Record<string, Lesson> = { [a01.id]: a01, [a03.id]: a03 };
 
 export const getLesson = (id: string): Lesson | undefined => lessons[id];
 
@@ -28,4 +29,12 @@ export function validateContent(): string[] {
       errors.push(`${l.id} 的下一课 ${summary.next} 不存在`);
   }
   return errors;
+}
+
+/** 目录顺序里，当前课之后第一个已经开放的课。 */
+export function nextAvailableAfter(id: string): CatalogLesson | undefined {
+  const all = allCatalogLessons();
+  const idx = all.findIndex((l) => l.id === id);
+  if (idx < 0) return undefined;
+  return all.slice(idx + 1).find((l) => l.status === "available");
 }

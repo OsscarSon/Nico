@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { Block, QuizItem } from "../../content/schema";
 import { Callout, Device, Feedback, RichText } from "../../components/ui";
 import { BitSwitches } from "../../sims/BitSwitches";
+import { LogicGateSim } from "../../sims/LogicGateSim";
 import { gradeChoice, gradeNumber, REVEAL_AFTER_WRONG } from "../../grading/quiz";
 
 export type QuizStats = { firstTryCorrect: number; total: number };
@@ -38,7 +39,11 @@ export function SimBlock({
     <div>
       <p>{block.intro}</p>
       <Device title={block.title} label="模拟">
-        <BitSwitches mode={block.mode} targets={block.targets} onSolved={onDone} />
+        {block.sim === "logic-gate" ? (
+          <LogicGateSim mode={block.mode} gates={block.gates} onSolved={onDone} />
+        ) : (
+          <BitSwitches mode={block.mode} targets={block.targets} onSolved={onDone} />
+        )}
       </Device>
       {block.mode === "free" && (
         <p className="muted">这是自由练习，准备好了就进入下一步。</p>

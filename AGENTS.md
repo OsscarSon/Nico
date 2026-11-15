@@ -1,7 +1,7 @@
 # 给 AI 编程助手的规则
 
 1. 开始前读 `docs/blueprint/01`–`05` 和 `docs/STATUS.md`。只做当前阶段，不顺手加功能。
-2. 开始前写 3–5 行计划。结束前运行 `pnpm typecheck`、`pnpm lint`、`pnpm test`、`pnpm build`，并在可行时运行 `pnpm smoke`。**逐条如实报告结果**；失败就写失败，没运行就写没运行。
+2. 开始前写 3–5 行计划。结束前运行 `npm run typecheck`、`npm run lint`、`npm test`、`npm run build`，并在可行时运行 `npm run smoke`（需先 `npm run preview`）。**逐条如实报告结果**；失败就写失败，没运行就写没运行。
 3. 不自己给课程打"达标"分。课时质量状态只能依据真实试学记录修改（Schema 也会检查）。
 4. 模拟标"模拟"，AI 生成内容标"AI 生成"，草稿标"草稿"。不显示虚构的进度、成就或统计。
 5. 不新增依赖，除非在 `docs/DEPENDENCIES.md` 写明理由、许可证和替代方案。
