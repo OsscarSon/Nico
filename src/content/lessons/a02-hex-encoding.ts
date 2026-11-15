@@ -9,6 +9,7 @@ export const a02: Lesson = lessonSchema.parse({
   track: "a",
   unit: "a1",
   title: "十六进制与文字编码",
+  art: "lesson-a02-hex-encoding.png",
   objectives: [
     "能把一个字节（8 位）写成两位十六进制，也能转回来",
     "能看懂 #RRGGBB 颜色代码里每一段的含义",
