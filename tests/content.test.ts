@@ -46,6 +46,7 @@ describe("content", () => {
 });
 
 import { nextAvailableAfter } from "../src/content";
+import { freeProgram, runToHalt } from "../src/grading/cpu";
 describe("next lesson", () => {
   it("A01 is followed directly by A02", () => {
     expect(nextAvailableAfter("a01-binary")?.id).toBe("a02-hex-encoding");
@@ -56,8 +57,11 @@ describe("next lesson", () => {
   it("A03 is followed directly by A04", () => {
     expect(nextAvailableAfter("a03-logic-gates")?.id).toBe("a04-adder");
   });
+  it("A04 is followed directly by A05", () => {
+    expect(nextAvailableAfter("a04-adder")?.id).toBe("a05-cpu-cycle");
+  });
   it("returns undefined when nothing later is available", () => {
-    expect(nextAvailableAfter("a04-adder")).toBe(undefined);
+    expect(nextAvailableAfter("a05-cpu-cycle")).toBe(undefined);
   });
   it("returns undefined for unknown ids", () => {
     expect(nextAvailableAfter("zz99-nope")).toBe(undefined);
@@ -73,6 +77,10 @@ describe("next lesson", () => {
     const t = lessons["a04-adder"]!.blocks.find((b) => b.type === "transfer");
     expect(t?.type === "transfer" && t.answer).toBe(9);
     expect(255 + 255 < 2 ** 9 && 255 + 255 >= 2 ** 8).toBe(true);
+  });
+  it("a05 transfer answer equals the real step count of the free program", () => {
+    const t = lessons["a05-cpu-cycle"]!.blocks.find((b) => b.type === "transfer");
+    expect(t?.type === "transfer" && t.answer).toBe(runToHalt(freeProgram()).steps);
   });
   it("a03 transfer answer is 2^4", () => {
     const t = lessons["a03-logic-gates"]!.blocks.find((b) => b.type === "transfer");
