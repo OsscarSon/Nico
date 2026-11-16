@@ -5,6 +5,7 @@ export const b12: Lesson = lessonSchema.parse({
   id: "b12-events",
   track: "b",
   unit: "b2",
+  art: "lesson-b12-events.png",
   title: "事件：让网页有反应",
   objectives: [
     "能用 addEventListener 让页面在点击时运行代码",

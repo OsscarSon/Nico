@@ -5,6 +5,7 @@ export const b11: Lesson = lessonSchema.parse({
   id: "b11-js-dom",
   track: "b",
   unit: "b2",
+  art: "lesson-b11-js-dom.png",
   title: "JavaScript 与 DOM",
   objectives: [
     "能认出 JavaScript 和 Python 在变量、函数、循环上的对应写法",

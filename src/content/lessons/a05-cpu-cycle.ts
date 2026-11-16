@@ -2,13 +2,13 @@ import { lessonSchema, type Lesson } from "../schema";
 
 /**
  * A05。状态为 draft：没有真实学习者试学记录，来源尚未补齐。
- * 暂无课头插图（等 GPT 出图后加 art 字段）。
  * 迷你 CPU 参考经典教学模型 Little Man Computer 的思路，代码和指令集是本项目自己写的。
  */
 export const a05: Lesson = lessonSchema.parse({
   id: "a05-cpu-cycle",
   track: "a",
   unit: "a2",
+  art: "lesson-a05-cpu-cycle.png",
   title: "CPU：取指、译码、执行",
   objectives: [
     "能说出 CPU 反复做的三步：取指、译码、执行，以及每一步做什么",

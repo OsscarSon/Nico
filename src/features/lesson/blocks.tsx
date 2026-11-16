@@ -5,6 +5,9 @@ import { BitSwitches } from "../../sims/BitSwitches";
 import { LogicGateSim } from "../../sims/LogicGateSim";
 import { HalfAdderSim } from "../../sims/HalfAdderSim";
 import { MiniCpuSim } from "../../sims/MiniCpuSim";
+import { LayersSim } from "../../sims/LayersSim";
+import { SubnetSim } from "../../sims/SubnetSim";
+import { DnsSim } from "../../sims/DnsSim";
 import { PythonSim } from "../../sims/code/PythonSim";
 import { WebSim } from "../../sims/code/WebSim";
 import { JsSim } from "../../sims/code/JsSim";
@@ -60,6 +63,12 @@ export function SimBlock({
           <HalfAdderSim mode={block.mode} onSolved={onDone} />
         ) : block.sim === "mini-cpu" ? (
           <MiniCpuSim mode={block.mode} onSolved={onDone} />
+        ) : block.sim === "layers" ? (
+          <LayersSim mode={block.mode} onSolved={onDone} />
+        ) : block.sim === "subnet" ? (
+          <SubnetSim mode={block.mode} onSolved={onDone} />
+        ) : block.sim === "dns" ? (
+          <DnsSim mode={block.mode} onSolved={onDone} />
         ) : (
           <BitSwitches mode={block.mode} targets={block.targets} onSolved={onDone} />
         )}
