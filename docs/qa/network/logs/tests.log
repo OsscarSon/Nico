@@ -1,0 +1,61 @@
+
+> nico@0.1.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /workspace/Nico
+
+ ✓ tests/js.test.ts (32 tests) 2720ms
+   ✓ instrumentLoops: endless loops are stopped > without the guard the same code would hang (the test harness's own timeout catches it)  1006ms
+ ✓ tests/track-b.test.ts (53 tests) 1432ms
+ ✓ tests/python-runner.test.ts (8 tests) 97ms
+stderr | tests/aiServer.test.ts > failures are reported honestly and leak nothing > upstream 500 → upstream_error without echoing the upstream body
+[ai] upstream_error: upstream 500
+
+stderr | tests/aiServer.test.ts > failures are reported honestly and leak nothing > upstream 429 → quota_exhausted
+[ai] quota_exhausted: upstream 429
+
+stderr | tests/aiServer.test.ts > failures are reported honestly and leak nothing > an empty or blocked reply → bad_output
+[ai] bad_output: empty reply
+
+stderr | tests/aiServer.test.ts > failures are reported honestly and leak nothing > an empty or blocked reply → bad_output
+[ai] bad_output: blocked
+
+stderr | tests/aiServer.test.ts > failures are reported honestly and leak nothing > a hanging upstream is cut off at the timeout
+[ai] timeout: upstream timeout
+
+stderr | tests/aiServer.test.ts > failures are reported honestly and leak nothing > a network failure to the upstream → upstream_error
+[ai] upstream_error: upstream unreachable
+
+ ✓ tests/aiServer.test.ts (35 tests) 68ms
+ ✓ tests/markdown.test.ts (8 tests) 58ms
+ ✓ tests/academy.test.ts (6 tests) 33ms
+ ✓ tests/foundation.test.ts (45 tests) 20ms
+ ✓ tests/aiClient.test.ts (11 tests) 34ms
+ ✓ tests/reassembly.test.ts (16 tests) 27ms
+ ✓ tests/promptScore.test.ts (22 tests) 19ms
+ ✓ tests/aiContext.test.ts (5 tests) 24ms
+ ✓ tests/network-lessons.test.ts (5 tests) 12ms
+ ✓ tests/aiProtocol.test.ts (9 tests) 10ms
+ ✓ tests/content.test.ts (20 tests) 10ms
+ ✓ tests/network.test.ts (33 tests) 12ms
+ ✓ tests/git.test.ts (19 tests) 11ms
+ ✓ tests/tcp.test.ts (21 tests) 10ms
+ ✓ tests/binary.test.ts (6 tests) 9ms
+ ✓ tests/forwarding.test.ts (18 tests) 12ms
+ ✓ tests/code.test.ts (19 tests) 6ms
+ ✓ tests/aiGuard.test.ts (11 tests) 7ms
+ ✓ tests/cpu.test.ts (14 tests) 7ms
+ ✓ tests/progress.test.ts (10 tests) 6ms
+ ✓ tests/adder.test.ts (10 tests) 5ms
+ ✓ tests/quiz.test.ts (5 tests) 5ms
+ ✓ tests/gates.test.ts (14 tests) 6ms
+ ✓ tests/a02.test.ts (4 tests) 4ms
+ ✓ tests/badges.test.ts (7 tests) 6ms
+ ✓ tests/web.test.ts (9 tests) 5ms
+ ✓ tests/art.test.ts (4 tests) 4ms
+
+ Test Files  30 passed (30)
+      Tests  479 passed (479)
+   Start at  20:36:50
+   Duration  13.17s (transform 808ms, setup 0ms, collect 2.90s, tests 4.68s, environment 7ms, prepare 1.77s)
