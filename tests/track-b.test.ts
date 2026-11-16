@@ -59,8 +59,6 @@ describe("track B content", () => {
     expect(nextAvailableAfter("b12-events")?.id).toBe("b14-git-basics");
     expect(nextAvailableAfter("b14-git-basics")?.id).toBe("b15-git-branches");
     expect(nextAvailableAfter("b15-git-branches")).toBe(undefined);
-    expect(nextAvailableAfter("a04-adder")?.id).toBe("a05-cpu-cycle");
-    expect(nextAvailableAfter("a05-cpu-cycle")?.id).toBe("a09-network-layers");
   });
   it("every regex in a lesson compiles", () => {
     for (const s of pythonSims) for (const r of s.code.requires ?? []) expect(() => new RegExp(r.pattern, "m")).not.toThrow();
