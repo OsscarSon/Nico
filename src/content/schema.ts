@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { ELEMENT_IDS } from "../ai/elements";
 
 /** 选择题：每个错误选项都必须有"诊断提示"，说明它对应的常见误解。 */
 export const quizItemSchema = z
@@ -81,7 +82,7 @@ export const blockSchema = z.discriminatedUnion("type", [
   }),
   z.object({
     type: z.literal("sim"),
-    sim: z.enum(["bit-switches", "logic-gate", "half-adder", "mini-cpu", "layers", "subnet", "dns", "python", "web", "js", "git"]),
+    sim: z.enum(["bit-switches", "logic-gate", "half-adder", "mini-cpu", "layers", "subnet", "dns", "python", "web", "js", "git", "prompt-check"]),
     mode: z.enum(["free", "challenge"]),
     title: z.string().min(1),
     intro: z.string().min(1),
@@ -93,6 +94,10 @@ export const blockSchema = z.discriminatedUnion("type", [
     code: codeSpecSchema.optional(),
     /** git 互动的配置（路线 B，模拟） */
     git: gitSpecSchema.optional(),
+    /** prompt-check 互动（路线 C）：场景、必须写到的要素、参考写法 */
+    scenario: z.string().min(1).optional(),
+    required: z.array(z.enum(ELEMENT_IDS)).optional(),
+    sample: z.string().min(1).optional(),
   }),
   z.object({ type: z.literal("quiz"), items: z.array(quizItemSchema).min(1) }),
   z.object({
@@ -154,9 +159,11 @@ export const lessonSchema = z
                   ? (b.code?.checks?.length ?? 0) > 0 && Boolean(b.code?.solution)
                   : b.sim === "web"
                     ? (b.code?.webChecks?.length ?? 0) > 0 && Boolean(b.code?.solution)
-                    : true), // half-adder、mini-cpu、layers、subnet、dns 的挑战内容写在各自的模型里，不需要额外配置
+                    : b.sim === "prompt-check"
+                      ? Boolean(b.scenario) && (b.required?.length ?? 0) > 0 && Boolean(b.sample)
+                      : true), // half-adder、mini-cpu、layers、subnet、dns 的挑战内容写在各自的模型里，不需要额外配置
       ),
-    "互动挑战必须提供目标（targets、gates，或代码挑战的 checks / webChecks 与参考答案）",
+    "互动挑战必须提供目标（targets、gates，代码挑战的 checks / webChecks 与参考答案，或指令挑战的 scenario / required / sample）",
   )
   .refine(
     (l) =>

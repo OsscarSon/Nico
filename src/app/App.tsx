@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import { Link, matchRoute, usePath } from "./router";
 import { Logo, NavIcon } from "../components/ui";
 import { LessonPlayer } from "../features/lesson/LessonPlayer";
+import { PromptLab } from "../features/prompt-lab/PromptLab";
+import { TutorPage } from "../features/prompt-lab/TutorPage";
 import {
   HomePage, LabPage, MePage, NotFoundPage, PathsPage, ProjectsPage, TrackPage,
 } from "../pages/pages";
@@ -44,6 +46,8 @@ export function App() {
       case "track": return <TrackPage trackId={route.trackId} />;
       case "lesson": return <LessonPlayer lessonId={route.lessonId} />;
       case "lab": return <LabPage />;
+      case "prompt-lab": return <PromptLab />;
+      case "tutor": return <TutorPage lessonId={route.lessonId} />;
       case "projects": return <ProjectsPage />;
       case "me": return <MePage />;
       default: return <NotFoundPage />;

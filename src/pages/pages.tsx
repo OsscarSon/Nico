@@ -121,7 +121,7 @@ export function TrackPage({ trackId }: { trackId: string }) {
 }
 
 export function LabPage() {
-  const planned = ["子网计算器", "DNS 解析动画", "TCP 握手时序图", "Prompt 训练场", "公式沙盒"];
+  const planned = ["子网计算器", "DNS 解析动画", "TCP 握手时序图", "公式沙盒"];
   return (
     <>
       <header className="page-head">
@@ -132,6 +132,17 @@ export function LabPage() {
         <p className="muted">点开关，看二进制怎么变成十进制。</p>
         <BitSwitches mode="free" />
       </Device>
+      <h2 className="section-title">AI 与提示词</h2>
+      <div className="grid cols-2">
+        <Link to="/lab/prompt" className="panel trackcard">
+          <h3>Prompt 训练场</h3>
+          <p>写一条给 AI 的指令，检查六个要素有没有写到。不联网也能用。</p>
+        </Link>
+        <Link to="/lab/tutor" className="panel trackcard">
+          <h3>AI 导师</h3>
+          <p>围绕一节课向 AI 提问。需要接上 AI 服务才能用。</p>
+        </Link>
+      </div>
       <h2 className="section-title">制作中</h2>
       <div className="grid cols-3">
         {planned.map((p) => (

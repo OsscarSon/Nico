@@ -14,7 +14,8 @@
     "lint": "eslint .",
     "test": "vitest run",
     "smoke": "node scripts/smoke.mjs",
-    "smoke:b": "node scripts/smoke-b.mjs"
+    "smoke:b": "node scripts/smoke-b.mjs",
+    "smoke:ai": "node scripts/smoke-ai.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.0",
@@ -28,6 +29,7 @@
     "codemirror": "^6.0.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "marked": "^18.0.0",
     "zod": "^4.1.0"
   },
   "devDependencies": {

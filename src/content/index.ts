@@ -6,12 +6,14 @@ import { a03 } from "./lessons/a03-logic-gates";
 import { a04 } from "./lessons/a04-adder";
 import { a05 } from "./lessons/a05-cpu-cycle";
 import { trackBLessons } from "./track-b";
+import { trackCLessons } from "./track-c";
 import { networkLessons } from "./track-a-net";
 
 export const lessons: Record<string, Lesson> = {
   [a01.id]: a01, [a02.id]: a02, [a03.id]: a03, [a04.id]: a04, [a05.id]: a05,
   ...Object.fromEntries(networkLessons.map((l) => [l.id, l])),
   ...Object.fromEntries(trackBLessons.map((l) => [l.id, l])),
+  ...Object.fromEntries(trackCLessons.map((l) => [l.id, l])),
 };
 
 export const getLesson = (id: string): Lesson | undefined => lessons[id];

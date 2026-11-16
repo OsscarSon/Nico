@@ -1,0 +1,13 @@
+# Cloudflare Workers 部署配置（未在真实环境验证过，见 server/README.md）
+name = "nico-ai"
+main = "worker.ts"
+compatibility_date = "2026-01-01"
+
+[vars]
+AI_PROVIDER = "gemini"
+# AI_MODEL 和 ALLOWED_ORIGINS 请按 server/README.md 设置；AI_API_KEY 用 `wrangler secret put AI_API_KEY`，不要写在这个文件里。
+
+# 可选：让额度计数跨实例共享。先 `wrangler kv namespace create QUOTA`，再把返回的 id 填进来并取消注释。
+# [[kv_namespaces]]
+# binding = "QUOTA"
+# id = ""

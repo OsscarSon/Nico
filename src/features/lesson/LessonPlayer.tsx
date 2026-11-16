@@ -4,6 +4,7 @@ import { getTrack } from "../../content/catalog";
 import type { Block } from "../../content/schema";
 import { Link } from "../../app/router";
 import { artUrl } from "../../art";
+import { aiEnabled } from "../../ai/config";
 import { EmptyState, ProgressBar, QualityPill } from "../../components/ui";
 import { completeLesson, localDay, recordStep } from "../../progress/store";
 import { getProgress, updateProgress, useProgress } from "../../progress/useProgress";
@@ -134,6 +135,7 @@ function Player({ lessonId }: { lessonId: string }) {
             <span className="muted">约 {lesson.estimatedMinutes} 分钟</span>
             <QualityPill state={lesson.quality.state} />
             {completed && <span className="pill done">已完成</span>}
+            {aiEnabled() && <Link to={`/lab/tutor/${lessonId}`} className="pill available">问 AI 导师</Link>}
           </div>
           <ProgressBar value={step + 1} max={total} label={`课程进度，第 ${step + 1} 步，共 ${total} 步`} />
         </header>

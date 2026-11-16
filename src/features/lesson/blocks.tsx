@@ -12,6 +12,7 @@ import { PythonSim } from "../../sims/code/PythonSim";
 import { WebSim } from "../../sims/code/WebSim";
 import { JsSim } from "../../sims/code/JsSim";
 import { GitSim } from "../../sims/GitSim";
+import { PromptCheckSim } from "../../sims/PromptCheckSim";
 import { gradeChoice, gradeNumber, REVEAL_AFTER_WRONG } from "../../grading/quiz";
 
 export type QuizStats = { firstTryCorrect: number; total: number };
@@ -42,7 +43,7 @@ export function ExplainBlock({
 
 /** 电路类互动是模拟；Python 是浏览器里的真解释器，不能标"模拟"。 */
 const simLabel = (sim: Extract<Block, { type: "sim" }>["sim"]) =>
-  sim === "python" ? "真实 Python" : sim === "js" ? "真实 JavaScript" : sim === "web" ? "实时预览" : "模拟";
+  sim === "python" ? "真实 Python" : sim === "js" ? "真实 JavaScript" : sim === "web" ? "实时预览" : sim === "prompt-check" ? "规则检查" : "模拟";
 
 export function SimBlock({
   block,
@@ -60,6 +61,8 @@ export function SimBlock({
           <GitSim mode={block.mode} spec={block.git} onSolved={onDone} />
         ) : block.sim === "web" && block.code ? (
           <WebSim mode={block.mode} spec={block.code} onSolved={onDone} />
+        ) : block.sim === "prompt-check" ? (
+          <PromptCheckSim mode={block.mode} scenario={block.scenario} required={block.required} sample={block.sample} onSolved={onDone} />
         ) : block.sim === "logic-gate" ? (
           <LogicGateSim mode={block.mode} gates={block.gates} onSolved={onDone} />
         ) : block.sim === "half-adder" ? (

@@ -13,5 +13,5 @@
     "allowImportingTsExtensions": true,
     "types": ["vite/client"]
   },
-  "include": ["src", "tests", "*.ts"]
+  "include": ["src", "tests", "server", "api", "*.ts"]
 }

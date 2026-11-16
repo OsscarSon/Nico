@@ -1,0 +1,47 @@
+/* AI 与提示词相关界面（Prompt 训练场、AI 导师、AI 内容盒子）。令牌来自 tokens.css */
+.pill.ai { background: var(--trace-soft); border-color: transparent; color: var(--trace); font-weight: 700; }
+
+.aibox { border: 1px solid var(--grid); border-left: 4px solid var(--trace); border-radius: 0 var(--r-panel) var(--r-panel) 0; background: var(--panel); padding: var(--s3) var(--s4); margin: var(--s3) 0; }
+.aibox > header { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); margin-bottom: var(--s2); }
+.aibox-body { overflow-wrap: anywhere; }
+.aibox-body h3 { font-size: 1rem; margin: var(--s3) 0 var(--s1); }
+.aibox-note { margin: var(--s2) 0 0; font-size: 0.8125rem; }
+
+.md > :first-child { margin-top: 0; }
+.md > :last-child { margin-bottom: 0; }
+.md p, .md ul, .md ol, .md blockquote, .md pre { margin: 0 0 var(--s3); }
+.md ul, .md ol { padding-left: 1.4em; }
+.md code { font-family: var(--font-mono); font-size: 0.9em; background: var(--paper); border-radius: 4px; padding: 0 4px; }
+.md pre { background: var(--paper); border: 1px solid var(--grid); border-radius: var(--r-panel); padding: var(--s3); overflow-x: auto; }
+.md pre code { background: none; padding: 0; }
+.md blockquote { border-left: 3px solid var(--grid); padding-left: var(--s3); color: var(--muted); }
+.md-table { overflow-x: auto; margin-bottom: var(--s3); }
+.md-table table { border-collapse: collapse; min-width: 100%; }
+.md-table th, .md-table td { border: 1px solid var(--grid); padding: 6px 10px; text-align: left; vertical-align: top; }
+.md-table th { background: var(--paper); }
+
+.pl-label { display: block; font-weight: 700; margin-bottom: var(--s2); }
+.pl-text { width: 100%; min-height: 120px; padding: var(--s3); border: 2px solid var(--ink); border-radius: var(--r-button); background: var(--panel); font: inherit; line-height: 1.6; resize: vertical; }
+.pl-meta { margin-top: var(--s2); }
+.pl-count { font-family: var(--font-mono); font-size: 0.875rem; color: var(--muted); margin-right: auto; }
+.pl-count.over { color: var(--fault); font-weight: 700; }
+.pl-scenario { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2) var(--s3); margin-top: var(--s3); }
+.pl-scenario select, #tutor-lesson { min-height: 44px; padding: 0 var(--s3); border: 2px solid var(--ink); border-radius: var(--r-button); background: var(--panel); font: inherit; max-width: 100%; }
+.pl-level { display: flex; align-items: center; gap: var(--s3); margin: 0 0 var(--s3); font-size: 1.125rem; }
+.pl-elements { list-style: none; margin: 0 0 var(--s3); padding: 0; display: grid; gap: var(--s2); }
+.pl-elements li { display: flex; gap: var(--s3); padding: var(--s2) var(--s3); border: 1px solid var(--grid); border-radius: var(--r-panel); }
+.pl-elements li.on { border-color: var(--pass); background: var(--pass-soft); }
+.pl-elements .mark { flex: none; width: 1.5em; text-align: center; font-weight: 700; }
+.pl-elements li.on .mark { color: var(--pass); }
+.pl-elements .evidence { font-size: 0.875rem; color: var(--ink); margin-top: 2px; overflow-wrap: anywhere; }
+.pl-elements .tip { font-size: 0.875rem; color: var(--muted); margin-top: 2px; }
+.pl-caveat { font-size: 0.875rem; margin: 0; }
+.pl-rewrite, .pl-prompt { white-space: pre-wrap; overflow-wrap: anywhere; font-family: var(--font-ui); background: var(--paper); border: 1px solid var(--grid); border-radius: var(--r-panel); padding: var(--s3); margin: 0 0 var(--s3); }
+.pl-compare { display: grid; gap: var(--s4); }
+@media (min-width: 900px) { .pl-compare { grid-template-columns: 1fr 1fr; align-items: start; } }
+
+.tutor-log { display: grid; gap: var(--s2); margin: var(--s4) 0 var(--s3); }
+.turn.user { background: var(--trace-soft); border-radius: var(--r-panel); padding: var(--s2) var(--s4); }
+.turn.user p { margin: 0; overflow-wrap: anywhere; white-space: pre-wrap; }
+
+.pc-sim .scenario { background: var(--paper); border: 1px dashed var(--muted); border-radius: var(--r-panel); padding: var(--s3); margin: 0 0 var(--s3); }

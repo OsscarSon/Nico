@@ -430,7 +430,8 @@ await soon("首页推荐下一门还没学的课（路线 B 的 B01）", async (
 // ---- 完成后徽章按真实条件点亮 ----
 await page.goto(`${BASE}/#/me`);
 await soon("完成 A01、A03、A04 后获得『第一个比特』和『守门人』", async () => (await page.locator(".badge.earned").count()) === 2 && (await page.locator(".badge.earned", { hasText: "第一个比特" }).count()) === 1 && (await page.locator(".badge.earned", { hasText: "守门人" }).count()) === 1);
-check("课程未开放的徽章如实标注", (await page.getByText("对应课程尚未开放").count()) === 5);
+// 路线 C 的 C05 开放后，「提示词匠」（只要求 C05）变成可获得，所以尚未开放的徽章从 5 个变成 4 个。
+check("课程未开放的徽章如实标注", (await page.getByText("对应课程尚未开放").count()) === 4);
 check("连续七天徽章未获得但可获得", (await page.locator(".badge", { hasText: "连续七天" }).getByText("未获得").count()) === 1);
 
 await page.goto(`${BASE}/#/projects`);

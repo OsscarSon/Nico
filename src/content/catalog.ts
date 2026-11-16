@@ -1,4 +1,5 @@
 import { trackBUnits, trackBCatalog } from "./track-b-catalog";
+import { trackCUnits, trackCCatalog } from "./track-c-catalog";
 export type TrackId = "a" | "b" | "c" | "d" | "e";
 export type CatalogLesson = {
   id: string;
@@ -82,10 +83,10 @@ export const tracks: Track[] = [
     english: "AI & Prompts",
     art: "track-c-ai.png",
     tagline: "学会给 AI 下清楚的指令，并判断结果好不好。",
-    status: "planned",
+    status: "building",
     plannedSummary: "约 18 课 · Prompt 训练场、RAG、Agent",
-    units: [],
-    lessons: [],
+    units: trackCUnits,
+    lessons: trackCCatalog,
   },
   {
     id: "d",

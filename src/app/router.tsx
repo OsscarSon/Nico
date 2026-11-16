@@ -28,14 +28,19 @@ export type Match =
   | { name: "track"; trackId: string }
   | { name: "lesson"; lessonId: string }
   | { name: "lab" }
+  | { name: "prompt-lab" }
+  | { name: "tutor"; lessonId?: string }
   | { name: "projects" }
   | { name: "me" }
   | { name: "notfound" };
 
 export function matchRoute(path: string): Match {
   const parts = path.split("/").filter(Boolean).map(decodeURIComponent);
-  const [a, b, ...more] = parts;
+  const [a, b, c, ...more] = parts;
   if (more.length) return { name: "notfound" };
+  if (a === "lab" && b === "prompt" && !c) return { name: "prompt-lab" };
+  if (a === "lab" && b === "tutor") return c ? { name: "tutor", lessonId: c } : { name: "tutor" };
+  if (c) return { name: "notfound" };
   if (!a) return { name: "home" };
   if (a === "paths" && !b) return { name: "paths" };
   if (a === "paths" && b) return { name: "track", trackId: b };
