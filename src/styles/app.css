@@ -1,5 +1,5 @@
 /* ===== 外壳 ===== */
-.app { min-height: 100dvh; display: grid; grid-template-columns: 1fr; }
+.app { min-height: 100dvh; display: grid; grid-template-columns: minmax(0, 1fr); }
 .sidenav { display: none; }
 .main {
   width: 100%; max-width: 1040px; margin: 0 auto;
@@ -26,7 +26,7 @@
 .brand svg { width: 36px; height: 36px; }
 .mobilebar { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--s5); }
 @media (min-width: 900px) {
-  .app { grid-template-columns: 232px 1fr; }
+  .app { grid-template-columns: 232px minmax(0, 1fr); }
   .sidenav {
     display: flex; flex-direction: column; gap: var(--s2); position: sticky; top: 0; height: 100dvh;
     padding: var(--s5) var(--s4); background: var(--panel); border-right: 1px solid var(--grid);
@@ -114,7 +114,7 @@ a.pm-card:hover { border-color: var(--trace); }
 @keyframes pulse { 0% { opacity: 0.8; transform: scale(1); } 100% { opacity: 0; transform: scale(2.4); } }
 
 /* ===== 课时播放器 ===== */
-.lesson-wrap { display: grid; gap: var(--s5); }
+.lesson-wrap { display: grid; gap: var(--s5); grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 1000px) { .lesson-wrap { grid-template-columns: minmax(0, 1fr) 220px; align-items: start; } }
 .backlink { display: inline-block; margin-bottom: var(--s3); font-size: 0.9375rem; }
 .lesson-head h1 { font-size: 1.75rem; }
@@ -236,3 +236,45 @@ a.pm-card:hover { border-color: var(--trace); }
 .cpu-cell.wrote { background: var(--pass-soft); }
 .cpu-note { min-height: 3.2em; margin: 0 0 var(--s3); padding: var(--s2) var(--s3); background: var(--paper); border-left: 4px solid var(--signal); border-radius: 0 6px 6px 0; font-size: 0.9375rem; }
 .cpu-steps { font-size: 0.875rem; }
+
+/* ===== 网络分层 / 子网 / DNS ===== */
+.option-sub { color: var(--muted); font-size: 0.8125rem; }
+.frames { margin: var(--s2) 0 var(--s3); }
+.frame { border: 2px solid var(--ink); border-radius: var(--r-panel); padding: var(--s2) var(--s3); margin-top: var(--s2); }
+.frame-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px var(--s3); margin-bottom: 2px; }
+.frame-text { flex-basis: 100%; font-size: 0.8125rem; color: var(--muted); }
+.f-link { background: #e9edf5; }
+.f-network { background: var(--trace-soft); }
+.f-transport { background: var(--pass-soft); }
+.f-app { background: var(--signal-soft); display: flex; justify-content: space-between; gap: var(--s3); }
+.frames-total { font-weight: 700; margin: 0 0 var(--s3); }
+.subnet-inputs { display: grid; gap: var(--s3); margin-bottom: var(--s3); }
+.field { display: flex; flex-direction: column; gap: 4px; font-weight: 700; font-size: 0.9375rem; }
+.field input[type="text"] { min-height: 44px; padding: var(--s2) var(--s3); border: 2px solid var(--ink); border-radius: var(--r-button); background: var(--panel); font-family: var(--font-mono); font-weight: 400; }
+.field input[type="range"] { width: 100%; min-height: 44px; }
+.ip-binary { margin: var(--s2) 0; overflow-x: auto; }
+.ipbits { font-size: min(0.875rem, 3.5vw); white-space: nowrap; }
+.ip-table th small { display: block; font-weight: 400; font-size: 0.75rem; color: var(--muted); }
+.bit-net { color: var(--trace); font-weight: 700; }
+.bit-host { color: var(--muted); }
+.ipdot { color: var(--muted); padding: 0 1px; }
+.ip-legend { display: flex; flex-wrap: wrap; gap: var(--s3); margin: 0; font-size: 0.8125rem; }
+.ip-table { width: 100%; }
+.ip-table th { text-align: left; font-family: var(--font-ui); font-weight: 700; color: var(--ink); padding-right: var(--s3); }
+.ip-table td { text-align: left; }
+.ip-pair { display: grid; gap: var(--s2); }
+.ip-pair > div { display: flex; flex-direction: column; gap: 2px; padding: var(--s2) var(--s3); border: 1px solid var(--grid); border-radius: var(--r-panel); background: var(--paper); overflow-x: auto; }
+.dns-steps { list-style: none; margin: var(--s3) 0; padding: 0; display: grid; gap: var(--s2); }
+.dns-step { display: flex; flex-direction: column; gap: 2px; padding: var(--s2) var(--s3); border: 1px solid var(--grid); border-left: 4px solid var(--trace); border-radius: 0 var(--r-panel) var(--r-panel) 0; background: var(--panel); }
+.dns-step.answer { border-left-color: var(--pass); }
+.dns-step.cache { border-left-color: var(--signal); }
+.dns-step.missing { border-left-color: var(--fault); }
+.dns-route { font-weight: 700; }
+.dns-n { display: inline-grid; place-items: center; width: 22px; height: 22px; margin-right: 6px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 0.75rem; }
+.dns-q, .dns-a { font-size: 0.9375rem; }
+.dns-cache { margin: var(--s3) 0; padding: var(--s2) var(--s3); border: 1px dashed var(--ink); border-radius: var(--r-panel); font-size: 0.875rem; }
+.dns-cache ul { margin: 4px 0 0; padding-left: var(--s4); }
+.dns-note { font-size: 0.8125rem; }
+
+.device > header .pill { flex: none; white-space: nowrap; }
+.device > header h3 { min-width: 0; }

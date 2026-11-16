@@ -2,7 +2,7 @@
 
 边学边做的电脑科技实验室。手机优先的网页应用，用于和朋友一起学电脑、网络、编程、AI、游戏开发和效率自动化。
 
-当前进度：Phase 0 + Phase 1 完成，Phase 2 已开始：可学 **A01 二进制**、**A02 十六进制与文字编码**、**A03 逻辑门**、**A04 用门搭一个加法器**、**A05 CPU：取指、译码、执行**。详见 `docs/STATUS.md`。
+当前进度：Phase 0 + Phase 1 完成，Phase 2 已开始：可学 **A01 二进制**、**A02 十六进制与文字编码**、**A03 逻辑门**、**A04 用门搭一个加法器**、**A05 CPU：取指、译码、执行**、**A09 网络分层**、**A10 IP 地址与子网**、**A13 DNS**。详见 `docs/STATUS.md`。
 
 ## 运行
 
@@ -47,7 +47,7 @@ npm run smoke
 ```
 src/app/         外壳、导航、hash 路由
 src/features/    lesson（课时播放器）、path（走线路线图）
-src/sims/        互动模拟（位开关、逻辑门、半加器、迷你 CPU）
+src/sims/        互动模拟（位开关、逻辑门、半加器、迷你 CPU、网络分层、子网计算器、DNS）
 src/content/     课时数据 + Zod 校验 + 目录
 src/grading/     判分纯函数（有单元测试）
 src/progress/    进度存储（localStorage，带版本与损坏备份）
