@@ -1,0 +1,150 @@
+
+> nico@0.1.0 smoke:academy
+> node scripts/smoke-academy.mjs
+
+PASS 1440: 系统亮色时首次访问仍默认暗色
+PASS 1440: 背景为深蓝
+PASS 1440: 新用户没有虚构进度
+PASS 1440: 首页无横向溢出
+PASS 1440: Hero 按钮滚动到路线区
+PASS 1440: 五张 A–E 图片都加载且路径正确
+PASS 1440: Foundation 只显示六条路线
+PASS 1440: Intermediate 有七条路线
+PASS 1440: F/M 空位明确标记
+PASS 1440: 中阶数学两门
+PASS 1440: 进阶保留选中 M，显示三门
+PASS 1440: F 精选四门且无学习链接
+PASS 1440: 规划详情诚实说明尚未开放
+PASS 1440: 长英文标题与展开详情无横向溢出
+PASS 1440: 编号搜索
+PASS 1440: 搜索与状态筛选可组合
+PASS 1440: 空状态重置有效
+PASS 1440: 跨路线查找全部23个真实入口
+PASS 1440: B01 保留旧课程地址
+PASS 1440: C05 保留旧课程地址
+PASS 1440: 亮色主动选择刷新后保留
+PASS 1440: 亮色无横向溢出
+PASS 1440: 暗色选择刷新后保留
+PASS 1440: 键盘焦点可见
+PASS 1440: 键盘可切换阶段
+PASS 1440: 旧入口 /paths/a 无溢出且非空
+PASS 1440: 旧入口 /paths/b 无溢出且非空
+PASS 1440: 旧入口 /paths/c 无溢出且非空
+PASS 1440: 旧入口 /lesson/a01-binary 无溢出且非空
+PASS 1440: 旧入口 /lesson/b01-variables 无溢出且非空
+PASS 1440: 旧入口 /lesson/c05-prompt-structure 无溢出且非空
+PASS 1440: 旧入口 /lab 无溢出且非空
+PASS 1440: 旧入口 /lab/prompt 无溢出且非空
+PASS 1440: 旧入口 /lab/tutor 无溢出且非空
+PASS 1440: 旧入口 /projects 无溢出且非空
+PASS 1440: 旧入口 /me 无溢出且非空
+PASS 1440: 无浏览器 JS 异常
+PASS 390: 系统亮色时首次访问仍默认暗色
+PASS 390: 背景为深蓝
+PASS 390: 新用户没有虚构进度
+PASS 390: 首页无横向溢出
+PASS 390: Hero 按钮滚动到路线区
+PASS 390: 五张 A–E 图片都加载且路径正确
+PASS 390: Foundation 只显示六条路线
+PASS 390: Intermediate 有七条路线
+PASS 390: F/M 空位明确标记
+PASS 390: 中阶数学两门
+PASS 390: 进阶保留选中 M，显示三门
+PASS 390: F 精选四门且无学习链接
+PASS 390: 规划详情诚实说明尚未开放
+PASS 390: 长英文标题与展开详情无横向溢出
+PASS 390: 编号搜索
+PASS 390: 搜索与状态筛选可组合
+PASS 390: 空状态重置有效
+PASS 390: 跨路线查找全部23个真实入口
+PASS 390: B01 保留旧课程地址
+PASS 390: C05 保留旧课程地址
+PASS 390: 亮色主动选择刷新后保留
+PASS 390: 亮色无横向溢出
+PASS 390: 暗色选择刷新后保留
+PASS 390: 键盘焦点可见
+PASS 390: 键盘可切换阶段
+PASS 390: 旧入口 /paths/a 无溢出且非空
+PASS 390: 旧入口 /paths/b 无溢出且非空
+PASS 390: 旧入口 /paths/c 无溢出且非空
+PASS 390: 旧入口 /lesson/a01-binary 无溢出且非空
+PASS 390: 旧入口 /lesson/b01-variables 无溢出且非空
+PASS 390: 旧入口 /lesson/c05-prompt-structure 无溢出且非空
+PASS 390: 旧入口 /lab 无溢出且非空
+PASS 390: 旧入口 /lab/prompt 无溢出且非空
+PASS 390: 旧入口 /lab/tutor 无溢出且非空
+PASS 390: 旧入口 /projects 无溢出且非空
+PASS 390: 旧入口 /me 无溢出且非空
+PASS 390: 手机底栏有五个可见入口
+PASS 390: 底栏 首页 可用
+PASS 390: 底栏 路线 可用
+PASS 390: 底栏 课程 可用
+PASS 390: 底栏 AI 助手 可用
+PASS 390: 底栏 我的 可用
+PASS 390: 实验台和作品在手机仍可访问
+PASS 390: 页面末尾操作不被底栏遮挡
+PASS 390: 无浏览器 JS 异常
+PASS 360: 系统亮色时首次访问仍默认暗色
+PASS 360: 背景为深蓝
+PASS 360: 新用户没有虚构进度
+PASS 360: 首页无横向溢出
+PASS 360: Hero 按钮滚动到路线区
+PASS 360: 五张 A–E 图片都加载且路径正确
+PASS 360: Foundation 只显示六条路线
+PASS 360: Intermediate 有七条路线
+PASS 360: F/M 空位明确标记
+PASS 360: 中阶数学两门
+PASS 360: 进阶保留选中 M，显示三门
+PASS 360: F 精选四门且无学习链接
+PASS 360: 规划详情诚实说明尚未开放
+PASS 360: 长英文标题与展开详情无横向溢出
+PASS 360: 编号搜索
+PASS 360: 搜索与状态筛选可组合
+PASS 360: 空状态重置有效
+PASS 360: 跨路线查找全部23个真实入口
+PASS 360: B01 保留旧课程地址
+PASS 360: C05 保留旧课程地址
+PASS 360: 亮色主动选择刷新后保留
+PASS 360: 亮色无横向溢出
+PASS 360: 暗色选择刷新后保留
+PASS 360: 键盘焦点可见
+PASS 360: 键盘可切换阶段
+PASS 360: 旧入口 /paths/a 无溢出且非空
+PASS 360: 旧入口 /paths/b 无溢出且非空
+PASS 360: 旧入口 /paths/c 无溢出且非空
+PASS 360: 旧入口 /lesson/a01-binary 无溢出且非空
+PASS 360: 旧入口 /lesson/b01-variables 无溢出且非空
+PASS 360: 旧入口 /lesson/c05-prompt-structure 无溢出且非空
+PASS 360: 旧入口 /lab 无溢出且非空
+PASS 360: 旧入口 /lab/prompt 无溢出且非空
+PASS 360: 旧入口 /lab/tutor 无溢出且非空
+PASS 360: 旧入口 /projects 无溢出且非空
+PASS 360: 旧入口 /me 无溢出且非空
+PASS 360: 手机底栏有五个可见入口
+PASS 360: 底栏 首页 可用
+PASS 360: 底栏 路线 可用
+PASS 360: 底栏 课程 可用
+PASS 360: 底栏 AI 助手 可用
+PASS 360: 底栏 我的 可用
+PASS 360: 实验台和作品在手机仍可访问
+PASS 360: 页面末尾操作不被底栏遮挡
+PASS 360: 无浏览器 JS 异常
+PASS dark: A09 封装模拟可操作
+PASS dark: a09-network-layers 互动无溢出
+PASS dark: A10 子网计算器更新
+PASS dark: a10-ip-subnet 互动无溢出
+PASS dark: A13 DNS 模拟可操作
+PASS dark: a13-dns 互动无溢出
+PASS light: A09 封装模拟可操作
+PASS light: a09-network-layers 互动无溢出
+PASS light: A10 子网计算器更新
+PASS light: a10-ip-subnet 互动无溢出
+PASS light: A13 DNS 模拟可操作
+PASS light: a13-dns 互动无溢出
+PASS 保留旧用户亮色与大字号偏好
+PASS 原进度：首页显示真实已完成1课
+PASS 原进度：首页继续上次 B01
+PASS 浏览目录/切换主题不写入或迁移学习进度
+PASS 原进度：B01 从旧步骤续学
+PASS 原进度：已完成成绩和版本不变
+145 项检查，0 项失败

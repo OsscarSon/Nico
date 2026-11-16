@@ -1,0 +1,193 @@
+
+> nico@0.1.0 smoke
+> node scripts/smoke.mjs
+
+PASS  首页显示 Academy 主标题
+PASS  基础阶段有 A–F 六条路线
+PASS  A–E 仍使用五张原版插画
+PASS  首页没有假进度（未学习时不显示统计）
+PASS  手机宽度无横向溢出：首页
+PASS  首页主视觉图片加载成功
+PASS  我的页面有 8 个徽章
+PASS  还没学习时没有任何已获得的徽章
+PASS  徽章图片加载成功
+PASS  A01 课头插图加载成功
+PASS  进入课时页
+PASS  课时显示为草稿，不冒充正式
+PASS  第一步前进按钮可用（开场不需要互动）
+PASS  讲解里的粗体被渲染为 strong
+PASS  简化提示（callout）出现
+PASS  拨 32+4+1 显示 37
+PASS  读数里列出算式
+PASS  开关有 aria-checked
+PASS  挑战未完成时『下一步』被禁用
+PASS  拨错时给出具体差值
+PASS  拨对目标 5 得到正确反馈
+PASS  拨对目标 37
+PASS  拨对目标 200
+PASS  三个目标完成后门控解除
+PASS  刷新后仍在课时页
+PASS  刷新后回到续学的步骤（目录标记当前步）
+PASS  续学后挑战步骤仍需重新完成（门控生效）
+PASS  续学后可以回到上一步，且不被门控卡住
+PASS  答题前『下一步』被禁用
+PASS  选错显示诊断提示
+PASS  选对显示解释
+PASS  检查完成后显示第一次答对数
+PASS  非整数输入给出清晰提示
+PASS  答错给出提示
+PASS  接受带千分位的正确答案
+PASS  小结有三点
+PASS  A01 小结的『下一课』指向已开放的 A02
+PASS  完成后进度已保存
+PASS  记录了真实的一次性答对数（3 道选择题 2 对 + 迁移题错过 → 2/4）
+PASS  路线页头有徽记且图片加载成功
+PASS  路线地图显示已完成
+PASS  路线地图里有 12 个规划中的课
+PASS  路线地图上其余七门已上线课显示『可以开始』
+PASS  首页现在显示已完成 1 课
+PASS  首页推荐下一课 A02
+PASS  进入 A02
+PASS  A02 课头插图加载成功
+PASS  A02 显示为草稿
+PASS  A02 简化提示（callout）出现
+PASS  A02 挑战未完成时『下一步』被禁用
+PASS  手机宽度无横向溢出：A02 挑战
+PASS  A02 拨对目标 10
+PASS  A02 拨对目标 65
+PASS  A02 拨对目标 97
+PASS  A02 三个目标完成后门控解除
+PASS  A02 Q1 选错给出诊断
+PASS  A02 Q1 选对显示解释
+PASS  A02 检查完成：第一次答对 2 / 3
+PASS  A02 无效输入的提示不泄露答案
+PASS  A02 迁移题答错给出提示
+PASS  A02 迁移题答对
+PASS  A02 小结有三点
+PASS  A02 小结的『下一课』指向 A03
+PASS  A02 完成后进度已保存（选择题错 1 次、迁移题错 1 次 → 第一次答对 2 / 4）
+PASS  首页推荐下一课 A03
+PASS  进入 A03
+PASS  A03 课头插图加载成功
+PASS  A03 显示为草稿
+PASS  自由练习默认 AND，输出 0
+PASS  手机宽度无横向溢出：A03 自由练习
+PASS  AND 两个输入都开时输出 1
+PASS  真值表标出当前行
+PASS  门符号有图
+PASS  切到 XOR，11 时输出 0
+PASS  NOT 只有一个输入（没有 B 开关）
+PASS  神秘门未完成时『下一步』被禁用
+PASS  手机宽度无横向溢出：A03 挑战
+PASS  没试完所有输入前不能猜
+PASS  试完输入后可以猜
+PASS  猜错时说明输入个数不符，且不泄露答案
+PASS  猜对神秘门 1
+PASS  神秘门 2 开始时表格只揭开了当前行
+PASS  试完 4 种输入后可以猜
+PASS  猜错时指出一条矛盾的行
+PASS  猜对神秘门 2
+PASS  神秘门 3 开始时 00 行已经揭开
+PASS  神秘门 3 可以猜
+PASS  猜错 OR 时指出 11 这一行
+PASS  猜对神秘门 3
+PASS  三个神秘门完成后门控解除
+PASS  Q1 选错给出诊断
+PASS  A03 检查完成：第一次答对 2 / 3
+PASS  A03 迁移题答错给出提示
+PASS  A03 迁移题答对
+PASS  A03 小结有三点
+PASS  A03 小结的『下一课』指向 A04
+PASS  A03 完成后进度已保存（选择题错 1 次、迁移题错 1 次 → 第一次答对 2 / 4）
+PASS  首页现在显示已完成 3 课
+PASS  首页推荐下一课 A04
+PASS  进入 A04
+PASS  A04 课头插图加载成功
+PASS  A04 显示为草稿
+PASS  自由练习：0 + 0 = 00
+PASS  自由练习显示两个门符号
+PASS  手机宽度无横向溢出：A04 自由练习
+PASS  1 + 1 = 10（进位 1，和 0）
+PASS  搭电路挑战未完成时『下一步』被禁用
+PASS  手机宽度无横向溢出：A04 挑战
+PASS  两个都用 OR：3 种输入不对，先指出进位
+PASS  测试结果表里有 3 行不对
+PASS  改选门后旧的测试结果被清除
+PASS  和选对后只剩进位不对
+PASS  XOR + AND 四种输入全部通过
+PASS  测试结果表里 4 行都通过
+PASS  搭对后门控解除
+PASS  A04 Q1 选错给出诊断
+PASS  A04 检查完成：第一次答对 2 / 3
+PASS  A04 迁移题答错给出提示
+PASS  A04 迁移题答对
+PASS  A04 小结有三点
+PASS  A04 小结的『下一课』指向 A05
+PASS  A04 完成后进度已保存（第一次答对 2 / 4）
+PASS  首页现在显示已完成 4 课
+PASS  首页推荐下一课 A05
+PASS  进入 A05
+PASS  A05 显示为草稿
+PASS  A05 简化提示（callout）出现
+PASS  手机宽度无横向溢出：A05 单步运行
+PASS  初始：PC=0、IR 为空、ACC=0，按钮是『下一步：取指』
+PASS  取指后 IR=LOAD 6、PC=1，说明里写明了取指
+PASS  按钮变成『下一步：译码』
+PASS  译码只解释，不改 ACC
+PASS  执行 LOAD 6 后 ACC=5，第 6 格标『被读』
+PASS  走完 12 步后程序停止
+PASS  5 + 3 = 8 写进了第 8 格
+PASS  停止后『下一步』按钮被禁用
+PASS  重置后回到初始状态
+PASS  A05 挑战未完成时『下一步』被禁用
+PASS  手机宽度无横向溢出：A05 挑战
+PASS  非整数输入给出提示
+PASS  程序 1 预测错：提示去跟着 ACC 走
+PASS  程序 1 预测对，并列出每条指令的变化
+PASS  程序 2 预测对（11）
+PASS  程序 3 掉进陷阱（填 8）会被指出
+PASS  答错 1 次还不能直接看答案
+PASS  答错 2 次后可以看答案
+PASS  程序 3 预测对（10），并讲清楚 STORE 7 覆盖了数据
+PASS  三个程序完成后门控解除
+PASS  A05 Q1 选错给出诊断
+PASS  A05 检查完成：第一次答对 2 / 3
+PASS  A05 迁移题答错给出提示
+PASS  A05 迁移题答对（12，和单步运行的真实步数一致）
+PASS  A05 小结有三点
+PASS  A05 之后跳到已上线的 A09
+PASS  A05 如实说明按顺序的下一课仍在制作
+PASS  A05 完成后进度已保存（第一次答对 2 / 4）
+PASS  首页现在显示已完成 5 课
+PASS  首页推荐下一门还没学的课（A09）
+PASS  完成 A01、A03、A04 后获得『第一个比特』和『守门人』
+PASS  课程未开放的徽章如实标注
+PASS  连续七天徽章未获得但可获得
+PASS  作品页空状态插图加载成功
+PASS  404 页插图加载成功
+PASS  手机宽度无横向溢出：/paths
+PASS  页面非空：/paths
+PASS  手机宽度无横向溢出：/paths/a
+PASS  页面非空：/paths/a
+PASS  手机宽度无横向溢出：/paths/c
+PASS  页面非空：/paths/c
+PASS  手机宽度无横向溢出：/lab
+PASS  页面非空：/lab
+PASS  手机宽度无横向溢出：/projects
+PASS  页面非空：/projects
+PASS  手机宽度无横向溢出：/me
+PASS  页面非空：/me
+PASS  手机宽度无横向溢出：/lesson/a06-memory
+PASS  页面非空：/lesson/a06-memory
+PASS  手机宽度无横向溢出：/nonsense
+PASS  页面非空：/nonsense
+PASS  未知地址显示找不到页面
+PASS  规划中的课不会显示假内容
+PASS  清除前有二次确认
+PASS  确认后记录被清除
+PASS  桌面显示侧边导航
+PASS  桌面显示本课目录
+PASS  桌面宽度无横向溢出
+PASS  全程没有 JS 报错
+
+全部通过
