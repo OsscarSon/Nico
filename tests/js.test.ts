@@ -30,7 +30,7 @@ function runInShim(code: string, budgetMs = 150, instrument = true) {
   const src = instrument ? instrumentLoops(code, P) : code;
   const t0 = Date.now();
   try {
-    vm.runInContext(src, ctx, { timeout: 5000 }); // 兜底：就算保护失效，测试也不会卡死
+    vm.runInContext(src, ctx, { timeout: 1000 }); // 兜底：就算保护失效，测试也不会卡死
   } catch (e) {
     thrown = (e as Error).message;
   }
@@ -90,7 +90,7 @@ describe("instrumentLoops: endless loops are stopped", () => {
   it("without the guard the same code would hang (the test harness's own timeout catches it)", () => {
     const r = runInShim("while (true) { }", 150, false);
     expect(r.thrown).toContain("timed out");
-  });
+  }, 15000);
   it("a long but finite loop is not stopped", () => {
     const r = runInShim("let s = 0; for (let i = 0; i < 2000000; i++) { s += i; } console.log(s);", 2000, true);
     expect(r.thrown).toBe(null);
