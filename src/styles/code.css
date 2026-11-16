@@ -39,3 +39,18 @@
 @media (min-width: 900px) {
   .codesim.web > .code-out { grid-column: 1 / -1; }
 }
+
+/* Git 模拟器 */
+.gitsim .git-state { display: grid; gap: var(--s3); grid-template-columns: 1fr; margin-bottom: var(--s3); }
+.gitsim .git-state h4 { margin: 0 0 var(--s1); font-size: 0.85rem; }
+.gitsim .git-state ul { margin: 0; padding-left: 1.1em; }
+.gitsim .git-state em { font-style: normal; color: var(--muted, #5b6472); font-size: 0.85em; }
+.git-term { background: #0f1b33; color: #e7ecf3; border-radius: var(--r-panel, 8px); padding: var(--s3); max-height: 16rem; overflow: auto; margin-bottom: var(--s2); }
+.git-term .muted { color: #aab4c5; margin: 0; }
+.git-cmd { color: #8fb0ff; }
+.git-out { margin: 0 0 var(--s2); white-space: pre-wrap; word-break: break-word; font-family: inherit; font-size: 0.85rem; }
+.git-out.err { color: #ffd38a; }
+.git-form { display: flex; gap: var(--s2); align-items: center; }
+.git-input { flex: 1; min-width: 0; font-size: 1rem; padding: 0.5rem; border: 1px solid var(--grid, #ccd3dd); border-radius: 6px; }
+.git-chips { display: flex; flex-wrap: wrap; gap: var(--s1); margin-top: var(--s2); }
+@media (min-width: 640px) { .gitsim .git-state { grid-template-columns: repeat(3, 1fr); } }

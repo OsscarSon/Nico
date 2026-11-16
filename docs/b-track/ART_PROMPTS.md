@@ -127,5 +127,17 @@ window outline whose heading bar lights up in pass green #12A46B, suggesting a c
 reaction. No hands, no text, no letters, no numbers.
 ```
 
+## 13. `lesson-b14-git-basics.png` — Git 第一步：保存快照
+```
+[全局风格块] Three rounded zones in a row from left to right joined by thin trace-blue #2457F5
+traces with solder-pad nodes: a plain white folder-like panel holding two empty sheet shapes
+(working area), a small open basket shape holding one amber #FFB020 sheet (staging), and a stack
+of three overlapping square snapshot cards in pale blue with navy outlines (history), the front
+card with a small pass-green #12A46B dot. Small arrows along the traces point left to right. No
+text, no numbers, no letters, no code symbols.
+```
+
+> B15 使用已有的 `lesson-b10-git-branches.png`。
+
 ## 之后几课的图（先不用画，做课时才需要）
-b13 起，到时候补，格式同上。
+b13、b16 起，到时候补，格式同上。

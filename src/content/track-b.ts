@@ -11,6 +11,8 @@ import { b09 } from "./lessons/b09-css";
 import { b10 } from "./lessons/b10-css-layout";
 import { b11 } from "./lessons/b11-js-dom";
 import { b12 } from "./lessons/b12-events";
+import { b14 } from "./lessons/b14-git-basics";
+import { b15 } from "./lessons/b15-git-branches";
 
 /** 路线 B 的课时。新增课时：写文件、在这里加一行、把 track-b-catalog.ts 里对应条目改为 available。 */
-export const trackBLessons: Lesson[] = [b01, b02, b03, b04, b05, b06, b07, b08, b09, b10, b11, b12];
+export const trackBLessons: Lesson[] = [b01, b02, b03, b04, b05, b06, b07, b08, b09, b10, b11, b12, b14, b15];

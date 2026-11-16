@@ -8,7 +8,7 @@
 - **HTML 预览 / 判分**：判分时把学习者的 HTML 放进看不见的 iframe（`sandbox="allow-same-origin"`，无脚本、CSP 禁联网），能读浏览器真正算出的样式（B09、B10 用它）。
 - **HTML 预览**：`sandbox=""` 的 iframe + 内容安全策略（禁脚本、禁联网），用 DOMParser 判结构。
 - **判分**（纯函数，有测试）：`src/grading/code.ts`、`web.ts`。每个检查项是一次独立运行，可测边界值；输出对了才检查源码写法（防写死答案）；错误信息解析成"第 N 行 + 中文提示"。
-- **课时**（全部 `draft`，无来源之外的试学记录）：B01 变量、B02 条件、B03 循环、B04 函数、B05 列表、B06 字典、B07 调试、B08 HTML、B09 CSS、B10 CSS 布局、B11 JavaScript 与 DOM、B12 事件（B01–B12 课头图全部接入）；目录里有路线 B 全部 20 课的规划。
+- **课时**（全部 `draft`，无来源之外的试学记录）：B01 变量、B02 条件、B03 循环、B04 函数、B05 列表、B06 字典、B07 调试、B08 HTML、B09 CSS、B10 CSS 布局、B11 JavaScript 与 DOM、B12 事件、B14 Git 第一步、B15 分支与合并（B01–B12、B15 课头图已接入；B14 还没有图，提示词在 ART_PROMPTS.md 第 13 条）；目录里有路线 B 全部 20 课的规划。
 - 互动标签：Python 标"真实 Python"，HTML 标"实时预览"，不标"模拟"。
 
 ## 验证情况（诚实版）
@@ -50,3 +50,9 @@ JS/DOM 课（b11–b13）需要新的隔离运行方案（Worker 或带超时的
 - 已验证：循环保护逻辑（32 个测试，在 Node vm 里跑真实 shim）；B11 的 sumTo 在 Node 里验证参考答案通过、起始代码不通过；B11 DOM 挑战和 B12 在 Chromium（390px，Playwright）里点到底：起始代码不通过、写错被指出、正确答案通过；死循环被停止且页面仍可操作。
 - **未验证**：Safari / Firefox；acorn 的真实 npm 包（沙盒里用的是预装版本）；`package-lock.json` 需要你运行 `npm install` 更新。
 - B13（fetch 与 JSON）暂缓：沙盒禁止联网，需要先定「假 fetch」还是纯概念课。
+
+## B14 / B15（Git，模拟）
+- Git 互动是**简化的模拟**（`src/grading/git.ts`，纯函数）：支持 init、add、commit -m、status、log、branch、switch / checkout、merge；另有模拟专用的 `edit`、`new`、`ls`。界面标「模拟」。
+- 简化处：切换分支和合并前要求没有未提交的修改；不处理合并冲突（提示后保持原状）；没有远程（push / pull）。
+- 已验证：模拟器 19 个测试；B14、B15 挑战的参考答案能达成全部目标、起始状态不通过、删掉参考答案任何一步都不通过；Chromium 390px 点到底。
+- B16（GitHub）还没做：需要决定怎么在不联网的教学里讲 push / pull / Pages。

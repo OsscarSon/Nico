@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { spawnSync } from "node:child_process";
 import vm from "node:vm";
+import { ancestors, evalGoals, newRepo, runScript, type GitGoal } from "../src/grading/git";
 import { lessonSchema, type CodeSpec } from "../src/content/schema";
 import { lessons, nextAvailableAfter, validateContent } from "../src/content";
 import { tracks } from "../src/content/catalog";
@@ -55,7 +56,9 @@ describe("track B content", () => {
     expect(nextAvailableAfter("b08-html")?.id).toBe("b09-css");
     expect(nextAvailableAfter("b10-css-layout")?.id).toBe("b11-js-dom");
     expect(nextAvailableAfter("b11-js-dom")?.id).toBe("b12-events");
-    expect(nextAvailableAfter("b12-events")).toBe(undefined);
+    expect(nextAvailableAfter("b12-events")?.id).toBe("b14-git-basics");
+    expect(nextAvailableAfter("b14-git-basics")?.id).toBe("b15-git-branches");
+    expect(nextAvailableAfter("b15-git-branches")).toBe(undefined);
     expect(nextAvailableAfter("a04-adder")?.id).toBe("a05-cpu-cycle");
     expect(nextAvailableAfter("a05-cpu-cycle")?.id).toBe("a09-network-layers");
   });
@@ -233,5 +236,50 @@ describe("javascript challenges", () => {
     };
     expect(t("b11-js-dom")).toBe(Number(runJsNode("let n = 0; for (let i = 0; i < 4; i++) { n += i; } console.log(n)").stdout));
     expect(t("b12-events")).toBe(1 + 1 + 5 + 1);
+  });
+});
+
+// ---- Git 模拟器挑战：参考答案必须能达成全部目标，起始状态不能 ----
+const gitSims = trackBLessons.flatMap((l) =>
+  l.blocks.flatMap((b) => (b.type === "sim" && b.sim === "git" && b.git ? [{ id: l.id, ...b, git: b.git }] : [])),
+);
+describe("git challenges", () => {
+  it("B14 and B15 each have a free sim and a challenge", () => {
+    for (const id of ["b14-git-basics", "b15-git-branches"]) {
+      const mine = gitSims.filter((s) => s.id === id);
+      expect(mine.map((s) => s.mode)).toEqual(["free", "challenge"]);
+    }
+  });
+  for (const c of gitSims.filter((s) => s.mode === "challenge")) {
+    const goals = (c.git.goals ?? []) as GitGoal[];
+    const start = () => newRepo(c.git.files, c.git.committed);
+    it(`${c.id}: the reference solution reaches every goal without errors`, () => {
+      const { repo, errors } = runScript(start(), c.git.solution!);
+      expect(errors).toEqual([]);
+      const g = evalGoals(repo, goals);
+      expect(g.results.filter((r) => !r.ok).map((r) => r.label)).toEqual([]);
+    });
+    it(`${c.id}: the starting state does not already pass`, () => {
+      expect(evalGoals(start(), goals).ok).toBe(false);
+    });
+    it(`${c.id}: dropping any single step of the solution fails`, () => {
+      const sol = c.git.solution!;
+      for (let i = 0; i < sol.length; i++) {
+        const without = sol.filter((_, j) => j !== i);
+        expect(evalGoals(runScript(start(), without).repo, goals).ok).toBe(false);
+      }
+    });
+  }
+  it("git transfer answers", () => {
+    const t = (id: string) => {
+      const b = lessons[id]!.blocks.find((x) => x.type === "transfer");
+      if (b?.type !== "transfer") throw new Error("no transfer");
+      return b.answer;
+    };
+    const { repo } = runScript(newRepo({ a: "v1" }, false), ["git init", "git add .", 'git commit -m "1"', "edit a", "git add .", 'git commit -m "2"', "edit a", "git add ."]);
+    expect(t("b14-git-basics")).toBe(Object.keys(repo.commits).length);
+    // main: Initial commit + 2 提交 = 3；然后开出 feature 再提交 2 次，main 不变
+    const r2 = runScript(newRepo({ a: "v1" }, true), ["edit a", "git add .", 'git commit -m "2"', "edit a", "git add .", 'git commit -m "3"', "git switch -c f", "new b", "git add b", 'git commit -m "4"', "edit a", "git add a", 'git commit -m "5"']);
+    expect(t("b15-git-branches")).toBe(ancestors(r2.repo, r2.repo.branches.main).size);
   });
 });

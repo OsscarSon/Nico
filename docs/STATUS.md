@@ -2,9 +2,8 @@
 
 当前：Phase 0 + Phase 1 完成，Phase 2 进行中：单元 A1（A01–A04）完成；单元 A2 已做 A05；单元 A3（网络）已做 A09 分层、A10 IP 与子网、A13 DNS。路线 B 由另一条线开发，见 `docs/b-track/STATUS-B.md`。网站已通过 GitHub Actions 部署到 GitHub Pages。
 
-> **路线 B（编程与网站）由另一条线开发，状态见 `docs/b-track/STATUS-B.md`**：Python 运行器、代码编辑器、HTML 预览、B01–B08 已做。改动共用文件的清单在那里。
 
-> **路线 B（编程与网站）由另一条线开发，状态见 `docs/b-track/STATUS-B.md`**：Python 运行器、代码编辑器、HTML 预览、B01–B10 已做。改动共用文件的清单在那里。
+> **路线 B（编程与网站）由另一条线开发，状态见 `docs/b-track/STATUS-B.md`**：Python 运行器、代码编辑器、HTML 预览、B01–B12、B14、B15 已做（含 JavaScript 运行器和 Git 模拟器）。改动共用文件的清单在那里。
 
 ## 已完成
 - **学习外壳**：手机底部导航 / 桌面侧栏；hash 路由；设计令牌；走线路线图；本机进度（带版本、损坏时先备份）；导出 / 清除（二次确认）。

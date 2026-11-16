@@ -11,6 +11,7 @@ import { DnsSim } from "../../sims/DnsSim";
 import { PythonSim } from "../../sims/code/PythonSim";
 import { WebSim } from "../../sims/code/WebSim";
 import { JsSim } from "../../sims/code/JsSim";
+import { GitSim } from "../../sims/GitSim";
 import { gradeChoice, gradeNumber, REVEAL_AFTER_WRONG } from "../../grading/quiz";
 
 export type QuizStats = { firstTryCorrect: number; total: number };
@@ -55,6 +56,8 @@ export function SimBlock({
           <PythonSim mode={block.mode} spec={block.code} onSolved={onDone} />
         ) : block.sim === "js" && block.code ? (
           <JsSim mode={block.mode} spec={block.code} onSolved={onDone} />
+        ) : block.sim === "git" && block.git ? (
+          <GitSim mode={block.mode} spec={block.git} onSolved={onDone} />
         ) : block.sim === "web" && block.code ? (
           <WebSim mode={block.mode} spec={block.code} onSolved={onDone} />
         ) : block.sim === "logic-gate" ? (

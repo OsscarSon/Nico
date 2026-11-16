@@ -73,8 +73,8 @@ async function openLesson(id) {
 
 // ---- 路线页 ----
 await page.goto(`${BASE}/#/paths/b`);
-await soon("路线 B 页面显示 20 课规划", async () => (await page.locator("main").innerText()).includes("共 20 课规划，现在可学 12 课"));
-check("路线 B 有 8 个规划中的课", (await page.locator(".pm-card.planned").count()) === 8);
+await soon("路线 B 页面显示 20 课规划", async () => (await page.locator("main").innerText()).includes("共 20 课规划，现在可学 14 课"));
+check("路线 B 有 6 个规划中的课", (await page.locator(".pm-card.planned").count()) === 6);
 check("手机宽度无横向溢出：路线 B", await noOverflow());
 
 // ---- B01 ----
@@ -387,6 +387,50 @@ const go = document.querySelector("#go");
 const msg = document.querySelector("#msg");
 go.addEventListener("click", () => { msg.textContent = "你好，" + nameInput.value; });` });
 check("b12 无 JS 报错、无横向溢出", await noOverflow());
+
+// ---- B14、B15：Git 模拟器 ----
+const term = async (cmd) => {
+  await page.locator("#git-input").fill(cmd);
+  await page.locator("#git-input").press("Enter");
+};
+const termText = () => page.locator(".git-term").innerText();
+const gitLesson = async (id) => {
+  await page.evaluate(() => localStorage.clear());
+  await page.goto("about:blank");
+  await openLesson(id);
+  for (let i = 0; i < 10 && (await page.locator("#git-input").count()) === 0; i++) await next().click();
+};
+await gitLesson("b14-git-basics");
+await term("git status");
+await soon("b14 没 init 时给出诚实提示", async () => (await termText()).includes("not a git repository"));
+await term("git init"); await term("git status");
+await soon("b14 init 后 status 显示未跟踪文件", async () => (await termText()).includes("Untracked"));
+await term("git add ."); await term("git commit -m \"一\"");
+await soon("b14 提交成功", async () => (await termText()).includes("[main "));
+check("b14 手机宽度没有横向溢出", await noOverflow());
+await next().click();
+await soon("b14 挑战：起始 4 项未达成", async () => (await page.locator(".checklist li[data-ok='false']").count()) === 4);
+for (const c of ["git init", "git add .", 'git commit -m "first"', "edit index.html"]) await term(c);
+await term("git commit -m \"x\"");
+await soon("b14 没 add 就 commit：被解释", async () => (await termText()).includes("没 git add"));
+for (const c of ["git add index.html", 'git commit -m "second"']) await term(c);
+await soon("b14 挑战通过", async () => (await page.locator("main").innerText()).includes("全部目标达成"));
+check("b14 通过后输入框被禁用", await page.locator("#git-input").isDisabled());
+
+await gitLesson("b15-git-branches");
+for (const c of ["git switch -c feature", "new style.css", "git add style.css", 'git commit -m "css"', "git switch main", "ls"]) await term(c);
+await soon("b15 切回 main 后 style.css 不见了", async () => { const t = await termText(); return t.trimEnd().endsWith("index.html"); });
+await term("git merge feature"); await term("ls");
+await soon("b15 快进合并后 style.css 回来了", async () => (await termText()).includes("Fast-forward") && (await termText()).trimEnd().endsWith("index.html  style.css"));
+await page.getByRole("button", { name: "下一步", exact: true }).click();
+await page.getByRole("button", { name: "下一步", exact: true }).click().catch(() => {});
+for (let i = 0; i < 4 && (await page.locator(".checklist").count()) === 0; i++) await next().click();
+for (const c of ["git switch -c feature", "new style.css", "git add style.css", 'git commit -m "add css"', "git switch main", "edit index.html"]) await term(c);
+await term("git switch feature");
+await soon("b15 有未提交修改时拒绝切换", async () => (await termText()).includes("切换分支会弄丢"));
+for (const c of ["git add index.html", 'git commit -m "t"', "git merge feature"]) await term(c);
+await soon("b15 挑战通过（合并提交）", async () => (await page.locator("main").innerText()).includes("全部目标达成"));
+check("b15 手机宽度没有横向溢出", await noOverflow());
 
 // ---- 看答案：连续答错 2 次后出现 ----
 await page.evaluate(() => localStorage.clear());

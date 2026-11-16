@@ -50,6 +50,27 @@ export const codeSpecSchema = z.object({
   allowInput: z.boolean().optional(),
 });
 
+/** 路线 B：Git 模拟器的配置。判分逻辑见 src/grading/git.ts */
+export const gitGoalSchema = z.object({
+  kind: z.enum(["initialized", "clean", "onBranch", "branchExists", "commitCount", "fileOnBranch", "merged"]),
+  label: z.string().min(1),
+  branch: z.string().optional(),
+  file: z.string().optional(),
+  into: z.string().optional(),
+  min: z.number().int().positive().optional(),
+});
+export const gitSpecSchema = z.object({
+  /** 一开始工作区里的文件（内容是一小段文字） */
+  files: z.record(z.string(), z.string()),
+  /** true：一开始已经有一次提交（Initial commit）；false：还没 git init */
+  committed: z.boolean(),
+  /** 命令提示：点一下就填进输入框 */
+  chips: z.array(z.string()).optional(),
+  goals: z.array(gitGoalSchema).optional(),
+  /** 参考答案：一行一条命令。测试用它证明挑战可解 */
+  solution: z.array(z.string()).optional(),
+});
+
 export const blockSchema = z.discriminatedUnion("type", [
   z.object({ type: z.literal("hook"), text: z.string().min(1) }),
   z.object({
@@ -60,7 +81,7 @@ export const blockSchema = z.discriminatedUnion("type", [
   }),
   z.object({
     type: z.literal("sim"),
-    sim: z.enum(["bit-switches", "logic-gate", "half-adder", "mini-cpu", "layers", "subnet", "dns", "python", "web", "js"]),
+    sim: z.enum(["bit-switches", "logic-gate", "half-adder", "mini-cpu", "layers", "subnet", "dns", "python", "web", "js", "git"]),
     mode: z.enum(["free", "challenge"]),
     title: z.string().min(1),
     intro: z.string().min(1),
@@ -70,6 +91,8 @@ export const blockSchema = z.discriminatedUnion("type", [
     gates: z.array(z.enum(["and", "or", "not", "xor"])).optional(),
     /** python / web 互动的配置（路线 B） */
     code: codeSpecSchema.optional(),
+    /** git 互动的配置（路线 B，模拟） */
+    git: gitSpecSchema.optional(),
   }),
   z.object({ type: z.literal("quiz"), items: z.array(quizItemSchema).min(1) }),
   z.object({
@@ -125,7 +148,9 @@ export const lessonSchema = z
               ? (b.gates?.length ?? 0) > 0
               : b.sim === "python"
                 ? (b.code?.checks?.length ?? 0) > 0 && Boolean(b.code?.solution)
-                : b.sim === "js"
+                : b.sim === "git"
+                  ? (b.git?.goals?.length ?? 0) > 0 && (b.git?.solution?.length ?? 0) > 0
+                  : b.sim === "js"
                   ? (b.code?.checks?.length ?? 0) > 0 && Boolean(b.code?.solution)
                   : b.sim === "web"
                     ? (b.code?.webChecks?.length ?? 0) > 0 && Boolean(b.code?.solution)
@@ -139,6 +164,10 @@ export const lessonSchema = z
         (b) => b.type !== "sim" || (b.sim !== "python" && b.sim !== "web" && b.sim !== "js") || b.code !== undefined,
       ),
     "python / web 互动必须提供 code 配置",
+  )
+  .refine(
+    (l) => l.blocks.every((b) => b.type !== "sim" || b.sim !== "git" || b.git !== undefined),
+    "git 互动必须提供 git 配置",
   )
   .refine(
     (l) =>
