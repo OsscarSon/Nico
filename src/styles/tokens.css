@@ -27,3 +27,41 @@
   --device-shadow: 4px 4px 0 var(--ink);
 }
 html[data-font="large"] { font-size: 112.5%; }
+
+/* Academy：用户无偏好时为暗色，不跟随操作系统切换。 */
+:root {
+  color-scheme: dark;
+  --paper: #0e1420;
+  --panel: #162033;
+  --grid: #3a4c6b;
+  --ink: #e8ecf4;
+  --muted: #a2b0c5;
+  --trace: #86a8ff;
+  --trace-soft: #20355f;
+  --signal-soft: #493719;
+  --signal-text: #ffd08b;
+  --pass: #73e5b2;
+  --pass-soft: #183f37;
+  --fault: #ff999e;
+  --fault-soft: #48272f;
+  --action: #2457f5;
+  --console-bg: #0c1426;
+  --device-shadow: 4px 4px 0 #070d18;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --paper: #f2f4f7;
+  --panel: #ffffff;
+  --grid: #dce2ea;
+  --ink: #14213d;
+  --muted: #5b6577;
+  --trace: #2457f5;
+  --trace-soft: #e6ecff;
+  --signal-soft: #fff3d6;
+  --signal-text: #805300;
+  --pass: #0e8a59;
+  --pass-soft: #e0f5ec;
+  --fault: #c32e35;
+  --fault-soft: #fde8e9;
+  --device-shadow: 4px 4px 0 var(--ink);
+}
