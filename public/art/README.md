@@ -9,6 +9,7 @@
 | `lesson-a01-bits.png` | A01 课头插图（课时数据里的 `art` 字段） |
 | `lesson-a02-hex-encoding.png` | A02 课头插图（8 个开关分成两组、每组 4 位）。GPT 出图后压缩到 1600×900、64 色，约 55KB |
 | `lesson-a03-logic-gates.png` | A03 课头插图（AND、OR、NOT、XOR 四种门的传统形状，带开关和灯）。已用 GPT 重出，替换了看不出门形状的旧图，约 79KB |
+| `lesson-b01-variables.png` / `b02-conditions` / `b03-loops` / `b08-html` | 路线 B 八课（B01–B08）的课头插图（GPT 出图，已缩放为 1600×900 并压成 256 色调色板 PNG）；另有 `lesson-b04-functions` / `b05-lists` / `b06-dicts` / `b07-debugging` |
 | `lesson-a04-adder.png` | A04 课头插图（半加器：XOR 出「和」、AND 出「进位」，画的是 1 + 1 = 10）。约 62KB |
 | `empty-no-projects.png` | 作品页空状态 |
 | `error-404.png` | 找不到页面 |
