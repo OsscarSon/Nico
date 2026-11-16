@@ -82,7 +82,8 @@ describe("next lesson", () => {
   it("a04 transfer answer: 255 + 255 needs 9 bits", () => {
     const t = lessons["a04-adder"]!.blocks.find((b) => b.type === "transfer");
     expect(t?.type === "transfer" && t.answer).toBe(9);
-    expect(255 + 255 < 2 ** 9 && 255 + 255 >= 2 ** 8).toBe(true);
+    expect(255 + 255).toBeLessThan(2 ** 9);
+    expect(255 + 255).toBeGreaterThanOrEqual(2 ** 8);
   });
   it("a05 transfer answer equals the real step count of the free program", () => {
     const t = lessons["a05-cpu-cycle"]!.blocks.find((b) => b.type === "transfer");

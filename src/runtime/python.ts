@@ -170,7 +170,7 @@ let shared: PythonRunner | null = null;
 export function getPythonRunner(): PythonRunner {
   shared ??= new PythonRunner({
     createWorker: () =>
-      new Worker(new URL("workers/python-worker.js", document.baseURI)) as unknown as WorkerLike,
+      new Worker(new URL("workers/python-worker.js", document.baseURI), { type: "module" }) as unknown as WorkerLike,
     indexURL: PYODIDE_INDEX_URL,
   });
   return shared;

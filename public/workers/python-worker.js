@@ -1,6 +1,6 @@
-/* global self, importScripts, loadPyodide */
+/* global self */
 // 在 Web Worker 里运行学习者的 Python（Pyodide = 浏览器里的真 CPython）。
-// 协议见 src/runtime/python.ts。这是普通脚本而不是模块，因为 Pyodide 的 pyodide.js 需要 importScripts。
+// 协议见 src/runtime/python.ts。Pyodide 314 起要求 module Worker，通过官方 ESM 入口加载。
 // 超时与停止由主线程直接 terminate() 这个 Worker 实现，所以死循环也能停。
 
 let pyodide = null;
@@ -26,7 +26,8 @@ self.onmessage = async (e) => {
   const m = e.data;
   if (m.type === "init") {
     try {
-      importScripts(m.indexURL + "pyodide.js");
+      const module = await import(m.indexURL + "pyodide.mjs");
+      const loadPyodide = module.loadPyodide || self.loadPyodide; // 兼容离线测试夹具
       pyodide = await loadPyodide({ indexURL: m.indexURL });
       self.postMessage({ type: "ready" });
     } catch (err) {
