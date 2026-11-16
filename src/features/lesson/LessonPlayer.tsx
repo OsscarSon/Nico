@@ -110,6 +110,7 @@ function Player({ lessonId }: { lessonId: string }) {
             {lesson.art && (
               <img className="lesson-art" src={artUrl(lesson.art)} alt="" width={1600} height={900} />
             )}
+            {lesson.artPending && <div className="foundation-art-pending">课程插画待提供</div>}
             <HookBlock text={block.text} />
           </>
         );
@@ -119,7 +120,19 @@ function Player({ lessonId }: { lessonId: string }) {
         return <QuizBlock items={block.items} onStats={setStats(step)} onDone={() => markDone(step)} />;
       case "transfer":
         return <TransferBlock block={block} onStats={setStats(step)} onDone={() => markDone(step)} />;
-      case "summary": return <SummaryBlock block={block} />;
+      case "summary": return (
+        <>
+          <SummaryBlock block={block} />
+          {lesson.sources.length > 0 && (
+            <aside className="foundation-sources">
+              <h3>想再深入</h3>
+              <ul>{lesson.sources.map(source => (
+                <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a></li>
+              ))}</ul>
+            </aside>
+          )}
+        </>
+      );
     }
   })();
 

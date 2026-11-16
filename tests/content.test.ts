@@ -60,8 +60,8 @@ describe("next lesson", () => {
   it("A04 is followed directly by A05", () => {
     expect(nextAvailableAfter("a04-adder")?.id).toBe("a05-cpu-cycle");
   });
-  it("A05 skips the unfinished A06–A08 and lands on A09", () => {
-    expect(nextAvailableAfter("a05-cpu-cycle")?.id).toBe("a09-network-layers");
+  it("A05 is followed directly by A06", () => {
+    expect(nextAvailableAfter("a05-cpu-cycle")?.id).toBe("a06-memory");
   });
   it("A10 skips the unfinished A11–A12 and lands on A13", () => {
     expect(nextAvailableAfter("a10-ip-subnet")?.id).toBe("a13-dns");
