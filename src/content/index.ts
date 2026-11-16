@@ -4,13 +4,16 @@ import { a01 } from "./lessons/a01-binary";
 import { a02 } from "./lessons/a02-hex-encoding";
 import { a03 } from "./lessons/a03-logic-gates";
 import { a04 } from "./lessons/a04-adder";
+import { a06 } from "./lessons/a06-memory";
+import { a07 } from "./lessons/a07-os";
+import { a08 } from "./lessons/a08-command-line";
 import { a05 } from "./lessons/a05-cpu-cycle";
 import { trackBLessons } from "./track-b";
 import { trackCLessons } from "./track-c";
 import { networkLessons } from "./track-a-net";
 
 export const lessons: Record<string, Lesson> = {
-  [a01.id]: a01, [a02.id]: a02, [a03.id]: a03, [a04.id]: a04, [a05.id]: a05,
+  [a01.id]: a01, [a02.id]: a02, [a03.id]: a03, [a04.id]: a04, [a05.id]: a05, [a06.id]: a06, [a07.id]: a07, [a08.id]: a08,
   ...Object.fromEntries(networkLessons.map((l) => [l.id, l])),
   ...Object.fromEntries(trackBLessons.map((l) => [l.id, l])),
   ...Object.fromEntries(trackCLessons.map((l) => [l.id, l])),

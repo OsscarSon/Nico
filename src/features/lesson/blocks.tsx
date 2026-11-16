@@ -1,3 +1,4 @@
+import { MemorySim, OsSim, TerminalSim } from "../../sims/FoundationSims";
 import { useState } from "react";
 import type { Block, QuizItem } from "../../content/schema";
 import { Callout, Device, Feedback, RichText } from "../../components/ui";
@@ -53,7 +54,10 @@ export function SimBlock({
     <div>
       <p>{block.intro}</p>
       <Device title={block.title} label={simLabel(block.sim)}>
-        {block.sim === "python" && block.code ? (
+        {block.sim === "memory" ? <MemorySim mode={block.mode} onSolved={onDone} />
+          : block.sim === "os" ? <OsSim mode={block.mode} onSolved={onDone} />
+          : block.sim === "terminal" ? <TerminalSim mode={block.mode} onSolved={onDone} />
+          : block.sim === "python" && block.code ? (
           <PythonSim mode={block.mode} spec={block.code} onSolved={onDone} />
         ) : block.sim === "js" && block.code ? (
           <JsSim mode={block.mode} spec={block.code} onSolved={onDone} />
