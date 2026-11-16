@@ -1,0 +1,2614 @@
+[
+ {
+  "id": "A01",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "二进制",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "A02",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "十六进制与编码",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "A03",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "逻辑门",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "A04",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "加法器",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "A05",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "CPU",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "A06",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "内存与存储",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "A07",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "操作系统",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "A08",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "命令行",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "A09",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "网络基础",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "A10",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "IP 与子网",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "A11",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "MAC/交换机/路由器",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "A12",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "数据包",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "A13",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "DNS",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "A14",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "TCP",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "A15",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "UDP",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "A16",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "HTTP/HTTPS",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "A17",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "网页访问旅程",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "A18",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "密码与哈希",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "A19",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "钓鱼防范",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "A20",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "最小权限",
+  "source": "existing curriculum",
+  "project": "网页访问交互图与诊断面板",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "A-I01",
+  "stage": "Intermediate",
+  "track": "A",
+  "title": "Digital Logic & Architecture II",
+  "units": [
+   "组合逻辑",
+   "时序电路",
+   "寄存器与 ALU",
+   "ISA 基础"
+  ],
+  "prerequisites": "A01–A06",
+  "project": "虚拟企业网络与故障排查",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "A-I02",
+  "stage": "Intermediate",
+  "track": "A",
+  "title": "Linux & OS Practice",
+  "units": [
+   "Shell",
+   "进程线程",
+   "内存权限",
+   "服务与日志"
+  ],
+  "prerequisites": "A07–A08、B 基础",
+  "project": "虚拟企业网络与故障排查",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "A-I03",
+  "stage": "Intermediate",
+  "track": "A",
+  "title": "Network Protocols II",
+  "units": [
+   "IPv4/IPv6",
+   "ARP/DHCP/DNS",
+   "TCP 流控与拥塞",
+   "HTTP/TLS"
+  ],
+  "prerequisites": "A09–A17",
+  "project": "虚拟企业网络与故障排查",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "A-I04",
+  "stage": "Intermediate",
+  "track": "A",
+  "title": "Network Engineering",
+  "units": [
+   "VLAN",
+   "路由表",
+   "NAT/防火墙",
+   "抓包分析"
+  ],
+  "prerequisites": "A-I03",
+  "project": "虚拟企业网络与故障排查",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "A-I05",
+  "stage": "Intermediate",
+  "track": "A",
+  "title": "Security Practice",
+  "units": [
+   "认证",
+   "密码学基础",
+   "Web 安全",
+   "事件响应"
+  ],
+  "prerequisites": "A18–A20、B-I03",
+  "project": "虚拟企业网络与故障排查",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "A-I06",
+  "stage": "Intermediate",
+  "track": "A",
+  "title": "Virtualization & Cloud",
+  "units": [
+   "虚拟机",
+   "容器",
+   "虚拟网络",
+   "部署与监控"
+  ],
+  "prerequisites": "A-I02、A-I03",
+  "project": "虚拟企业网络与故障排查",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "A-U01",
+  "stage": "Advanced",
+  "track": "A",
+  "title": "Computer Architecture",
+  "units": [
+   "ISA/汇编",
+   "流水线",
+   "缓存层次",
+   "多核"
+  ],
+  "prerequisites": "A-I01、M01",
+  "project": "分布式平台与故障注入",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "A-U02",
+  "stage": "Advanced",
+  "track": "A",
+  "title": "Operating Systems",
+  "units": [
+   "调度",
+   "同步死锁",
+   "虚拟内存",
+   "文件系统"
+  ],
+  "prerequisites": "A-I02、B-U01",
+  "project": "分布式平台与故障注入",
+  "status": "flagship",
+  "phase": 4
+ },
+ {
+  "id": "A-U03",
+  "stage": "Advanced",
+  "track": "A",
+  "title": "Computer Networks",
+  "units": [
+   "分层协议",
+   "可靠传输",
+   "路由算法",
+   "性能分析"
+  ],
+  "prerequisites": "A-I03、M02",
+  "project": "分布式平台与故障注入",
+  "status": "flagship",
+  "phase": 4
+ },
+ {
+  "id": "A-U04",
+  "stage": "Advanced",
+  "track": "A",
+  "title": "Distributed Systems",
+  "units": [
+   "时钟与一致性",
+   "复制",
+   "共识",
+   "分布式事务"
+  ],
+  "prerequisites": "A-U02、A-U03",
+  "project": "分布式平台与故障注入",
+  "status": "flagship",
+  "phase": 4
+ },
+ {
+  "id": "A-U05",
+  "stage": "Advanced",
+  "track": "A",
+  "title": "Computer Security",
+  "units": [
+   "安全模型",
+   "密码学协议",
+   "系统安全",
+   "威胁建模"
+  ],
+  "prerequisites": "A-I05、M02",
+  "project": "分布式平台与故障注入",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "A-U06",
+  "stage": "Advanced",
+  "track": "A",
+  "title": "Cloud Infrastructure",
+  "units": [
+   "容器编排",
+   "IaC",
+   "可观测性",
+   "可靠性"
+  ],
+  "prerequisites": "A-I06、A-U02",
+  "project": "分布式平台与故障注入",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "A-U07",
+  "stage": "Advanced",
+  "track": "A",
+  "title": "Parallel Computing",
+  "units": [
+   "并发模型",
+   "同步",
+   "并行算法",
+   "可扩展性"
+  ],
+  "prerequisites": "A-U01、A-U02",
+  "project": "分布式平台与故障注入",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "A-U08",
+  "stage": "Advanced",
+  "track": "A",
+  "title": "Network Systems Lab",
+  "units": [
+   "Socket",
+   "协议实验",
+   "测量",
+   "故障注入"
+  ],
+  "prerequisites": "A-U03、B-U01",
+  "project": "分布式平台与故障注入",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "B01",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "变量与类型",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "B02",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "条件",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "B03",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "循环",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "B04",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "函数",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "B05",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "列表",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "B06",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "字典",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "B07",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "调试",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "B08",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "HTML",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "B09",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "CSS",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "B10",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "布局",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "B11",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "DOM",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "B12",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "事件",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "B13",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "fetch/JSON",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "B14",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "Git",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "B15",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "分支与合并",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "B16",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "GitHub",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "B17",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "发布",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "B18",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "个人网页",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "B19",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "小工具",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "B20",
+  "stage": "Foundation",
+  "track": "B",
+  "title": "综合自测",
+  "source": "existing curriculum",
+  "project": "个人网站与小工具",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "B-I01",
+  "stage": "Intermediate",
+  "track": "B",
+  "title": "Python Programming II",
+  "units": [
+   "文件与异常",
+   "OOP",
+   "模块与包",
+   "测试与类型"
+  ],
+  "prerequisites": "B01–B07",
+  "project": "全栈学习管理系统",
+  "status": "next",
+  "phase": 2
+ },
+ {
+  "id": "B-I02",
+  "stage": "Intermediate",
+  "track": "B",
+  "title": "JavaScript & TypeScript",
+  "units": [
+   "JS 深入",
+   "异步",
+   "TypeScript",
+   "工具链"
+  ],
+  "prerequisites": "B08–B13",
+  "project": "全栈学习管理系统",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "B-I03",
+  "stage": "Intermediate",
+  "track": "B",
+  "title": "Backend Development",
+  "units": [
+   "HTTP API",
+   "框架",
+   "认证",
+   "测试"
+  ],
+  "prerequisites": "B-I01、B-I02",
+  "project": "全栈学习管理系统",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "B-I04",
+  "stage": "Intermediate",
+  "track": "B",
+  "title": "Frontend Engineering",
+  "units": [
+   "组件状态",
+   "React",
+   "路由表单",
+   "无障碍与性能"
+  ],
+  "prerequisites": "B-I02",
+  "project": "全栈学习管理系统",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "B-I05",
+  "stage": "Intermediate",
+  "track": "B",
+  "title": "Database Fundamentals",
+  "units": [
+   "关系模型",
+   "SQL",
+   "设计",
+   "索引事务"
+  ],
+  "prerequisites": "B-I01",
+  "project": "全栈学习管理系统",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "B-I06",
+  "stage": "Intermediate",
+  "track": "B",
+  "title": "Data Structures I",
+  "units": [
+   "复杂度",
+   "线性结构",
+   "栈队列",
+   "哈希与树"
+  ],
+  "prerequisites": "B-I01、M01",
+  "project": "全栈学习管理系统",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "B-I07",
+  "stage": "Intermediate",
+  "track": "B",
+  "title": "Software Development Workflow",
+  "units": [
+   "Git 协作",
+   "测试",
+   "CI/CD",
+   "代码审查"
+  ],
+  "prerequisites": "B14–B17",
+  "project": "全栈学习管理系统",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "B-I08",
+  "stage": "Intermediate",
+  "track": "B",
+  "title": "Full-stack Project",
+  "units": [
+   "需求",
+   "整合",
+   "数据库认证",
+   "部署"
+  ],
+  "prerequisites": "B-I03–B-I07",
+  "project": "全栈学习管理系统",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "B-U01",
+  "stage": "Advanced",
+  "track": "B",
+  "title": "Data Structures & Algorithms",
+  "units": [
+   "复杂度",
+   "树堆",
+   "图算法",
+   "动态规划"
+  ],
+  "prerequisites": "B-I06、M01–M02",
+  "project": "生产级 Web 平台",
+  "status": "flagship",
+  "phase": 4
+ },
+ {
+  "id": "B-U02",
+  "stage": "Advanced",
+  "track": "B",
+  "title": "Algorithm Design & Analysis",
+  "units": [
+   "分治",
+   "贪心证明",
+   "摊还分析",
+   "NP 完全性"
+  ],
+  "prerequisites": "B-U01、M02",
+  "project": "生产级 Web 平台",
+  "status": "flagship",
+  "phase": 4
+ },
+ {
+  "id": "B-U03",
+  "stage": "Advanced",
+  "track": "B",
+  "title": "Database Management Systems",
+  "units": [
+   "关系代数",
+   "查询优化",
+   "事务并发",
+   "存储恢复"
+  ],
+  "prerequisites": "B-I05、M02",
+  "project": "生产级 Web 平台",
+  "status": "flagship",
+  "phase": 4
+ },
+ {
+  "id": "B-U04",
+  "stage": "Advanced",
+  "track": "B",
+  "title": "Programming Languages",
+  "units": [
+   "类型系统",
+   "作用域语义",
+   "函数式",
+   "解释器"
+  ],
+  "prerequisites": "B-I01、M02",
+  "project": "生产级 Web 平台",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "B-U05",
+  "stage": "Advanced",
+  "track": "B",
+  "title": "Compiler Construction",
+  "units": [
+   "词法语法",
+   "AST",
+   "中间表示",
+   "代码生成"
+  ],
+  "prerequisites": "B-U04、B-U01",
+  "project": "生产级 Web 平台",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "B-U06",
+  "stage": "Advanced",
+  "track": "B",
+  "title": "Software Engineering",
+  "units": [
+   "需求工程",
+   "架构",
+   "质量保证",
+   "软件演化"
+  ],
+  "prerequisites": "B-I07、B-I08",
+  "project": "生产级 Web 平台",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "B-U07",
+  "stage": "Advanced",
+  "track": "B",
+  "title": "Web Systems Engineering",
+  "units": [
+   "HTTP 浏览器",
+   "认证安全",
+   "缓存性能",
+   "扩展架构"
+  ],
+  "prerequisites": "B-I08、A-I03",
+  "project": "生产级 Web 平台",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "B-U08",
+  "stage": "Advanced",
+  "track": "B",
+  "title": "Software Architecture",
+  "units": [
+   "架构风格",
+   "领域建模",
+   "消息事件",
+   "架构评估"
+  ],
+  "prerequisites": "B-U06、B-U03",
+  "project": "生产级 Web 平台",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "B-U09",
+  "stage": "Advanced",
+  "track": "B",
+  "title": "Formal Methods & Verification",
+  "units": [
+   "逻辑规格",
+   "不变量",
+   "模型检查",
+   "属性测试"
+  ],
+  "prerequisites": "B-U01、M02",
+  "project": "生产级 Web 平台",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "B-U10",
+  "stage": "Advanced",
+  "track": "B",
+  "title": "DevOps & Site Reliability",
+  "units": [
+   "构建发布",
+   "CI/CD",
+   "监控 SLO",
+   "故障恢复"
+  ],
+  "prerequisites": "B-U06、A-I06",
+  "project": "生产级 Web 平台",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "C01",
+  "stage": "Foundation",
+  "track": "C",
+  "title": "大模型",
+  "source": "existing curriculum",
+  "project": "AI 助手与评估表",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "C02",
+  "stage": "Foundation",
+  "track": "C",
+  "title": "Token 与上下文",
+  "source": "existing curriculum",
+  "project": "AI 助手与评估表",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "C03",
+  "stage": "Foundation",
+  "track": "C",
+  "title": "温度",
+  "source": "existing curriculum",
+  "project": "AI 助手与评估表",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "C04",
+  "stage": "Foundation",
+  "track": "C",
+  "title": "幻觉",
+  "source": "existing curriculum",
+  "project": "AI 助手与评估表",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "C05",
+  "stage": "Foundation",
+  "track": "C",
+  "title": "指令六要素",
+  "source": "existing curriculum",
+  "project": "AI 助手与评估表",
+  "status": "live",
+  "phase": 1
+ },
+ {
+  "id": "C06",
+  "stage": "Foundation",
+  "track": "C",
+  "title": "Few-shot",
+  "source": "existing curriculum",
+  "project": "AI 助手与评估表",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "C07",
+  "stage": "Foundation",
+  "track": "C",
+  "title": "指定格式",
+  "source": "existing curriculum",
+  "project": "AI 助手与评估表",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "C08",
+  "stage": "Foundation",
+  "track": "C",
+  "title": "拆任务",
+  "source": "existing curriculum",
+  "project": "AI 助手与评估表",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "C09",
+  "stage": "Foundation",
+  "track": "C",
+  "title": "自我检查",
+  "source": "existing curriculum",
+  "project": "AI 助手与评估表",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "C10",
+  "stage": "Foundation",
+  "track": "C",
+  "title": "调优循环",
+  "source": "existing curriculum",
+  "project": "AI 助手与评估表",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "C11",
+  "stage": "Foundation",
+  "track": "C",
+  "title": "RAG",
+  "source": "existing curriculum",
+  "project": "AI 助手与评估表",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "C12",
+  "stage": "Foundation",
+  "track": "C",
+  "title": "Agent",
+  "source": "existing curriculum",
+  "project": "AI 助手与评估表",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "C13",
+  "stage": "Foundation",
+  "track": "C",
+  "title": "评估",
+  "source": "existing curriculum",
+  "project": "AI 助手与评估表",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "C14",
+  "stage": "Foundation",
+  "track": "C",
+  "title": "本地模型",
+  "source": "existing curriculum",
+  "project": "AI 助手与评估表",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "C15",
+  "stage": "Foundation",
+  "track": "C",
+  "title": "偏见与版权",
+  "source": "existing curriculum",
+  "project": "AI 助手与评估表",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "C16",
+  "stage": "Foundation",
+  "track": "C",
+  "title": "提示词注入",
+  "source": "existing curriculum",
+  "project": "AI 助手与评估表",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "C17",
+  "stage": "Foundation",
+  "track": "C",
+  "title": "AI 适用边界",
+  "source": "existing curriculum",
+  "project": "AI 助手与评估表",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "C18",
+  "stage": "Foundation",
+  "track": "C",
+  "title": "AI 助手项目",
+  "source": "existing curriculum",
+  "project": "AI 助手与评估表",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "C-I01",
+  "stage": "Intermediate",
+  "track": "C",
+  "title": "Python for AI",
+  "units": [
+   "NumPy",
+   "Pandas",
+   "可视化",
+   "Notebook"
+  ],
+  "prerequisites": "B-I01",
+  "project": "RAG 学习导师",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "C-I02",
+  "stage": "Intermediate",
+  "track": "C",
+  "title": "Mathematics for AI",
+  "units": [
+   "向量矩阵",
+   "导数梯度",
+   "概率分布",
+   "优化"
+  ],
+  "prerequisites": "M01–M03",
+  "project": "RAG 学习导师",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "C-I03",
+  "stage": "Intermediate",
+  "track": "C",
+  "title": "Machine Learning Foundations",
+  "units": [
+   "数据与特征",
+   "回归分类",
+   "训练验证",
+   "指标"
+  ],
+  "prerequisites": "C-I01、C-I02",
+  "project": "RAG 学习导师",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "C-I04",
+  "stage": "Intermediate",
+  "track": "C",
+  "title": "Prompt Engineering II",
+  "units": [
+   "系统指令",
+   "结构化输出",
+   "工具调用",
+   "评测"
+  ],
+  "prerequisites": "C05–C13",
+  "project": "RAG 学习导师",
+  "status": "next",
+  "phase": 2
+ },
+ {
+  "id": "C-I05",
+  "stage": "Intermediate",
+  "track": "C",
+  "title": "RAG Engineering",
+  "units": [
+   "Embedding",
+   "向量检索",
+   "Chunking 重排",
+   "评估"
+  ],
+  "prerequisites": "C11、B-I03",
+  "project": "RAG 学习导师",
+  "status": "next",
+  "phase": 2
+ },
+ {
+  "id": "C-I06",
+  "stage": "Intermediate",
+  "track": "C",
+  "title": "AI Agent Development",
+  "units": [
+   "工具接口",
+   "状态记忆",
+   "编排",
+   "权限安全"
+  ],
+  "prerequisites": "C12、C-I04",
+  "project": "RAG 学习导师",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "C-I07",
+  "stage": "Intermediate",
+  "track": "C",
+  "title": "Local AI & Deployment",
+  "units": [
+   "量化",
+   "推理服务",
+   "性能",
+   "隐私部署"
+  ],
+  "prerequisites": "C14、C-I01",
+  "project": "RAG 学习导师",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "C-I08",
+  "stage": "Intermediate",
+  "track": "C",
+  "title": "Applied AI Project",
+  "units": [
+   "数据准备",
+   "设计",
+   "评估集",
+   "上线监控"
+  ],
+  "prerequisites": "C-I03–C-I07",
+  "project": "RAG 学习导师",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "C-U01",
+  "stage": "Advanced",
+  "track": "C",
+  "title": "Statistical Machine Learning",
+  "units": [
+   "统计学习",
+   "线性逻辑回归",
+   "集成模型",
+   "泛化"
+  ],
+  "prerequisites": "C-I03、M03–M04",
+  "project": "模型研究或 AI 工程项目",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "C-U02",
+  "stage": "Advanced",
+  "track": "C",
+  "title": "Deep Learning",
+  "units": [
+   "反向传播",
+   "优化正则",
+   "CNN",
+   "序列模型"
+  ],
+  "prerequisites": "C-U01、M03",
+  "project": "模型研究或 AI 工程项目",
+  "status": "flagship",
+  "phase": 4
+ },
+ {
+  "id": "C-U03",
+  "stage": "Advanced",
+  "track": "C",
+  "title": "Natural Language Processing",
+  "units": [
+   "语言表示",
+   "序列建模",
+   "Attention",
+   "评估"
+  ],
+  "prerequisites": "C-U02",
+  "project": "模型研究或 AI 工程项目",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "C-U04",
+  "stage": "Advanced",
+  "track": "C",
+  "title": "Transformer & LLM Architecture",
+  "units": [
+   "Self-attention",
+   "Transformer",
+   "预训练",
+   "KV Cache"
+  ],
+  "prerequisites": "C-U02、C-U03",
+  "project": "模型研究或 AI 工程项目",
+  "status": "flagship",
+  "phase": 4
+ },
+ {
+  "id": "C-U05",
+  "stage": "Advanced",
+  "track": "C",
+  "title": "LLM Fine-tuning",
+  "units": [
+   "数据构建",
+   "监督微调",
+   "LoRA",
+   "对齐评估"
+  ],
+  "prerequisites": "C-U04",
+  "project": "模型研究或 AI 工程项目",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "C-U06",
+  "stage": "Advanced",
+  "track": "C",
+  "title": "Information Retrieval & RAG",
+  "units": [
+   "倒排索引",
+   "稠密检索",
+   "排序",
+   "RAG"
+  ],
+  "prerequisites": "C-I05、B-U01",
+  "project": "模型研究或 AI 工程项目",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "C-U07",
+  "stage": "Advanced",
+  "track": "C",
+  "title": "Reinforcement Learning",
+  "units": [
+   "MDP",
+   "Bellman",
+   "策略方法",
+   "深度 RL"
+  ],
+  "prerequisites": "C-U01、M04",
+  "project": "模型研究或 AI 工程项目",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "C-U08",
+  "stage": "Advanced",
+  "track": "C",
+  "title": "MLOps & AI Systems",
+  "units": [
+   "版本管理",
+   "训练流水线",
+   "模型服务",
+   "漂移"
+  ],
+  "prerequisites": "C-U02、B-I07",
+  "project": "模型研究或 AI 工程项目",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "C-U09",
+  "stage": "Advanced",
+  "track": "C",
+  "title": "Responsible AI & Security",
+  "units": [
+   "公平偏见",
+   "隐私",
+   "安全评估",
+   "治理"
+  ],
+  "prerequisites": "C15–C17、C-U01",
+  "project": "模型研究或 AI 工程项目",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "C-U10",
+  "stage": "Advanced",
+  "track": "C",
+  "title": "AI Research Methods",
+  "units": [
+   "论文阅读",
+   "实验设计",
+   "消融",
+   "可复现"
+  ],
+  "prerequisites": "C-U01、M04",
+  "project": "模型研究或 AI 工程项目",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "D01",
+  "stage": "Foundation",
+  "track": "D",
+  "title": "游戏循环",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "2D 平台游戏",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "D02",
+  "stage": "Foundation",
+  "track": "D",
+  "title": "坐标",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "2D 平台游戏",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "D03",
+  "stage": "Foundation",
+  "track": "D",
+  "title": "向量与移动",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "2D 平台游戏",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "D04",
+  "stage": "Foundation",
+  "track": "D",
+  "title": "输入",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "2D 平台游戏",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "D05",
+  "stage": "Foundation",
+  "track": "D",
+  "title": "碰撞",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "2D 平台游戏",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "D06",
+  "stage": "Foundation",
+  "track": "D",
+  "title": "物理与重力",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "2D 平台游戏",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "D07",
+  "stage": "Foundation",
+  "track": "D",
+  "title": "状态机",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "2D 平台游戏",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "D08",
+  "stage": "Foundation",
+  "track": "D",
+  "title": "音效与反馈",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "2D 平台游戏",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "D09",
+  "stage": "Foundation",
+  "track": "D",
+  "title": "Unity 编辑器",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "2D 平台游戏",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "D10",
+  "stage": "Foundation",
+  "track": "D",
+  "title": "GameObject",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "2D 平台游戏",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "D11",
+  "stage": "Foundation",
+  "track": "D",
+  "title": "C#",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "2D 平台游戏",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "D12",
+  "stage": "Foundation",
+  "track": "D",
+  "title": "Unity Physics",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "2D 平台游戏",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "D13",
+  "stage": "Foundation",
+  "track": "D",
+  "title": "UI",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "2D 平台游戏",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "D14",
+  "stage": "Foundation",
+  "track": "D",
+  "title": "资源",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "2D 平台游戏",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "D15",
+  "stage": "Foundation",
+  "track": "D",
+  "title": "发布",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "2D 平台游戏",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "D16",
+  "stage": "Foundation",
+  "track": "D",
+  "title": "游戏项目",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "2D 平台游戏",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "D-I01",
+  "stage": "Intermediate",
+  "track": "D",
+  "title": "C# Programming II",
+  "units": [
+   "类接口",
+   "泛型",
+   "事件委托",
+   "异步"
+  ],
+  "prerequisites": "D11、B 基础",
+  "project": "3D 游戏原型",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "D-I02",
+  "stage": "Intermediate",
+  "track": "D",
+  "title": "Unity Architecture",
+  "units": [
+   "Prefab",
+   "场景资源",
+   "组件架构",
+   "数据驱动"
+  ],
+  "prerequisites": "D09–D15、D-I01",
+  "project": "3D 游戏原型",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "D-I03",
+  "stage": "Intermediate",
+  "track": "D",
+  "title": "2D & 3D Game Mechanics",
+  "units": [
+   "角色控制",
+   "碰撞",
+   "动画",
+   "摄像机"
+  ],
+  "prerequisites": "D05–D12",
+  "project": "3D 游戏原型",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "D-I04",
+  "stage": "Intermediate",
+  "track": "D",
+  "title": "Game AI",
+  "units": [
+   "状态机",
+   "行为树",
+   "寻路",
+   "NPC"
+  ],
+  "prerequisites": "D07、B-I06",
+  "project": "3D 游戏原型",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "D-I05",
+  "stage": "Intermediate",
+  "track": "D",
+  "title": "Game UI & Systems",
+  "units": [
+   "UI",
+   "背包",
+   "存档",
+   "任务"
+  ],
+  "prerequisites": "D-I02",
+  "project": "3D 游戏原型",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "D-I06",
+  "stage": "Intermediate",
+  "track": "D",
+  "title": "Multiplayer Fundamentals",
+  "units": [
+   "Client/Server",
+   "状态同步",
+   "延迟补偿",
+   "会话"
+  ],
+  "prerequisites": "D-I02、A-I03",
+  "project": "3D 游戏原型",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "D-I07",
+  "stage": "Intermediate",
+  "track": "D",
+  "title": "Game Optimization & Publishing",
+  "units": [
+   "Profiler",
+   "内存",
+   "跨平台",
+   "测试发布"
+  ],
+  "prerequisites": "D-I02–D-I05",
+  "project": "3D 游戏原型",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "D-U01",
+  "stage": "Advanced",
+  "track": "D",
+  "title": "Computer Graphics",
+  "units": [
+   "图形管线",
+   "几何变换",
+   "光照",
+   "纹理"
+  ],
+  "prerequisites": "M03、D-I03",
+  "project": "游戏引擎或专业垂直切片",
+  "status": "flagship",
+  "phase": 4
+ },
+ {
+  "id": "D-U02",
+  "stage": "Advanced",
+  "track": "D",
+  "title": "Game Engine Architecture",
+  "units": [
+   "ECS",
+   "场景图",
+   "资源管理",
+   "主循环"
+  ],
+  "prerequisites": "D-I02、B-U06",
+  "project": "游戏引擎或专业垂直切片",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "D-U03",
+  "stage": "Advanced",
+  "track": "D",
+  "title": "Physics Simulation",
+  "units": [
+   "刚体",
+   "碰撞",
+   "约束",
+   "数值积分"
+  ],
+  "prerequisites": "M03、M05",
+  "project": "游戏引擎或专业垂直切片",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "D-U04",
+  "stage": "Advanced",
+  "track": "D",
+  "title": "Real-time Rendering",
+  "units": [
+   "Shader",
+   "PBR",
+   "阴影",
+   "GPU"
+  ],
+  "prerequisites": "D-U01",
+  "project": "游戏引擎或专业垂直切片",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "D-U05",
+  "stage": "Advanced",
+  "track": "D",
+  "title": "Advanced Game AI",
+  "units": [
+   "A*",
+   "行为规划",
+   "效用系统",
+   "强化学习"
+  ],
+  "prerequisites": "D-I04、B-U01",
+  "project": "游戏引擎或专业垂直切片",
+  "status": "flagship",
+  "phase": 4
+ },
+ {
+  "id": "D-U06",
+  "stage": "Advanced",
+  "track": "D",
+  "title": "Multiplayer Game Networking",
+  "units": [
+   "网络拓扑",
+   "同步",
+   "预测协调",
+   "权威服务器"
+  ],
+  "prerequisites": "D-I06、A-U03",
+  "project": "游戏引擎或专业垂直切片",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "D-U07",
+  "stage": "Advanced",
+  "track": "D",
+  "title": "Procedural Content Generation",
+  "units": [
+   "随机生成",
+   "噪声地形",
+   "约束生成",
+   "评估"
+  ],
+  "prerequisites": "B-U01、M04",
+  "project": "游戏引擎或专业垂直切片",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "D-U08",
+  "stage": "Advanced",
+  "track": "D",
+  "title": "Game Systems & Design Analysis",
+  "units": [
+   "游戏经济",
+   "平衡",
+   "遥测",
+   "玩家实验"
+  ],
+  "prerequisites": "D-I05、M04",
+  "project": "游戏引擎或专业垂直切片",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "D-U09",
+  "stage": "Advanced",
+  "track": "D",
+  "title": "Game Engine Lab",
+  "units": [
+   "渲染",
+   "输入场景",
+   "物理集成",
+   "基准"
+  ],
+  "prerequisites": "D-U01–D-U03",
+  "project": "游戏引擎或专业垂直切片",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "E01",
+  "stage": "Foundation",
+  "track": "E",
+  "title": "数据类型",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "学习 Dashboard",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "E02",
+  "stage": "Foundation",
+  "track": "E",
+  "title": "单元格引用",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "学习 Dashboard",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "E03",
+  "stage": "Foundation",
+  "track": "E",
+  "title": "IF",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "学习 Dashboard",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "E04",
+  "stage": "Foundation",
+  "track": "E",
+  "title": "查找函数",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "学习 Dashboard",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "E05",
+  "stage": "Foundation",
+  "track": "E",
+  "title": "日期与文本",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "学习 Dashboard",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "E06",
+  "stage": "Foundation",
+  "track": "E",
+  "title": "数据清洗",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "学习 Dashboard",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "E07",
+  "stage": "Foundation",
+  "track": "E",
+  "title": "数据透视",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "学习 Dashboard",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "E08",
+  "stage": "Foundation",
+  "track": "E",
+  "title": "图表",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "学习 Dashboard",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "E09",
+  "stage": "Foundation",
+  "track": "E",
+  "title": "Apps Script",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "学习 Dashboard",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "E10",
+  "stage": "Foundation",
+  "track": "E",
+  "title": "触发器",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "学习 Dashboard",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "E11",
+  "stage": "Foundation",
+  "track": "E",
+  "title": "工作流",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "学习 Dashboard",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "E12",
+  "stage": "Foundation",
+  "track": "E",
+  "title": "Gemini API",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "学习 Dashboard",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "E13",
+  "stage": "Foundation",
+  "track": "E",
+  "title": "Colab",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "学习 Dashboard",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "E14",
+  "stage": "Foundation",
+  "track": "E",
+  "title": "Looker Studio",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "学习 Dashboard",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "E15",
+  "stage": "Foundation",
+  "track": "E",
+  "title": "数据工作流",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "学习 Dashboard",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "E16",
+  "stage": "Foundation",
+  "track": "E",
+  "title": "综合项目",
+  "source": "existing blueprint or proposed for planned tracks",
+  "project": "学习 Dashboard",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "E-I01",
+  "stage": "Intermediate",
+  "track": "E",
+  "title": "Advanced Spreadsheets",
+  "units": [
+   "动态数组",
+   "查找",
+   "QUERY",
+   "性能"
+  ],
+  "prerequisites": "E01–E08",
+  "project": "自动化数据处理平台",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "E-I02",
+  "stage": "Intermediate",
+  "track": "E",
+  "title": "Apps Script Engineering",
+  "units": [
+   "JS",
+   "Workspace API",
+   "触发权限",
+   "错误恢复"
+  ],
+  "prerequisites": "E09–E11、B-I02",
+  "project": "自动化数据处理平台",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "E-I03",
+  "stage": "Intermediate",
+  "track": "E",
+  "title": "SQL & Data Modeling",
+  "units": [
+   "SQL",
+   "JOIN",
+   "规范化",
+   "建模"
+  ],
+  "prerequisites": "E06、B-I05",
+  "project": "自动化数据处理平台",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "E-I04",
+  "stage": "Intermediate",
+  "track": "E",
+  "title": "Python Data Analysis",
+  "units": [
+   "Pandas",
+   "清洗",
+   "统计",
+   "可视化"
+  ],
+  "prerequisites": "E13、B-I01",
+  "project": "自动化数据处理平台",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "E-I05",
+  "stage": "Intermediate",
+  "track": "E",
+  "title": "Workflow Automation",
+  "units": [
+   "Webhook",
+   "REST",
+   "调度",
+   "幂等重试"
+  ],
+  "prerequisites": "E-I02、B-I03",
+  "project": "自动化数据处理平台",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "E-I06",
+  "stage": "Intermediate",
+  "track": "E",
+  "title": "Business Intelligence",
+  "units": [
+   "指标",
+   "Dashboard",
+   "质量",
+   "报表"
+  ],
+  "prerequisites": "E-I03、E-I04",
+  "project": "自动化数据处理平台",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "E-I07",
+  "stage": "Intermediate",
+  "track": "E",
+  "title": "Cloud Data Workflow",
+  "units": [
+   "存储",
+   "同步",
+   "批处理",
+   "监控"
+  ],
+  "prerequisites": "E-I03、E-I05",
+  "project": "自动化数据处理平台",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "E-U01",
+  "stage": "Advanced",
+  "track": "E",
+  "title": "Data Engineering",
+  "units": [
+   "摄取",
+   "ETL/ELT",
+   "质量",
+   "架构"
+  ],
+  "prerequisites": "E-I03–E-I05",
+  "project": "批流一体数据平台",
+  "status": "flagship",
+  "phase": 4
+ },
+ {
+  "id": "E-U02",
+  "stage": "Advanced",
+  "track": "E",
+  "title": "Data Warehousing",
+  "units": [
+   "维度建模",
+   "列存",
+   "查询优化",
+   "湖仓"
+  ],
+  "prerequisites": "E-I03、B-U03",
+  "project": "批流一体数据平台",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "E-U03",
+  "stage": "Advanced",
+  "track": "E",
+  "title": "Distributed Data Processing",
+  "units": [
+   "MapReduce",
+   "Spark",
+   "分区 Shuffle",
+   "容错"
+  ],
+  "prerequisites": "E-U01、A-U04",
+  "project": "批流一体数据平台",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "E-U04",
+  "stage": "Advanced",
+  "track": "E",
+  "title": "Workflow Orchestration",
+  "units": [
+   "DAG",
+   "调度",
+   "失败恢复",
+   "血缘"
+  ],
+  "prerequisites": "E-I05、E-U01",
+  "project": "批流一体数据平台",
+  "status": "flagship",
+  "phase": 4
+ },
+ {
+  "id": "E-U05",
+  "stage": "Advanced",
+  "track": "E",
+  "title": "Streaming Data Systems",
+  "units": [
+   "事件流",
+   "消息队列",
+   "窗口",
+   "流语义"
+  ],
+  "prerequisites": "E-U03、A-U04",
+  "project": "批流一体数据平台",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "E-U06",
+  "stage": "Advanced",
+  "track": "E",
+  "title": "Business Analytics",
+  "units": [
+   "推断",
+   "实验设计",
+   "因果基础",
+   "决策"
+  ],
+  "prerequisites": "M04、E-I06",
+  "project": "批流一体数据平台",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "E-U07",
+  "stage": "Advanced",
+  "track": "E",
+  "title": "Cloud Data Architecture",
+  "units": [
+   "云平台",
+   "权限治理",
+   "成本",
+   "灾备"
+  ],
+  "prerequisites": "E-U01、A-I06",
+  "project": "批流一体数据平台",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "E-U08",
+  "stage": "Advanced",
+  "track": "E",
+  "title": "Data Governance & Security",
+  "units": [
+   "分类",
+   "访问控制",
+   "隐私",
+   "审计"
+  ],
+  "prerequisites": "E-U01、A-I05",
+  "project": "批流一体数据平台",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "E-U09",
+  "stage": "Advanced",
+  "track": "E",
+  "title": "Data Platform Engineering Lab",
+  "units": [
+   "平台设计",
+   "批流整合",
+   "监控测试",
+   "性能"
+  ],
+  "prerequisites": "E-U02–E-U05",
+  "project": "批流一体数据平台",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "A21",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "状态码是服务器的回话（404、429）",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "A22",
+  "stage": "Foundation",
+  "track": "A",
+  "title": "读懂报错与日志",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "next",
+  "phase": 1
+ },
+ {
+  "id": "F01",
+  "stage": "Foundation",
+  "track": "F",
+  "title": "电路与电流",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "F02",
+  "stage": "Foundation",
+  "track": "F",
+  "title": "传感器与执行器",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "F03",
+  "stage": "Foundation",
+  "track": "F",
+  "title": "Arduino 入门",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "F04",
+  "stage": "Foundation",
+  "track": "F",
+  "title": "数字与模拟信号",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "F05",
+  "stage": "Foundation",
+  "track": "F",
+  "title": "用 Arduino 读传感器",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "F06",
+  "stage": "Foundation",
+  "track": "F",
+  "title": "电机与舵机",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "F07",
+  "stage": "Foundation",
+  "track": "F",
+  "title": "串口与 I2C 通信",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "F08",
+  "stage": "Foundation",
+  "track": "F",
+  "title": "小项目：避障小车",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "planned",
+  "phase": 5
+ },
+ {
+  "id": "C-I09",
+  "stage": "Intermediate",
+  "track": "C",
+  "title": "Cost, Limits & Error Handling（Token、429、重试）",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "C-I10",
+  "stage": "Intermediate",
+  "track": "C",
+  "title": "Tools & Reusable Skills for Agents",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "F-I01",
+  "stage": "Intermediate",
+  "track": "F",
+  "title": "Embedded C++ & Interrupts",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "F-I02",
+  "stage": "Intermediate",
+  "track": "F",
+  "title": "Sensors & Signal Filtering",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "F-I03",
+  "stage": "Intermediate",
+  "track": "F",
+  "title": "Motors & PID Control",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "F-I04",
+  "stage": "Intermediate",
+  "track": "F",
+  "title": "Robot Kinematics",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "F-I05",
+  "stage": "Intermediate",
+  "track": "F",
+  "title": "Robotics Simulation",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "F-I06",
+  "stage": "Intermediate",
+  "track": "F",
+  "title": "Embedded Networking & IoT",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "M01",
+  "stage": "Intermediate",
+  "track": "M",
+  "title": "Algebra, Functions & Logic",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "M04",
+  "stage": "Intermediate",
+  "track": "M",
+  "title": "Probability & Statistics",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "planned",
+  "phase": 3
+ },
+ {
+  "id": "A-U09",
+  "stage": "Advanced",
+  "track": "A",
+  "title": "Applied Cryptography",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "B-U11",
+  "stage": "Advanced",
+  "track": "B",
+  "title": "Theory of Computation",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "B-U12",
+  "stage": "Advanced",
+  "track": "B",
+  "title": "Concurrency & Systems Programming",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "C-U11",
+  "stage": "Advanced",
+  "track": "C",
+  "title": "Computer Vision",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "C-U12",
+  "stage": "Advanced",
+  "track": "C",
+  "title": "Generative Models",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "C-U13",
+  "stage": "Advanced",
+  "track": "C",
+  "title": "AI Agents & Tool Systems",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "E-U10",
+  "stage": "Advanced",
+  "track": "E",
+  "title": "Applied Statistics & Experiment Design",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "F-U01",
+  "stage": "Advanced",
+  "track": "F",
+  "title": "Probabilistic Robotics & Bayes Filters",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "flagship",
+  "phase": 4
+ },
+ {
+  "id": "F-U02",
+  "stage": "Advanced",
+  "track": "F",
+  "title": "Kalman Filter & Sensor Fusion",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "flagship",
+  "phase": 4
+ },
+ {
+  "id": "F-U03",
+  "stage": "Advanced",
+  "track": "F",
+  "title": "Particle Filter & Monte Carlo Localization",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "flagship",
+  "phase": 4
+ },
+ {
+  "id": "F-U04",
+  "stage": "Advanced",
+  "track": "F",
+  "title": "SLAM",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "F-U05",
+  "stage": "Advanced",
+  "track": "F",
+  "title": "Motion Planning",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "flagship",
+  "phase": 4
+ },
+ {
+  "id": "F-U06",
+  "stage": "Advanced",
+  "track": "F",
+  "title": "Control Theory",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "F-U07",
+  "stage": "Advanced",
+  "track": "F",
+  "title": "Computer Vision for Robots",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "F-U08",
+  "stage": "Advanced",
+  "track": "F",
+  "title": "Embedded Systems & RTOS",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "F-U09",
+  "stage": "Advanced",
+  "track": "F",
+  "title": "Robot Learning",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "F-U10",
+  "stage": "Advanced",
+  "track": "F",
+  "title": "Robotics Systems Lab",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "M02",
+  "stage": "Advanced",
+  "track": "M",
+  "title": "Linear Algebra",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "M03",
+  "stage": "Advanced",
+  "track": "M",
+  "title": "Calculus",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "reading",
+  "phase": 4
+ },
+ {
+  "id": "M05",
+  "stage": "Advanced",
+  "track": "M",
+  "title": "Discrete Math & Optimization",
+  "source": "proposal 2026-11-17",
+  "project": "",
+  "status": "reading",
+  "phase": 4
+ }
+]

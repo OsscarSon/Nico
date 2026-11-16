@@ -11,6 +11,8 @@ const baseEnv: Env = {
   QUOTA_SALT: "salt",
 };
 
+// Provider-specific JSON fixture shapes are asserted below by each protocol test.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Upstream = { url: string; init: RequestInit; body: Record<string, any> };
 const geminiReply = (text: string) => ({ candidates: [{ content: { parts: [{ text }] } }] });
 

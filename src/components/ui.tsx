@@ -115,6 +115,8 @@ export function Feedback({ ok, children }: { ok: boolean; children: ReactNode })
 }
 
 const paths: Record<string, string> = {
+  courses: "M5 3h14v18H5zM8 7h8M8 11h8M8 15h5",
+  ai: "M12 3l3 6 6 3-6 3-3 6-3-6-6-3 6-3z",
   home: "M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z",
   paths: "M5 4v6a3 3 0 0 0 3 3h8a3 3 0 0 1 3 3v4M5 4h.01M19 20h.01",
   lab: "M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3",

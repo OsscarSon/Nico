@@ -1,0 +1,89 @@
+import { useState } from "react";
+import { Link } from "../../app/router";
+import { artUrl } from "../../art";
+import { academyTracks, coursesFor, filterCourses, liveLessonFor, stages, stageSummary, statusLabels, type AcademyTrackId, type Course, type CourseStatus, type Stage } from "../../content/academy";
+import { getTrack } from "../../content/catalog";
+import { useProgress } from "../../progress/useProgress";
+
+function CourseRow({ course }: { course: Course }) {
+  const progress = useProgress();
+  const lesson = liveLessonFor(course);
+  const tag = <span className={`course-tag ${course.status}`}>{statusLabels[course.status]}</span>;
+  if (lesson) return (
+    <li className="academy-course live-course">
+      <Link to={`/lesson/${lesson.id}`}>
+        <span className="course-code mono">{course.id}</span>
+        <span className="course-title"><strong>{course.title}</strong><small>{lesson.estimatedMinutes} 分钟 · {progress.lessons[lesson.id] ? "已完成 · 可复习" : "动手练习与检查题"} · {lesson.quality.state === "draft" ? "草稿" : lesson.quality.state === "pilot" ? "试学中" : "正式"}</small></span>
+        {tag}<span className="course-arrow" aria-hidden="true">↗</span>
+      </Link>
+    </li>
+  );
+  return (
+    <li className="academy-course">
+      <details>
+        <summary><span className="course-code mono">{course.id}</span><span className="course-title"><strong>{course.title}</strong><small>查看规划说明</small></span>{tag}<span className="course-arrow" aria-hidden="true">＋</span></summary>
+        <div className="course-details">
+          <p>{course.status === "reading" ? "资料路径尚未发布，学习顺序与权威资源仍在整理。" : "此课程尚未开放，以下为未来规划。"}</p>
+          {course.units && <p>规划单元：{course.units.join(" · ")}</p>}
+          {course.prerequisites && <p>建议先修：{course.prerequisites}（不设硬性门槛）</p>}
+          {course.project && <p>项目方向：{course.project}</p>}
+          <p>实施批次：P{course.phase} · {statusLabels[course.status]}</p>
+        </div>
+      </details>
+    </li>
+  );
+}
+
+export function AcademyCatalog({ directory = false }: { directory?: boolean }) {
+  const [stage, setStage] = useState<Stage>("Foundation");
+  const [trackId, setTrackId] = useState<AcademyTrackId>("A");
+  const [query, setQuery] = useState("");
+  const [status, setStatus] = useState<CourseStatus | "all">("all");
+  const [scope, setScope] = useState(directory ? "stage" : "track");
+  const stageCourses = coursesFor(stage);
+  const visibleTracks = academyTracks.filter(t => stageCourses.some(c => c.track === t.id));
+  const selected = visibleTracks.find(t => t.id === trackId) ?? visibleTracks[0]!;
+  const selectedCourses = coursesFor(stage, selected.id);
+  const results = filterCourses(scope === "stage" ? stageCourses : selectedCourses, query, status);
+  const oldTrack = getTrack(selected.id.toLowerCase());
+  const stageInfo = stages.find(s => s.id === stage)!;
+  const resetFilters = () => { setQuery(""); setStatus("all"); };
+
+  return (
+    <div className="academy-catalog">
+      <div className="academy-section-head"><div><h2 id="stages-heading">选择你的学习阶段</h2><p>从基础起步，逐渐深入。每个阶段都可以自由探索。</p></div><span className="academy-eyebrow">3 PHASES</span></div>
+      <div className="academy-stages" role="group" aria-labelledby="stages-heading">
+        {stages.map((s, i) => <button key={s.id} className="academy-stage" aria-pressed={stage === s.id} onClick={() => { setStage(s.id); resetFilters(); }}>
+          <span className="academy-eyebrow">PHASE 0{i + 1}<span>{s.id}</span></span>
+          <strong>{s.title}</strong><span className="muted">{s.subtitle}</span><span className="stage-count">{stageSummary(s.id)}</span>
+        </button>)}
+      </div>
+      <div className="academy-section-head" id="academy-tracks"><div><h2 id="tracks-heading">探索学习路线</h2><p>{stageInfo.subtitle} · 按规划逐步建设</p></div><span className="academy-eyebrow">{visibleTracks.length} TRACKS</span></div>
+      <div className="academy-workspace">
+        <div className="academy-tracklist" role="group" aria-labelledby="tracks-heading">
+          {visibleTracks.map(t => {
+            const entries = coursesFor(stage, t.id);
+            return <button className="academy-track" key={t.id} aria-pressed={selected.id === t.id} onClick={() => { setTrackId(t.id); setScope("track"); resetFilters(); }}>
+              {t.art ? <img className="track-emblem" src={artUrl(t.art)} alt="" width={64} height={64} /> : <span className="art-placeholder" aria-label={`${t.title}官方插画待提供`}>插画<br />待提供</span>}
+              <span className="academy-track-text"><strong>{t.id} · {t.title}</strong><small>{stage === "Foundation" ? `${entries.filter(c => c.status === "live").length} / ${entries.length} 已上线` : `${entries.length} 门课程`}</small></span>
+              <span aria-hidden="true" className="muted">›</span>
+            </button>;
+          })}
+        </div>
+        <section className="panel academy-course-panel" aria-labelledby="course-panel-title">
+          <header className="academy-panel-head"><div><h3 id="course-panel-title">{scope === "stage" ? `${stageInfo.title} · 全部课程` : selected.title}</h3><p>{scope === "stage" ? "搜索这一阶段的所有路线" : selected.subtitle} · {stage}</p></div><span className="course-tag">{scope === "stage" ? stageCourses.length : selectedCourses.length} 门目录</span></header>
+          <p className="academy-notice">{stageInfo.note}</p>
+          {oldTrack?.status === "building" && <Link className="academy-map-link" to={`/paths/${oldTrack.id}`}>打开 {selected.id} 原版路线图 →</Link>}
+          <div className="academy-search">
+            <label className="academy-search-input"><span className="sr-only">搜索课程标题或编号</span><input type="search" placeholder="搜索课程标题或编号…" value={query} onChange={e => setQuery(e.target.value)} /></label>
+            <select aria-label="搜索范围" value={scope} onChange={e => setScope(e.target.value)}><option value="track">当前路线</option><option value="stage">当前阶段全部路线</option></select>
+            <select aria-label="筛选课程状态" value={status} onChange={e => setStatus(e.target.value as CourseStatus | "all")}><option value="all">全部状态</option>{Object.entries(statusLabels).map(([id, label]) => <option value={id} key={id}>{label}</option>)}</select>
+          </div>
+          <p className="academy-result-count" role="status">找到 {results.length} 门课程{query && ` · “${query}”`}</p>
+          {results.length ? <ul className="academy-courses">{results.map(c => <CourseRow key={c.id} course={c} />)}</ul> : <div className="academy-empty"><p>没有符合条件的课程</p><button className="btn secondary" onClick={resetFilters}>清除搜索与筛选</button></div>}
+        </section>
+      </div>
+      <p className="academy-footnote">上线数量表示课程可访问，不代表个人学习进度。下一批、试点、精选主题与资料路径均为未来规划。</p>
+    </div>
+  );
+}

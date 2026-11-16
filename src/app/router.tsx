@@ -25,6 +25,7 @@ export function Link({
 export type Match =
   | { name: "home" }
   | { name: "paths" }
+  | { name: "courses" }
   | { name: "track"; trackId: string }
   | { name: "lesson"; lessonId: string }
   | { name: "lab" }
@@ -42,6 +43,7 @@ export function matchRoute(path: string): Match {
   if (a === "lab" && b === "tutor") return c ? { name: "tutor", lessonId: c } : { name: "tutor" };
   if (c) return { name: "notfound" };
   if (!a) return { name: "home" };
+  if (a === "courses" && !b) return { name: "courses" };
   if (a === "paths" && !b) return { name: "paths" };
   if (a === "paths" && b) return { name: "track", trackId: b };
   if (a === "lesson" && b) return { name: "lesson", lessonId: b };

@@ -157,7 +157,7 @@ export function PromptLab() {
       {outputs && (
         <>
           <h2 className="section-title">同一件事，两条指令，两种结果</h2>
-          <p className="muted">场景：{preset.scenario}　两条指令都是我们写的示例；下面的回答是 AI 实时生成的，每次运行都可能不一样。</p>
+          <p className="muted">场景：{preset.scenario} 两条指令都是我们写的示例；下面的回答是 AI 实时生成的，每次运行都可能不一样。</p>
           <div className="pl-compare">
             <div>
               <h3>差指令</h3>

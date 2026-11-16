@@ -9,9 +9,9 @@ const P = parse as unknown as Parse;
 
 /** 在一个假的"iframe 全局环境"里运行真正的 shim 和（加了保护的）学习者代码。 */
 function runInShim(code: string, budgetMs = 150, instrument = true) {
-  const messages: any[] = [];
-  const ctx: any = {
-    parent: { postMessage: (m: unknown) => messages.push(m) },
+  const messages: { type: string; lines: string[]; error: string | null; truncated?: boolean }[] = [];
+  const ctx: vm.Context = {
+    parent: { postMessage: (m: unknown) => messages.push(m as (typeof messages)[number]) },
     console: {},
     queueMicrotask,
     Date,
@@ -36,7 +36,8 @@ function runInShim(code: string, budgetMs = 150, instrument = true) {
   }
   ctx.__nicoDone();
   const done = messages.find((m) => m.type === "done");
-  return { lines: [...done.lines] as string[], thrown, ms: Date.now() - t0, done };
+  if (!done) throw new Error("Shim did not report completion");
+  return { lines: [...done.lines], thrown, ms: Date.now() - t0, done };
 }
 
 describe("instrumentLoops: behaviour is unchanged", () => {
@@ -97,8 +98,8 @@ describe("instrumentLoops: endless loops are stopped", () => {
     expect(r.lines).toEqual(["1999999000000"]);
   });
   it("the budget is per turn, not forever: a later turn gets a fresh budget", async () => {
-    const messages: any[] = [];
-    const ctx: any = { parent: { postMessage: (m: unknown) => messages.push(m) }, console: {}, queueMicrotask, Date, JSON, Error, Array, String, addEventListener: () => {} };
+    const messages: { type: string; lines: string[]; error: string | null; truncated?: boolean }[] = [];
+    const ctx: vm.Context = { parent: { postMessage: (m: unknown) => messages.push(m as (typeof messages)[number]) }, console: {}, queueMicrotask, Date, JSON, Error, Array, String, addEventListener: () => {} };
     ctx.window = ctx;
     vm.createContext(ctx);
     vm.runInContext(shimSource("t", 120), ctx);
@@ -107,7 +108,7 @@ describe("instrumentLoops: endless loops are stopped", () => {
     await new Promise((r) => setTimeout(r, 200)); // 过了预算时间，但是新的一轮
     vm.runInContext(quick, ctx);
     ctx.__nicoDone();
-    expect(messages.find((m) => m.type === "done").error).toBe(null);
+    expect(messages.find((m) => m.type === "done")!.error).toBe(null);
   });
 });
 

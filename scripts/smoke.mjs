@@ -48,9 +48,9 @@ const noOverflow = async () =>
 
 // ---- 首页 ----
 await page.goto(`${BASE}/#/`);
-check("首页标题是 Nico", (await text("h1")) === "Nico");
-check("首页有 5 张路线卡", (await page.locator(".trackcard").count()) === 5);
-check("每张路线卡都有徽记图片", (await page.locator(".trackcard img.track-emblem").count()) === 5);
+check("首页显示 Academy 主标题", (await text("h1")).includes("你的知识世界"));
+check("基础阶段有 A–F 六条路线", (await page.locator(".academy-track").count()) === 6);
+check("A–E 仍使用五张原版插画", (await page.locator(".academy-track img.track-emblem").count()) === 5);
 check("首页没有假进度（未学习时不显示统计）", (await page.locator(".stats").count()) === 0);
 check("手机宽度无横向溢出：首页", await noOverflow());
 check("首页主视觉图片加载成功", await imagesOk());
@@ -112,7 +112,7 @@ await page.getByRole("button", { name: "上一步", exact: true }).click();
 await soon("续学后可以回到上一步，且不被门控卡住", () => nextBtn().isEnabled());
 await nextBtn().click();
 // 重新完成挑战以继续
-for (const [t, pvs, last] of [[5, [4, 1], false], [37, [32, 4, 1], false], [200, [128, 64, 8], true]]) {
+for (const [, pvs, last] of [[5, [4, 1], false], [37, [32, 4, 1], false], [200, [128, 64, 8], true]]) {
   for (const pv of pvs) await sw(pv).click();
   await btn("检查").click();
   await btn(last ? "完成" : "下一个目标").click();
@@ -157,8 +157,8 @@ check("记录了真实的一次性答对数（3 道选择题 2 对 + 迁移题�
 await page.goto(`${BASE}/#/paths/a`);
 await soon("路线页头有徽记且图片加载成功", async () => (await page.locator(".track-head img").count()) === 1 && (await imagesOk()));
 await soon("路线地图显示已完成", async () => (await page.locator(".pm-card .pill.done").count()) === 1);
-await soon("路线地图里有 15 个规划中的课", async () => (await page.locator(".pm-card.planned").count()) === 15);
-await soon("路线地图上 A02 到 A05 显示『可以开始』", async () => (await page.locator(".pm-card .pill.available").count()) === 4);
+await soon("路线地图里有 12 个规划中的课", async () => (await page.locator(".pm-card.planned").count()) === 12);
+await soon("路线地图上其余七门已上线课显示『可以开始』", async () => (await page.locator(".pm-card .pill.available").count()) === 7);
 await page.goto(`${BASE}/#/`);
 await soon("首页现在显示已完成 1 课", async () => (await text(".stats")).includes("1"));
 await soon("首页推荐下一课 A02", async () => (await text(".today")).includes("十六进制") && (await text(".today")).includes("下一课"));
@@ -415,16 +415,16 @@ await btn("检查答案").click();
 await soon("A05 迁移题答对（12，和单步运行的真实步数一致）", async () => (await text(".feedback")).includes("答对了"));
 await nextBtn().click(); // -> 小结
 check("A05 小结有三点", (await page.locator(".points li").count()) === 3);
-check("A05 之后没有可学的课：回到路线", (await page.getByRole("link", { name: "回到路线" }).count()) === 1);
-check("A05 提示下一课还在准备中", (await text(".lesson-wrap")).includes("下一课还在准备中"));
+check("A05 之后跳到已上线的 A09", (await page.locator('.stepnav a[href="#/lesson/a09-network-layers"]').getAttribute("href")) === "#/lesson/a09-network-layers");
+check("A05 如实说明按顺序的下一课仍在制作", (await text(".lesson-wrap")).includes("还在制作中，你可以先学这一课"));
 const saved5 = await page.evaluate(() => JSON.parse(localStorage.getItem("nico-progress") ?? "null"));
 check("A05 完成后进度已保存（第一次答对 2 / 4）", saved5?.lessons?.["a05-cpu-cycle"]?.firstTryCorrect === 2 && saved5?.lessons?.["a05-cpu-cycle"]?.quizTotal === 4, JSON.stringify(saved5?.lessons));
 await page.goto(`${BASE}/#/`);
 await soon("首页现在显示已完成 5 课", async () => (await text(".stats .stat strong")) === "5");
-// 路线 B 开放后，A 路线学完时首页应推荐还没学的 B01，而不是说"学完了"（原断言是路线 B 上线前写的）
-await soon("首页推荐下一门还没学的课（路线 B 的 B01）", async () => {
+// A09/A10/A13 已上线：A01–A05 完成后推荐 A09。
+await soon("首页推荐下一门还没学的课（A09）", async () => {
   const t = await text(".today");
-  return t.includes("变量：给数据起名字") && !t.includes("目前可学的课都学完了");
+  return t.includes("网络是什么") && !t.includes("目前可学的课都学完了");
 });
 
 // ---- 完成后徽章按真实条件点亮 ----

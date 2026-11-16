@@ -1,5 +1,5 @@
 /* 路线 B 的代码互动样式。只用设计令牌，不覆盖别处的样式。 */
-.codesim { display: grid; gap: var(--s3); }
+.codesim { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; gap: var(--s3); }
 .codesim h4 { margin: var(--s2) 0 0; font-size: 0.9375rem; }
 .code-editor { min-width: 0; }
 .code-cm[hidden] { display: none; }
@@ -18,7 +18,7 @@
 }
 .code-output {
   margin: 0; padding: var(--s3); min-height: 2.5rem; overflow-x: auto;
-  background: var(--ink); color: #f2f4f7; border-radius: var(--r-panel);
+  background: var(--console-bg); color: #f2f4f7; border-radius: var(--r-panel);
   font-family: var(--font-mono); font-size: 0.9375rem; white-space: pre-wrap; word-break: break-word;
 }
 .code-solution { border-left: 4px solid var(--signal); background: var(--signal-soft); padding: var(--s3) var(--s4); border-radius: var(--r-panel); }

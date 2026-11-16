@@ -1,5 +1,7 @@
 # 路线 B（编程与网站）状态
 
+> 2026-11-16 Academy P0 更新：以下保留为历史记录。现已用真实 npm 依赖、CodeMirror、Pyodide 314.0.8 通过完整检查；module Worker 兼容修复与 103 项 B 路线浏览器结果见 [P0 验收记录](../academy/P0_REPORT.md)。
+
 范围：蓝图 Phase 4 的第一段。只新增文件；共用文件的改动见下表，方便合并时对照。
 
 ## 已做

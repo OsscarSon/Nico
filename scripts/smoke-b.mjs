@@ -5,7 +5,7 @@
 //   PowerShell：$env:BASE_URL = "http://localhost:4173"; npm run smoke:b
 //   macOS/Linux：BASE_URL=http://localhost:4173 npm run smoke:b
 // 默认使用真实的 Pyodide（从 jsDelivr 下载，需要联网，首次约几十秒）。
-// 离线 / 无法联网的环境：设置 PYODIDE_STUB=某个 JS 文件路径，它会代替 jsDelivr 上的 pyodide.js。
+// 离线 / 无法联网的环境：设置 PYODIDE_STUB=某个 JS 文件路径，它会代替 jsDelivr 上的 pyodide.mjs。
 const { chromium } = await import(process.env.PW_PATH ?? "playwright");
 import { readFileSync } from "node:fs";
 const BASE = process.env.BASE_URL ?? "http://localhost:4173";
@@ -28,7 +28,9 @@ const soon = async (name, fn, timeout = 20000) => {
   check(name, ok, detail);
 };
 
-const browser = await chromium.launch();
+// Cloud 等环境可能要求浏览器显式使用代理；保留 TLS 验证与真实 Pyodide。
+const browser = await chromium.launch({ proxy: process.env.BROWSER_PROXY
+  ? { server: process.env.BROWSER_PROXY, bypass: "localhost,127.0.0.1" } : undefined });
 const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
 if (STUB) {
   const body = readFileSync(STUB, "utf8");
@@ -48,6 +50,8 @@ const outputText = () => page.locator(".code-output").first().innerText();
 
 /** 往编辑器里放代码：CodeMirror 是 contenteditable，退回模式是文本框，两种都支持。 */
 async function setCode(code) {
+  // 等待懒加载编辑器完成交接，避免在临时 textarea 被替换时输入。
+  await page.locator('.code-editor[data-engine="cm"], .code-editor[data-engine="fallback"]').first().waitFor();
   const ta = page.locator(".code-textarea").first();
   if (await ta.count()) { await ta.fill(code); return; }
   await page.locator(".cm-content").first().click();

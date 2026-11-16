@@ -1,0 +1,63 @@
+import { z } from "zod";
+import data from "./curriculum.json";
+import { allCatalogLessons, getLesson } from ".";
+import { tracks } from "./catalog";
+
+const courseSchema = z.object({
+  id: z.string().min(1),
+  stage: z.enum(["Foundation", "Intermediate", "Advanced"]),
+  track: z.enum(["A", "B", "C", "D", "E", "F", "M"]),
+  title: z.string().min(1),
+  status: z.enum(["live", "next", "planned", "flagship", "reading"]),
+  phase: z.number().int().min(1).max(5),
+  source: z.string().optional(),
+  project: z.string(),
+  units: z.array(z.string()).optional(),
+  prerequisites: z.string().optional(),
+});
+export type Course = z.infer<typeof courseSchema>;
+export type Stage = Course["stage"];
+export type AcademyTrackId = Course["track"];
+export type CourseStatus = Course["status"];
+export const curriculum = z.array(courseSchema).parse(data);
+
+export const stages: { id: Stage; title: string; subtitle: string; note: string }[] = [
+  { id: "Foundation", title: "基础阶段", subtitle: "打好知识基础", note: "当前优先补齐 A / B / C 基础路线，其余路线仍在规划中。已上线课程可学习，内容质量仍以课内的草稿 / 试学标记为准。" },
+  { id: "Intermediate", title: "中阶阶段", subtitle: "从知识走向实践", note: "首批试点规划为 B-I01、C-I04、C-I05，目前尚未开放。先修仅作建议，可以自由探索目录。" },
+  { id: "Advanced", title: "进阶阶段", subtitle: "深入专业主题", note: "精选主题是未来计划制作互动实验的方向；资料路径的资源尚待整理。两者都不表示已经上线。" },
+];
+export const statusLabels: Record<CourseStatus, string> = {
+  live: "已上线", next: "下一批 / 试点", planned: "规划中", flagship: "精选主题", reading: "资料路径",
+};
+export const academyTracks: { id: AcademyTrackId; title: string; subtitle: string; art?: string }[] = [
+  ...tracks.map(t => ({ id: t.id.toUpperCase() as AcademyTrackId, title: t.title, subtitle: t.tagline, art: t.art })),
+  // TODO(official-art): 接入用户提供的 F/M 原版插画；不生成替代图案。
+  { id: "F", title: "硬件与机器人", subtitle: "连接软件与现实。" },
+  { id: "M", title: "数学基础", subtitle: "理解技术背后的数学。" },
+];
+
+export function coursesFor(stage: Stage, track?: AcademyTrackId): Course[] {
+  return curriculum.filter(c => c.stage === stage && (!track || c.track === track))
+    .sort((a, b) => a.id.localeCompare(b.id, "en", { numeric: true }));
+}
+export function stageSummary(stage: Stage): string {
+  const courses = coursesFor(stage);
+  const count = (status: CourseStatus) => courses.filter(c => c.status === status).length;
+  if (stage === "Foundation") return `已上线 ${count("live")} / ${courses.length}`;
+  if (stage === "Intermediate") return `试点规划 ${count("next")} · ${courses.length} 门目录`;
+  return `精选 ${count("flagship")} · 资料路径 ${count("reading")}`;
+}
+
+// 只映射基础目录的展示编号。旧 ID、路由及进度键始终保持原样。
+const legacyByCode = new Map(allCatalogLessons().map(l => [l.id.split("-")[0]!.toUpperCase(), l]));
+export function liveLessonFor(course: Course) {
+  if (course.stage !== "Foundation" || course.status !== "live") return undefined;
+  const legacy = legacyByCode.get(course.id);
+  return legacy?.status === "available" ? getLesson(legacy.id) : undefined;
+}
+
+export function filterCourses(courses: Course[], query: string, status: CourseStatus | "all"): Course[] {
+  const q = query.trim().toLocaleLowerCase();
+  return courses.filter(c => (status === "all" || c.status === status)
+    && `${c.id} ${c.title}`.toLocaleLowerCase().includes(q));
+}

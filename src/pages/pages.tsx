@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link } from "../app/router";
 import { getLesson, allCatalogLessons } from "../content";
-import { getTrack, tracks } from "../content/catalog";
+import { getTrack } from "../content/catalog";
 import { Device, EmptyState } from "../components/ui";
 import { artUrl } from "../art";
 import { evaluateBadges } from "../progress/badges";
-import { TrackCard } from "../components/TrackCard";
+import { AcademyCatalog } from "../features/academy/AcademyCatalog";
 import { PathMap } from "../features/path/PathMap";
 import { BitSwitches } from "../sims/BitSwitches";
 import { clearProgress, getProgress, useProgress } from "../progress/useProgress";
@@ -25,12 +25,14 @@ export function HomePage() {
 
   return (
     <>
-      <header className="page-head">
-        <h1>Nico</h1>
-        <p>边学边做的电脑科技实验室。每天十几分钟，动手搞懂电脑和网络是怎么回事。</p>
-      </header>
-
-      <img className="hero-art" src={artUrl("hero-home-1600x900.png")} alt="" width={1600} height={900} />
+      <section className="academy-hero">
+        <div><span className="academy-eyebrow">EXPLORE · BUILD · UNDERSTAND</span>
+          <h1>每一步，都在构建<br />你的知识世界。</h1>
+          <p>从第一行代码，到理解复杂系统。<br />选择你的路线，让学习真正发生。</p>
+          <button className="btn" onClick={() => document.getElementById("academy-tracks")?.scrollIntoView({ behavior: "smooth", block: "start" })}>探索学习路线 ↗</button>
+        </div>
+        <img src={artUrl("hero-home-1600x900.png")} alt="Nico 原版 Byte 与电路学习路线插画" width={1600} height={900} />
+      </section>
 
       <section className="panel today" aria-labelledby="today-title">
         {targetLesson ? (
@@ -68,26 +70,17 @@ export function HomePage() {
         )}
       </section>
 
-      <h2 className="section-title">五条学习路线</h2>
-      <div className="grid cols-3">
-        {tracks.map((t) => <TrackCard key={t.id} track={t} />)}
-      </div>
+      <AcademyCatalog />
     </>
   );
 }
 
 export function PathsPage() {
-  return (
-    <>
-      <header className="page-head">
-        <h1>学习路线</h1>
-        <p>五条路线。现在先把路线 A 做扎实，其余几条按顺序陆续开放。</p>
-      </header>
-      <div className="grid cols-2">
-        {tracks.map((t) => <TrackCard key={t.id} track={t} />)}
-      </div>
-    </>
-  );
+  return <><header className="page-head"><h1>学习路线</h1><p>从入门到深入的自学路径。阶段与先修仅作建议，不设硬性门槛。</p></header><AcademyCatalog /></>;
+}
+
+export function CoursesPage() {
+  return <><header className="page-head"><h1>课程目录</h1><p>按阶段、路线与状态查找课程，已上线课程可直接进入学习。</p></header><AcademyCatalog directory /></>;
 }
 
 export function TrackPage({ trackId }: { trackId: string }) {
@@ -209,6 +202,13 @@ export function MePage() {
           </li>
         ))}
       </ul>
+
+      <h2 className="section-title">学习工具</h2>
+      <div className="row">
+        <Link to="/lab" className="btn secondary">打开实验台</Link>
+        <Link to="/lab/prompt" className="btn secondary">Prompt 训练场</Link>
+        <Link to="/projects" className="btn secondary">查看作品</Link>
+      </div>
 
       <h2 className="section-title">设置</h2>
       <section className="panel">
