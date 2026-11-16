@@ -1,3 +1,6 @@
+import { ForwardingLab } from "../../sims/ForwardingLab";
+import { ReassemblyLab } from "../../sims/ReassemblyLab";
+import { TcpLab } from "../../sims/TcpLab";
 import { MemorySim, OsSim, TerminalSim } from "../../sims/FoundationSims";
 import { useState } from "react";
 import type { Block, QuizItem } from "../../content/schema";
@@ -54,7 +57,10 @@ export function SimBlock({
     <div>
       <p>{block.intro}</p>
       <Device title={block.title} label={simLabel(block.sim)}>
-        {block.sim === "memory" ? <MemorySim mode={block.mode} onSolved={onDone} />
+        {block.sim === "forwarding" ? <ForwardingLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "reassembly" ? <ReassemblyLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "tcp" ? <TcpLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "memory" ? <MemorySim mode={block.mode} onSolved={onDone} />
           : block.sim === "os" ? <OsSim mode={block.mode} onSolved={onDone} />
           : block.sim === "terminal" ? <TerminalSim mode={block.mode} onSolved={onDone} />
           : block.sim === "python" && block.code ? (

@@ -157,8 +157,8 @@ check("记录了真实的一次性答对数（3 道选择题 2 对 + 迁移题�
 await page.goto(`${BASE}/#/paths/a`);
 await soon("路线页头有徽记且图片加载成功", async () => (await page.locator(".track-head img").count()) === 1 && (await imagesOk()));
 await soon("路线地图显示已完成", async () => (await page.locator(".pm-card .pill.done").count()) === 1);
-await soon("路线地图里有 9 个规划中的课", async () => (await page.locator(".pm-card.planned").count()) === 9);
-await soon("路线地图上其余十门已上线课显示『可以开始』", async () => (await page.locator(".pm-card .pill.available").count()) === 10);
+await soon("路线地图里有 6 个规划中的课", async () => (await page.locator(".pm-card.planned").count()) === 6);
+await soon("路线地图上其余十三门已上线课显示『可以开始』", async () => (await page.locator(".pm-card .pill.available").count()) === 13);
 await page.goto(`${BASE}/#/`);
 await soon("首页现在显示已完成 1 课", async () => (await text(".stats")).includes("1"));
 await soon("首页推荐下一课 A02", async () => (await text(".today")).includes("十六进制") && (await text(".today")).includes("下一课"));
@@ -446,7 +446,7 @@ for (const p of ["/paths", "/paths/a", "/paths/c", "/lab", "/projects", "/me", "
   check(`页面非空：${p}`, (await text("main")).length > 20);
 }
 await soon("未知地址显示找不到页面", async () => (await text("main")).includes("找不到这个页面"));
-await page.goto(`${BASE}/#/lesson/a11-devices`);
+await page.goto(`${BASE}/#/lesson/a15-udp`);
 await soon("规划中的课不会显示假内容", async () => (await text("main")).includes("还没有开放"));
 
 // ---- 清除数据需要二次确认 ----

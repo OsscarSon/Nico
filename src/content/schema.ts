@@ -82,7 +82,7 @@ export const blockSchema = z.discriminatedUnion("type", [
   }),
   z.object({
     type: z.literal("sim"),
-    sim: z.enum(["bit-switches", "logic-gate", "half-adder", "mini-cpu", "layers", "subnet", "dns", "python", "web", "js", "git", "prompt-check", "memory", "os", "terminal"]),
+    sim: z.enum(["bit-switches", "logic-gate", "half-adder", "mini-cpu", "layers", "subnet", "dns", "python", "web", "js", "git", "prompt-check", "memory", "os", "terminal", "forwarding", "reassembly", "tcp"]),
     mode: z.enum(["free", "challenge"]),
     title: z.string().min(1),
     intro: z.string().min(1),
@@ -163,7 +163,7 @@ export const lessonSchema = z
                     ? (b.code?.webChecks?.length ?? 0) > 0 && Boolean(b.code?.solution)
                     : b.sim === "prompt-check"
                       ? Boolean(b.scenario) && (b.required?.length ?? 0) > 0 && Boolean(b.sample)
-                      : true), // memory、os、terminal、half-adder、mini-cpu、layers、subnet、dns 的挑战内容写在各自的模型里，不需要额外配置
+                      : true), // forwarding、reassembly、tcp、memory、os、terminal、half-adder、mini-cpu、layers、subnet、dns 的挑战内容写在各自的模型里，不需要额外配置
       ),
     "互动挑战必须提供目标（targets、gates，代码挑战的 checks / webChecks 与参考答案，或指令挑战的 scenario / required / sample）",
   )

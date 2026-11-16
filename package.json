@@ -17,7 +17,8 @@
     "smoke:b": "node scripts/smoke-b.mjs",
     "smoke:ai": "node scripts/smoke-ai.mjs",
     "smoke:academy": "node scripts/smoke-academy.mjs",
-    "smoke:foundation": "node scripts/smoke-foundation.mjs"
+    "smoke:foundation": "node scripts/smoke-foundation.mjs",
+    "smoke:network": "node scripts/smoke-network.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.0",

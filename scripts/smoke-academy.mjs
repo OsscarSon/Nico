@@ -63,7 +63,7 @@ try {
     check(`${width}: 空状态重置有效`, await page.locator(".academy-course").count() === 22);
     await page.getByLabel("搜索范围").selectOption("stage");
     await page.getByLabel("筛选课程状态").selectOption("live");
-    check(`${width}: 跨路线查找全部26个真实入口`, await page.locator(".academy-course a").count() === 26);
+    check(`${width}: 跨路线查找全部29个真实入口`, await page.locator(".academy-course a").count() === 29);
     await search.fill("B01");
     check(`${width}: B01 保留旧课程地址`, await page.locator(".academy-course a").getAttribute("href") === "#/lesson/b01-variables");
     await search.fill("c05");

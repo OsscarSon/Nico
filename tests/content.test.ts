@@ -63,11 +63,11 @@ describe("next lesson", () => {
   it("A05 is followed directly by A06", () => {
     expect(nextAvailableAfter("a05-cpu-cycle")?.id).toBe("a06-memory");
   });
-  it("A10 skips the unfinished A11–A12 and lands on A13", () => {
-    expect(nextAvailableAfter("a10-ip-subnet")?.id).toBe("a13-dns");
+  it("A10 is followed by A11", () => {
+    expect(nextAvailableAfter("a10-ip-subnet")?.id).toBe("a11-devices");
   });
   it("returns undefined after the last available lesson of the track", () => {
-    expect(nextAvailableAfter("a13-dns")).toBe(undefined);
+    expect(nextAvailableAfter("a14-tcp")).toBe(undefined);
   });
   it("returns undefined for unknown ids", () => {
     expect(nextAvailableAfter("zz99-nope")).toBe(undefined);

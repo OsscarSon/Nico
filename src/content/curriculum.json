@@ -106,7 +106,7 @@
   "title": "MAC/交换机/路由器",
   "source": "existing curriculum",
   "project": "网页访问交互图与诊断面板",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -116,7 +116,7 @@
   "title": "数据包",
   "source": "existing curriculum",
   "project": "网页访问交互图与诊断面板",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -136,7 +136,7 @@
   "title": "TCP",
   "source": "existing curriculum",
   "project": "网页访问交互图与诊断面板",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
