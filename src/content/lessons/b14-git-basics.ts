@@ -5,6 +5,7 @@ export const b14: Lesson = lessonSchema.parse({
   id: "b14-git-basics",
   track: "b",
   unit: "b3",
+  art: "lesson-b14-git-basics.png",
   title: "Git 第一步：保存快照",
   objectives: [
     "能说清工作区、暂存区、提交（commit）三个地方的关系",
