@@ -1,3 +1,4 @@
+import { trackBUnits, trackBCatalog } from "./track-b-catalog";
 export type TrackId = "a" | "b" | "c" | "d" | "e";
 export type CatalogLesson = {
   id: string;
@@ -70,10 +71,10 @@ export const tracks: Track[] = [
     english: "Code & Web",
     art: "track-b-code.png",
     tagline: "写出第一个程序，再做出自己的网页。",
-    status: "planned",
+    status: "building",
     plannedSummary: "约 20 课 · Python、网页、Git",
-    units: [],
-    lessons: [],
+    units: trackBUnits,
+    lessons: trackBCatalog,
   },
   {
     id: "c",

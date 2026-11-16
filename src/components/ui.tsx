@@ -2,12 +2,20 @@ import type { ReactNode } from "react";
 import type { QualityState } from "../content/schema";
 import { artUrl } from "../art";
 
-/** 把 **粗体** 标记渲染为 <strong>，其余按纯文本输出（不使用 innerHTML）。 */
+/** 把 **粗体** 渲染为 <strong>、`代码` 渲染为 <code>，其余按纯文本输出（不使用 innerHTML）。 */
 export function RichText({ text }: { text: string }) {
-  const parts = text.split(/\*\*(.+?)\*\*/g);
+  const parts = text.split(/(\*\*.+?\*\*|`[^`]+`)/g);
   return (
     <>
-      {parts.map((p, i) => (i % 2 ? <strong key={i}>{p}</strong> : <span key={i}>{p}</span>))}
+      {parts.map((p, i) =>
+        p.startsWith("**") && p.endsWith("**") && p.length > 4 ? (
+          <strong key={i}>{p.slice(2, -2)}</strong>
+        ) : p.startsWith("`") && p.endsWith("`") && p.length > 2 ? (
+          <code key={i} className="inline-code">{p.slice(1, -1)}</code>
+        ) : (
+          <span key={i}>{p}</span>
+        ),
+      )}
     </>
   );
 }

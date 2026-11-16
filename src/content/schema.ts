@@ -18,6 +18,38 @@ export const quizItemSchema = z
     "每个错误选项都需要 wrongHints 诊断提示",
   );
 
+/** 路线 B：代码互动的配置。python 用 checks 判分，web 用 webChecks 判分。判分逻辑见 src/grading/code.ts、web.ts */
+export const codeCheckSchema = z.object({
+  label: z.string().min(1),
+  stdin: z.string().optional(),
+  harness: z.string().optional(),
+  expect: z.string(),
+  hint: z.string().optional(),
+});
+export const webCheckSchema = z.object({
+  label: z.string().min(1),
+  selector: z.string().min(1),
+  min: z.number().int().positive().optional(),
+  text: z.string().optional(),
+  /** 匹配到的每个元素，其「计算后样式」的 prop 必须等于 value（颜色名、#16进制都行，会先由浏览器统一成同一种写法） */
+  style: z.object({ prop: z.string().min(1), value: z.string().min(1) }).optional(),
+  hint: z.string().optional(),
+});
+export const codeSpecSchema = z.object({
+  /** 编辑器里一开始的代码 */
+  starter: z.string(),
+  /** 参考答案：单元测试用它证明挑战可解；学习者答错后可以查看 */
+  solution: z.string().optional(),
+  checks: z.array(codeCheckSchema).optional(),
+  webChecks: z.array(webCheckSchema).optional(),
+  /** 源码必须满足的写法（正则），例如必须用 for */
+  requires: z.array(z.object({ pattern: z.string().min(1), message: z.string().min(1) })).optional(),
+  /** js 互动：脚本运行之前就在页面里的 HTML（可以没有，只用 console.log 输出） */
+  page: z.string().optional(),
+  /** 自由练习时是否显示"程序输入"框（给 input() 用） */
+  allowInput: z.boolean().optional(),
+});
+
 export const blockSchema = z.discriminatedUnion("type", [
   z.object({ type: z.literal("hook"), text: z.string().min(1) }),
   z.object({
@@ -28,7 +60,7 @@ export const blockSchema = z.discriminatedUnion("type", [
   }),
   z.object({
     type: z.literal("sim"),
-    sim: z.enum(["bit-switches", "logic-gate", "half-adder", "mini-cpu"]),
+    sim: z.enum(["bit-switches", "logic-gate", "half-adder", "mini-cpu", "python", "web", "js"]),
     mode: z.enum(["free", "challenge"]),
     title: z.string().min(1),
     intro: z.string().min(1),
@@ -36,6 +68,8 @@ export const blockSchema = z.discriminatedUnion("type", [
     targets: z.array(z.number().int().nonnegative()).optional(),
     /** logic-gate 挑战：依次出现的神秘门 */
     gates: z.array(z.enum(["and", "or", "not", "xor"])).optional(),
+    /** python / web 互动的配置（路线 B） */
+    code: codeSpecSchema.optional(),
   }),
   z.object({ type: z.literal("quiz"), items: z.array(quizItemSchema).min(1) }),
   z.object({
@@ -89,9 +123,22 @@ export const lessonSchema = z
             ? (b.targets?.length ?? 0) > 0
             : b.sim === "logic-gate"
               ? (b.gates?.length ?? 0) > 0
-              : true), // half-adder、mini-cpu 的挑战不需要额外配置
+              : b.sim === "python"
+                ? (b.code?.checks?.length ?? 0) > 0 && Boolean(b.code?.solution)
+                : b.sim === "js"
+                  ? (b.code?.checks?.length ?? 0) > 0 && Boolean(b.code?.solution)
+                  : b.sim === "web"
+                    ? (b.code?.webChecks?.length ?? 0) > 0 && Boolean(b.code?.solution)
+                    : true), // half-adder、mini-cpu 的挑战不需要额外配置
       ),
-    "互动挑战必须提供目标（targets 或 gates）",
+    "互动挑战必须提供目标（targets、gates，或代码挑战的 checks / webChecks 与参考答案）",
+  )
+  .refine(
+    (l) =>
+      l.blocks.every(
+        (b) => b.type !== "sim" || (b.sim !== "python" && b.sim !== "web" && b.sim !== "js") || b.code !== undefined,
+      ),
+    "python / web 互动必须提供 code 配置",
   )
   .refine(
     (l) =>
@@ -103,4 +150,5 @@ export const lessonSchema = z
 export type Lesson = z.infer<typeof lessonSchema>;
 export type Block = z.infer<typeof blockSchema>;
 export type QuizItem = z.infer<typeof quizItemSchema>;
+export type CodeSpec = z.infer<typeof codeSpecSchema>;
 export type QualityState = Lesson["quality"]["state"];

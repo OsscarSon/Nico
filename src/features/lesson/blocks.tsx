@@ -5,6 +5,9 @@ import { BitSwitches } from "../../sims/BitSwitches";
 import { LogicGateSim } from "../../sims/LogicGateSim";
 import { HalfAdderSim } from "../../sims/HalfAdderSim";
 import { MiniCpuSim } from "../../sims/MiniCpuSim";
+import { PythonSim } from "../../sims/code/PythonSim";
+import { WebSim } from "../../sims/code/WebSim";
+import { JsSim } from "../../sims/code/JsSim";
 import { gradeChoice, gradeNumber, REVEAL_AFTER_WRONG } from "../../grading/quiz";
 
 export type QuizStats = { firstTryCorrect: number; total: number };
@@ -33,6 +36,10 @@ export function ExplainBlock({
   );
 }
 
+/** 电路类互动是模拟；Python 是浏览器里的真解释器，不能标"模拟"。 */
+const simLabel = (sim: Extract<Block, { type: "sim" }>["sim"]) =>
+  sim === "python" ? "真实 Python" : sim === "js" ? "真实 JavaScript" : sim === "web" ? "实时预览" : "模拟";
+
 export function SimBlock({
   block,
   onDone,
@@ -40,8 +47,14 @@ export function SimBlock({
   return (
     <div>
       <p>{block.intro}</p>
-      <Device title={block.title} label="模拟">
-        {block.sim === "logic-gate" ? (
+      <Device title={block.title} label={simLabel(block.sim)}>
+        {block.sim === "python" && block.code ? (
+          <PythonSim mode={block.mode} spec={block.code} onSolved={onDone} />
+        ) : block.sim === "js" && block.code ? (
+          <JsSim mode={block.mode} spec={block.code} onSolved={onDone} />
+        ) : block.sim === "web" && block.code ? (
+          <WebSim mode={block.mode} spec={block.code} onSolved={onDone} />
+        ) : block.sim === "logic-gate" ? (
           <LogicGateSim mode={block.mode} gates={block.gates} onSolved={onDone} />
         ) : block.sim === "half-adder" ? (
           <HalfAdderSim mode={block.mode} onSolved={onDone} />

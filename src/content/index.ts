@@ -5,8 +5,12 @@ import { a02 } from "./lessons/a02-hex-encoding";
 import { a03 } from "./lessons/a03-logic-gates";
 import { a04 } from "./lessons/a04-adder";
 import { a05 } from "./lessons/a05-cpu-cycle";
+import { trackBLessons } from "./track-b";
 
-export const lessons: Record<string, Lesson> = { [a01.id]: a01, [a02.id]: a02, [a03.id]: a03, [a04.id]: a04, [a05.id]: a05 };
+export const lessons: Record<string, Lesson> = {
+  [a01.id]: a01, [a02.id]: a02, [a03.id]: a03, [a04.id]: a04, [a05.id]: a05,
+  ...Object.fromEntries(trackBLessons.map((l) => [l.id, l])),
+};
 
 export const getLesson = (id: string): Lesson | undefined => lessons[id];
 
@@ -34,10 +38,10 @@ export function validateContent(): string[] {
   return errors;
 }
 
-/** 目录顺序里，当前课之后第一个已经开放的课。 */
+/** 同一条路线里，当前课之后第一个已经开放的课（不会跳到别的路线）。 */
 export function nextAvailableAfter(id: string): CatalogLesson | undefined {
-  const all = allCatalogLessons();
-  const idx = all.findIndex((l) => l.id === id);
-  if (idx < 0) return undefined;
-  return all.slice(idx + 1).find((l) => l.status === "available");
+  const track = tracks.find((t) => t.lessons.some((l) => l.id === id));
+  if (!track) return undefined;
+  const idx = track.lessons.findIndex((l) => l.id === id);
+  return track.lessons.slice(idx + 1).find((l) => l.status === "available");
 }

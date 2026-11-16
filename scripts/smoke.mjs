@@ -421,7 +421,11 @@ const saved5 = await page.evaluate(() => JSON.parse(localStorage.getItem("nico-p
 check("A05 完成后进度已保存（第一次答对 2 / 4）", saved5?.lessons?.["a05-cpu-cycle"]?.firstTryCorrect === 2 && saved5?.lessons?.["a05-cpu-cycle"]?.quizTotal === 4, JSON.stringify(saved5?.lessons));
 await page.goto(`${BASE}/#/`);
 await soon("首页现在显示已完成 5 课", async () => (await text(".stats .stat strong")) === "5");
-await soon("首页诚实说明没有下一课可学", async () => (await text(".today")).includes("目前可学的课都学完了"));
+// 路线 B 开放后，A 路线学完时首页应推荐还没学的 B01，而不是说"学完了"（原断言是路线 B 上线前写的）
+await soon("首页推荐下一门还没学的课（路线 B 的 B01）", async () => {
+  const t = await text(".today");
+  return t.includes("变量：给数据起名字") && !t.includes("目前可学的课都学完了");
+});
 
 // ---- 完成后徽章按真实条件点亮 ----
 await page.goto(`${BASE}/#/me`);
