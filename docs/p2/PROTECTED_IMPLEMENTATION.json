@@ -1,0 +1,417 @@
+{
+  "base": "0aa1b1c0aea2fd0df8135f6ba7e092112f967d2e",
+  "files": {
+    "package-lock.json": {
+      "sha256": "7d32803c76f9507b49b1a4dc6577440a9e70726492382255735a6122c4cb1ba9",
+      "mode": "exact"
+    },
+    "src/ai/art.ts": {
+      "sha256": "8ad615cee20942ce8f09f6610c0413309d928a1e5087c482e5a3a1cad9c65a97",
+      "mode": "exact"
+    },
+    "src/ai/client.ts": {
+      "sha256": "274f8d9a01d2feb3b7da524080610dcad32f866d0913f126828e06ec0f92d3de",
+      "mode": "exact"
+    },
+    "src/ai/config.ts": {
+      "sha256": "1c6a53ead8b096ab8fd359adebfd8c0b02f5b5d38c060fa00f7318f9948024aa",
+      "mode": "exact"
+    },
+    "src/ai/context.ts": {
+      "sha256": "d6716e0ca28894f053d5063d8f5e388a6638cdb07c57bfeda972b52342dd1e83",
+      "mode": "exact"
+    },
+    "src/ai/elements.ts": {
+      "sha256": "c7cf899dd13c92358f1b2063c4200cf60a7d8891be6b492778b5a9238153e2b1",
+      "mode": "exact"
+    },
+    "src/ai/guard.ts": {
+      "sha256": "8c1ff3e3af457e61a64aa578d5ec27f5b082b112576c92ba11cfb1f42d685b26",
+      "mode": "exact"
+    },
+    "src/ai/markdown.tsx": {
+      "sha256": "8f2fb2cbf009ad10e33a49479dd8f0ce11774141105708c9788a3aa60d912439",
+      "mode": "exact"
+    },
+    "src/ai/messages.ts": {
+      "sha256": "4d972a59fb6ca485b5dff2163df6831f1ef8d23daf8ddcaf33fc698329005ba0",
+      "mode": "exact"
+    },
+    "src/ai/prompts.ts": {
+      "sha256": "d3b73a81e1ce28a629bc1b45542ed38492fb2aeaec8c2a481ce82088c027cb05",
+      "mode": "exact"
+    },
+    "src/ai/protocol.ts": {
+      "sha256": "f5b1c4dba48f36680f1d732bde1a518c81de077a6293187b260ab21dcb5cb0b8",
+      "mode": "exact"
+    },
+    "src/content/lessons/a01-binary.ts": {
+      "sha256": "8233194c700d4991186b296945cb8f873aff16e2e468e85fe76ebebf20c72164",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/a02-hex-encoding.ts": {
+      "sha256": "7c2b0ea6b66a15273293110e4b8bb54c8cba419e4790a6466464ace7026d4d65",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/a03-logic-gates.ts": {
+      "sha256": "bdd5dc86187c35659c74b76966ebe62be27549e89fac6eb0f5e44c59d3478928",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/a04-adder.ts": {
+      "sha256": "0c23a64015e5e158c7e0340c2cfd470e9672da713b573c9cd53909bbd5042d97",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/a05-cpu-cycle.ts": {
+      "sha256": "92ae4ef268dafa3c3cabeca9928b650fa8fd647467a47801a570f2bc6e77a746",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/a06-memory.ts": {
+      "sha256": "f15e581157c9cc62cff3ef1c6f454fbb001e2aa89c59cb18bce2bea998aad35d",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/a07-os.ts": {
+      "sha256": "c4e9976b7af3df4cd8426852a3884d4ff5451e65af308c24287fd95db4f93bcc",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/a08-command-line.ts": {
+      "sha256": "1d73b67c2cb1ceddccab5125b915764d848912209bf9b601fba268110e8e5147",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/a09-network-layers.ts": {
+      "sha256": "e99aeaed245cb254662cfcda40dce9e256898e7b19f9b3e52b3913c2407dd344",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/a10-ip-subnet.ts": {
+      "sha256": "31f923158eaa34bccebfc9a7dd37828c0808abdbc8c5d0e95a8b7c405ea8ab66",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/a11-devices.ts": {
+      "sha256": "1d2759bd42f3b9c5b57240798ae1f6de7b1a15007e767231138def0fa4587388",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/a12-packets.ts": {
+      "sha256": "392c5d002425fb359d5da83d7b03a2cdd5afc3ee327948a6223c36fc086dafb3",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/a13-dns.ts": {
+      "sha256": "15444f9c01544d191dc113ec867b387d6609734fd645c8d713f365e13b92efc2",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/a14-tcp.ts": {
+      "sha256": "1ae84f511cccd22e1172310640330b05a8f564644b39420130da8c6917978544",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/a15-udp.ts": {
+      "sha256": "d2a92f280b6b4316a758ee524a93669a2817d1515605d27d2d86615ad67fc549",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/a16-http-https.ts": {
+      "sha256": "76f7413b502c03205135dbe8cec6676caebc1e478c4ab7a74cd0819f481d3e8a",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/a17-web-journey.ts": {
+      "sha256": "7c3f45ba1011587db8387afca3391e9a346c638aacdccec4176257ba61cd8e1c",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/a18-passwords.ts": {
+      "sha256": "443b5f5eca3be99b2882167e09966cf6848c98490772d2c9fe78abbebfd1e52e",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/a19-phishing.ts": {
+      "sha256": "a0e1c9aee2bc30fe5e75775deb9733ab8c15de46803fba3a166c03b4c024cb9e",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/a20-least-privilege.ts": {
+      "sha256": "7e635ab145cb27b7bfc78c658a78a750cfc7ac55ccaa06a47a101bf5f598a4e1",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/b01-variables.ts": {
+      "sha256": "774a5eb0e5c8ea8df47855942b3462e9d4ae21024ceeb8b3c7c63c00bc5b482d",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/b02-conditions.ts": {
+      "sha256": "4e18f9c2f95deb39c67dc69f84ade3a9252cca46799e92a6df04df0b2ef1bbfb",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/b03-loops.ts": {
+      "sha256": "133303a98f1d59bce42509c2a5f171c63c024990137ec3a496615db33fceacc6",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/b04-functions.ts": {
+      "sha256": "e28d96b1b7a8bb3d5f9b722790637f89be4aedf13ac5f8ef32215aabd008641f",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/b05-lists.ts": {
+      "sha256": "5022a926fe4f54b80b0af70fc6b5fe6fe6e80c67ebae03ad1948e52f0d73a91b",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/b06-dicts.ts": {
+      "sha256": "ca9eb66ef5dda81ee11a324edd828e2fd18c33db8562aa1040198e53c921c597",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/b07-debugging.ts": {
+      "sha256": "8b5aeef2a79c794036206ec152dba001a9a6e02eb3a0dffab2bef4bbf1337c88",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/b08-html.ts": {
+      "sha256": "20b25a15a65809b631a40bc5b462d6eb4a055688830286b090fcbf02d32975d4",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/b09-css.ts": {
+      "sha256": "5cc9bc2ade6d22dd91b8b2df0521d2614ca5f6f0dc9fd0097bed89a175ff852f",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/b10-css-layout.ts": {
+      "sha256": "850d05e4fc5f45ab1d8f792ff2787b084cfbf3595bfcad95e01a568b39a75459",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/b11-js-dom.ts": {
+      "sha256": "598ede0fb096c6591be011d60666d69e7358165f88a52e5038b4730be0c7611d",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/b12-events.ts": {
+      "sha256": "851ac5c1fb893b1581a541072c544bbe0a36a00752254e2a5a584865160fd6b5",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/b14-git-basics.ts": {
+      "sha256": "3f67c07277d0a3538735851b06de2f02f2807354c29165e1ad87f541a6b17b9b",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/b15-git-branches.ts": {
+      "sha256": "c39a68e629eb3165aec25cebc0e87586086c770184eacc5813a9c4615e1f2848",
+      "mode": "lesson-art"
+    },
+    "src/content/lessons/c05-prompt-structure.ts": {
+      "sha256": "ada6e14b2f3ce44f768b0aa0b8da4a53551e7177c90ebfc335eec9a081e6b7e8",
+      "mode": "lesson-art"
+    },
+    "src/grading/adder.ts": {
+      "sha256": "457ffb79f9f7fe94fe07e967891ed48ede4857267894da1b1dc80d1c4d81ab4c",
+      "mode": "exact"
+    },
+    "src/grading/binary.ts": {
+      "sha256": "aa5cd8e9bcf65c539089db10b4b49edc39e953fb94254e160d736656f95c4309",
+      "mode": "exact"
+    },
+    "src/grading/code.ts": {
+      "sha256": "1eeecf4fea6607dc4ae0e956ce212b9f0dd3cc5e950dceed011bb4c04a3e4ff4",
+      "mode": "exact"
+    },
+    "src/grading/connection.ts": {
+      "sha256": "c957ad1eface2573b40324619571c74e098d700c9900cbfa10991f88bd7bf9ad",
+      "mode": "exact"
+    },
+    "src/grading/cpu.ts": {
+      "sha256": "2296edb25146df61eb372f7a49629be8fffc171b4ea07c06c20913992c793bd8",
+      "mode": "exact"
+    },
+    "src/grading/dns.ts": {
+      "sha256": "1f794536f8e8f27e3ac6d851d9a748afee44998a9dd7fe37df2514dfa0c8abf5",
+      "mode": "exact"
+    },
+    "src/grading/forwarding.ts": {
+      "sha256": "768dbdb21493e6605f0176364f5a0ffbf999455fcaee7a5750f208c822a77a7b",
+      "mode": "exact"
+    },
+    "src/grading/gates.ts": {
+      "sha256": "95fc4da03170cdae960473ccc80aa5344c03727509d50c84b37d95d0e656ea21",
+      "mode": "exact"
+    },
+    "src/grading/git.ts": {
+      "sha256": "54350483c5922a4b58b598350a6fe39f6874d420648cb5cbbb7fec3490d098eb",
+      "mode": "exact"
+    },
+    "src/grading/http.ts": {
+      "sha256": "a75b0cdf3904f0cd9134c7a3cac699c5e7041ba2ff2efd488b9612d79d458ff1",
+      "mode": "exact"
+    },
+    "src/grading/ip.ts": {
+      "sha256": "68e0bd46f3f84e4878a07017e2f8d69096b58bf81359ef3e7cef3d32f0e94fab",
+      "mode": "exact"
+    },
+    "src/grading/journey.ts": {
+      "sha256": "2c8be71fa34b37b53c5d4363469a34ac255857c2c89f2a5b55d8a764f084f0c1",
+      "mode": "exact"
+    },
+    "src/grading/js.ts": {
+      "sha256": "f02cf68bde7a1d361ca52dd4e20961a0b869a5558e54b2af05d80c548c619d51",
+      "mode": "exact"
+    },
+    "src/grading/layers.ts": {
+      "sha256": "1feef8c8523448d9f1a14370fef0f20e165e166ff7177239495f2a4c59ac474e",
+      "mode": "exact"
+    },
+    "src/grading/leastPrivilege.ts": {
+      "sha256": "fbcdeb7602afff3d42f963d87dd0693aa21fafbacc3e1c5c13479d24db471b51",
+      "mode": "exact"
+    },
+    "src/grading/memory.ts": {
+      "sha256": "d32e50b2badb50630428d579c78da8d9cca308aa14d75e66bffdf9af7d675ddf",
+      "mode": "exact"
+    },
+    "src/grading/os.ts": {
+      "sha256": "34f16c20a0609894c65f7c18a7e855ef3fdbb324174c510e3712741d92213d1d",
+      "mode": "exact"
+    },
+    "src/grading/password.ts": {
+      "sha256": "03048aef82127d07ebf950a53504e677a83f5631669231045e96a62fec593389",
+      "mode": "exact"
+    },
+    "src/grading/phishing.ts": {
+      "sha256": "e6cf7c2174b9872ce5d9676ac0135482ef980ea68729c19ff2545e23bc2014bc",
+      "mode": "exact"
+    },
+    "src/grading/promptScore.ts": {
+      "sha256": "fa6fc251042f9e8bf16f1190da8ae2852a0035a2a4d5de8ae9511cef0d61e41e",
+      "mode": "exact"
+    },
+    "src/grading/quiz.ts": {
+      "sha256": "61d0cfb04e855be44dfa3de5c717699839ff60a165ca3bc94ae7e8172ccb394a",
+      "mode": "exact"
+    },
+    "src/grading/reassembly.ts": {
+      "sha256": "9807950d1e66d3fb7145a014bf67ff24323249ff1011cd83e545024a37670c3a",
+      "mode": "exact"
+    },
+    "src/grading/tcp.ts": {
+      "sha256": "52658694a34fbf6e27b434ae82002fbdf139dbc5d8b784bfecea5209598b3b1f",
+      "mode": "exact"
+    },
+    "src/grading/terminal.ts": {
+      "sha256": "6f7b832d17fb4035d172fc5a5ffefb816b1409c3f1c757cb5fab2c02f5f94734",
+      "mode": "exact"
+    },
+    "src/grading/tls.ts": {
+      "sha256": "cab65f8e733b1943377888807f30b49e9585571fe4e746b777e6e759d8a5e144",
+      "mode": "exact"
+    },
+    "src/grading/udp.ts": {
+      "sha256": "24c4d14785e9373bc700745db67b69566f22329d578b53df0f6ad4eace0340c8",
+      "mode": "exact"
+    },
+    "src/grading/web.ts": {
+      "sha256": "427512d3d844a7d89c5c037102404013224231debc4ff2d77da84b87d4558653",
+      "mode": "exact"
+    },
+    "src/progress/badges.ts": {
+      "sha256": "cc547df293fd4864b8ad9ad29bfa350b2de1ac0f99df12427830d9b48de36f95",
+      "mode": "exact"
+    },
+    "src/progress/store.ts": {
+      "sha256": "d9d646391a0868dda66231702a7f961e2c32593b1a03da678d2c39145846b730",
+      "mode": "exact"
+    },
+    "src/progress/useProgress.ts": {
+      "sha256": "d787c17a2069148da0b10b0fa1c6a49e0ea856762a31c02e7c64ed80015b21cf",
+      "mode": "exact"
+    },
+    "src/sims/BitSwitches.tsx": {
+      "sha256": "3aaab30fda9112d0742f2c09074c9f3ebe57a52c6bd28e623986025216347a27",
+      "mode": "exact"
+    },
+    "src/sims/DnsSim.tsx": {
+      "sha256": "5a4398af97e89e0b2df9aebd4f5c796fee46bc9b806b24b18a5382b8fae82eca",
+      "mode": "exact"
+    },
+    "src/sims/ForwardingLab.tsx": {
+      "sha256": "12d51eb09a2127651f3be3a75792a45a95a0682336bad7a668cc2577d513908c",
+      "mode": "exact"
+    },
+    "src/sims/FoundationSims.tsx": {
+      "sha256": "675cb68d3ead9f241af4f6a771dff5d94e22726410c996e8ee762e64ff15da36",
+      "mode": "exact"
+    },
+    "src/sims/GateSymbol.tsx": {
+      "sha256": "411aeb51112b5cf5996c67e10d3836d20118b289d1f5c588e178be7d9df240b1",
+      "mode": "exact"
+    },
+    "src/sims/GitSim.tsx": {
+      "sha256": "b7ab6ff7a267602cd937702ae87e01cea8c9dd88ac505b4723d098d35e9097ec",
+      "mode": "exact"
+    },
+    "src/sims/HalfAdderSim.tsx": {
+      "sha256": "deed527dbbed37039cd9e2d5c403aa8459df044949f253efe845473cb701b4ab",
+      "mode": "exact"
+    },
+    "src/sims/HttpLab.tsx": {
+      "sha256": "82973811abaca787592a1ba9ae453cd62906fe78e8f96df4c9b6adadb80c6b14",
+      "mode": "exact"
+    },
+    "src/sims/JourneyLab.tsx": {
+      "sha256": "8f52be6bc9c5cabf86b29a562752742e0e9293e3d36916523faa9800d36ff972",
+      "mode": "exact"
+    },
+    "src/sims/LayersSim.tsx": {
+      "sha256": "c505e25a29dfefb2d545d820acfbe6911d94b5587a11b9b0ff976fde2f4543dc",
+      "mode": "exact"
+    },
+    "src/sims/LogicGateSim.tsx": {
+      "sha256": "80081ddfebaf68ac3f8925454e107c7b8e9ef4be44b4e5b2a2e7ee2c97faaf85",
+      "mode": "exact"
+    },
+    "src/sims/MiniCpuSim.tsx": {
+      "sha256": "ffc036ca8335666237160a0609c93d2263791ce656a87829282cf68034f4bedf",
+      "mode": "exact"
+    },
+    "src/sims/NetworkLabUI.tsx": {
+      "sha256": "c1c1f519361444bc0805c3ee1e00836cfb7697e07d08cab821af3d34dc1352f2",
+      "mode": "exact"
+    },
+    "src/sims/PasswordLab.tsx": {
+      "sha256": "5e5a4f0a59902ee83cb85059ab2e55a630a1bb1a25b7c6b3ca8e80f47d3466b7",
+      "mode": "exact"
+    },
+    "src/sims/PhishingLab.tsx": {
+      "sha256": "d49f65d9414d22de93caec7e02ef1d7e05e5955e89c23e76a6aa2173db0549c6",
+      "mode": "exact"
+    },
+    "src/sims/PrivilegeLab.tsx": {
+      "sha256": "766278892c5556624e924998831d6c20378e1faf391fbe95cdea187f9605111e",
+      "mode": "exact"
+    },
+    "src/sims/PromptCheckSim.tsx": {
+      "sha256": "332eea83c4b8e58a06acbe0fc4f089fda3a9db0e6efdc5ac07c1134950b4342d",
+      "mode": "exact"
+    },
+    "src/sims/ReassemblyLab.tsx": {
+      "sha256": "fbeb8183e4f8e9eff331ce70c6ced03ba1146b16481dbf924fd10cc4c670c23c",
+      "mode": "exact"
+    },
+    "src/sims/SubnetSim.tsx": {
+      "sha256": "ffe03940e6c424122c8c2def285e1e8ab73bd607669bb2f893d0afcd1eb0815b",
+      "mode": "exact"
+    },
+    "src/sims/TcpLab.tsx": {
+      "sha256": "739ef50daa28dc5d9c5682a7ba650f1007d7cd292f8bc0f2fb7cd8da9ca0cbc6",
+      "mode": "exact"
+    },
+    "src/sims/UdpLab.tsx": {
+      "sha256": "82095eff6315e8bc85eab453c1a1a805150fd1b0e8b703038f734470c7fc8175",
+      "mode": "exact"
+    },
+    "src/sims/WebLabControls.tsx": {
+      "sha256": "0428e60f9adc66d3dce3e148f85a1c2cbfdf2e3b6ba4da359c05cb7bf92f3c66",
+      "mode": "exact"
+    },
+    "src/sims/code/CodeEditor.tsx": {
+      "sha256": "71b4042fd1dfb66565645a57c277efd3ee4f8db886848d01c357530340a6c611",
+      "mode": "exact"
+    },
+    "src/sims/code/JsSim.tsx": {
+      "sha256": "718098f04940337f0c7b2437ad7a92761838eee5cf810945d6e6456b57d101b2",
+      "mode": "exact"
+    },
+    "src/sims/code/PythonSim.tsx": {
+      "sha256": "aa98204f35ec6cc9617d7b8d253ffe3cd3627ea02d9f1a6ea25bc04f0120dd51",
+      "mode": "exact"
+    },
+    "src/sims/code/WebSim.tsx": {
+      "sha256": "4de80a7db247b8ba703146b6efc75eadcfa0dedffba024d5755348e82bf65fb2",
+      "mode": "exact"
+    },
+    "src/sims/code/cm.ts": {
+      "sha256": "a1e4be409e57ba6550d5f8aa1ac1f1582b2d718af38697a3a6db845bcd28b1d9",
+      "mode": "exact"
+    }
+  }
+}

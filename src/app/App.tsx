@@ -23,7 +23,7 @@ function NavLinks({ path }: { path: string }) {
   return (
     <>
       {nav.map((n) => (
-        <Link key={n.to} to={n.to} className={`navlink${["/lab", "/projects"].includes(n.to) ? " desktop-extra" : ""}`} aria-current={n.match(path) ? "page" : undefined}>
+        <Link key={n.to} to={n.to} aria-label={n.label} className={`navlink${["/lab", "/projects"].includes(n.to) ? " desktop-extra" : ""}`} aria-current={n.match(path) ? "page" : undefined}>
           <NavIcon name={n.icon} />
           <span>{n.label}</span>
         </Link>
@@ -35,12 +35,14 @@ function NavLinks({ path }: { path: string }) {
 export function App() {
   const path = usePath();
   const route = matchRoute(path);
+  const routePath = path.split("?")[0];
   const mainRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    if (new URLSearchParams(window.location.hash.split("?")[1]).has("unit")) return;
     window.scrollTo(0, 0);
     mainRef.current?.focus({ preventScroll: true });
-  }, [path]);
+  }, [routePath]);
 
   const page = (() => {
     switch (route.name) {
@@ -63,13 +65,13 @@ export function App() {
     <div className="app">
       <a className="skip-link" href="#main" onClick={(e) => { e.preventDefault(); mainRef.current?.focus(); }}>跳到主要内容</a>
       <nav className="sidenav" aria-label="主导航">
-        <Link to="/" className="brand"><Logo /><span>Nico<small>ACADEMY</small></span></Link>
+        <Link to="/" className="brand" aria-label="Nico Academy 首页"><Logo /><span>Nico<small>ACADEMY</small></span></Link>
         <span className="nav-caption">学习空间</span>
         <NavLinks path={path} />
         <p className="nav-footer">从入门到深入<br />每天一点，动手理解。</p>
       </nav>
       <main id="main" className="main" tabIndex={-1} ref={mainRef}>
-        <header className="academy-topbar"><Link to="/" className="brand mobile-brand"><Logo /><span>Nico<small>ACADEMY</small></span></Link><span className="academy-breadcrumb">Nico Academy / 学习空间</span></header>
+        <header className="academy-topbar"><Link to="/" className="brand mobile-brand"><Logo /><span>Nico<small>ACADEMY</small></span></Link><span className="academy-breadcrumb">Nico Academy / 学习空间</span><div className="topbar-actions"><Link to="/settings" className="topbar-settings">外观设置</Link><Link to="/me" className="topbar-profile" aria-label="打开我的学习档案"><NavIcon name="me" /></Link></div></header>
         {page}
       </main>
       <nav className="bottomnav" aria-label="主导航（手机）">

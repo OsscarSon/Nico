@@ -148,11 +148,11 @@ function Player({ lessonId }: { lessonId: string }) {
             <span className="muted">约 {lesson.estimatedMinutes} 分钟</span>
             <QualityPill state={lesson.quality.state} />
             {completed && <span className="pill done">已完成</span>}
-            {aiEnabled() && <Link to={`/lab/tutor/${lessonId}`} className="pill available">问 AI 导师</Link>}
+            {aiEnabled() && <Link to={`/lab/tutor/${lessonId}`} className="pill available ai-shortcut">问 AI 导师</Link>}
           </div>
           <ProgressBar value={step + 1} max={total} label={`课程进度，第 ${step + 1} 步，共 ${total} 步`} />
         </header>
-        <div className="lesson-body" ref={bodyRef} tabIndex={-1} aria-live="off">
+        <div className={`lesson-body lesson-${block.type}`} ref={bodyRef} tabIndex={-1} aria-live="off">
           {/* key={step}：每一步都重新挂载，避免相邻的同类互动块互相沿用状态 */}
           <div key={step}>{content}</div>
         </div>

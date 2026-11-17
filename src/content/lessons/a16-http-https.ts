@@ -1,6 +1,6 @@
 import { lessonSchema, type Lesson } from "../schema";
 export const a16: Lesson = lessonSchema.parse({
-  id: "a16-http-https", track: "a", unit: "a3", title: "HTTP / HTTPS：请求、响应与可信连接", artPending: true,
+  id: "a16-http-https", track: "a", unit: "a3", title: "HTTP / HTTPS：请求、响应与可信连接", art: "lesson-a16-http-https.png",
   objectives: ["能构造方法、路径、Headers和请求体并诊断实际HTTP响应", "能区分HTTP、TLS与TCP的工作", "能操作TLS身份与握手完整性核验，拒绝不符合条件的安全会话"],
   prerequisites: ["a09-network-layers", "a14-tcp", "a15-udp"], estimatedMinutes: 15,
   blocks: [

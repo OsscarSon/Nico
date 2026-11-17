@@ -1,6 +1,6 @@
 import { lessonSchema, type Lesson } from "../schema";
 export const a17: Lesson = lessonSchema.parse({
-  id: "a17-web-journey", track: "a", unit: "a3", title: "一次网页访问：你来排查整条链路", artPending: true,
+  id: "a17-web-journey", track: "a", unit: "a3", title: "一次网页访问：你来排查整条链路", art: "lesson-a17-web-journey.png",
   objectives: ["能从URL走完DNS、TCP、TLS、HTTP、响应和页面显示", "能凭实际协议状态区分旧DNS答案、握手丢包和HTTP资源错误", "能用缓存失效、到期重传和请求修正解决三个真实状态情景"],
   prerequisites: ["a09-network-layers", "a10-ip-subnet", "a11-devices", "a12-packets", "a13-dns", "a14-tcp", "a15-udp", "a16-http-https"], estimatedMinutes: 15,
   blocks: [

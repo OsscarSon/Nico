@@ -170,6 +170,10 @@ if (aiOff) {
   await soon("AI 开启：课时页出现“问 AI 导师”入口", async () => (await body()).includes("问 AI 导师"));
 }
 
+await page.goto(`${BASE}/#/settings`);
+await page.getByRole("heading", { name: "AI 服务", exact: true }).waitFor();
+check("设置如实区分未配置与已配置但未检测连接", (await page.locator("main").innerText()).includes(ENDPOINT ? "已配置服务地址，尚未检测连通性" : "尚未配置 AI 服务地址"));
+check("配置状态不冒充已连接服务", await page.getByText("已连接", { exact: true }).count() === 0);
 check("没有 JS 报错", errors.length === 0, errors.join(" | "));
 await browser.close();
 console.log(`\n模式：${aiOff ? "AI 关闭" : "AI 开启（假服务）"}`);

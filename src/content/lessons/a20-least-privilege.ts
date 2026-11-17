@@ -1,6 +1,6 @@
 import { lessonSchema, type Lesson } from "../schema";
 export const a20: Lesson = lessonSchema.parse({
-  id: "a20-least-privilege", track: "a", unit: "a4", title: "最小权限：刚好够用，也要验证能用", artPending: true,
+  id: "a20-least-privilege", track: "a", unit: "a4", title: "最小权限：刚好够用，也要验证能用", art: "lesson-a20-least-privilege.png",
   objectives: ["能从任务需要推导应用的最少权限，并用真实功能结果验证", "能随语音/视频任务变化调整权限，而不是一律全开或全关", "能完成更新、锁屏阻止访问和独立备份恢复的综合防护"],
   prerequisites: ["a07-os", "a18-passwords", "a19-phishing"], estimatedMinutes: 15,
   blocks: [

@@ -77,7 +77,7 @@ async function openLesson(id) {
 
 // ---- 路线页 ----
 await page.goto(`${BASE}/#/paths/b`);
-await soon("路线 B 页面显示 20 课规划", async () => (await page.locator("main").innerText()).includes("共 20 课规划，现在可学 14 课"));
+await soon("路线 B 页面显示20门目录和14门已上线课", async () => (await page.locator("main").innerText()).includes("共 20 门目录，现在可学 14 课"));
 check("路线 B 有 6 个规划中的课", (await page.locator(".pm-card.planned").count()) === 6);
 check("手机宽度无横向溢出：路线 B", await noOverflow());
 

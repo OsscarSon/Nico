@@ -6,8 +6,8 @@ import { lessonSchema } from "../src/content/schema";
 import { gradeChoice, gradeNumber } from "../src/grading/quiz";
 import { belongsToDomain } from "../src/grading/phishing";
 describe("A18–A20 teaching and whole A-route integrity", () => {
-  for (const [id, sim] of [["a18-passwords", "password"], ["a19-phishing", "phishing"], ["a20-least-privilege", "privilege"]]) it(`${id} is a complete, sourced draft without invented trials/art`, () => {
-    const l = lessons[id!]!; expect(lessonSchema.safeParse(l).success).toBe(true); expect(l.quality).toEqual({ state: "draft" }); expect(l.artPending).toBe(true); expect(l.art).toBeUndefined();
+  for (const [id, sim] of [["a18-passwords", "password"], ["a19-phishing", "phishing"], ["a20-least-privilege", "privilege"]]) it(`${id} is a complete, sourced draft without invented trials`, () => {
+    const l = lessons[id!]!; expect(lessonSchema.safeParse(l).success).toBe(true); expect(l.quality).toEqual({ state: "draft" }); expect(l.artPending).toBeUndefined(); expect(l.art).toBe(`lesson-${id}.png`);
     expect(l.blocks.filter(b => b.type === "explain")).toHaveLength(4); expect(l.blocks.filter(b => b.type === "sim").map(b => [b.sim, b.mode])).toEqual([[sim, "free"], [sim, "challenge"]]);
     const q = l.blocks.find(b => b.type === "quiz"); if (q?.type !== "quiz") throw Error("missing quiz"); expect(q.items).toHaveLength(3);
     for (const item of q.items) item.options.forEach((_, i) => { const r = gradeChoice(item, i); expect(r.correct).toBe(i === item.answer); expect(r.message.length).toBeGreaterThan(15); });

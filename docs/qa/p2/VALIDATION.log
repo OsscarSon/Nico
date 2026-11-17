@@ -1,0 +1,168 @@
+Nico Academy P2 — actual validation extracts
+Date: 2026-11-17; Default Environment; Linux; Node v24.22.1; project Node >=22
+Base: 0aa1b1c0aea2fd0df8135f6ba7e092112f967d2e
+Normal preview: localhost:4191; baseline snapshot: localhost:4190; isolated AI mock preview: localhost:4192
+No deployment, no live AI, no new project dependencies or lockfile changes.
+
+BASELINE
+
+baseline-typecheck
+> nico@0.1.0 typecheck
+> tsc --noEmit
+
+baseline-lint
+> nico@0.1.0 lint
+> eslint .
+
+baseline-test
+ ✓ tests/web.test.ts (9 tests) 4ms
+ ✓ tests/art.test.ts (4 tests) 4ms
+
+ Test Files  40 passed (40)
+      Tests  605 passed (605)
+   Start at  10:39:03
+   Duration  16.07s (transform 837ms, setup 0ms, collect 3.04s, tests 6.30s, environment 5ms, prepare 2.00s)
+
+baseline-build
+dist/assets/index-I9JcwfV0.js   904.40 kB │ gzip: 297.29 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 3.50s
+
+FINAL REQUIRED CHECKS
+
+$ npm run typecheck
+> nico@0.1.0 typecheck
+> tsc --noEmit
+
+$ npm run lint
+> nico@0.1.0 lint
+> eslint .
+
+$ npm test
+ ✓ tests/a02.test.ts (4 tests) 4ms
+ ✓ tests/art.test.ts (4 tests) 3ms
+
+ Test Files  41 passed (41)
+      Tests  616 passed (616)
+   Start at  11:03:09
+   Duration  16.31s (transform 935ms, setup 0ms, collect 3.31s, tests 6.12s, environment 8ms, prepare 1.98s)
+
+$ npm run build
+> nico@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v7.3.8 building client environment for production...
+transforming...
+node_modules/zod/v4/core/util.js (400:0): A comment
+
+"// Wrapped in a `@__PURE__` IIFE: esbuild never tree-shakes a top-level initializer that contains a member access on `Number`, so the bare object literal survived into every bundle."
+
+in "node_modules/zod/v4/core/util.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+node_modules/zod/v4/core/regexes.js (74:0): A comment
+
+"/** Anchors a pattern source. The interpolation lives here rather than at the call site because
+ * esbuild will not drop a `@__PURE__` call whose own argument interpolates a variable, but it
+ * will drop `anchor(dateSource)`. Keeping it inline pinned `date` into every bundle. */"
+
+in "node_modules/zod/v4/core/regexes.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+✓ 298 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   2.28 kB │ gzip:   1.16 kB
+dist/assets/index-BEOoSVNM.css   54.99 kB │ gzip:  11.26 kB
+dist/assets/acorn-CfxJKB78.js   118.69 kB │ gzip:  35.52 kB
+dist/assets/cm-BsWX-ucq.js      520.98 kB │ gzip: 185.29 kB
+dist/assets/index-CsEqEyy_.js   921.19 kB │ gzip: 302.86 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 4.21s
+
+$ BASE_URL=<local preview> npm run smoke
+PASS  全程没有 JS 报错
+
+全部通过
+
+$ BASE_URL=<local preview> npm run smoke:b
+PASS  整个过程没有 JS 报错
+
+全部通过
+
+$ BASE_URL=<local preview> npm run smoke:ai [AI disabled]
+
+模式：AI 关闭
+全部通过
+
+$ BASE_URL=<local preview> AI_ENDPOINT=http://localhost:8787/ai npm run smoke:ai [configured build, intercepted mock]
+
+模式：AI 开启（假服务）
+全部通过
+
+$ BASE_URL=<local preview> npm run smoke:academy
+PASS 原进度：B01 从旧步骤续学
+PASS 原进度：已完成成绩和版本不变
+157 项检查，0 项失败
+
+$ BASE_URL=<local preview> npm run smoke:foundation
+PASS 360/light/a07-os 挑战可操作、通过且不溢出
+PASS 360/light/a08-command-line 挑战可操作、通过且不溢出
+78 项检查，0 项失败
+
+$ BASE_URL=<local preview> npm run smoke:network
+PASS 360/light/a14-tcp 键盘焦点和底栏不遮挡
+PASS 360/light 无JS异常
+331 项检查，0 项失败
+
+$ BASE_URL=<local preview> npm run smoke:web
+PASS 键盘a17-web-journey实际Tab焦点可见
+PASS 键盘a17-web-journeyEnter产生真实状态
+346 checks, 0 failures
+
+$ BASE_URL=<local preview> npm run smoke:security
+PASS A路线20个真实入口且A21/A22规划不冒充课程
+PASS A01–A20开场实测无空白、图片拉伸或360px溢出
+Security browser checks: 260/260; screenshots: 6; failures: 0
+
+$ BASE_URL=<local preview> npm run smoke:p2
+PASS unsupported preference version is backed up before a user writes new choices
+PASS blocked storage remains usable and honest
+P2: 258/258 passed; 0 failures; 16 main after screenshots + 2 planned-node details.
+
+$ BASE_URL=<local preview> node scripts/check-lesson-art.mjs
+PASS 360/a14-tcp full art visible, no horizontal overflow or bottom-nav obstruction
+PASS 360/a14-tcp no JavaScript errors
+110 checks, 0 failures
+
+$ BASE_URL=<local preview> node scripts/audit-lesson-art.mjs
+PASS 360/c05-prompt-structure subject group within 5% of canvas center
+PASS 360/c05-prompt-structure no JavaScript errors
+840 checks, 0 failures; 35 available lessons, 35 images
+
+PROTECTION / SCOPE
+Kit SHA256 manifest: all entries match. 28 installed independent PNG/SVG files, no filename collision.
+86 original art files: exact SHA256 unchanged.
+103 protected implementation files: exact bytes, except normalized optional lesson art metadata.
+35 available lessons / 35 referenced images: actual three-width audit passed.
+A route: 22 display nodes, 20 real available lesson IDs, A21/A22 planned and nonlearnable. Four existing units preserved.
+28 delivered actual screenshots: 8 before, 16 dual-theme after main views, 2 planned details, 2 actual UI-completion profile views.
+
+INITIAL FAILURES / CORRECTIONS
+Baseline typecheck/lint/test/build passed (605 tests).
+Six old tests initially expected artPending; updated assertions to exact formal PNG names and no pending after approved assets were installed. Lesson structure/draft/diagnostic assertions remain.
+First P2 run: 233/235. Mobile fixed panel padding hid density changes; fixed scoped CSS. System-theme assertion read before actual media event; now waits for it.
+Initial invocation accidentally used npm exec node, which fetched a temporary Node27 tool. Final runs directly use environment Node24; package/lock unchanged.
+Old Academy smoke needed explicit selected-state waits after URL-based stage/track changes, and its readiness selector omitted the Settings panel. Original cases/assertions retained. Main theme controls remain in Settings, with original no-topbar-theme-button assertion kept.
+Artwork edge-alignment expectations updated to P2 wider art and 76ch text: strict shared center and contained hook replace equal width; natural-ratio/no-crop/no-offset/subject-threshold checks retained.
+Review ensured programmatic badge scrolling obeys reduced motion, validated by actual jump/focus rather than a CSS flag alone.
+No old test deleted or scoring/learning record logic changed to achieve passing results.
+
+LIMITS
+No real learner trial, real AI connectivity, physical device, Safari or Firefox tested. All course quality remains unchanged/draft.
+Notifications, cloud accounts/sync, tracked hours and XP/ranks are honestly unavailable; no inert toggles.
+Build warning output above is preserved. Full raw working logs / temporary audit images remain outside the repo in /workspace/nico-p2-evidence and /tmp/nico-p2-*.

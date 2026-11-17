@@ -14,7 +14,7 @@ const check = (name, ok) => {
 };
 const noOverflow = page => page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1);
 const ready = async page => {
-  await page.locator(".academy-course, .academy-stage").first().waitFor();
+  await page.locator(".academy-course, .academy-stage, .settings-list").first().waitFor();
   await page.evaluate(() => document.fonts.ready);
   await page.evaluate(async () => Promise.all([...document.images].map(i => i.decode().catch(() => {}))));
 };
@@ -42,13 +42,17 @@ try {
       && await page.locator(".academy-track img").evaluateAll(images => images.every(i => i.complete && i.naturalWidth > 0)));
     check(`${width}: Foundation 只显示六条路线`, await page.locator(".academy-track").count() === 6);
     await page.getByRole("button", { name: /PHASE 02/ }).click();
+    await page.getByRole("button", { name: /PHASE 02/ }).and(page.locator('[aria-pressed="true"]')).waitFor();
     check(`${width}: Intermediate 有七条路线`, await page.locator(".academy-track").count() === 7);
     check(`${width}: 七条路线都有插画，无占位`, await page.locator(".art-placeholder").count() === 0 && await page.locator(".academy-track img").count() === 7);
     await page.getByRole("button", { name: /M · 数学基础/ }).click();
+    await page.getByRole("button", { name: /M · 数学基础/ }).and(page.locator('[aria-pressed="true"]')).waitFor();
     check(`${width}: 中阶数学两门`, await page.locator(".academy-course").count() === 2);
     await page.getByRole("button", { name: /PHASE 03/ }).click();
+    await page.getByRole("button", { name: /PHASE 03/ }).and(page.locator('[aria-pressed="true"]')).waitFor();
     check(`${width}: 进阶保留选中 M，显示三门`, await page.locator(".academy-course").count() === 3);
     await page.getByRole("button", { name: /F · 硬件与机器人/ }).click();
+    await page.getByRole("button", { name: /F · 硬件与机器人/ }).and(page.locator('[aria-pressed="true"]')).waitFor();
     check(`${width}: F 精选四门且无学习链接`, await page.locator(".academy-course .course-tag.flagship").count() === 4 && await page.locator(".academy-course a").count() === 0);
     await page.locator(".academy-course summary").first().click();
     check(`${width}: 规划详情诚实说明尚未开放`, await page.locator("details[open]").innerText().then(t => t.includes("尚未开放")));
@@ -86,6 +90,7 @@ try {
     await stageButton.focus();
     check(`${width}: 键盘焦点可见`, await stageButton.evaluate(el => getComputedStyle(el).outlineStyle !== "none"));
     await page.keyboard.press("Enter");
+    await stageButton.and(page.locator('[aria-pressed="true"]')).waitFor();
     check(`${width}: 键盘可切换阶段`, await stageButton.getAttribute("aria-pressed") === "true");
     await page.goto(`${BASE}/#/paths`); await ready(page);
     await page.locator("#academy-tracks").evaluate(el => el.scrollIntoView({ block: "start", behavior: "instant" }));
@@ -164,6 +169,7 @@ try {
   check("原进度：首页继续上次 B01", await page.locator(".today").innerText().then(t => t.includes("继续上次的位置") && t.includes("变量")));
   await page.goto(`${BASE}/#/paths`); await ready(page);
   await page.getByRole("button", { name: /PHASE 03/ }).click();
+  await page.getByRole("button", { name: /PHASE 03/ }).and(page.locator('[aria-pressed="true"]')).waitFor();
   await page.goto(`${BASE}/#/settings`); await ready(page);
   await page.getByRole("button", { name: "亮色", exact: true }).click();
   check("浏览目录/切换主题不写入或迁移学习进度", await page.evaluate(() => localStorage.getItem("nico-progress")) === JSON.stringify(saved));

@@ -1,9 +1,11 @@
 import { Link, navigate } from "../app/router";
-import { getLesson, allCatalogLessons } from "../content";
-import { getTrack } from "../content/catalog";
+import { continuation, routeView } from "../content/route-view";
+import { usePreferences } from "../preferences/store";
+import { usePath } from "../app/router";
+import { type Stage } from "../content/academy";
+import { ProfilePage } from "../features/profile/ProfilePage";
 import { Device, EmptyState } from "../components/ui";
 import { artUrl } from "../art";
-import { evaluateBadges } from "../progress/badges";
 import { CoursesCatalog, PathsCatalog, StageOverview } from "../features/academy/AcademyCatalog";
 import { PathMap } from "../features/path/PathMap";
 import { BitSwitches } from "../sims/BitSwitches";
@@ -15,15 +17,13 @@ export function HomePage() {
   const completedCount = Object.keys(progress.lessons).length;
   const days = streak(progress, new Date());
 
-  const learnable = allCatalogLessons().filter((l) => l.status === "available");
-  const nextLesson = learnable.find((l) => !progress.lessons[l.id]);
-  const resume = progress.resume && !progress.lessons[progress.resume.lessonId] ? progress.resume : null;
-  const target = resume ? learnable.find((l) => l.id === resume.lessonId) : nextLesson;
-  const targetLesson = target ? getLesson(target.id) : undefined;
+  const preferences = usePreferences();
+  const targetLesson = continuation(progress, preferences.resumeHome, preferences.learningPath);
+  const resume = preferences.resumeHome && progress.resume && targetLesson?.id === progress.resume.lessonId ? progress.resume : null;
 
   return (
     <>
-      <section className="academy-hero">
+      <div className="home-grid"><section className="academy-hero">
         <div><span className="academy-eyebrow">EXPLORE · BUILD · UNDERSTAND</span>
           <h1>每一步，都在构建<br />你的知识世界。</h1>
           <p>从第一行代码，到理解复杂系统。<br />选择你的路线，让学习真正发生。</p>
@@ -68,7 +68,7 @@ export function HomePage() {
         )}
       </section>
 
-      <StageOverview />
+      </div><StageOverview />
     </>
   );
 }
@@ -82,33 +82,17 @@ export function CoursesPage() {
 }
 
 export function TrackPage({ trackId }: { trackId: string }) {
-  const track = getTrack(trackId);
+  const query = new URLSearchParams(usePath().split("?")[1]);
+  const stage: Stage = query.get("stage") === "Intermediate" ? "Intermediate" : query.get("stage") === "Advanced" ? "Advanced" : "Foundation";
+  const track = routeView(trackId, stage);
   if (!track) return <NotFoundPage />;
-  const available = track.lessons.filter((l) => l.status === "available").length;
-  return (
-    <>
-      <Link to="/paths" className="backlink">← 所有路线</Link>
-      <header className="page-head track-head">
-        <img className="track-emblem lg" src={artUrl(track.art)} alt="" width={88} height={88} />
-        <div>
-          <h1>{track.title}</h1>
-          <p>{track.tagline}</p>
-        </div>
-      </header>
-      {track.status === "building" ? (
-        <>
-          <p className="muted">
-            共 {track.lessons.length} 课规划，现在可学 {available} 课。灰色虚线的是还在制作的课。
-          </p>
-          <PathMap track={track} />
-        </>
-      ) : (
-        <EmptyState title="这条路线还在规划中" action={<Link to="/paths/a" className="btn">先去路线 A</Link>}>
-          {track.plannedSummary}。现在还没有可学的课，会在路线 A 打磨好之后开始制作。
-        </EmptyState>
-      )}
-    </>
-  );
+  const available = track.nodes.filter(n => n.available).length;
+  return <>
+    <Link to={`/paths?stage=${stage}&track=${track.id.toUpperCase()}`} className="backlink">← 所有路线</Link>
+    <header className="page-head track-head">{track.art && <img className="track-emblem lg" src={artUrl(track.art)} alt="" width={88} height={88} />}<div><span className="eyebrow">{stage} · {track.id.toUpperCase()} 路线</span><h1>{track.title}</h1><p>{track.tagline}</p></div></header>
+    <div className="route-overview"><p>共 {track.nodes.length} 门目录，现在可学 {available} 课。规划节点不开放；所有已上线课均可自由学习。</p><img src={artUrl("roadmap-trace-banner.png")} alt="" width={1600} height={900} /></div>
+    {track.nodes.length ? <PathMap track={track} /> : <EmptyState title="这个阶段还没有课程目录" action={<Link to="/paths" className="btn">查看其他路线</Link>}>当前没有可学习课程，也不会用虚拟节点冒充上线内容。</EmptyState>}
+  </>;
 }
 
 export function LabPage() {
@@ -129,7 +113,7 @@ export function LabPage() {
           <h3>Prompt 训练场</h3>
           <p>写一条给 AI 的指令，检查六个要素有没有写到。不联网也能用。</p>
         </Link>
-        <Link to="/lab/tutor" className="panel trackcard">
+        <Link to="/lab/tutor" className="panel trackcard ai-shortcut">
           <h3>AI 导师</h3>
           <p>围绕一节课向 AI 提问。需要接上 AI 服务才能用。</p>
         </Link>
@@ -158,43 +142,7 @@ export function ProjectsPage() {
   );
 }
 
-export function MePage() {
-  const progress = useProgress();
-  const days = streak(progress, new Date());
-
-  return (
-    <>
-      <header className="page-head"><h1>我的</h1></header>
-      <section className="panel">
-        <div className="stats" style={{ marginTop: 0 }}>
-          <div className="stat"><strong>{Object.keys(progress.lessons).length}</strong><span>已完成课时</span></div>
-          <div className="stat"><strong>{days}</strong><span>连续学习天数</span></div>
-        </div>
-      </section>
-
-      <h2 className="section-title">徽章</h2>
-      <ul className="badges" aria-label="徽章">
-        {evaluateBadges(progress, new Date()).map((b) => (
-          <li key={b.id} className={`badge ${b.earned ? "earned" : ""}`}>
-            <img src={artUrl(b.art)} alt="" width={96} height={96} />
-            <strong>{b.title}</strong>
-            <span className="muted">{b.how}</span>
-            <span className={`pill ${b.earned ? "done" : ""}`}>
-              {b.earned ? "已获得" : b.obtainable ? "未获得" : "对应课程尚未开放"}
-            </span>
-          </li>
-        ))}
-      </ul>
-
-      <h2 className="section-title">学习工具</h2>
-      <div className="row">
-        <Link to="/lab" className="btn secondary">打开实验台</Link>
-        <Link to="/lab/prompt" className="btn secondary">Prompt 训练场</Link>
-        <Link to="/projects" className="btn secondary">查看作品</Link>
-      </div>
-    </>
-  );
-}
+export function MePage() { return <ProfilePage />; }
 
 export function NotFoundPage() {
   return (

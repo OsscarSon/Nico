@@ -1,6 +1,6 @@
 import { lessonSchema, type Lesson } from "../schema";
 export const a19: Lesson = lessonSchema.parse({
-  id: "a19-phishing", track: "a", unit: "a4", title: "识别钓鱼：先查证，再决定", artPending: true,
+  id: "a19-phishing", track: "a", unit: "a4", title: "识别钓鱼：先查证，再决定", art: "lesson-a19-phishing.png",
   objectives: ["能查看发件身份、实际链接主机、请求内容与施压证据", "能用独立渠道区分诈骗、合法紧急通知和授权未明请求", "能解释HTTPS与邮件认证通过为何不等于内容可信"],
   prerequisites: ["a13-dns", "a16-http-https", "a18-passwords"], estimatedMinutes: 15,
   blocks: [

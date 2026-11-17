@@ -1,98 +1,36 @@
-import { Link } from "../../app/router";
-import type { Track } from "../../content/catalog";
+import { useEffect, useRef } from "react";
+import { Link, usePath } from "../../app/router";
+import { artUrl } from "../../art";
+import { QualityPill } from "../../components/ui";
+import { nodeState, routeCounts, type RouteView } from "../../content/route-view";
 import { useProgress } from "../../progress/useProgress";
+import { usePreferences } from "../../preferences/store";
 
-const UNIT_H = 64;
-const LESSON_H = 80;
-const X = 24;
-
-type Row =
-  | { kind: "unit"; id: string; title: string; y: number }
-  | { kind: "lesson"; id: string; title: string; status: "available" | "planned"; y: number };
-
-/**
- * 走线路线图：课时是焊盘，已完成的线段点亮为琥珀色，
- * 未到达的部分是灰色虚线；单元标题处有一个 45° 的分支。
- */
-export function PathMap({ track }: { track: Track }) {
-  const progress = useProgress();
-
-  const rows: Row[] = [];
-  let y = 0;
-  for (const unit of track.units) {
-    rows.push({ kind: "unit", id: unit.id, title: unit.title, y: y + UNIT_H / 2 });
-    y += UNIT_H;
-    for (const l of track.lessons.filter((l) => l.unit === unit.id)) {
-      rows.push({ kind: "lesson", id: l.id, title: l.title, status: l.status, y: y + LESSON_H / 2 });
-      y += LESSON_H;
-    }
-  }
-  const height = y;
-  const lessonRows = rows.filter((r): r is Extract<Row, { kind: "lesson" }> => r.kind === "lesson");
-  const completedRows = lessonRows.filter((r) => progress.lessons[r.id]);
-  const lastLit = completedRows.at(-1)?.y ?? 0;
-  const current = lessonRows.find((r) => r.status === "available" && !progress.lessons[r.id]);
-  const trackEnd = rows[rows.length - 1]?.y ?? 0;
-
-  return (
-    <div className="pathmap" style={{ height }}>
-      <svg className="trace" height={height} viewBox={`0 0 56 ${height}`} aria-hidden="true">
-        <line x1={X} y1={0} x2={X} y2={trackEnd} stroke="#8c97a8" strokeWidth="2.5" strokeDasharray="5 6" />
-        {lastLit > 0 && <line x1={X} y1={0} x2={X} y2={lastLit} stroke="#ffb020" strokeWidth="4" />}
-        {rows.map((r) =>
-          r.kind === "unit" ? (
-            <path
-              key={r.id}
-              d={`M${X} ${r.y - 8} L${X + 16} ${r.y + 8} H56`}
-              fill="none"
-              stroke="#14213d"
-              strokeWidth="2"
-            />
-          ) : (
-            <g key={r.id}>
-              {current?.id === r.id && <circle className="pad-pulse" cx={X} cy={r.y} r="9" fill="none" stroke="#ffb020" strokeWidth="3" />}
-              <circle
-                cx={X}
-                cy={r.y}
-                r="9"
-                strokeWidth="2.5"
-                stroke={r.status === "planned" ? "#8c97a8" : "#14213d"}
-                fill={progress.lessons[r.id] ? "#ffb020" : r.status === "planned" ? "#f2f4f7" : "#ffffff"}
-              />
-              {progress.lessons[r.id] && (
-                <path d={`M${X - 4} ${r.y} l3 3 l5 -6`} fill="none" stroke="#14213d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              )}
-            </g>
-          ),
-        )}
-      </svg>
-      <ol aria-label={`${track.title}的课时`}>
-        {rows.map((r) =>
-          r.kind === "unit" ? (
-            <li key={r.id} className="pm-unit" style={{ height: UNIT_H }}>
-              <h2>{r.title}</h2>
-            </li>
-          ) : r.status === "available" ? (
-            <li key={r.id} className="pm-lesson" style={{ height: LESSON_H }}>
-              <Link to={`/lesson/${r.id}`} className={`pm-card${current?.id === r.id ? " current" : ""}`}>
-                <strong>{r.title}</strong>
-                {progress.lessons[r.id] ? (
-                  <span className="pill done">已完成</span>
-                ) : (
-                  <span className="pill available">可以开始</span>
-                )}
-              </Link>
-            </li>
-          ) : (
-            <li key={r.id} className="pm-lesson" style={{ height: LESSON_H }}>
-              <div className="pm-card planned">
-                <strong>{r.title}</strong>
-                <span className="pill">规划中</span>
-              </div>
-            </li>
-          ),
-        )}
-      </ol>
-    </div>
-  );
+/** Fluid DOM nodes: no fixed row heights, invented locks, or lit gaps for unfinished lessons. */
+export function PathMap({ track }: { track: RouteView }) {
+  const progress = useProgress(), preferences = usePreferences(), root = useRef<HTMLDivElement>(null);
+  const unitContext = new URLSearchParams(usePath().split("?")[1]).get("unit");
+  const resume = track.nodes.find(n => n.available && n.id === progress.resume?.lessonId && !progress.lessons[n.id]);
+  const current = resume ?? track.nodes.find(n => n.available && !progress.lessons[n.id]);
+  useEffect(() => {
+    const segment = [...(root.current?.querySelectorAll<HTMLDetailsElement>("details[data-unit]") ?? [])].find(el => el.dataset.unit === unitContext);
+    if (segment) { segment.open = true; segment.querySelector("summary")?.focus(); segment.scrollIntoView({ block: "start" }); }
+  }, [track.id, track.stage, unitContext]);
+  return <div className="pathmap" ref={root}>
+    <p className="route-legend">已完成 · 接下来 / 续学 · 可以开始 · 规划中。草稿 / 试学表示课程质量；完成进度来自你的学习记录。</p>
+    <div className="route-units">{track.units.map(unit => {
+      const counts = routeCounts(unit.nodes, progress), visible = unit.nodes.filter(n => preferences.showPlanned || n.available);
+      return <details className="route-unit" key={unit.id} data-unit={unit.id} open>
+        <summary className="pm-unit">{unit.art && <img src={artUrl(unit.art)} alt="" width={120} height={68} />}<span><span className="eyebrow">{unit.id.endsWith("-planned") ? `${track.id.toUpperCase()} · 规划` : unit.id.toUpperCase()}</span><strong>{unit.title}</strong><small>{counts.completed} / {counts.available} 已上线课完成 · {counts.planned} 门规划</small></span><span className="unit-toggle" aria-hidden="true">⌄</span></summary>
+        <ol aria-label={`${unit.title}的课时`}>{visible.map(node => {
+          const state = nodeState(node, progress, current?.id);
+          const body = <><span className="route-code mono">{node.code}</span><span className="route-title"><strong>{node.course.title}</strong>{node.lesson && <small>{node.lesson.estimatedMinutes}分钟 · {state === "current" ? resume?.id === node.id ? "上次学到这里" : "推荐下一课" : "动手实验与检查题"}</small>}</span>{node.lesson ? <span className="route-pills"><QualityPill state={node.lesson.quality.state} /><span className={`pill ${state === "completed" ? "done" : "available"}`}>{state === "completed" ? "已完成" : "可以开始"}</span></span> : <><span className="pill">规划中{node.course.status === "next" ? " · 下一批 / 试点" : ""}</span><small>尚未开放，不能开始学习</small></>}</>;
+          return <li key={node.code} className="pm-lesson" data-code={node.code} data-state={state}>
+            <svg className="route-wire" viewBox="0 0 32 100" preserveAspectRatio="none" aria-hidden="true"><path d="M16 0V32L23 39V61L16 68V100" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray={state === "completed" ? undefined : "4 5"} /></svg><span className="route-pad" aria-hidden="true">{state === "completed" ? "✓" : ""}</span>
+            {node.available ? <Link className={`pm-card${state === "current" ? " current" : ""}`} to={`/lesson/${node.id}`} aria-current={state === "current" ? "step" : undefined}>{body}</Link> : <div className="pm-card planned">{node.plannedArt && <img className="planned-thumbnail" src={artUrl(node.plannedArt)} alt="" width={128} height={72} />}{body}</div>}
+          </li>;
+        })}</ol>{!visible.length && <p className="route-hidden-note">当前只包含规划课程，已按你的偏好隐藏。可在设置中打开“显示规划课程”。</p>}
+      </details>;
+    })}</div>
+  </div>;
 }

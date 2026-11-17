@@ -37,7 +37,7 @@ export type Match =
   | { name: "notfound" };
 
 export function matchRoute(path: string): Match {
-  const parts = path.split("/").filter(Boolean).map(decodeURIComponent);
+  const parts = path.split("?")[0]!.split("/").filter(Boolean).map(decodeURIComponent);
   const [a, b, c, ...more] = parts;
   if (more.length) return { name: "notfound" };
   if (a === "lab" && b === "prompt" && !c) return { name: "prompt-lab" };

@@ -1,6 +1,6 @@
 import { lessonSchema, type Lesson } from "../schema";
 export const a18: Lesson = lessonSchema.parse({
-  id: "a18-passwords", track: "a", unit: "a4", title: "密码与哈希：秘密不该排成一串多米诺", artPending: true,
+  id: "a18-passwords", track: "a", unit: "a4", title: "密码与哈希：秘密不该排成一串多米诺", art: "lesson-a18-passwords.png",
   objectives: ["能解释长度、不可预测性、重复使用分别影响什么风险", "能通过真实派生与验证区分密码哈希、加密和Salt", "能建立不同账户的管理器流程、MFA与独立恢复方案"],
   prerequisites: ["a16-http-https", "a17-web-journey"], estimatedMinutes: 15,
   blocks: [

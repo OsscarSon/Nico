@@ -1,6 +1,6 @@
 import { lessonSchema, type Lesson } from "../schema";
 export const a15: Lesson = lessonSchema.parse({
-  id: "a15-udp", track: "a", unit: "a3", title: "UDP：队友的位置，不必等旧消息", artPending: true,
+  id: "a15-udp", track: "a", unit: "a3", title: "UDP：队友的位置，不必等旧消息", art: "lesson-a15-udp.png",
   objectives: ["能操作独立UDP数据报并观察丢失、乱序和延迟", "能区分UDP交付与应用的新鲜度/补偿策略", "能用真实TCP恢复实验解释可靠有序与实时性的取舍"],
   prerequisites: ["a09-network-layers", "a12-packets", "a14-tcp"], estimatedMinutes: 14,
   blocks: [
