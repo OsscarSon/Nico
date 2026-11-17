@@ -159,8 +159,8 @@ try {
     const input = page.getByLabel("你的答案（一个整数）"); await input.fill("不确定"); await click(page, "检查答案"); check(`${id}迁移拒绝非法输入`, (await page.locator(".feedback").innerText()).includes("请输入一个整数"));
     await input.fill(String(transfers[course] + 1)); await click(page, "检查答案"); check(`${id}迁移错答不放行`, await next(page).isDisabled()); await input.fill(String(transfers[course])); await click(page, "检查答案"); await next(page).click();
     check(`${id}总结三点且有权威来源`, await page.locator(".points li").count() === 3 && await page.locator(".foundation-sources a").count() >= 2);
-    check(`${id}下一课与筹备状态诚实`, await page.locator(".stepnav a").getAttribute("href") === (course < 2 ? `#/lesson/${ids[course + 1]}` : "#/paths/a"));
-    if (course === 2) check("A17如实说明A18尚未开放", (await page.locator(".lesson-wrap").innerText()).includes("下一课还在准备中"));
+    check(`${id}下一课与开放状态诚实`, await page.locator(".stepnav a").getAttribute("href") === (course < 2 ? `#/lesson/${ids[course + 1]}` : "#/lesson/a18-passwords"));
+    if (course === 2) check("A17如实连接已开放的A18", !(await page.locator(".lesson-wrap").innerText()).includes("下一课还在准备中"));
     const progress = await page.evaluate(() => JSON.parse(localStorage.getItem("nico-progress")));
     check(`${id}真实2/4首次成绩且旧进度不变`, progress.schemaVersion === 1 && progress.lessons[id]?.firstTryCorrect === 2 && progress.lessons[id]?.quizTotal === 4 && JSON.stringify(progress.lessons["a01-binary"]) === JSON.stringify(saved.lessons["a01-binary"]));
   }

@@ -1,0 +1,15 @@
+/* Scoped functional controls for A18–A20. Academy, theme and artwork are untouched. */
+.security-lab .security-controls { margin: 0; padding: 0; border: 0; min-width: 0; }
+.security-lab .security-warning { border-left: 3px solid var(--signal); padding: 8px 12px; background: var(--paper); }
+.security-lab .security-record, .security-lab .security-defense { border: 1px solid var(--grid); border-radius: 6px; padding: 12px; margin: 16px 0; background: var(--paper); }
+.security-lab .security-record h4, .security-lab .security-defense h4:first-child { margin-top: 0; }
+.security-lab dl { margin: 12px 0; }
+.security-lab dt { font-weight: 700; }
+.security-lab dd { margin: 4px 0 12px; }
+.security-lab code { white-space: normal; overflow-wrap: anywhere; word-break: break-word; }
+.security-lab .security-checks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 12px; margin: 12px 0; }
+.security-lab .security-checks label { display: flex; gap: 8px; align-items: center; min-height: 44px; cursor: pointer; }
+.security-lab .security-checks input { flex: 0 0 auto; width: 20px; height: 20px; accent-color: var(--trace); }
+.security-lab .security-evidence > div { padding: 10px 0; border-bottom: 1px solid var(--grid); }
+.security-lab .security-evidence dd { margin-bottom: 0; }
+@media (max-width: 480px) { .security-lab .security-checks { grid-template-columns: 1fr; } }

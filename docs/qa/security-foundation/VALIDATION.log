@@ -1,0 +1,124 @@
+Nico A18–A20 validation — 2026-11-17
+Base: 23198d354ed8074fe32a1ad8dcdd71451b7b1d88
+Environment: Default Environment; Linux; Node v24.22.1; npm project requires >=22
+Browser: installed Playwright Chromium; viewports 1440x1000, 390x844, 360x844
+Local main preview: http://localhost:4188; isolated AI mock preview: http://localhost:4189
+No deployment; no live AI or real credentials. Existing Google Fonts requests retained.
+
+FINAL REQUIRED CHECKS
+
+$ npm run typecheck
+> nico@0.1.0 typecheck
+> tsc --noEmit
+
+$ npm run lint
+> nico@0.1.0 lint
+> eslint .
+
+$ npm test
+ ✓ tests/a02.test.ts (4 tests) 5ms
+ ✓ tests/art.test.ts (4 tests) 4ms
+
+ Test Files  39 passed (39)
+      Tests  599 passed (599)
+   Start at  08:47:59
+   Duration  16.91s (transform 926ms, setup 0ms, collect 3.52s, tests 6.63s, environment 6ms, prepare 1.96s)
+
+$ npm run build
+in "node_modules/zod/v4/core/regexes.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+node_modules/zod/v4/core/util.js (400:0): A comment
+
+"// Wrapped in a `@__PURE__` IIFE: esbuild never tree-shakes a top-level initializer that contains a member access on `Number`, so the bare object literal survived into every bundle."
+
+in "node_modules/zod/v4/core/util.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+✓ 292 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   2.00 kB │ gzip:   1.11 kB
+dist/assets/index-CIBGQ_Dx.css   41.82 kB │ gzip:   8.73 kB
+dist/assets/acorn-CfxJKB78.js   118.69 kB │ gzip:  35.52 kB
+dist/assets/cm-BsWX-ucq.js      520.98 kB │ gzip: 185.29 kB
+dist/assets/index-BVbLKaoJ.js   899.96 kB │ gzip: 295.88 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 3.76s
+
+$ BASE_URL=<local preview> npm run smoke
+PASS entries in actual log: 187
+PASS  全程没有 JS 报错
+
+全部通过
+
+$ BASE_URL=<local preview> npm run smoke:b
+PASS entries in actual log: 103
+PASS  整个过程没有 JS 报错
+
+全部通过
+
+$ BASE_URL=<local preview> npm run smoke:ai (AI disabled)
+PASS entries in actual log: 26
+
+模式：AI 关闭
+全部通过
+
+$ BASE_URL=<local preview> AI_ENDPOINT=http://localhost:8787/ai npm run smoke:ai (AI enabled, intercepted mock)
+PASS entries in actual log: 38
+
+模式：AI 开启（假服务）
+全部通过
+
+$ BASE_URL=<local preview> npm run smoke:academy
+PASS entries in actual log: 154
+PASS 原进度：B01 从旧步骤续学
+PASS 原进度：已完成成绩和版本不变
+154 项检查，0 项失败
+
+$ BASE_URL=<local preview> npm run smoke:foundation
+PASS entries in actual log: 78
+PASS 360/light/a07-os 挑战可操作、通过且不溢出
+PASS 360/light/a08-command-line 挑战可操作、通过且不溢出
+78 项检查，0 项失败
+
+$ BASE_URL=<local preview> npm run smoke:network
+PASS entries in actual log: 331
+PASS 360/light/a14-tcp 键盘焦点和底栏不遮挡
+PASS 360/light 无JS异常
+331 项检查，0 项失败
+
+$ BASE_URL=<local preview> npm run smoke:web
+PASS entries in actual log: 346
+PASS 键盘a17-web-journey实际Tab焦点可见
+PASS 键盘a17-web-journeyEnter产生真实状态
+346 checks, 0 failures
+
+$ BASE_URL=<local preview> npm run smoke:security
+PASS entries in actual log: 260
+PASS A路线20个真实入口且无筹备课
+PASS A01–A20开场实测无空白、图片拉伸或360px溢出
+Security browser checks: 260/260; screenshots: 6; failures: 0
+
+ADDITIONAL PROTECTION / INTEGRITY
+public/art/: 67 existing files SHA-256 unchanged; changes = []
+182 protected baseline implementation/art/lock files: byte-for-byte unchanged
+A01–A20: schema valid; IDs unique; backward prerequisites; continuous next links; final A20 -> /paths/a
+A01–A20 real hooks at 360px: loaded, no page overflow, images preserve aspect ratio
+No new dependencies; no change to package-lock.json
+
+FAILED ATTEMPTS AND FIXES (not hidden)
+1. Main baseline lint: scripts/smoke-academy.mjs bare location was undefined to ESLint; changed to window.location.
+2. First new password model compile: Event.kind widened to string; added explicit event typing. Baseline 574-unit-test run passed; build at that point already included new edits, so it is not claimed as a clean baseline build.
+3. First new browser run: 251/257. Expected 3/4 first-try score was wrong: one wrong quiz + wrong transfer means actual 2/4; fixed expected score, never changed progress logic. External-request guard also counted existing Google Fonts; allowlisted only its two existing font hosts, still reject additional requests.
+4. Existing smoke failed two home route-card assumptions and timed out clearing progress on /me. Latest main moved route cards to /paths and controls to /settings; original assertions run there now.
+5. Existing Academy smoke timed out waiting for courses on the new stage-only Home, then for stage buttons on Courses. Readiness now accepts stages; stage tests use Paths, continuation returns to Home. Later three count failures were actual 30-item pagination; now verify page-size + 35 results and click Show More before requiring all 35 real links.
+6. Review found free phishing evaluation would freeze successful exploration; freeze limited to challenge mode. Browser verifies switching scenario after successful free evaluation.
+7. Final review keeps different salts required in unique-password/MFA stages too; regression verifies same-salt reenrollment fails.
+No existing test deleted, no assertions removed to hide a failure, no Academy UI rollback.
+
+KNOWN LIMITS
+Build retains existing >500kB chunk warning; no unrelated bundle/UI refactor.
+No real learner trial, physical mobile, Safari/Firefox, production authentication or real AI tested.
+CISA pages and NIST SP800-53 page returned HTTP403 to automated retrieval; references retained as documented official sources, not claimed fetched/learner-validated.
+Full working logs remain in /workspace/nico-security-evidence; this file intentionally contains compact actual output extracts rather than duplicate screenshots/logs.

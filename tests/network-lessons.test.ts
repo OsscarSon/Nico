@@ -31,9 +31,9 @@ describe("network lessons keep the full existing template", () => {
     // Same 5-byte span, translated from the demo ISN to the transfer's first byte 1001.
     expect(answer("a14-tcp")).toBe(1001 + (t.serverNext - 101));
   });
-  it("connects A10 through A17 while leaving A18 planned", () => {
+  it("connects A10 through A17 and onward to A18", () => {
     const chain = ["a10-ip-subnet", "a11-devices", "a12-packets", "a13-dns", "a14-tcp", "a15-udp", "a16-http-https", "a17-web-journey"];
     for (let i = 0; i < chain.length - 1; i++) expect(nextAvailableAfter(chain[i]!)?.id).toBe(chain[i + 1]);
-    expect(nextAvailableAfter("a17-web-journey")).toBeUndefined(); expect(validateContent()).toEqual([]);
+    expect(nextAvailableAfter("a17-web-journey")?.id).toBe("a18-passwords"); expect(validateContent()).toEqual([]);
   });
 });

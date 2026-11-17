@@ -1,6 +1,9 @@
 import { UdpLab } from "../../sims/UdpLab";
 import { HttpLab } from "../../sims/HttpLab";
 import { JourneyLab } from "../../sims/JourneyLab";
+import { PasswordLab } from "../../sims/PasswordLab";
+import { PhishingLab } from "../../sims/PhishingLab";
+import { PrivilegeLab } from "../../sims/PrivilegeLab";
 import { ForwardingLab } from "../../sims/ForwardingLab";
 import { ReassemblyLab } from "../../sims/ReassemblyLab";
 import { TcpLab } from "../../sims/TcpLab";
@@ -63,6 +66,9 @@ export function SimBlock({
         {block.sim === "udp" ? <UdpLab mode={block.mode} onSolved={onDone} />
           : block.sim === "http" ? <HttpLab mode={block.mode} onSolved={onDone} />
           : block.sim === "journey" ? <JourneyLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "password" ? <PasswordLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "phishing" ? <PhishingLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "privilege" ? <PrivilegeLab mode={block.mode} onSolved={onDone} />
           : block.sim === "forwarding" ? <ForwardingLab mode={block.mode} onSolved={onDone} />
           : block.sim === "reassembly" ? <ReassemblyLab mode={block.mode} onSolved={onDone} />
           : block.sim === "tcp" ? <TcpLab mode={block.mode} onSolved={onDone} />

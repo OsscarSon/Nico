@@ -25,9 +25,9 @@ describe("A15–A17 complete draft lessons", () => {
     s = tickJourney(tickJourney(tickJourney(s))); s = query(s, "https://www.example.com/lesson");
     expect(answer("a17-web-journey")).toBe(s.externalQueries - prime); expect(s.resolution?.serversAsked).toBe(1);
   });
-  it("extends existing IDs from A14 to A17 and leaves A18 unimplemented", () => {
+  it("extends existing IDs from A14 to A17 and onward to A18", () => {
     const chain = ["a14-tcp", "a15-udp", "a16-http-https", "a17-web-journey"];
     for (let i = 0; i < chain.length - 1; i++) expect(nextAvailableAfter(chain[i]!)?.id).toBe(chain[i + 1]);
-    expect(nextAvailableAfter("a17-web-journey")).toBeUndefined(); expect(lessons["a18-passwords"]).toBeUndefined(); expect(validateContent()).toEqual([]);
+    expect(nextAvailableAfter("a17-web-journey")?.id).toBe("a18-passwords"); expect(lessons["a18-passwords"]).toBeDefined(); expect(validateContent()).toEqual([]);
   });
 });

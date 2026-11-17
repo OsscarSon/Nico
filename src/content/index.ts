@@ -11,10 +11,12 @@ import { a05 } from "./lessons/a05-cpu-cycle";
 import { trackBLessons } from "./track-b";
 import { trackCLessons } from "./track-c";
 import { networkLessons } from "./track-a-net";
+import { securityLessons } from "./track-a-security";
 
 export const lessons: Record<string, Lesson> = {
   [a01.id]: a01, [a02.id]: a02, [a03.id]: a03, [a04.id]: a04, [a05.id]: a05, [a06.id]: a06, [a07.id]: a07, [a08.id]: a08,
   ...Object.fromEntries(networkLessons.map((l) => [l.id, l])),
+  ...Object.fromEntries(securityLessons.map((l) => [l.id, l])),
   ...Object.fromEntries(trackBLessons.map((l) => [l.id, l])),
   ...Object.fromEntries(trackCLessons.map((l) => [l.id, l])),
 };
