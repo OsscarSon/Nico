@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { Link } from "../../app/router";
+import { Link, navigate, usePath } from "../../app/router";
 import { artUrl } from "../../art";
-import { academyTracks, coursesFor, curriculum, filterCourses, liveLessonFor, stages, stageSummary, statusLabels, type AcademyTrackId, type Course, type CourseStatus, type Stage } from "../../content/academy";
-import { getTrack } from "../../content/catalog";
+import { academyTracks, coursesFor, curriculum, filterCourses, stages, stageSummary, statusLabels, type AcademyTrackId, type Course, type CourseStatus, type Stage } from "../../content/academy";
+import { routeNode } from "../../content/route-view";
+import { usePreferences } from "../../preferences/store";
 import { useProgress } from "../../progress/useProgress";
 
 function CourseRow({ course }: { course: Course }) {
   const progress = useProgress();
-  const lesson = liveLessonFor(course);
+  const node = routeNode(course);
+  const lesson = node.lesson;
   const tag = <span className={`course-tag ${course.status}`}>{statusLabels[course.status]}</span>;
   if (lesson) return (
     <li className="academy-course live-course">
@@ -22,7 +24,7 @@ function CourseRow({ course }: { course: Course }) {
     <li className="academy-course">
       <details>
         <summary><span className="course-code mono">{course.id}</span><span className="course-title"><strong>{course.title}</strong><small>查看规划说明</small></span>{tag}<span className="course-arrow" aria-hidden="true">＋</span></summary>
-        <div className="course-details">
+        <div className="course-details">{node.plannedArt && <img className="planned-preview" src={artUrl(node.plannedArt)} alt={`${course.id}规划预览插画，尚未开放`} width={1600} height={900} />}
           <p>{course.status === "reading" ? "资料路径尚未发布，学习顺序与权威资源仍在整理。" : "此课程尚未开放，以下为未来规划。"}</p>
           {course.units && <p>规划单元：{course.units.join(" · ")}</p>}
           {course.prerequisites && <p>建议先修：{course.prerequisites}（不设硬性门槛）</p>}
@@ -40,7 +42,7 @@ export function StageOverview() {
     <>
       <div className="academy-section-head"><div><h2 id="stages-heading">选择你的学习阶段</h2><p>从基础起步，逐渐深入。每个阶段都可以自由探索。</p></div><span className="academy-eyebrow">3 PHASES</span></div>
       <div className="academy-stages" role="group" aria-labelledby="stages-heading">
-        {stages.map((s, i) => <Link key={s.id} to="/paths" className="academy-stage">
+        {stages.map((s, i) => <Link key={s.id} to={`/paths?stage=${s.id}`} className="academy-stage">
           <span className="academy-eyebrow">PHASE 0{i + 1}<span>{s.id}</span></span>
           <strong>{s.title}</strong><span className="muted">{s.subtitle}</span><span className="stage-count">{stageSummary(s.id)}</span>
         </Link>)}
@@ -51,13 +53,16 @@ export function StageOverview() {
 
 /** 路线页：先选阶段，再选路线，右侧看这条路线下的课程（不带搜索，搜索归「课程」页）。 */
 export function PathsCatalog() {
-  const [stage, setStage] = useState<Stage>("Foundation");
-  const [trackId, setTrackId] = useState<AcademyTrackId>("A");
+  const params = new URLSearchParams(usePath().split("?")[1]);
+  const stage = stages.find(s => s.id === params.get("stage"))?.id ?? "Foundation";
+  const trackId = (academyTracks.find(t => t.id === params.get("track"))?.id ?? "A") as AcademyTrackId;
+  const setStage = (value: Stage) => navigate(`/paths?stage=${value}&track=${trackId}`);
+  const setTrackId = (value: AcademyTrackId) => navigate(`/paths?stage=${stage}&track=${value}`);
+  const preferences = usePreferences();
   const stageCourses = coursesFor(stage);
   const visibleTracks = academyTracks.filter(t => stageCourses.some(c => c.track === t.id));
   const selected = visibleTracks.find(t => t.id === trackId) ?? visibleTracks[0]!;
   const selectedCourses = coursesFor(stage, selected.id);
-  const oldTrack = getTrack(selected.id.toLowerCase());
   const stageInfo = stages.find(s => s.id === stage)!;
 
   return (
@@ -84,8 +89,9 @@ export function PathsCatalog() {
         <section className="panel academy-course-panel" aria-labelledby="course-panel-title">
           <header className="academy-panel-head"><div><h3 id="course-panel-title">{selected.title}</h3><p>{selected.subtitle} · {stage}</p></div><span className="course-tag">{selectedCourses.length} 门课程</span></header>
           <p className="academy-notice">{stageInfo.note}</p>
-          {oldTrack?.status === "building" && <Link className="academy-map-link" to={`/paths/${oldTrack.id}`}>打开 {selected.id} 路线图 →</Link>}
-          <ul className="academy-courses">{selectedCourses.map(c => <CourseRow key={c.id} course={c} />)}</ul>
+          <Link className="academy-map-link" to={`/paths/${selected.id.toLowerCase()}?stage=${stage}`}>打开 {selected.id} 路线图 →</Link>
+          <ul className="academy-courses">{selectedCourses.filter(c => preferences.showPlanned || routeNode(c).available).map(c => <CourseRow key={c.id} course={c} />)}</ul>
+          {!selectedCourses.some(c => preferences.showPlanned || routeNode(c).available) && <div className="academy-empty"><p>此路线尚无已上线课程，规划内容已按设置隐藏。</p><Link to="/settings" className="btn secondary">管理规划显示</Link></div>}
         </section>
       </div>
       <p className="academy-footnote">上线数量表示课程可访问，不代表个人学习进度。下一批、试点、精选主题与资料路径均为未来规划。</p>
@@ -106,7 +112,8 @@ export function CoursesCatalog() {
   const pool = curriculum
     .filter(c => (stage === "all" || c.stage === stage) && (trackId === "all" || c.track === trackId))
     .sort((a, b) => a.id.localeCompare(b.id, "en", { numeric: true }));
-  const results = filterCourses(pool, query, status);
+  const preferences = usePreferences();
+  const results = filterCourses(pool, query, status).filter(c => preferences.showPlanned || routeNode(c).available);
   const reset = () => { setQuery(""); setStatus("all"); setTrackId("all"); setShown(PAGE_SIZE); };
   const change = <T,>(set: (v: T) => void) => (v: T) => { set(v); setShown(PAGE_SIZE); };
 
