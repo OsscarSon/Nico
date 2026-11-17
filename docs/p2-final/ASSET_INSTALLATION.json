@@ -1,0 +1,53 @@
+[
+  {
+    "source": "assets/home/hero-left-main.png",
+    "target": "public/art/home-hero-left-final.png",
+    "source_sha256": "bdd2ffe974fd6bbf6842acea8d901a067ad07c2743567bd2540d7bda4c7035fd",
+    "installed_sha256": "bdd2ffe974fd6bbf6842acea8d901a067ad07c2743567bd2540d7bda4c7035fd",
+    "action": "Exact uploaded PNG; left Hero background"
+  },
+  {
+    "source": "assets/home/hero-right-continue.png",
+    "target": "public/art/home-continue-final.png",
+    "source_sha256": "907d0ad4ac1db9955eac9a7d19871a46d0adc451dab65b5809369383aa84889d",
+    "installed_sha256": "907d0ad4ac1db9955eac9a7d19871a46d0adc451dab65b5809369383aa84889d",
+    "action": "Exact uploaded PNG; continue background"
+  },
+  {
+    "source": "assets/brand/nico-n-academy-logo-concept.png",
+    "target": "public/art/nico-academy-logo-candidate-final.png",
+    "source_sha256": "c7877cfb0820a706e23a5cd67185eded8a55c0444e6a8824d845283d355e8a77",
+    "installed_sha256": "c7877cfb0820a706e23a5cd67185eded8a55c0444e6a8824d845283d355e8a77",
+    "action": "Exact uploaded candidate; native-size comparison/provenance"
+  },
+  {
+    "source": "Explicitly authorized SVG simplification of uploaded candidate",
+    "target": "public/art/nico-academy-mark-final.svg",
+    "installed_sha256": "75ba9b3b01449ba485d24bebbfe2c2f19b129c3c18467e14c0bbb30601541bf7",
+    "action": "New distinct filename; no old asset replacement"
+  },
+  {
+    "source": "Browser canvas export of nico-academy-mark-final.svg",
+    "target": "public/art/nico-academy-icon-final-32.png",
+    "installed_sha256": "fa0013981aaf0f0cd3cf2c9924b614b3c4f9ace90b943e3dc9da7a5164aced22",
+    "action": "New distinct filename; no old asset replacement"
+  },
+  {
+    "source": "Browser canvas export of nico-academy-mark-final.svg",
+    "target": "public/art/nico-academy-icon-final-180.png",
+    "installed_sha256": "c2c53ed114f2e2b46f9e84891805c84d389c5128fc292847c9ad0b8a5bb67a04",
+    "action": "New distinct filename; no old asset replacement"
+  },
+  {
+    "source": "Browser canvas export of nico-academy-mark-final.svg",
+    "target": "public/art/nico-academy-icon-final-192.png",
+    "installed_sha256": "a866927e90ed9f479b7e8bc12915323d6eada8d134fb3d53625d277ccba9e5a1",
+    "action": "New distinct filename; no old asset replacement"
+  },
+  {
+    "source": "Browser canvas export of nico-academy-mark-final.svg",
+    "target": "public/art/nico-academy-icon-final-512.png",
+    "installed_sha256": "476aca80c5da19560a78aa33fce3c4efad89dc984c4b16b27b29e59a8f05a4c6",
+    "action": "New distinct filename; no old asset replacement"
+  }
+]

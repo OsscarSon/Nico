@@ -172,7 +172,8 @@ if (aiOff) {
 
 await page.goto(`${BASE}/#/settings`);
 await page.getByRole("heading", { name: "AI 服务", exact: true }).waitFor();
-check("设置如实区分未配置与已配置但未检测连接", (await page.locator("main").innerText()).includes(ENDPOINT ? "已配置服务地址，尚未检测连通性" : "尚未配置 AI 服务地址"));
+// Latest brief removes diagnostics from Settings; actual disabled/failure semantics remain checked above on the AI feature pages.
+check("设置不展示工程诊断，保留实际快捷入口选项", !/配置状态|已配置服务地址|尚未检测连通性|尚未配置 AI 服务地址/.test(await page.locator("main").innerText()) && await page.getByRole("checkbox", { name: "显示AI快捷入口", exact: true }).count() === 1);
 check("配置状态不冒充已连接服务", await page.getByText("已连接", { exact: true }).count() === 0);
 check("没有 JS 报错", errors.length === 0, errors.join(" | "));
 await browser.close();

@@ -1,0 +1,170 @@
+[
+  {
+    "source": "original_p2_kit/assets/course/lesson-a15-udp.png",
+    "installed": "public/art/lesson-a15-udp.png",
+    "sha256": "06f7aaab8178fd916313735b49e747e5cc80c67b806973fcba3248405b6ee43d",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/course/lesson-a15-udp.svg",
+    "installed": "public/art/lesson-a15-udp.svg",
+    "sha256": "ae5f942096eb1a00c687716a57ddc85a7eea7927808e054e92d34f798dd1f31b",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/course/lesson-a16-http-https.png",
+    "installed": "public/art/lesson-a16-http-https.png",
+    "sha256": "49ccc36c087489f23dbe2b1546ce31e2113bfaf4b83ba6acdd057d7dfb146b97",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/course/lesson-a16-http-https.svg",
+    "installed": "public/art/lesson-a16-http-https.svg",
+    "sha256": "e25d431301be40ecafa4e4df69caf86916143dab93d085d223c0584a64550995",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/course/lesson-a17-web-journey.png",
+    "installed": "public/art/lesson-a17-web-journey.png",
+    "sha256": "14cdccc9a5f6ee7c4e13c525d7695e2e6aa25784304283f104687ed6b6138c95",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/course/lesson-a17-web-journey.svg",
+    "installed": "public/art/lesson-a17-web-journey.svg",
+    "sha256": "56df9fa64ba68c78fb0f7a81e8ea70e4ae263f50b0a76163473a870af7fdd14f",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/course/lesson-a18-passwords.png",
+    "installed": "public/art/lesson-a18-passwords.png",
+    "sha256": "1017d18e3d2e1bc02bd2d421ecd20ac88165466466990e00a0faea8555454fe4",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/course/lesson-a18-passwords.svg",
+    "installed": "public/art/lesson-a18-passwords.svg",
+    "sha256": "fa89e8fc46e9a26b4dbb9e5b6718c1ea9684eec91034fb52f90d4f63c727cf0e",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/course/lesson-a19-phishing.png",
+    "installed": "public/art/lesson-a19-phishing.png",
+    "sha256": "bdcb4d4c20abf0f4c20d8f92a2da4de0896fe99cc93a46346f6ec8197cfd319d",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/course/lesson-a19-phishing.svg",
+    "installed": "public/art/lesson-a19-phishing.svg",
+    "sha256": "ef351703b2a22f1c786cbf038d7ebacab68cbad287b1f1eab86a780eced022a9",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/course/lesson-a20-least-privilege.png",
+    "installed": "public/art/lesson-a20-least-privilege.png",
+    "sha256": "64509efebb386b3f0472b5e7f125113f071fc55784c8137555bfb7735841bad3",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/course/lesson-a20-least-privilege.svg",
+    "installed": "public/art/lesson-a20-least-privilege.svg",
+    "sha256": "a040b2da0c619a32508a15219a43cd06f1869846a75ff1022491f1f23e400fe5",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/planned/planned-a21-http-status.png",
+    "installed": "public/art/planned-a21-http-status.png",
+    "sha256": "15e9b802ecbb71c5075b566b23bc9549ee9841f7f0b3b5b38e515071d445defa",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/planned/planned-a21-http-status.svg",
+    "installed": "public/art/planned-a21-http-status.svg",
+    "sha256": "e1019034ffcdf8c1bf80c4e62cfa76f9559717335dc7c0dbc87263ecb6c16dbf",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/planned/planned-a22-error-logs.png",
+    "installed": "public/art/planned-a22-error-logs.png",
+    "sha256": "7629a46c55ee564a98d8dcd795285304215af9c2a3d99eb77ea0474d34ea48d2",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/planned/planned-a22-error-logs.svg",
+    "installed": "public/art/planned-a22-error-logs.svg",
+    "sha256": "9dcc7db990c5243f96a765c441f4987250b44fbf541929add2d789e5fe31b51d",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/ui/profile-identity-background.png",
+    "installed": "public/art/profile-identity-background.png",
+    "sha256": "5d5615bd39cb49a3cf921fc7091e2f6c67b6421bb20b15485bac058743f0486e",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/ui/profile-identity-background.svg",
+    "installed": "public/art/profile-identity-background.svg",
+    "sha256": "6c10d835f30faab9ddb385ea0e8ca03a5dc472ae0b92421a6ca2659b8c022a0b",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/ui/roadmap-trace-banner.png",
+    "installed": "public/art/roadmap-trace-banner.png",
+    "sha256": "b91ee2785510e7fd0596ab6dfb30839aa3f2f3c9ca5dcfb36a04c3d522009e79",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/ui/roadmap-trace-banner.svg",
+    "installed": "public/art/roadmap-trace-banner.svg",
+    "sha256": "15d9aeb94fdbbf1547824b95eea994aabf06837a994259ccea78859fb5d1a11d",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/units/unit-a1-digital.png",
+    "installed": "public/art/unit-a1-digital.png",
+    "sha256": "2c34c3965abbf8d3fb03b4bc1ae66d6a8fbd20dbc611401cdb6ef6a677b43ea8",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/units/unit-a1-digital.svg",
+    "installed": "public/art/unit-a1-digital.svg",
+    "sha256": "6e06571029f8d902a6f334dbe44cf3704bafad6626c8da5ec9b694c7e77612b5",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/units/unit-a2-computer.png",
+    "installed": "public/art/unit-a2-computer.png",
+    "sha256": "b9ca6452ce2f382612beff96902d2f33d759d846bb8539ba176c56912429781d",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/units/unit-a2-computer.svg",
+    "installed": "public/art/unit-a2-computer.svg",
+    "sha256": "d5af6eeb4234e67fffce4b6b04c0632bf8ea719e5fb23ff3eda044d956200022",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/units/unit-a3-network.png",
+    "installed": "public/art/unit-a3-network.png",
+    "sha256": "69e97243f9f6822bfbe86f89dd77e4defb437524b561ca77f8e6a92eccae46d5",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/units/unit-a3-network.svg",
+    "installed": "public/art/unit-a3-network.svg",
+    "sha256": "ff3a87b0d18156ba0f8be912b590123ef48c5be14eb62547c3cc84f8d39f197a",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/units/unit-a4-security.png",
+    "installed": "public/art/unit-a4-security.png",
+    "sha256": "247fc18177d7211810179f37cc4e8ce93653b2dbc3cbed2a9d96ebdf4040f415",
+    "action": "already installed in main; identical; retained without copying"
+  },
+  {
+    "source": "original_p2_kit/assets/units/unit-a4-security.svg",
+    "installed": "public/art/unit-a4-security.svg",
+    "sha256": "8861b8a3fdcbb3ece04add3c0f218bc76fb53dae758989e33f367e702beb72d2",
+    "action": "already installed in main; identical; retained without copying"
+  }
+]

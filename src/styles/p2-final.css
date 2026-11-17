@@ -1,0 +1,49 @@
+/* Incremental final brief: home artwork, actual brand marks and Settings cleanup only. */
+.nico-logo { display: block; width: 32px; height: 32px; flex: 0 0 auto; object-fit: contain; }
+.brand { min-height: 44px; }
+.home-grid .final-hero, .home-grid .final-continue { position: relative; isolation: isolate; overflow: hidden; color: #f4f7ff; background: #101e36; border: 1px solid #344b70; border-radius: var(--radius-card); min-height: 420px; }
+.home-grid .final-hero { display: flex; align-items: center; padding: 28px; }
+.hero-artwork { position: absolute; inset: 0; z-index: -2; background-repeat: no-repeat; pointer-events: none; }
+.final-hero .hero-artwork { background-size: cover; background-position: right center; }
+.final-hero::before, .final-continue::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.final-hero::before { background: linear-gradient(90deg, #101e36f5 0%, #101e36df 29%, #101e36a0 48%, #101e3600 72%); }
+.hero-copy { width: 54%; min-width: 0; }
+.final-hero .academy-eyebrow { display: block; color: #b6d0ff; font-size: .625rem; letter-spacing: .07em; }
+.final-hero h1 { color: #f4f7ff; font-size: clamp(1.65rem, 2.2vw, 2.125rem); line-height: 1.5; margin: 16px 0; }
+.final-hero p { color: #d5e1f3; font-size: .875rem; line-height: 1.85; margin-bottom: 24px; }
+.home-grid .final-continue { padding: 28px; padding-bottom: 122px; align-content: center; gap: 16px; }
+.final-continue .hero-artwork { background-size: cover; background-position: right bottom; opacity: .65; }
+.final-continue::before { background: linear-gradient(180deg, #101e36e8 0%, #101e36de 50%, #101e3625 100%); }
+.final-continue h2 { color: #f4f7ff; font-size: 1.5rem; line-height: 1.5; margin: 0; }
+.final-continue p.muted, .final-continue .stat span { color: #d5e1f3; }
+.final-continue .stat strong { color: #f4f7ff; }
+.final-continue .stats { margin-top: 0; gap: 24px; }
+.final-continue .btn.secondary { color: #f4f7ff; border-color: #7b9ac6; background: #1c345b; }
+.home-preview { margin: var(--layout-gap) 0; display: flex; align-items: center; gap: 28px; border: 1px solid var(--grid); border-radius: var(--radius-card); background: var(--panel); padding: 16px; }
+.home-preview img { display: block; width: min(44%, 360px); height: auto; aspect-ratio: 16 / 9; object-fit: contain; border-radius: 8px; flex-shrink: 0; }
+.home-preview figcaption p { margin: 0; color: var(--muted); font-size: .875rem; line-height: 1.8; }
+.settings-license { margin: 20px 0 0; color: var(--muted); font-size: .75rem; }
+.profile-clear { border-top: 1px solid var(--grid); padding-top: 16px; display: grid; gap: 12px; }
+@media (min-width: 1200px) { .sidenav .nico-logo { width: 48px; height: 48px; } }
+@media (min-width: 900px) and (max-width: 1199px) {
+  .home-grid { grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr); }
+  .home-grid .final-hero { padding: 24px; }
+  .hero-copy { width: 60%; }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  .home-grid .final-hero { min-height: 400px; }
+  .home-grid .final-continue { min-height: 340px; }
+}
+@media (max-width: 599px) {
+  .home-grid .final-hero { min-height: 0; padding: 24px 20px calc((100vw - 34px) * .563 + 12px); }
+  .hero-copy { width: 100%; }
+  .final-hero h1 { font-size: 1.75rem; margin-block: 12px; }
+  .final-hero p { margin-bottom: 20px; }
+  .final-hero .hero-artwork { background-size: 100% auto; background-position: center bottom; }
+  .final-hero::before { background: linear-gradient(180deg, #101e36 0%, #101e36 48%, #101e3600 70%); }
+  .home-grid .final-continue { min-height: 340px; padding: 24px 20px 120px; }
+  .final-continue .hero-artwork { background-size: 100% auto; }
+  .home-preview { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .home-preview img { width: 100%; max-width: 360px; }
+}
+@media (max-width: 374px) { .mobile-brand .nico-logo { width: 24px; height: 24px; } }

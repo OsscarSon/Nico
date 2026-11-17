@@ -1,0 +1,109 @@
+
+> nico@0.1.0 smoke:b
+> node scripts/smoke-b.mjs
+
+PASS  路线 B 页面显示20门目录和14门已上线课
+PASS  路线 B 有 6 个规划中的课
+PASS  手机宽度无横向溢出：路线 B
+PASS  B01 带「草稿」标记
+PASS  Python 互动不标「模拟」，标「真实 Python」
+PASS  互动里有代码编辑器
+PASS  B01 自由练习：Python 运行并显示输出
+PASS  改了代码再运行，输出跟着变
+PASS  语法错误：显示行号与中文提示
+PASS  手机宽度无横向溢出：Python 互动
+PASS  挑战没完成时「下一步」是禁用的
+PASS  挑战：没写答案时，指出期望输出 60（而不是先说写法）
+PASS  挑战：输出对但把答案写死，被拦下
+PASS  被拦下时不算通过（下一步仍禁用）
+PASS  挑战：正确答案通过
+PASS  通过后「下一步」可用
+PASS  B01 迁移题通过
+PASS  B01 小结有 3 条
+PASS  B01 完成后记录了进度
+PASS  B01 的下一课「条件」可进入
+PASS  B02 自由练习：输入 59 显示 不及格
+PASS  B02 自由练习：输入 60 显示 及格
+PASS  B02 挑战：边界写成 > 时，指出 90 和 60 两个边界没过
+PASS  B02 挑战：5 项检查全部通过
+PASS  B02 完成后记录了进度
+PASS  B03 死循环：约 5 秒后被自动停止并提示
+PASS  停止发生在合理时间内（不是卡死）
+PASS  停止后「运行」按钮回来了
+PASS  停止后可以继续运行新代码
+PASS  点「停止」能终止运行
+PASS  B03 挑战：4 项检查全部通过
+PASS  B03 的下一课是 B04
+PASS  b04-functions 自由练习能运行
+PASS  b04-functions 常见错误写法被指出
+PASS  b04-functions 正确答案全部通过
+PASS  b04-functions 完成后记录了进度，下一课指向 b05-lists
+PASS  b05-lists 自由练习能运行
+PASS  b05-lists 常见错误写法被指出
+PASS  b05-lists 正确答案全部通过
+PASS  b05-lists 完成后记录了进度，下一课指向 b06-dicts
+PASS  b06-dicts 自由练习能运行
+PASS  b06-dicts 常见错误写法被指出
+PASS  b06-dicts 正确答案全部通过
+PASS  b06-dicts 完成后记录了进度，下一课指向 b07-debugging
+PASS  b07-debugging 自由练习能运行
+PASS  B07 起始代码：读到语法错误和行号
+PASS  b07-debugging 常见错误写法被指出
+PASS  b07-debugging 正确答案全部通过
+PASS  b07-debugging 完成后记录了进度，下一课指向 b08-html
+PASS  预览 iframe 的 sandbox 为空（禁止脚本）
+PASS  预览跟着代码变
+PASS  预览里的脚本不会执行、改不了外层页面
+PASS  预览文档带内容安全策略
+PASS  手机宽度无横向溢出：HTML 互动
+PASS  B08 挑战：空页面四项都没过
+PASS  B08 挑战：只有 2 项列表时指出还差一项
+PASS  B08 挑战：四项全部通过
+PASS  B08 完成后记录了进度
+PASS  b09-css 自由练习：预览里有内容
+PASS  b09-css 起始代码：4 项都没过
+PASS  b09-css 写错一项：指出浏览器算出的实际值
+PASS  b09-css 用行内 style 绕过：被要求写进 <style>
+PASS  b09-css 绕过时不算通过
+PASS  b09-css 正确答案全部通过
+PASS  b09-css 完成后下一课指向 b10-css-layout
+PASS  b10-css-layout 自由练习：预览里有内容
+PASS  b10-css-layout 起始代码：6 项都没过
+PASS  b10-css-layout 写错一项：指出浏览器算出的实际值
+PASS  b10-css-layout 正确答案全部通过
+PASS  b10-css-layout 完成后下一课指向 b11-js-dom
+PASS  b11 自由练习：console 输出 36 和 你好，Nico
+PASS  b11 sumTo 起始代码：5 项都没过
+PASS  b11 写死答案：被指出
+PASS  b11 sumTo 通过
+PASS  b11 死循环被停止并给出提示
+PASS  b11 死循环之后页面仍然可以操作
+PASS  b11 sumTo 正确答案全部通过
+PASS  b11 页面：运行后标题变成「你好，JS」
+PASS  b11 DOM 起始代码：3 项都没过
+PASS  b11 DOM 正确答案全部通过
+PASS  b12 计数器：真的点击按钮，页面数字变 2
+PASS  b12 起始代码：3 项没过（「还没点击时为空」本来就成立）
+PASS  b12 多写括号 greet()：被检查出来
+PASS  b12 正确答案全部通过
+PASS  b12 无 JS 报错、无横向溢出
+PASS  b14 没 init 时给出诚实提示
+PASS  b14 init 后 status 显示未跟踪文件
+PASS  b14 提交成功
+PASS  b14 手机宽度没有横向溢出
+PASS  b14 挑战：起始 4 项未达成
+PASS  b14 没 add 就 commit：被解释
+PASS  b14 挑战通过
+PASS  b14 通过后输入框被禁用
+PASS  b15 切回 main 后 style.css 不见了
+PASS  b15 快进合并后 style.css 回来了
+PASS  b15 有未提交修改时拒绝切换
+PASS  b15 挑战通过（合并提交）
+PASS  b15 手机宽度没有横向溢出
+PASS  答错 2 次后出现「看参考答案」
+PASS  参考答案显示出来，并且可以继续
+PASS  Pyodide 下载失败：说明是没网，不假装运行成功
+PASS  失败后「运行」按钮还在，可重试
+PASS  整个过程没有 JS 报错
+
+全部通过

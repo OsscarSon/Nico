@@ -23,16 +23,17 @@ export function HomePage() {
 
   return (
     <>
-      <div className="home-grid"><section className="academy-hero">
-        <div><span className="academy-eyebrow">EXPLORE · BUILD · UNDERSTAND</span>
+      <div className="home-grid"><section className="academy-hero final-hero">
+        <div className="hero-artwork" aria-hidden="true" style={{ backgroundImage: `url(${artUrl("home-hero-left-final.png")})` }} />
+        <div className="hero-copy"><span className="academy-eyebrow">EXPLORE · BUILD · UNDERSTAND</span>
           <h1>每一步，都在构建<br />你的知识世界。</h1>
           <p>从第一行代码，到理解复杂系统。<br />选择你的路线，让学习真正发生。</p>
           <button className="btn" onClick={() => navigate("/paths")}>探索学习路线 ↗</button>
         </div>
-        <img src={artUrl("hero-home-1600x900.png")} alt="Nico 原版 Byte 与电路学习路线插画" width={1600} height={900} />
       </section>
 
-      <section className="panel today" aria-labelledby="today-title">
+      <section className="panel today final-continue" aria-labelledby="today-title">
+        <div className="hero-artwork" aria-hidden="true" style={{ backgroundImage: `url(${artUrl("home-continue-final.png")})` }} />
         {targetLesson ? (
           <>
             <span className="pill available" style={{ justifySelf: "start" }}>
@@ -68,7 +69,12 @@ export function HomePage() {
         )}
       </section>
 
-      </div><StageOverview />
+      </div>
+      <figure className="home-preview">
+        <img src={artUrl("hero-home-1600x900.png")} alt="Nico 原版 Byte 与电路学习路线插画" width={1600} height={900} />
+        <figcaption><span className="eyebrow">从好奇到理解</span><p>认识 Byte，一起把知识连成路线。<br />读一读，动手试，再用自己的话讲明白。</p></figcaption>
+      </figure>
+      <StageOverview />
     </>
   );
 }

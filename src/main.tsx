@@ -7,6 +7,7 @@ import "./styles/base.css";
 import "./styles/app.css";
 import "./styles/academy.css";
 import "./styles/p2.css";
+import "./styles/p2-final.css";
 
 initializePreferences();
 

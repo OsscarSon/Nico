@@ -1,0 +1,210 @@
+[
+  {
+    "width": 1440,
+    "left": {
+      "x": 244,
+      "y": 100,
+      "width": 707.3125,
+      "height": 420,
+      "bottom": 520,
+      "right": 951.3125
+    },
+    "copy": {
+      "x": 273,
+      "y": 176.484375,
+      "width": 350.625,
+      "height": 267.03125,
+      "bottom": 443.515625,
+      "right": 623.625
+    },
+    "right": {
+      "x": 975.3125,
+      "y": 100,
+      "width": 428.671875,
+      "height": 420,
+      "bottom": 520,
+      "right": 1403.984375
+    },
+    "logo": {
+      "width": 48,
+      "height": 48,
+      "loaded": true
+    },
+    "old": {
+      "x": 261,
+      "y": 561,
+      "width": 360,
+      "height": 202.5,
+      "bottom": 763.5,
+      "right": 621,
+      "loaded": true,
+      "src": "./art/hero-home-1600x900.png"
+    },
+    "preview": {
+      "x": 244,
+      "y": 544,
+      "width": 1160,
+      "height": 236.5,
+      "bottom": 780.5,
+      "right": 1404
+    },
+    "background": "cover",
+    "theme": "dark"
+  },
+  {
+    "width": 1280,
+    "left": {
+      "x": 240,
+      "y": 100,
+      "width": 612.671875,
+      "height": 420,
+      "bottom": 520,
+      "right": 852.671875
+    },
+    "copy": {
+      "x": 269,
+      "y": 181.78125,
+      "width": 299.515625,
+      "height": 256.4375,
+      "bottom": 438.21875,
+      "right": 568.515625
+    },
+    "right": {
+      "x": 876.671875,
+      "y": 100,
+      "width": 371.3125,
+      "height": 420,
+      "bottom": 520,
+      "right": 1247.984375
+    },
+    "logo": {
+      "width": 48,
+      "height": 48,
+      "loaded": true
+    },
+    "old": {
+      "x": 257,
+      "y": 561,
+      "width": 360,
+      "height": 202.5,
+      "bottom": 763.5,
+      "right": 617,
+      "loaded": true,
+      "src": "./art/hero-home-1600x900.png"
+    },
+    "preview": {
+      "x": 240,
+      "y": 544,
+      "width": 1008,
+      "height": 236.5,
+      "bottom": 780.5,
+      "right": 1248
+    },
+    "background": "cover",
+    "theme": "dark"
+  },
+  {
+    "width": 390,
+    "left": {
+      "x": 16,
+      "y": 90,
+      "width": 358,
+      "height": 482.390625,
+      "bottom": 572.390625,
+      "right": 374
+    },
+    "copy": {
+      "x": 37,
+      "y": 115,
+      "width": 316,
+      "height": 243.96875,
+      "bottom": 358.96875,
+      "right": 353
+    },
+    "right": {
+      "x": 16,
+      "y": 596.390625,
+      "width": 358,
+      "height": 340,
+      "bottom": 936.390625,
+      "right": 374
+    },
+    "logo": {
+      "width": 32,
+      "height": 32,
+      "loaded": true
+    },
+    "old": {
+      "x": 33,
+      "y": 977.390625,
+      "width": 324,
+      "height": 182.25,
+      "bottom": 1159.640625,
+      "right": 357,
+      "loaded": true,
+      "src": "./art/hero-home-1600x900.png"
+    },
+    "preview": {
+      "x": 16,
+      "y": 960.390625,
+      "width": 358,
+      "height": 311.015625,
+      "bottom": 1271.40625,
+      "right": 374
+    },
+    "background": "100% auto",
+    "theme": "dark"
+  },
+  {
+    "width": 360,
+    "left": {
+      "x": 16,
+      "y": 90,
+      "width": 328,
+      "height": 465.5,
+      "bottom": 555.5,
+      "right": 344
+    },
+    "copy": {
+      "x": 37,
+      "y": 115,
+      "width": 286,
+      "height": 243.96875,
+      "bottom": 358.96875,
+      "right": 323
+    },
+    "right": {
+      "x": 16,
+      "y": 579.5,
+      "width": 328,
+      "height": 340,
+      "bottom": 919.5,
+      "right": 344
+    },
+    "logo": {
+      "width": 24,
+      "height": 24,
+      "loaded": true
+    },
+    "old": {
+      "x": 33,
+      "y": 960.5,
+      "width": 294,
+      "height": 165.375,
+      "bottom": 1125.875,
+      "right": 327,
+      "loaded": true,
+      "src": "./art/hero-home-1600x900.png"
+    },
+    "preview": {
+      "x": 16,
+      "y": 943.5,
+      "width": 328,
+      "height": 294.140625,
+      "bottom": 1237.640625,
+      "right": 344
+    },
+    "background": "100% auto",
+    "theme": "dark"
+  }
+]

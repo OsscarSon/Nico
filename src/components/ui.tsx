@@ -136,11 +136,5 @@ export function NavIcon({ name }: { name: keyof typeof paths }) {
 }
 
 export function Logo() {
-  return (
-    <svg viewBox="0 0 36 36" aria-hidden="true">
-      <rect width="36" height="36" rx="8" fill="#2457f5" />
-      <path d="M11 26V10l14 16V10" fill="none" stroke="#fff" strokeWidth="2.8" strokeLinejoin="round" strokeLinecap="round" />
-      <circle cx="25" cy="10" r="3" fill="#ffb020" />
-    </svg>
-  );
+  return <img className="nico-logo" src={artUrl("nico-academy-mark-final.svg")} width={48} height={48} alt="" aria-hidden="true" />;
 }
