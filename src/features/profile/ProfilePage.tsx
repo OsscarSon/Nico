@@ -20,7 +20,7 @@ export function ProfilePage() {
     <header className="page-head"><h1>我的</h1><p>你的学习空间。每一点进步，都来自实际学习记录。</p></header>
     <section className="identity-card" aria-label="本机学习身份卡">
       <img className="identity-backdrop" src={artUrl("profile-identity-background.png")} alt="" width={1600} height={900} />
-      <div className="identity-person"><img className="identity-avatar" src={artUrl("app-icon-180.png")} alt="Nico，默认学习头像" width={88} height={88} /><div><span className="identity-caption">NICO · 本机学习档案</span><h2>{preferences.nickname || "学习者"}</h2><p>{preferred ? `${preferred.id} 路线学习者` : "自主学习者"} · 记录仅存本机</p></div></div>
+      <div className="identity-person"><img className="identity-avatar" src={artUrl("nico-academy-icon-final-180.png")} alt="Nico，默认学习头像" width={88} height={88} /><div><span className="identity-caption">NICO · 本机学习档案</span><h2>{preferences.nickname || "学习者"}</h2><p>{preferred ? `${preferred.id} 路线学习者` : "自主学习者"} · 记录仅存本机</p></div></div>
       <div className="stats"><div className="stat"><strong>{Object.keys(progress.lessons).length}</strong><span>已完成课时</span></div><div className="stat"><strong>{days}</strong><span>连续学习天数</span></div><div className="stat"><strong>{earned.filter(b => b.earned).length}</strong><span>已获得徽章</span></div></div>
       <details className="identity-edit"><summary>编辑个人资料</summary><ProfileEditor /></details>
     </section>
