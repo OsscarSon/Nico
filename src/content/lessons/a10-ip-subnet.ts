@@ -6,6 +6,7 @@ export const a10: Lesson = lessonSchema.parse({
   track: "a",
   unit: "a3",
   title: "IP 地址与子网",
+  art: "lesson-a10-ip-subnet.png",
   objectives: [
     "能说出 IPv4 地址是 4 个字节（32 位），每段最大是 255",
     "能说明 /24 这样的写法表示前多少位是网络号",

@@ -31,3 +31,8 @@
 ## 仍需处理
 1. 课头插图里的主体偏小、留白很多，作为页头可用，但不够有力；新出的路线徽记和吉祥物质量明显更好，可作为后续出图的风格标杆。
 2. 吉祥物 Byte 还没有用在界面里（有 6 个姿势可用于空状态、完成提示）。
+
+## 第三批：用户修好的 18 张图
+- **已接入**：`tutor-byte.png`（AI 导师页顶部）、`quota-sleeping.png`（今日额度用完时）、`lesson-a10-ip-subnet.png`（A10 课头）。接入位置见 `src/ai/art.ts` 和 `src/content/lessons/a10-ip-subnet.ts`。
+- **已放入 `public/art/`，等 C 路线课时写出来再引用**：`lesson-c01-what-is-llm`、`c02-tokens-context`、`c03-temperature`、`c04-hallucination`、`c06-few-shot`、`c07-output-format`、`c08-task-splitting`、`c09-self-check`、`c10-prompt-loop`、`c13-evaluation`、`c14-local-models`、`c15-bias-copyright`、`c16-prompt-injection`、`c17-when-not-ai`、`c18-assistant-project`（都是 `.png`）。写好对应课时后，在课时数据里加 `art: "文件名.png"`。C05、C11、C12 沿用原有的图。
+- 这 18 张主体居中偏差都在 1% 以内，每张 70–105KB。
