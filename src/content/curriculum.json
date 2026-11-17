@@ -175,8 +175,8 @@
   "track": "A",
   "title": "密码与哈希",
   "source": "existing curriculum",
-  "project": "网页访问交互图与诊断面板",
-  "status": "next",
+  "project": "Password Security Lab：公开样本派生、独立口令与MFA验证",
+  "status": "live",
   "phase": 1
  },
  {
@@ -185,8 +185,8 @@
   "track": "A",
   "title": "钓鱼防范",
   "source": "existing curriculum",
-  "project": "网页访问交互图与诊断面板",
-  "status": "next",
+  "project": "Phishing Detection Lab：证据核查与风险决策",
+  "status": "live",
   "phase": 1
  },
  {
@@ -195,8 +195,8 @@
   "track": "A",
   "title": "最小权限",
   "source": "existing curriculum",
-  "project": "网页访问交互图与诊断面板",
-  "status": "next",
+  "project": "Least Privilege Lab：授权、功能与恢复验证",
+  "status": "live",
   "phase": 1
  },
  {

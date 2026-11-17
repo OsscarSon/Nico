@@ -61,9 +61,9 @@ export const tracks: Track[] = [
       L("a15-udp", "UDP：何时不需要可靠", "a3", "available"),
       L("a16-http-https", "HTTP 与 HTTPS", "a3", "available"),
       L("a17-web-journey", "一次网页访问的完整旅程", "a3", "available"),
-      L("a18-passwords", "密码与哈希", "a4"),
-      L("a19-phishing", "识别钓鱼与社会工程", "a4"),
-      L("a20-least-privilege", "最小权限与日常防护", "a4"),
+      L("a18-passwords", "密码与哈希", "a4", "available"),
+      L("a19-phishing", "识别钓鱼与社会工程", "a4", "available"),
+      L("a20-least-privilege", "最小权限与日常防护", "a4", "available"),
     ],
   },
   {
