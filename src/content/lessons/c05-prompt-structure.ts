@@ -10,7 +10,7 @@ export const c05: Lesson = lessonSchema.parse({
   track: "c",
   unit: "c2",
   title: "指令的六要素",
-  art: "lesson-c05-prompt-structure.png",
+  art: "lesson-c05-prompt-structure-centered-audit.png",
   objectives: [
     "能说出指令的六个要素：角色、任务、背景、格式、约束、示例",
     "能判断一条指令缺了哪几项，并只补对这个任务有用的项",

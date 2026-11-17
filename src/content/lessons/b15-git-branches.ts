@@ -6,7 +6,7 @@ export const b15: Lesson = lessonSchema.parse({
   track: "b",
   unit: "b3",
   title: "分支与合并",
-  art: "lesson-b10-git-branches.png",
+  art: "lesson-b10-git-branches-centered-audit.png",
   objectives: [
     "能解释分支是什么，以及为什么要在分支上做新功能",
     "能用 git branch、git switch 创建并切换分支",

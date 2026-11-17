@@ -1,7 +1,7 @@
 import { lessonSchema, type Lesson } from "../schema";
 
 export const a06: Lesson = lessonSchema.parse({
-  id: "a06-memory", track: "a", unit: "a2", title: "内存与存储：为什么要分层", art: "lesson-a06-memory-layers.png",
+  id: "a06-memory", track: "a", unit: "a2", title: "内存与存储：为什么要分层", art: "lesson-a06-memory-layers-centered-audit.png",
   objectives: ["能区分缓存、RAM 与持久存储的作用", "能预测未保存修改在断电后的结果", "能通过操作解释缓存命中与容量取舍"],
   prerequisites: ["a05-cpu-cycle"], estimatedMinutes: 12,
   blocks: [

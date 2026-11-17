@@ -9,7 +9,7 @@ export const a01: Lesson = lessonSchema.parse({
   track: "a",
   unit: "a1",
   title: "二进制：电脑只认 0 和 1",
-  art: "lesson-a01-bits.png",
+  art: "lesson-a01-bits-centered-audit.png",
   objectives: [
     "能说出一位（bit）是什么",
     "能把 0 到 255 之间的二进制数转成十进制",
