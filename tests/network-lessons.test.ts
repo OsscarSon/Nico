@@ -9,7 +9,7 @@ import { initialTcp, startTcp, deliverTcp, sendTcpData } from "../src/grading/tc
 describe("network lessons keep the full existing template", () => {
   for (const id of ["a11-devices", "a12-packets", "a14-tcp"]) it(`${id}: draft, explanations, real sims, diagnostics, transfer and traceable sources`, () => {
     const l = lessons[id]!; expect(lessonSchema.safeParse(l).success).toBe(true);
-    expect(l.quality).toEqual({ state: "draft" }); expect(l.artPending).toBe(true); expect(l.art).toBeUndefined();
+    expect(l.quality).toEqual({ state: "draft" }); expect(l.artPending).toBeUndefined(); expect(l.art).toBe(id === "a12-packets" ? "lesson-a12-packets-centered-batch02.png" : `lesson-${id}.png`);
     expect(l.blocks.filter(b => b.type === "explain")).toHaveLength(4);
     expect(l.blocks.filter(b => b.type === "sim").map(b => b.mode)).toEqual(["free", "challenge"]);
     const quiz = l.blocks.find(b => b.type === "quiz"); if (quiz?.type !== "quiz") throw Error("missing quiz");
