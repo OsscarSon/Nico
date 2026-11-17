@@ -1,0 +1,63 @@
+
+> nico@0.1.0 smoke:p2-final
+> node scripts/smoke-p2-final.mjs
+
+PASS 1440: default dark, no overflow, real CTA and no fabricated stats
+PASS 1440: supplied independent backgrounds actually loaded
+PASS 1440: old pale illustration intact, full ratio, inside left Hero below CTA, no third card
+PASS 1440: actual logo 48px
+PASS 1440: aligned desktop columns, copy stays in quiet left region
+PASS 1440: CTA keyboard navigation
+PASS 1440: four functioning groups, three removed modules absent
+PASS 1440: My retains actual entered profile and zero real completions
+PASS 1440: cleanup preserves saved preferences and byte-identical progress
+PASS 1440: readable Hero still works with light option
+PASS 1440: no JavaScript errors
+PASS 1280: default dark, no overflow, real CTA and no fabricated stats
+PASS 1280: supplied independent backgrounds actually loaded
+PASS 1280: old pale illustration intact, full ratio, inside left Hero below CTA, no third card
+PASS 1280: actual logo 48px
+PASS 1280: aligned desktop columns, copy stays in quiet left region
+PASS 1280: CTA keyboard navigation
+PASS 1280: four functioning groups, three removed modules absent
+PASS 1280: My retains actual entered profile and zero real completions
+PASS 1280: cleanup preserves saved preferences and byte-identical progress
+PASS 1280: no JavaScript errors
+PASS 1024: default dark, no overflow, real CTA and no fabricated stats
+PASS 1024: supplied independent backgrounds actually loaded
+PASS 1024: old pale illustration intact, full ratio, inside left Hero below CTA, no third card
+PASS 1024: actual logo 32px
+PASS 1024: aligned desktop columns, copy stays in quiet left region
+PASS 1024: CTA keyboard navigation
+PASS 1024: four functioning groups, three removed modules absent
+PASS 1024: My retains actual entered profile and zero real completions
+PASS 1024: cleanup preserves saved preferences and byte-identical progress
+PASS 1024: no JavaScript errors
+PASS 390: default dark, no overflow, real CTA and no fabricated stats
+PASS 390: supplied independent backgrounds actually loaded
+PASS 390: old pale illustration intact, full ratio, inside left Hero below CTA, no third card
+PASS 390: actual logo 32px
+PASS 390: stacked mobile cards, full background below copy/CTA and white preview
+PASS 390: CTA keyboard navigation
+PASS 390: four functioning groups, three removed modules absent
+PASS 390: My retains actual entered profile and zero real completions
+PASS 390: cleanup preserves saved preferences and byte-identical progress
+PASS 390: readable Hero still works with light option
+PASS 390: no JavaScript errors
+PASS 360: default dark, no overflow, real CTA and no fabricated stats
+PASS 360: supplied independent backgrounds actually loaded
+PASS 360: old pale illustration intact, full ratio, inside left Hero below CTA, no third card
+PASS 360: actual logo 24px
+PASS 360: stacked mobile cards, full background below copy/CTA and white preview
+PASS 360: CTA keyboard navigation
+PASS 360: four functioning groups, three removed modules absent
+PASS 360: My retains actual entered profile and zero real completions
+PASS 360: cleanup preserves saved preferences and byte-identical progress
+PASS 360: no JavaScript errors
+PASS actual browser icon resource: nico-academy-mark-final.svg
+PASS actual browser icon resource: nico-academy-icon-final-32.png
+PASS actual browser icon resource: nico-academy-icon-final-180.png
+PASS manifest brand and relative install scope
+PASS manifest app icon 192x192 loads at declared intrinsic size
+PASS manifest app icon 512x512 loads at declared intrinsic size
+P2 final: 58/58 passed.

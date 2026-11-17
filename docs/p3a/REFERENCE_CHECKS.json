@@ -1,0 +1,47 @@
+[
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch",
+    "status": 200,
+    "resolved": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "status": 200,
+    "resolved": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "status": 200,
+    "resolved": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+  },
+  {
+    "url": "https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes",
+    "status": 200,
+    "resolved": "https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes"
+  },
+  {
+    "url": "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests",
+    "status": 200,
+    "resolved": "https://docs.github.com/en/pull-requests/reference/pull-requests"
+  },
+  {
+    "url": "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-using-the-command-line",
+    "status": 200,
+    "resolved": "https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/resolving-a-merge-conflict-using-the-command-line"
+  },
+  {
+    "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages",
+    "status": 200,
+    "resolved": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"
+  },
+  {
+    "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site",
+    "status": 200,
+    "resolved": "https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site"
+  },
+  {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/URL_API/Resolving_relative_references",
+    "status": 200,
+    "resolved": "https://developer.mozilla.org/en-US/docs/Web/API/URL_API/Resolving_relative_references"
+  }
+]
