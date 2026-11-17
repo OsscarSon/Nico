@@ -44,7 +44,7 @@ html[data-density="compact"] .academy-course a, html[data-density="compact"] .ac
 .lesson-body .hook, .lesson-body .explain, .lesson-body .quiz, .lesson-body .transfer, .lesson-body .points, .foundation-sources { max-width: var(--reading-measure); margin-inline: auto; }
 .lesson-body .hook { font-size: 1.125rem; }
 .lesson-body .explain p { font-size: 1.0625rem; line-height: 1.85; }
-.lesson-body .lesson-art { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; object-position: center; margin-inline: auto; background: #f2f4f7; }
+.lesson-body .lesson-art { width: 100%; height: auto; aspect-ratio: auto 16 / 9; object-fit: contain; object-position: center; margin-inline: auto; background: #f2f4f7; }
 .lesson-art.compact { width: min(100%, 640px); max-height: none; height: auto; aspect-ratio: 16 / 9; object-fit: contain; object-position: center; margin-inline: auto; }
 .lesson-head .row { gap: 8px 12px; }
 .stepnav { max-width: none; margin-top: 24px; gap: 12px; }

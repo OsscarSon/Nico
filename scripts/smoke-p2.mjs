@@ -29,6 +29,10 @@ try {
     await go(p, "/paths/a");
     check(`${width}: 20 real links, 2 nonlearnable previews, four units`, await p.locator("a.pm-card").count() === 20 && await p.locator(".pm-card.planned").count() === 2 && await p.locator(".route-unit").count() === 4 && await p.locator(".pm-card.planned a").count() === 0);
     for (const code of ["A21", "A22"]) check(`${width}: ${code} planned with its independent art`, await p.locator(`li[data-code="${code}"]`).getAttribute("data-state") === "planned" && await p.locator(`li[data-code="${code}"] img`).evaluate(i => i.complete && i.naturalWidth > 0));
+    if ([1440, 390].includes(width)) {
+      await p.locator('li[data-code="A21"]').evaluate(el => el.scrollIntoView({ block: "start", behavior: "instant" }));
+      await p.screenshot({ path: `${OUT}/route-planned-dark-${width}.png` });
+    }
     const summary = p.locator('details[data-unit="a1"] > summary'); await summary.focus(); await p.keyboard.press("Enter");
     check(`${width}: keyboard collapse keeps focus and URL`, await p.locator('details[data-unit="a1"]').getAttribute("open") === null && await summary.evaluate(el => el === document.activeElement) && new URL(p.url()).hash === "#/paths/a"); await p.keyboard.press("Enter");
     await go(p, "/paths/a?unit=a3"); check(`${width}: unit context focuses real summary`, await p.locator('details[data-unit="a3"] > summary').evaluate(el => el === document.activeElement));
@@ -94,5 +98,5 @@ try {
   check("unsupported preference version is backed up before a user writes new choices", await futurePage.evaluate(value => Object.keys(localStorage).some(k => k.startsWith("nico-preferences-backup-") && localStorage.getItem(k) === value), futureRaw)); await future.close();
   const blocked = await browser.newContext(); await blocked.addInitScript(() => Object.defineProperty(window, "localStorage", { get() { throw Error("blocked"); } })); const bp = await blocked.newPage(); await go(bp, "/settings"); await setOption(bp, "主题", "亮色"); check("blocked storage remains usable and honest", await bp.locator("html").getAttribute("data-theme") === "light" && (await bp.locator("main").innerText()).includes("浏览器无法保存偏好")); await blocked.close();
 } finally { await browser.close(); }
-console.log(`P2: ${checks - failures.length}/${checks} passed; ${failures.length} failures; 16 main after screenshots.`);
+console.log(`P2: ${checks - failures.length}/${checks} passed; ${failures.length} failures; 16 main after screenshots + 2 planned-node details.`);
 if (failures.length) throw Error(failures.join("\n"));

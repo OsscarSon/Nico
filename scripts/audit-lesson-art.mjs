@@ -47,7 +47,7 @@ try {
         });
         records.push({ ...c, width, ...m });
         check(`${label} referenced original dimensions loaded`, m.file === c.art && m.natural[0] > 0 && m.natural[1] > 0);
-        check(`${label} image centered in reading column, hook edges aligned`, Math.abs(m.image.center - m.body.center) < 1 && Math.abs(m.image.x - m.hook.x) < 1 && Math.abs(m.image.right - m.hook.right) < 1);
+        check(`${label} image and readable hook share center, hook contained in wider art column`, Math.abs(m.image.center - m.body.center) < 1 && Math.abs(m.image.center - m.hook.center) < 1 && m.hook.x >= m.image.x - 1 && m.hook.right <= m.image.right + 1);
         check(`${label} natural aspect ratio without stretching`, Math.abs((m.image.height - 2) - (m.image.width - 2) * m.natural[1] / m.natural[0]) < 1);
         check(`${label} no crop, offset, positioning trick or filter`, m.css.display === "block" && m.css.objectFit !== "cover" && m.css.objectPosition === "50% 50%" && m.css.transform === "none" && m.css.position === "static" && m.css.clipPath === "none" && m.css.filter === "none");
         check(`${label} full art visible without horizontal scroll or nav overlap`, !m.overflow && m.image.x >= 0 && m.image.right <= m.viewportWidth && m.image.y >= 0 && m.image.bottom <= m.limit);

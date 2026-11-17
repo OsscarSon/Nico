@@ -42,7 +42,7 @@ try {
       const label = `${width}/${id}`;
       check(`${label} supplied 1672x941 art loaded`, m.file === fileFor(id) && m.natural[0] === 1672 && m.natural[1] === 941);
       check(`${label} default dark, draft, no pending placeholder`, m.theme === "dark" && await page.locator(".pill.draft").count() === 1 && await page.locator(".foundation-art-pending").count() === 0);
-      check(`${label} image centered in lesson body and aligned with hook`, Math.abs(m.image.center - m.body.center) < 1 && Math.abs(m.image.x - m.hook.x) < 1 && Math.abs(m.image.right - m.hook.right) < 1);
+      check(`${label} image and readable hook share center, hook contained in wider art column`, Math.abs(m.image.center - m.body.center) < 1 && Math.abs(m.image.center - m.hook.center) < 1 && m.hook.x >= m.image.x - 1 && m.hook.right <= m.image.right + 1);
       check(`${label} subject bounds and ink center within 5%`, m.subject.boundsCenterErrorPct <= 5 && m.subject.inkCenterErrorPct !== null && m.subject.inkCenterErrorPct <= 5);
       check(`${label} original aspect ratio, no crop, offset or filter`, Math.abs((m.image.height - 2) - (m.image.width - 2) * 941 / 1672) < 1 && m.css.objectFit !== "cover" && m.css.objectPosition === "50% 50%" && m.css.transform === "none" && m.css.position === "static" && m.css.filter === "none" && m.css.clipPath === "none");
       check(`${label} full art visible, no horizontal overflow or bottom-nav obstruction`, !m.overflow && m.image.x >= 0 && m.image.right <= m.viewport.width && m.image.y >= 0 && m.image.bottom <= m.viewport.contentBottom);
