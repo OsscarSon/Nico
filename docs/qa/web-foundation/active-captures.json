@@ -1,0 +1,56 @@
+[
+  {
+    "id": "a15-udp",
+    "width": 1440,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "id": "a16-http-https",
+    "width": 1440,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "id": "a17-web-journey",
+    "width": 1440,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "id": "a15-udp",
+    "width": 390,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "id": "a16-http-https",
+    "width": 390,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "id": "a17-web-journey",
+    "width": 390,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "id": "a15-udp",
+    "width": 360,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "id": "a16-http-https",
+    "width": 360,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "id": "a17-web-journey",
+    "width": 360,
+    "overflow": false,
+    "errors": []
+  }
+]

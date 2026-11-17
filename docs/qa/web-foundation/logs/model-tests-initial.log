@@ -1,0 +1,44 @@
+
+ RUN  v3.2.7 /workspace/Nico
+
+ ✓ tests/journey.test.ts (28 tests) 15ms
+ ✓ tests/http.test.ts (26 tests) 11ms
+ ❯ tests/udp.test.ts (16 tests | 1 failed) 15ms
+   ✓ UDP transport versus application policy > sends independent datagrams without waiting for earlier delivery, with application metadata and ports 2ms
+   ✓ UDP transport versus application policy > raw arrival display actually regresses after out-of-order delivery 1ms
+   ✓ UDP transport versus application policy > UDP itself never retransmits or fills a lost record when time advances 0ms
+   ✓ UDP transport versus application policy > application compensation can explicitly recover a missing archival record 0ms
+   ✓ UDP transport versus application policy > freshness preserves newest data while recording raw delivery of old and expired datagrams 1ms
+   ✓ UDP transport versus application policy > deadline is expired at exactly 3, and an application resend cannot pretend an old measurement is fresh 0ms
+   ✓ UDP transport versus application policy > no-op checks and the wrong application policy cannot satisfy challenges 0ms
+   ✓ UDP transport versus application policy > TCP contrast uses the existing actual state machine, recovers a dropped segment, and confirms the exact same stream 1ms
+   ✓ UDP transport versus application policy > invalid packet operations preserve state and prior snapshots stay immutable 1ms
+   × UDP transport versus application policy > rejects invalid position list %j 7ms
+     → expected [Function] to throw an error
+   ✓ UDP transport versus application policy > rejects invalid position list 1 0ms
+   ✓ UDP transport versus application policy > rejects invalid position list 1 0ms
+   ✓ UDP transport versus application policy > rejects invalid position list 1 0ms
+   ✓ UDP transport versus application policy > rejects invalid position list 1 0ms
+   ✓ UDP transport versus application policy > rejects invalid position list null 0ms
+   ✓ UDP transport versus application policy > keeps bounded trace and arrival history under repeated experimental recovery 1ms
+ ✓ tests/tls.test.ts (13 tests) 6ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/udp.test.ts > UDP transport versus application policy > rejects invalid position list %j
+AssertionError: expected [Function] to throw an error
+ ❯ tests/udp.test.ts:51:161
+     49|     expect(s).toEqual(copy); expect(resendUdp(s, 99).channel).toEqual(…
+     50|   });
+     51|   it.each([[], [1, 2], [1, 2, 100], [1, -1, 2], [1, 2.5, 3], [NaN, 1, …
+       |                                                                                                                                                                 ^
+     52|   it("keeps bounded trace and arrival history under repeated experimen…
+     53|     let s = sendUdp(initialUdp()); for (let i = 0; i < 100; i++) { s =…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  1 failed | 82 passed (83)
+   Start at  05:44:28
+   Duration  1.13s (transform 179ms, setup 0ms, collect 380ms, tests 48ms, environment 1ms, prepare 233ms)

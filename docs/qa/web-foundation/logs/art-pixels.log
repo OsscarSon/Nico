@@ -1,0 +1,4 @@
+PASS a01-binary: verified separate derivative; dx=-233; original retained; 136504 original foreground pixels preserved
+PASS a06-memory: verified separate derivative; dx=-190; original retained; 168990 original foreground pixels preserved
+PASS b15-git-branches: verified separate derivative; dx=-201; original retained; 11650 original foreground pixels preserved
+PASS c05-prompt-structure: verified separate derivative; dx=-159; original retained; 90568 original foreground pixels preserved

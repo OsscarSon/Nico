@@ -1,0 +1,96 @@
+
+> nico@0.1.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /workspace/Nico
+
+ ✓ tests/js.test.ts (32 tests) 2752ms
+   ✓ instrumentLoops: endless loops are stopped > without the guard the same code would hang (the test harness's own timeout catches it)  1003ms
+ ✓ tests/track-b.test.ts (53 tests) 1121ms
+ ✓ tests/python-runner.test.ts (8 tests) 97ms
+stderr | tests/aiServer.test.ts > failures are reported honestly and leak nothing > upstream 500 → upstream_error without echoing the upstream body
+[ai] upstream_error: upstream 500
+
+stderr | tests/aiServer.test.ts > failures are reported honestly and leak nothing > upstream 429 → quota_exhausted
+[ai] quota_exhausted: upstream 429
+
+stderr | tests/aiServer.test.ts > failures are reported honestly and leak nothing > an empty or blocked reply → bad_output
+[ai] bad_output: empty reply
+
+stderr | tests/aiServer.test.ts > failures are reported honestly and leak nothing > an empty or blocked reply → bad_output
+[ai] bad_output: blocked
+
+stderr | tests/aiServer.test.ts > failures are reported honestly and leak nothing > a hanging upstream is cut off at the timeout
+[ai] timeout: upstream timeout
+
+stderr | tests/aiServer.test.ts > failures are reported honestly and leak nothing > a network failure to the upstream → upstream_error
+[ai] upstream_error: upstream unreachable
+
+ ✓ tests/aiServer.test.ts (35 tests) 69ms
+ ✓ tests/markdown.test.ts (8 tests) 46ms
+ ✓ tests/aiClient.test.ts (11 tests) 32ms
+ ✓ tests/reassembly.test.ts (16 tests) 22ms
+ ✓ tests/aiContext.test.ts (5 tests) 22ms
+ ✓ tests/journey.test.ts (28 tests) 15ms
+ ✓ tests/academy.test.ts (6 tests) 21ms
+ ✓ tests/promptScore.test.ts (22 tests) 18ms
+ ✓ tests/foundation.test.ts (45 tests) 14ms
+ ✓ tests/http.test.ts (26 tests) 12ms
+ ✓ tests/content.test.ts (20 tests) 11ms
+ ✓ tests/network-lessons.test.ts (5 tests) 10ms
+ ✓ tests/forwarding.test.ts (18 tests) 10ms
+ ✓ tests/network.test.ts (33 tests) 11ms
+ ✓ tests/aiProtocol.test.ts (9 tests) 9ms
+ ✓ tests/git.test.ts (19 tests) 10ms
+ ✓ tests/udp.test.ts (16 tests) 8ms
+ ✓ tests/tcp.test.ts (21 tests) 9ms
+ ✓ tests/web-lessons.test.ts (5 tests) 9ms
+ ✓ tests/binary.test.ts (6 tests) 8ms
+ ✓ tests/cpu.test.ts (14 tests) 6ms
+ ✓ tests/code.test.ts (19 tests) 6ms
+ ✓ tests/aiGuard.test.ts (11 tests) 6ms
+ ✓ tests/tls.test.ts (13 tests) 6ms
+ ✓ tests/adder.test.ts (10 tests) 6ms
+ ✓ tests/progress.test.ts (10 tests) 5ms
+ ✓ tests/gates.test.ts (14 tests) 6ms
+ ❯ tests/badges.test.ts (7 tests | 1 failed) 10ms
+   ✓ badges > nothing is earned with no progress 1ms
+   ✓ badges > first-bit is earned only after completing A01 1ms
+   × badges > a badge whose lessons do not exist yet is not obtainable and never earned 6ms
+     → expected true to be false // Object.is equality
+   ✓ badges > gatekeeper is obtainable now that A03 and A04 exist, and needs both 0ms
+   ✓ badges > a badge becomes earned when all required lessons exist and are complete 0ms
+   ✓ badges > streak badge needs 7 consecutive days 0ms
+   ✓ badges > every badge has artwork file name and a human-readable condition 0ms
+ ✓ tests/web.test.ts (9 tests) 5ms
+ ✓ tests/quiz.test.ts (5 tests) 4ms
+ ✓ tests/a02.test.ts (4 tests) 3ms
+ ✓ tests/art.test.ts (4 tests) 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/badges.test.ts > badges > a badge whose lessons do not exist yet is not obtainable and never earned
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/badges.test.ts:26:51
+     24|     const packet = badges.find((b) => b.id === "packet-pilot")!;
+     25|     const list = evaluateBadges(done(packet.requires), day("2026-11-14…
+     26|     expect(byId(list, "packet-pilot").obtainable).toBe(false);
+       |                                                   ^
+     27|     expect(byId(list, "packet-pilot").earned).toBe(false);
+     28|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 34 passed (35)
+      Tests  1 failed | 566 passed (567)
+   Start at  05:57:35
+   Duration  13.21s (transform 860ms, setup 0ms, collect 3.07s, tests 4.40s, environment 5ms, prepare 1.68s)
