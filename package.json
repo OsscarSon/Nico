@@ -21,7 +21,8 @@
     "smoke:network": "node scripts/smoke-network.mjs",
     "smoke:web": "node scripts/smoke-web.mjs",
     "smoke:security": "node scripts/smoke-security.mjs",
-    "smoke:p2": "node scripts/smoke-p2.mjs"
+    "smoke:p2": "node scripts/smoke-p2.mjs",
+    "smoke:p2-final": "node scripts/smoke-p2-final.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.0",
