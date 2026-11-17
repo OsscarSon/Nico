@@ -1,3 +1,6 @@
+import { UdpLab } from "../../sims/UdpLab";
+import { HttpLab } from "../../sims/HttpLab";
+import { JourneyLab } from "../../sims/JourneyLab";
 import { ForwardingLab } from "../../sims/ForwardingLab";
 import { ReassemblyLab } from "../../sims/ReassemblyLab";
 import { TcpLab } from "../../sims/TcpLab";
@@ -57,7 +60,10 @@ export function SimBlock({
     <div>
       <p>{block.intro}</p>
       <Device title={block.title} label={simLabel(block.sim)}>
-        {block.sim === "forwarding" ? <ForwardingLab mode={block.mode} onSolved={onDone} />
+        {block.sim === "udp" ? <UdpLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "http" ? <HttpLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "journey" ? <JourneyLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "forwarding" ? <ForwardingLab mode={block.mode} onSolved={onDone} />
           : block.sim === "reassembly" ? <ReassemblyLab mode={block.mode} onSolved={onDone} />
           : block.sim === "tcp" ? <TcpLab mode={block.mode} onSolved={onDone} />
           : block.sim === "memory" ? <MemorySim mode={block.mode} onSolved={onDone} />

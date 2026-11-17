@@ -139,8 +139,8 @@ try {
     await input.fill(String(transfer[course] + 1)); await click(p, "检查答案"); check(`${id} 迁移题错答门控`, await next(p).isDisabled());
     await input.fill(String(transfer[course])); await click(p, "检查答案"); await next(p).click();
     check(`${id} 三点小结和权威来源`, await p.locator(".points li").count() === 3 && await p.locator(".foundation-sources a").count() >= 2);
-    const link = p.locator(".stepnav a"); check(`${id} 下一课建议正确`, await link.getAttribute("href") === (course < 2 ? `#/lesson/${targets[course]}` : "#/paths/a"));
-    if (course === 2) check("A14 如实说明A15尚未开放", (await p.locator(".lesson-wrap").innerText()).includes("下一课还在准备中"));
+    const link = p.locator(".stepnav a"); check(`${id} 下一课建议正确`, await link.getAttribute("href") === `#/lesson/${targets[course]}`);
+    if (course === 2) check("A14可继续已上线A15且不显示筹备提示", !(await p.locator(".lesson-wrap").innerText()).includes("下一课还在准备中") && await link.getAttribute("href") === "#/lesson/a15-udp");
     const progress = await p.evaluate(() => JSON.parse(localStorage.getItem("nico-progress")));
     check(`${id} 保存真实成绩2/4且不改旧数据`, progress.lessons[id]?.firstTryCorrect === 2 && progress.lessons[id]?.quizTotal === 4 && progress.schemaVersion === 1 && JSON.stringify(progress.lessons["a01-binary"]) === JSON.stringify(saved.lessons["a01-binary"]));
   }
