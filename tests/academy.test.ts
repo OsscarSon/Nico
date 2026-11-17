@@ -11,7 +11,7 @@ describe("Academy catalog compatibility", () => {
     expect(coursesFor("Foundation")).toHaveLength(100);
     expect(coursesFor("Intermediate")).toHaveLength(46);
     expect(coursesFor("Advanced")).toHaveLength(66);
-    expect(stageSummary("Foundation")).toBe("已上线 32 / 100");
+    expect(stageSummary("Foundation")).toBe("已上线 35 / 100");
     expect(stageSummary("Intermediate")).toBe("试点规划 3 · 46 门目录");
     expect(stageSummary("Advanced")).toBe("精选 16 · 资料路径 50");
     expect(coursesFor("Foundation", "M")).toEqual([]);

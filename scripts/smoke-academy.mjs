@@ -14,7 +14,7 @@ const check = (name, ok) => {
 };
 const noOverflow = page => page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1);
 const ready = async page => {
-  await page.locator(".academy-course").first().waitFor();
+  await page.locator(".academy-course, .academy-stage").first().waitFor();
   await page.evaluate(() => document.fonts.ready);
   await page.evaluate(async () => Promise.all([...document.images].map(i => i.decode().catch(() => {}))));
 };
@@ -34,7 +34,7 @@ try {
     await page.screenshot({ path: `${OUT}/after-home-full-${width}.png`, fullPage: true });
     check(`${width}: 首页不再重复路线列表`, await page.locator(".academy-track").count() === 0 && await page.locator(".academy-stage").count() === 3);
     await page.getByRole("button", { name: "探索学习路线 ↗" }).click();
-    await page.waitForFunction(() => location.hash === "#/paths");
+    await page.waitForFunction(() => window.location.hash === "#/paths");
     await page.locator("#academy-tracks").waitFor();
     check(`${width}: Hero 按钮进入路线页`, new URL(page.url()).hash === "#/paths");
     const sources = await page.locator(".academy-track img").evaluateAll(images => images.map(i => new URL(i.src).pathname.split("/").pop()));
@@ -65,7 +65,9 @@ try {
     await page.getByRole("button", { name: "清除搜索与筛选" }).click();
     await page.getByRole("button", { name: "全部", exact: true }).click();
     await page.getByLabel("筛选课程状态").selectOption("live");
-    check(`${width}: 跨阶段查找全部32个真实入口`, await page.locator(".academy-course a").count() === 32);
+    check(`${width}: 课程分页先显示30门且结果总数35`, await page.locator(".academy-course a").count() === 30 && (await page.locator(".academy-result-count").innerText()).includes("35"));
+    await page.getByRole("button", { name: /^显示更多/ }).click();
+    check(`${width}: 跨阶段查找全部35个真实入口`, await page.locator(".academy-course a").count() === 35);
     await search.fill("B01");
     check(`${width}: B01 保留旧课程地址`, await page.locator(".academy-course a").getAttribute("href") === "#/lesson/b01-variables");
     await search.fill("c05");
@@ -77,6 +79,7 @@ try {
     await page.getByRole("button", { name: "切换到暗色主题" }).click();
     await page.reload(); await ready(page);
     check(`${width}: 暗色选择刷新后保留`, await page.locator("html").getAttribute("data-theme") === "dark");
+    await page.goto(`${BASE}/#/paths`); await ready(page);
     const stageButton = page.getByRole("button", { name: /PHASE 02/ });
     await stageButton.focus();
     check(`${width}: 键盘焦点可见`, await stageButton.evaluate(el => getComputedStyle(el).outlineStyle !== "none"));
@@ -157,9 +160,11 @@ try {
   await page.goto(`${BASE}/#/`); await ready(page);
   check("原进度：首页显示真实已完成1课", await page.locator(".stats .stat strong").first().innerText() === "1");
   check("原进度：首页继续上次 B01", await page.locator(".today").innerText().then(t => t.includes("继续上次的位置") && t.includes("变量")));
+  await page.goto(`${BASE}/#/paths`); await ready(page);
   await page.getByRole("button", { name: /PHASE 03/ }).click();
   await page.getByRole("button", { name: "切换到亮色主题" }).click();
   check("浏览目录/切换主题不写入或迁移学习进度", await page.evaluate(() => localStorage.getItem("nico-progress")) === JSON.stringify(saved));
+  await page.goto(`${BASE}/#/`); await ready(page);
   await page.getByRole("link", { name: "继续这一课", exact: true }).click();
   await page.locator('.steps li[aria-current="step"]').waitFor({ state: "attached" });
   check("原进度：B01 从旧步骤续学", await page.evaluate(() => JSON.parse(localStorage.getItem("nico-progress")).resume.step) === 2);

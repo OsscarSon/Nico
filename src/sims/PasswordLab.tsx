@@ -5,7 +5,7 @@ import { LabTasks, LabTrace, type LabProps, type LabGrade } from "./NetworkLabUI
 import "../styles/security-labs.css";
 const tasks: { id: PasswordTask; text: string }[] = [
   { id: "salt", text: "同一公开样本、不同Salt，分别实际注册两个账户；对任一账户提交一个错误候选和正确候选，比较实际派生记录。" },
-  { id: "unique", text: "把两账户改为不同的管理器生成流程公开样本，重新注册；启用演示密码库，分别保存当前版本。上一任务的成果保留供你修改。" },
+  { id: "unique", text: "把两账户改为不同的管理器生成流程公开样本，保留不同Salt并重新注册；启用演示密码库，分别保存当前版本。上一任务的成果保留供你修改。" },
   { id: "mfa", text: "两账户登记演示MFA，恢复资料存独立离线位置；对任一账户实际验证口令、拒绝陌生钥匙，再使用登记钥匙完成登录。" },
 ];
 const authLabels = { none: "尚未验证", rejected: "口令不匹配", "factor-needed": "口令正确，等待第二因子", "signed-in": "登录完成" };

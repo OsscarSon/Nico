@@ -31,6 +31,7 @@ describe("A18 real public-fixture password verification", () => {
   it("distinguishes long predictable/reused samples from independent samples and invalidates vault/login on reenrollment", async () => {
     let s = await managed(); expect(gradePassword(s, "unique").ok).toBe(true);
     expect(gradePassword(setManager(s, false), "unique").ok).toBe(false);
+    const sameSalt = storeDemoInVault(await enroll(s, "photos", "managerB", "A"), "photos"); expect(gradePassword(sameSalt, "unique").ok).toBe(false);
     s = await enroll(s, "photos", "managerA", "B"); s = storeDemoInVault(s, "photos"); expect(gradePassword(s, "unique").ok).toBe(false);
     s = await enroll(s, "photos", "long", "B"); s = storeDemoInVault(s, "photos"); expect(gradePassword(s, "unique").ok).toBe(false);
     s = await enroll(s, "photos", "managerB", "B"); expect(s.accounts.photos.vaultVersion).toBeNull(); expect(s.accounts.photos.auth.stage).toBe("none"); expect(gradePassword(s, "unique").ok).toBe(false);

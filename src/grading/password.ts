@@ -77,14 +77,14 @@ export function presentDemoFactor(s: PasswordLabState, id: AccountId, key: "regi
 export type PasswordTask = "salt" | "unique" | "mfa";
 const managed = (s: PasswordLabState): boolean => {
   const a = s.accounts.mail, b = s.accounts.photos;
-  return s.manager && !!a.verifier && !!b.verifier && a.enrolledFrom !== null && b.enrolledFrom !== null && a.enrolledFrom !== b.enrolledFrom && DEMO_PASSWORDS[a.enrolledFrom].kind === "generated-sample" && DEMO_PASSWORDS[b.enrolledFrom].kind === "generated-sample" && a.vaultVersion === a.version && b.vaultVersion === b.version;
+  return s.manager && !!a.verifier && !!b.verifier && a.verifier.salt !== b.verifier.salt && a.enrolledFrom !== null && b.enrolledFrom !== null && a.enrolledFrom !== b.enrolledFrom && DEMO_PASSWORDS[a.enrolledFrom].kind === "generated-sample" && DEMO_PASSWORDS[b.enrolledFrom].kind === "generated-sample" && a.vaultVersion === a.version && b.vaultVersion === b.version;
 };
 export function gradePassword(s: PasswordLabState, task: PasswordTask) {
   const a = s.accounts.mail, b = s.accounts.photos;
   if (task === "salt") {
     const verified = (["mail", "photos"] as const).some(id => s.events.some(e => e.account === id && e.version === s.accounts[id].version && e.kind === "password-fail") && s.events.some(e => e.account === id && e.version === s.accounts[id].version && e.kind === "signed-in"));
     if (!(a.verifier && b.verifier && a.enrolledFrom === b.enrolledFrom && a.verifier.salt !== b.verifier.salt && a.verifier.digest !== b.verifier.digest && verified)) return { ok: false, message: "用同一公开口令、不同Salt实际注册两个账户，再对任一当前记录实际验证一个错误候选和一个正确候选。" };
-  } else if (!managed(s)) return { ok: false, message: "需要两个不同的管理器生成流程样本，实际注册并保存当前版本到演示库；长但可预测或重复样本不满足目标。" };
+  } else if (!managed(s)) return { ok: false, message: "需要两个不同的管理器生成流程样本、不同Salt，实际注册并保存当前版本到演示库；长但可预测或重复样本不满足目标。" };
   if (task === "mfa") {
     const proved = (["mail", "photos"] as const).some(id => { const x = s.accounts[id]; return x.auth.stage === "signed-in" && x.auth.version === x.version && x.auth.factorPassed && ["mfa-required", "factor-reject"].every(kind => s.events.some(e => e.account === id && e.version === x.version && e.kind === kind)); });
     if (!(a.mfa && b.mfa && a.recovery === "offline" && b.recovery === "offline" && proved)) return { ok: false, message: "两账户登记MFA并独立保存恢复资料；对任一当前账户，实际经历口令正确仍需因子、拒绝陌生钥匙、登记钥匙登录。" };

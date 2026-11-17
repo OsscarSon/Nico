@@ -49,11 +49,16 @@ const noOverflow = async () =>
 // ---- 首页 ----
 await page.goto(`${BASE}/#/`);
 check("首页显示 Academy 主标题", (await text("h1")).includes("你的知识世界"));
-check("基础阶段有 A–F 六条路线", (await page.locator(".academy-track").count()) === 6);
-check("A–E 仍使用五张原版插画", (await page.locator(".academy-track img.track-emblem").count()) === 5);
 check("首页没有假进度（未学习时不显示统计）", (await page.locator(".stats").count()) === 0);
 check("手机宽度无横向溢出：首页", await noOverflow());
 check("首页主视觉图片加载成功", await imagesOk());
+// Latest main moved route cards from Home to Paths; preserve the original art/count assertions there.
+await page.goto(`${BASE}/#/paths`);
+check("基础阶段有 A–F 六条路线", (await page.locator(".academy-track").count()) === 6);
+check("A–E 仍使用五张原版插画", await page.locator(".academy-track img.track-emblem").evaluateAll(images => {
+  const originals = ["track-a-network.png", "track-b-code.png", "track-c-ai.png", "track-d-games.png", "track-e-google.png"];
+  return originals.every(name => images.some(i => new URL(i.src).pathname.endsWith(`/art/${name}`) && i.complete && i.naturalWidth > 0));
+}));
 
 // ---- 徽章：没学之前一个都没有 ----
 await page.goto(`${BASE}/#/me`);
@@ -157,8 +162,8 @@ check("记录了真实的一次性答对数（3 道选择题 2 对 + 迁移题�
 await page.goto(`${BASE}/#/paths/a`);
 await soon("路线页头有徽记且图片加载成功", async () => (await page.locator(".track-head img").count()) === 1 && (await imagesOk()));
 await soon("路线地图显示已完成", async () => (await page.locator(".pm-card .pill.done").count()) === 1);
-await soon("路线地图里有 3 个规划中的课", async () => (await page.locator(".pm-card.planned").count()) === 3);
-await soon("路线地图上其余十六门已上线课显示『可以开始』", async () => (await page.locator(".pm-card .pill.available").count()) === 16);
+await soon("路线地图里 A01–A20 已无规划中的课", async () => (await page.locator(".pm-card.planned").count()) === 0);
+await soon("路线地图上其余十九门已上线课显示『可以开始』", async () => (await page.locator(".pm-card .pill.available").count()) === 19);
 await page.goto(`${BASE}/#/`);
 await soon("首页现在显示已完成 1 课", async () => (await text(".stats")).includes("1"));
 await soon("首页推荐下一课 A02", async () => (await text(".today")).includes("十六进制") && (await text(".today")).includes("下一课"));
@@ -446,11 +451,11 @@ for (const p of ["/paths", "/paths/a", "/paths/c", "/lab", "/projects", "/me", "
   check(`页面非空：${p}`, (await text("main")).length > 20);
 }
 await soon("未知地址显示找不到页面", async () => (await text("main")).includes("找不到这个页面"));
-await page.goto(`${BASE}/#/lesson/a18-passwords`);
+await page.goto(`${BASE}/#/lesson/b16-github`);
 await soon("规划中的课不会显示假内容", async () => (await text("main")).includes("还没有开放"));
 
 // ---- 清除数据需要二次确认 ----
-await page.goto(`${BASE}/#/me`);
+await page.goto(`${BASE}/#/settings`);
 await btn("清除学习记录").click();
 check("清除前有二次确认", (await page.getByRole("button", { name: /确认清除/ }).count()) === 1);
 await page.getByRole("button", { name: /确认清除/ }).click();
