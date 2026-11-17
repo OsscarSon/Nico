@@ -1,0 +1,83 @@
+
+> nico@0.1.0 smoke:foundation
+> node scripts/smoke-foundation.mjs
+
+PASS a06-memory 默认暗色与草稿标记
+PASS a06-memory 正式图或明确空位
+PASS a06-memory 自由互动有模拟标记
+PASS A06 未保存修改丢失
+PASS a06-memory 自由实验无溢出
+PASS a06-memory 挑战初始门控
+PASS a06-memory 空操作无法通过且给出任务诊断
+PASS a06-memory 续学回到挑战且需重新完成
+PASS a06-memory 实际状态达标解除门控
+PASS a06-memory 挑战成功后锁定操作
+PASS a06-memory 挑战无溢出
+PASS a06-memory 检查题错误有诊断且门控未解除
+PASS a06-memory 检查题成绩真实
+PASS a06-memory 迁移题拒绝无效输入
+PASS a06-memory 迁移题答错仍有门控
+PASS a06-memory 三点小结与真实来源
+PASS a06-memory 下一课正确
+PASS a06-memory 完成与首次成绩保存
+PASS a06-memory 旧成绩和 schema 不变
+PASS a07-os 默认暗色与草稿标记
+PASS a07-os 正式图或明确空位
+PASS a07-os 自由互动有模拟标记
+PASS A07 编辑器没有 CPU 时不能写入
+PASS a07-os 自由实验无溢出
+PASS a07-os 挑战初始门控
+PASS a07-os 空操作无法通过且给出任务诊断
+PASS a07-os 续学回到挑战且需重新完成
+PASS A07 只读写入有明确诊断
+PASS a07-os 实际状态达标解除门控
+PASS a07-os 挑战成功后锁定操作
+PASS a07-os 挑战无溢出
+PASS a07-os 检查题错误有诊断且门控未解除
+PASS a07-os 检查题成绩真实
+PASS a07-os 迁移题拒绝无效输入
+PASS a07-os 迁移题答错仍有门控
+PASS a07-os 三点小结与真实来源
+PASS a07-os 下一课正确
+PASS a07-os 完成与首次成绩保存
+PASS a07-os 旧成绩和 schema 不变
+PASS a08-command-line 默认暗色与草稿标记
+PASS a08-command-line 正式图或明确空位
+PASS a08-command-line 自由互动有模拟标记
+PASS A08 不存在文件显示诊断
+PASS A08 拒绝组合命令
+PASS A08 出错后当前位置保持
+PASS a08-command-line 自由实验无溢出
+PASS a08-command-line 挑战初始门控
+PASS a08-command-line 空操作无法通过且给出任务诊断
+PASS a08-command-line 续学回到挑战且需重新完成
+PASS a08-command-line 实际状态达标解除门控
+PASS a08-command-line 挑战成功后锁定操作
+PASS a08-command-line 挑战无溢出
+PASS a08-command-line 检查题错误有诊断且门控未解除
+PASS a08-command-line 检查题成绩真实
+PASS a08-command-line 迁移题拒绝无效输入
+PASS a08-command-line 迁移题答错仍有门控
+PASS a08-command-line 三点小结与真实来源
+PASS a08-command-line 下一课正确
+PASS a08-command-line 完成与首次成绩保存
+PASS a08-command-line 旧成绩和 schema 不变
+PASS 完整学习流程无 JS 异常
+PASS PathMap 可学14门、规划6门
+PASS 1440/dark/a06-memory 挑战可操作、通过且不溢出
+PASS A07 只读写入有明确诊断
+PASS 1440/dark/a07-os 挑战可操作、通过且不溢出
+PASS 1440/dark/a08-command-line 挑战可操作、通过且不溢出
+PASS 1440/light/a06-memory 挑战可操作、通过且不溢出
+PASS A07 只读写入有明确诊断
+PASS 1440/light/a07-os 挑战可操作、通过且不溢出
+PASS 1440/light/a08-command-line 挑战可操作、通过且不溢出
+PASS 360/dark/a06-memory 挑战可操作、通过且不溢出
+PASS A07 只读写入有明确诊断
+PASS 360/dark/a07-os 挑战可操作、通过且不溢出
+PASS 360/dark/a08-command-line 挑战可操作、通过且不溢出
+PASS 360/light/a06-memory 挑战可操作、通过且不溢出
+PASS A07 只读写入有明确诊断
+PASS 360/light/a07-os 挑战可操作、通过且不溢出
+PASS 360/light/a08-command-line 挑战可操作、通过且不溢出
+78 项检查，0 项失败
