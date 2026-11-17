@@ -6,17 +6,17 @@ import { LessonPlayer } from "../features/lesson/LessonPlayer";
 import { PromptLab } from "../features/prompt-lab/PromptLab";
 import { TutorPage } from "../features/prompt-lab/TutorPage";
 import {
-  CoursesPage, HomePage, LabPage, MePage, NotFoundPage, PathsPage, ProjectsPage, TrackPage,
+  CoursesPage, HomePage, LabPage, MePage, NotFoundPage, PathsPage, ProjectsPage, SettingsPage, TrackPage,
 } from "../pages/pages";
 
 const nav = [
   { to: "/", label: "首页", icon: "home", match: (p: string) => p === "/" },
   { to: "/paths", label: "路线", icon: "paths", match: (p: string) => p.startsWith("/paths") || p.startsWith("/lesson") },
   { to: "/courses", label: "课程", icon: "courses", match: (p: string) => p === "/courses" },
-  { to: "/lab/tutor", label: "AI 助手", icon: "ai", match: (p: string) => p.startsWith("/lab/tutor") },
-  { to: "/lab", label: "实验", icon: "lab", match: (p: string) => p.startsWith("/lab") && !p.startsWith("/lab/tutor") },
+  { to: "/lab", label: "实验", icon: "lab", match: (p: string) => p.startsWith("/lab") },
   { to: "/projects", label: "作品", icon: "projects", match: (p: string) => p.startsWith("/projects") },
   { to: "/me", label: "我的", icon: "me", match: (p: string) => p.startsWith("/me") },
+  { to: "/settings", label: "设置", icon: "settings", match: (p: string) => p.startsWith("/settings") },
 ] as const;
 
 function NavLinks({ path }: { path: string }) {
@@ -54,6 +54,7 @@ export function App() {
       case "tutor": return <TutorPage lessonId={route.lessonId} />;
       case "projects": return <ProjectsPage />;
       case "me": return <MePage />;
+      case "settings": return <SettingsPage />;
       default: return <NotFoundPage />;
     }
   })();

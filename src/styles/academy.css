@@ -129,3 +129,11 @@ input, select, textarea { background: var(--panel); }
 .main:focus-visible { outline: none; }
 /* 下载失败等较长错误文本也必须适配窄屏。 */
 .feedback > span { min-width: 0; overflow-wrap: anywhere; }
+
+/* 课程页：阶段筛选胶囊 */
+.academy-stage-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.academy-chip { min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 1px solid var(--grid); background: var(--panel); color: var(--ink); font-weight: 600; cursor: pointer; }
+.academy-chip:hover { border-color: var(--trace); }
+.academy-chip[aria-pressed="true"] { background: var(--trace-soft); border-color: var(--trace); color: var(--trace); }
+a.academy-stage { color: var(--ink); text-decoration: none; }
+.academy-course-panel > .btn { margin-top: 12px; }

@@ -1,15 +1,16 @@
 import { useState } from "react";
-import { Link } from "../app/router";
+import { Link, navigate } from "../app/router";
 import { getLesson, allCatalogLessons } from "../content";
 import { getTrack } from "../content/catalog";
 import { Device, EmptyState } from "../components/ui";
 import { artUrl } from "../art";
 import { evaluateBadges } from "../progress/badges";
-import { AcademyCatalog } from "../features/academy/AcademyCatalog";
+import { CoursesCatalog, PathsCatalog, StageOverview } from "../features/academy/AcademyCatalog";
 import { PathMap } from "../features/path/PathMap";
 import { BitSwitches } from "../sims/BitSwitches";
 import { clearProgress, getProgress, useProgress } from "../progress/useProgress";
 import { streak } from "../progress/store";
+import { applyTheme, type Theme } from "../progress/theme";
 import { applyFontSize, loadFontSize, type FontSize } from "../progress/settings";
 
 export function HomePage() {
@@ -29,7 +30,7 @@ export function HomePage() {
         <div><span className="academy-eyebrow">EXPLORE · BUILD · UNDERSTAND</span>
           <h1>每一步，都在构建<br />你的知识世界。</h1>
           <p>从第一行代码，到理解复杂系统。<br />选择你的路线，让学习真正发生。</p>
-          <button className="btn" onClick={() => document.getElementById("academy-tracks")?.scrollIntoView({ behavior: "smooth", block: "start" })}>探索学习路线 ↗</button>
+          <button className="btn" onClick={() => navigate("/paths")}>探索学习路线 ↗</button>
         </div>
         <img src={artUrl("hero-home-1600x900.png")} alt="Nico 原版 Byte 与电路学习路线插画" width={1600} height={900} />
       </section>
@@ -70,17 +71,17 @@ export function HomePage() {
         )}
       </section>
 
-      <AcademyCatalog />
+      <StageOverview />
     </>
   );
 }
 
 export function PathsPage() {
-  return <><header className="page-head"><h1>学习路线</h1><p>从入门到深入的自学路径。阶段与先修仅作建议，不设硬性门槛。</p></header><AcademyCatalog /></>;
+  return <><header className="page-head"><h1>学习路线</h1><p>从入门到深入的自学路径。先选阶段和路线，再看路线里的课程。</p></header><PathsCatalog /></>;
 }
 
 export function CoursesPage() {
-  return <><header className="page-head"><h1>课程目录</h1><p>按阶段、路线与状态查找课程，已上线课程可直接进入学习。</p></header><AcademyCatalog directory /></>;
+  return <><header className="page-head"><h1>课程目录</h1><p>搜索并筛选所有课程，已上线课程可直接进入学习。</p></header><CoursesCatalog /></>;
 }
 
 export function TrackPage({ trackId }: { trackId: string }) {
@@ -162,22 +163,7 @@ export function ProjectsPage() {
 
 export function MePage() {
   const progress = useProgress();
-  const [font, setFont] = useState<FontSize>(loadFontSize);
-  const [confirming, setConfirming] = useState(false);
   const days = streak(progress, new Date());
-
-  const exportData = () => {
-    const blob = new Blob([JSON.stringify(getProgress(), null, 2)], { type: "application/json" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "nico-progress.json";
-    a.click();
-    URL.revokeObjectURL(a.href);
-  };
-  const changeFont = (f: FontSize) => {
-    setFont(f);
-    applyFontSize(f);
-  };
 
   return (
     <>
@@ -209,10 +195,46 @@ export function MePage() {
         <Link to="/lab/prompt" className="btn secondary">Prompt 训练场</Link>
         <Link to="/projects" className="btn secondary">查看作品</Link>
       </div>
+    </>
+  );
+}
 
-      <h2 className="section-title">设置</h2>
+export function SettingsPage() {
+  const [font, setFont] = useState<FontSize>(loadFontSize);
+  const [theme, setTheme] = useState<Theme>(() => document.documentElement.dataset.theme === "light" ? "light" : "dark");
+  const [confirming, setConfirming] = useState(false);
+
+  const exportData = () => {
+    const blob = new Blob([JSON.stringify(getProgress(), null, 2)], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "nico-progress.json";
+    a.click();
+    URL.revokeObjectURL(a.href);
+  };
+  const changeFont = (f: FontSize) => {
+    setFont(f);
+    applyFontSize(f);
+  };
+  const changeTheme = (t: Theme) => {
+    setTheme(t);
+    applyTheme(t);
+  };
+
+  return (
+    <>
+      <header className="page-head"><h1>设置</h1><p>外观与学习记录。所有设置只保存在这台设备的浏览器里。</p></header>
+
+      <h2 className="section-title">外观</h2>
       <section className="panel">
         <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
+          <legend style={{ fontWeight: 700, marginBottom: 8 }}>主题</legend>
+          <div className="row">
+            <button type="button" className={`btn ${theme === "dark" ? "" : "secondary"}`} aria-pressed={theme === "dark"} onClick={() => changeTheme("dark")}>暗色</button>
+            <button type="button" className={`btn ${theme === "light" ? "" : "secondary"}`} aria-pressed={theme === "light"} onClick={() => changeTheme("light")}>亮色</button>
+          </div>
+        </fieldset>
+        <fieldset style={{ border: 0, padding: 0, margin: "20px 0 0" }}>
           <legend style={{ fontWeight: 700, marginBottom: 8 }}>字号</legend>
           <div className="row">
             <button type="button" className={`btn ${font === "normal" ? "" : "secondary"}`} aria-pressed={font === "normal"} onClick={() => changeFont("normal")}>标准</button>

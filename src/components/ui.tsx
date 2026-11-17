@@ -121,6 +121,7 @@ const paths: Record<string, string> = {
   paths: "M5 4v6a3 3 0 0 0 3 3h8a3 3 0 0 1 3 3v4M5 4h.01M19 20h.01",
   lab: "M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3",
   projects: "M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z",
+  settings: "M4 7h9M17 7h3M4 17h2M10 17h10M13 7a2 2 0 1 0 4 0a2 2 0 1 0-4 0M6 17a2 2 0 1 0 4 0a2 2 0 1 0-4 0",
   me: "M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0",
 };
 export function NavIcon({ name }: { name: keyof typeof paths }) {

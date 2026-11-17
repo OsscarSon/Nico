@@ -32,9 +32,11 @@ try {
     check(`${width}: 首页无横向溢出`, await noOverflow(page));
     await page.screenshot({ path: `${OUT}/after-home-${width}.png` });
     await page.screenshot({ path: `${OUT}/after-home-full-${width}.png`, fullPage: true });
+    check(`${width}: 首页不再重复路线列表`, await page.locator(".academy-track").count() === 0 && await page.locator(".academy-stage").count() === 3);
     await page.getByRole("button", { name: "探索学习路线 ↗" }).click();
-    await page.waitForFunction(() => document.getElementById("academy-tracks").getBoundingClientRect().top < 50);
-    check(`${width}: Hero 按钮滚动到路线区`, await page.locator("#academy-tracks").evaluate(el => el.getBoundingClientRect().top < 50));
+    await page.waitForFunction(() => location.hash === "#/paths");
+    await page.locator("#academy-tracks").waitFor();
+    check(`${width}: Hero 按钮进入路线页`, new URL(page.url()).hash === "#/paths");
     const sources = await page.locator(".academy-track img").evaluateAll(images => images.map(i => new URL(i.src).pathname.split("/").pop()));
     check(`${width}: 五张 A–E 图片都加载且路径正确`, JSON.stringify(sources) === JSON.stringify(["track-a-network.png", "track-b-code.png", "track-c-ai.png", "track-d-games.png", "track-e-google.png"])
       && await page.locator(".academy-track img").evaluateAll(images => images.every(i => i.complete && i.naturalWidth > 0)));
@@ -47,23 +49,23 @@ try {
     await page.getByRole("button", { name: /PHASE 03/ }).click();
     check(`${width}: 进阶保留选中 M，显示三门`, await page.locator(".academy-course").count() === 3);
     await page.getByRole("button", { name: /F · 硬件与机器人/ }).click();
-    await page.getByLabel("筛选课程状态").selectOption("flagship");
-    check(`${width}: F 精选四门且无学习链接`, await page.locator(".academy-course").count() === 4 && await page.locator(".academy-course a").count() === 0);
+    check(`${width}: F 精选四门且无学习链接`, await page.locator(".academy-course .course-tag.flagship").count() === 4 && await page.locator(".academy-course a").count() === 0);
     await page.locator(".academy-course summary").first().click();
     check(`${width}: 规划详情诚实说明尚未开放`, await page.locator("details[open]").innerText().then(t => t.includes("尚未开放")));
     check(`${width}: 长英文标题与展开详情无横向溢出`, await noOverflow(page));
-    await page.getByRole("button", { name: /PHASE 01/ }).click();
-    await page.getByRole("button", { name: /A · 电脑基础与网络/ }).click();
+    await page.goto(`${BASE}/#/paths`); await ready(page);
+    check(`${width}: 路线页不带搜索框`, await page.getByRole("searchbox").count() === 0);
+    await page.goto(`${BASE}/#/courses`); await ready(page);
+    check(`${width}: 课程页不显示路线卡片`, await page.locator(".academy-track").count() === 0);
     const search = page.getByRole("searchbox", { name: "搜索课程标题或编号" });
     await search.fill(" a01 ");
     check(`${width}: 编号搜索`, await page.locator(".academy-course").count() === 1 && await page.locator(".academy-course a").getAttribute("href") === "#/lesson/a01-binary");
     await page.getByLabel("筛选课程状态").selectOption("planned");
     check(`${width}: 搜索与状态筛选可组合`, await page.getByText("没有符合条件的课程", { exact: true }).isVisible());
     await page.getByRole("button", { name: "清除搜索与筛选" }).click();
-    check(`${width}: 空状态重置有效`, await page.locator(".academy-course").count() === 22);
-    await page.getByLabel("搜索范围").selectOption("stage");
+    await page.getByRole("button", { name: "全部", exact: true }).click();
     await page.getByLabel("筛选课程状态").selectOption("live");
-    check(`${width}: 跨路线查找全部32个真实入口`, await page.locator(".academy-course a").count() === 32);
+    check(`${width}: 跨阶段查找全部32个真实入口`, await page.locator(".academy-course a").count() === 32);
     await search.fill("B01");
     check(`${width}: B01 保留旧课程地址`, await page.locator(".academy-course a").getAttribute("href") === "#/lesson/b01-variables");
     await search.fill("c05");
@@ -93,7 +95,7 @@ try {
     if (width < 900) {
       const bottom = page.getByRole("navigation", { name: "主导航（手机）" });
       check(`${width}: 手机底栏有五个可见入口`, await bottom.locator("a:visible").count() === 5);
-      for (const [label, hash] of [["首页", "#/"], ["路线", "#/paths"], ["课程", "#/courses"], ["AI 助手", "#/lab/tutor"], ["我的", "#/me"]]) {
+      for (const [label, hash] of [["首页", "#/"], ["路线", "#/paths"], ["课程", "#/courses"], ["设置", "#/settings"], ["我的", "#/me"]]) {
         await bottom.getByRole("link", { name: label, exact: true }).click();
         await page.waitForURL(url => url.hash === hash);
         check(`${width}: 底栏 ${label} 可用`, new URL(page.url()).hash === hash);

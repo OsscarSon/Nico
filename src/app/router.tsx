@@ -33,6 +33,7 @@ export type Match =
   | { name: "tutor"; lessonId?: string }
   | { name: "projects" }
   | { name: "me" }
+  | { name: "settings" }
   | { name: "notfound" };
 
 export function matchRoute(path: string): Match {
@@ -50,5 +51,6 @@ export function matchRoute(path: string): Match {
   if (!b && a === "lab") return { name: "lab" };
   if (!b && a === "projects") return { name: "projects" };
   if (!b && a === "me") return { name: "me" };
+  if (!b && a === "settings") return { name: "settings" };
   return { name: "notfound" };
 }
