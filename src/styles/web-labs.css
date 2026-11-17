@@ -1,0 +1,17 @@
+/* Scoped to new course experiments; existing Academy, lesson art and old simulators unchanged. */
+.web-lab textarea { width: 100%; min-width: 0; min-height: 112px; padding: 10px; border: 1px solid var(--grid); border-radius: 6px; background: var(--panel); color: var(--ink); font: inherit; resize: vertical; scroll-margin-bottom: 90px; }
+.web-lab .web-message { width: 100%; min-width: 0; white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word; padding: 12px; border: 1px solid var(--grid); border-radius: 6px; background: var(--paper); font-size: .8125rem; }
+.web-observer { border-left: 3px solid var(--trace); background: var(--paper); padding: 12px; margin: 16px 0; }
+.web-observer p { margin-bottom: 0; font-size: .875rem; }
+.web-tls .row, .web-tcp > .row { margin-top: 12px; }
+.web-stages { list-style: none; padding: 0; margin: 16px 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.web-stages li { padding: 10px; border: 1px solid var(--grid); border-radius: 6px; background: var(--paper); min-width: 0; }
+.web-stages strong, .web-stages small { display: block; }
+.web-stages small { color: var(--muted); overflow-wrap: anywhere; }
+.web-stages li[aria-current="step"] { border-color: var(--trace); }
+.web-lab > details { margin: 16px 0; padding: 10px; border: 1px solid var(--grid); border-radius: 6px; }
+.web-lab > details > summary { min-height: 44px; cursor: pointer; color: var(--trace); font-weight: 700; }
+.web-screen { padding: 18px; border: 2px solid var(--pass); border-radius: 6px; margin: 16px 0; background: var(--paper); }
+.web-screen.error { border-color: var(--fault); }
+.web-screen strong { display: block; font-size: 1.125rem; }
+@media (max-width: 480px) { .web-stages { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

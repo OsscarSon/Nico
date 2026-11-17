@@ -67,7 +67,7 @@ describe("next lesson", () => {
     expect(nextAvailableAfter("a10-ip-subnet")?.id).toBe("a11-devices");
   });
   it("returns undefined after the last available lesson of the track", () => {
-    expect(nextAvailableAfter("a14-tcp")).toBe(undefined);
+    expect(nextAvailableAfter("a17-web-journey")).toBe(undefined);
   });
   it("returns undefined for unknown ids", () => {
     expect(nextAvailableAfter("zz99-nope")).toBe(undefined);

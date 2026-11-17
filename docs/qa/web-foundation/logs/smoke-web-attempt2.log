@@ -1,0 +1,83 @@
+
+> nico@0.1.0 smoke:web
+> node scripts/smoke-web.mjs
+
+PASS a15-udp 默认深色、draft、正式插画占位
+PASS a15-udp 自由实验标模拟
+PASS A15无效位置有诊断
+PASS A15应用实际补偿缺失记录
+PASS a15-udp 操作挑战门控
+PASS a15-udp刷新续学保留步骤且挑战需真实重做
+PASS 390/dark/A15任务1空操作不能通过
+PASS 390/dark/A15任务1实际画面倒退到10
+PASS 390/dark/A15任务1真实状态通过
+PASS 390/dark/A15任务1无横向溢出
+PASS 390/dark/A15任务2空操作不能通过
+PASS 390/dark/A15任务2延迟中不能立即投递
+PASS 390/dark/A15任务2保留30并记录旧/过期拒绝
+PASS 390/dark/A15任务2真实状态通过
+PASS 390/dark/A15任务2无横向溢出
+PASS 390/dark/A15任务3空操作不能通过
+PASS 390/dark/A15任务3上一段未确认不能发下一段
+PASS 390/dark/A15任务3原字节流仅交付一次
+PASS 390/dark/A15任务3真实状态通过
+PASS 390/dark/A15任务3无横向溢出
+PASS a15-udp九任务完成后才解锁检查
+PASS a15-udp下一步不被底栏遮挡
+PASS a15-udp错误有针对性诊断且不放行
+PASS a15-udp首次检查题记录2/3
+PASS a15-udp迁移拒绝非法输入
+PASS a15-udp迁移错答不放行
+PASS a15-udp总结三点且有权威来源
+PASS a15-udp下一课与筹备状态诚实
+PASS a15-udp真实2/4首次成绩且旧进度不变
+PASS a16-http-https 默认深色、draft、正式插画占位
+PASS a16-http-https 自由实验标模拟
+PASS A16不能仅切换https就发请求
+PASS A16自由实验收到真实安全200
+PASS a16-http-https 操作挑战门控
+PASS a16-http-https刷新续学保留步骤且挑战需真实重做
+PASS 390/dark/A16任务1空操作不能通过
+PASS 390/dark/A16任务1服务器真实404
+PASS 390/dark/A16任务1真实状态通过
+PASS 390/dark/A16任务1无横向溢出
+PASS 390/dark/A16任务2空操作不能通过
+PASS 390/dark/A16任务2错误媒体类型415
+PASS 390/dark/A16任务2非法JSON实际400
+PASS 390/dark/A16任务2实际201且只有一条创建记录
+PASS 390/dark/A16任务2真实状态通过
+PASS 390/dark/A16任务2无横向溢出
+PASS 390/dark/A16任务3空操作不能通过
+PASS 390/dark/A16任务3错误身份阻止Finished
+PASS 390/dark/A16任务3错误身份不能发送HTTP
+PASS 390/dark/A16任务3观察者看到TLS保护状态
+PASS 390/dark/A16任务3真实状态通过
+PASS 390/dark/A16任务3无横向溢出
+PASS a16-http-https九任务完成后才解锁检查
+PASS a16-http-https下一步不被底栏遮挡
+PASS a16-http-https错误有针对性诊断且不放行
+PASS a16-http-https首次检查题记录2/3
+PASS a16-http-https迁移拒绝非法输入
+PASS a16-http-https迁移错答不放行
+PASS a16-http-https总结三点且有权威来源
+PASS a16-http-https下一课与筹备状态诚实
+PASS a16-http-https真实2/4首次成绩且旧进度不变
+PASS a17-web-journey 默认深色、draft、正式插画占位
+PASS a17-web-journey 自由实验标模拟
+PASS A17拒绝非教学URL协议
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.isDisabled: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByRole('button', { name: '启动 TCP 握手', exact: true })[22m
+
+    at /workspace/Nico/scripts/smoke-web.mjs:141:123 {
+  log: [
+    "  - waiting for getByRole('button', { name: '启动 TCP 握手', exact: true })"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.22.1

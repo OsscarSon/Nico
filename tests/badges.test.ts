@@ -21,10 +21,16 @@ describe("badges", () => {
   });
   it("a badge whose lessons do not exist yet is not obtainable and never earned", () => {
     // 即使进度里伪造了这些课时，课程没开放也不发徽章
-    const packet = badges.find((b) => b.id === "packet-pilot")!;
-    const list = evaluateBadges(done(packet.requires), day("2026-11-14"));
-    expect(byId(list, "packet-pilot").obtainable).toBe(false);
-    expect(byId(list, "packet-pilot").earned).toBe(false);
+    const future = badges.find((b) => b.id === "agent-builder")!;
+    const list = evaluateBadges(done(future.requires), day("2026-11-14"));
+    expect(byId(list, "agent-builder").obtainable).toBe(false);
+    expect(byId(list, "agent-builder").earned).toBe(false);
+  });
+  it("packet-pilot is obtainable after A15–A17 arrive but still needs all actual completion records", () => {
+    const packet = badges.find(b => b.id === "packet-pilot")!;
+    const partial = byId(evaluateBadges(done(packet.requires.slice(0, -1)), day("2026-11-14")), packet.id);
+    expect(partial.obtainable).toBe(true); expect(partial.earned).toBe(false);
+    expect(byId(evaluateBadges(done(packet.requires), day("2026-11-14")), packet.id).earned).toBe(true);
   });
   it("gatekeeper is obtainable now that A03 and A04 exist, and needs both", () => {
     const only3 = evaluateBadges(done(["a03-logic-gates"]), day("2026-11-14"));

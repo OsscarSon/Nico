@@ -1,0 +1,30 @@
+
+> nico@0.1.0 smoke:web
+> node scripts/smoke-web.mjs
+
+PASS a15-udp 默认深色、draft、正式插画占位
+PASS a15-udp 自由实验标模拟
+PASS A15无效位置有诊断
+PASS A15应用实际补偿缺失记录
+PASS a15-udp 操作挑战门控
+PASS a15-udp刷新续学保留步骤且挑战需真实重做
+PASS 390/dark/A15任务1空操作不能通过
+PASS 390/dark/A15任务1实际画面倒退到10
+PASS 390/dark/A15任务1真实状态通过
+PASS 390/dark/A15任务1无横向溢出
+PASS 390/dark/A15任务2空操作不能通过
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.selectOption: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByLabel('应用显示策略', { exact: true })[22m
+
+    at Array.udp (/workspace/Nico/scripts/smoke-web.mjs:47:69)
+    at async file:///workspace/Nico/scripts/smoke-web.mjs:148:5 {
+  log: [ "  - waiting for getByLabel('应用显示策略', { exact: true })" ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.22.1
