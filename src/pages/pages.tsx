@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link, navigate } from "../app/router";
 import { getLesson, allCatalogLessons } from "../content";
 import { getTrack } from "../content/catalog";
@@ -8,10 +7,8 @@ import { evaluateBadges } from "../progress/badges";
 import { CoursesCatalog, PathsCatalog, StageOverview } from "../features/academy/AcademyCatalog";
 import { PathMap } from "../features/path/PathMap";
 import { BitSwitches } from "../sims/BitSwitches";
-import { clearProgress, getProgress, useProgress } from "../progress/useProgress";
+import { useProgress } from "../progress/useProgress";
 import { streak } from "../progress/store";
-import { applyTheme, type Theme } from "../progress/theme";
-import { applyFontSize, loadFontSize, type FontSize } from "../progress/settings";
 
 export function HomePage() {
   const progress = useProgress();
@@ -195,71 +192,6 @@ export function MePage() {
         <Link to="/lab/prompt" className="btn secondary">Prompt 训练场</Link>
         <Link to="/projects" className="btn secondary">查看作品</Link>
       </div>
-    </>
-  );
-}
-
-export function SettingsPage() {
-  const [font, setFont] = useState<FontSize>(loadFontSize);
-  const [theme, setTheme] = useState<Theme>(() => document.documentElement.dataset.theme === "light" ? "light" : "dark");
-  const [confirming, setConfirming] = useState(false);
-
-  const exportData = () => {
-    const blob = new Blob([JSON.stringify(getProgress(), null, 2)], { type: "application/json" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "nico-progress.json";
-    a.click();
-    URL.revokeObjectURL(a.href);
-  };
-  const changeFont = (f: FontSize) => {
-    setFont(f);
-    applyFontSize(f);
-  };
-  const changeTheme = (t: Theme) => {
-    setTheme(t);
-    applyTheme(t);
-  };
-
-  return (
-    <>
-      <header className="page-head"><h1>设置</h1><p>外观与学习记录。所有设置只保存在这台设备的浏览器里。</p></header>
-
-      <h2 className="section-title">外观</h2>
-      <section className="panel">
-        <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
-          <legend style={{ fontWeight: 700, marginBottom: 8 }}>主题</legend>
-          <div className="row">
-            <button type="button" className={`btn ${theme === "dark" ? "" : "secondary"}`} aria-pressed={theme === "dark"} onClick={() => changeTheme("dark")}>暗色</button>
-            <button type="button" className={`btn ${theme === "light" ? "" : "secondary"}`} aria-pressed={theme === "light"} onClick={() => changeTheme("light")}>亮色</button>
-          </div>
-        </fieldset>
-        <fieldset style={{ border: 0, padding: 0, margin: "20px 0 0" }}>
-          <legend style={{ fontWeight: 700, marginBottom: 8 }}>字号</legend>
-          <div className="row">
-            <button type="button" className={`btn ${font === "normal" ? "" : "secondary"}`} aria-pressed={font === "normal"} onClick={() => changeFont("normal")}>标准</button>
-            <button type="button" className={`btn ${font === "large" ? "" : "secondary"}`} aria-pressed={font === "large"} onClick={() => changeFont("large")}>大</button>
-          </div>
-        </fieldset>
-      </section>
-
-      <h2 className="section-title">数据</h2>
-      <section className="panel">
-        <p className="muted">学习记录只保存在这台设备的浏览器里，不会上传。换设备或清除浏览器数据会丢失，建议偶尔导出备份。</p>
-        <div className="row">
-          <button type="button" className="btn secondary" onClick={exportData}>导出学习记录</button>
-          {confirming ? (
-            <>
-              <button type="button" className="btn" style={{ background: "var(--fault)", borderColor: "var(--fault)" }} onClick={() => { clearProgress(); setConfirming(false); }}>
-                确认清除，无法恢复
-              </button>
-              <button type="button" className="btn ghost" onClick={() => setConfirming(false)}>取消</button>
-            </>
-          ) : (
-            <button type="button" className="btn ghost" onClick={() => setConfirming(true)}>清除学习记录</button>
-          )}
-        </div>
-      </section>
     </>
   );
 }

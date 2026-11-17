@@ -1,0 +1,2 @@
+请手动删除这个文件（顶栏的主题按钮已移除，不再使用）：
+src/components/ThemeToggle.tsx

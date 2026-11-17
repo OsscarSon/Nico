@@ -72,11 +72,13 @@ try {
     check(`${width}: B01 保留旧课程地址`, await page.locator(".academy-course a").getAttribute("href") === "#/lesson/b01-variables");
     await search.fill("c05");
     check(`${width}: C05 保留旧课程地址`, await page.locator(".academy-course a").getAttribute("href") === "#/lesson/c05-prompt-structure");
-    await page.getByRole("button", { name: "切换到亮色主题" }).click();
+    await page.goto(`${BASE}/#/settings`); await ready(page);
+    check(`${width}: 右上角不再有主题按钮`, await page.locator(".academy-topbar button").count() === 0);
+    await page.getByRole("button", { name: "亮色", exact: true }).click();
     await page.reload(); await ready(page);
     check(`${width}: 亮色主动选择刷新后保留`, await page.locator("html").getAttribute("data-theme") === "light");
     check(`${width}: 亮色无横向溢出`, await noOverflow(page));
-    await page.getByRole("button", { name: "切换到暗色主题" }).click();
+    await page.getByRole("button", { name: "暗色", exact: true }).click();
     await page.reload(); await ready(page);
     check(`${width}: 暗色选择刷新后保留`, await page.locator("html").getAttribute("data-theme") === "dark");
     await page.goto(`${BASE}/#/paths`); await ready(page);
@@ -162,7 +164,8 @@ try {
   check("原进度：首页继续上次 B01", await page.locator(".today").innerText().then(t => t.includes("继续上次的位置") && t.includes("变量")));
   await page.goto(`${BASE}/#/paths`); await ready(page);
   await page.getByRole("button", { name: /PHASE 03/ }).click();
-  await page.getByRole("button", { name: "切换到亮色主题" }).click();
+  await page.goto(`${BASE}/#/settings`); await ready(page);
+  await page.getByRole("button", { name: "亮色", exact: true }).click();
   check("浏览目录/切换主题不写入或迁移学习进度", await page.evaluate(() => localStorage.getItem("nico-progress")) === JSON.stringify(saved));
   await page.goto(`${BASE}/#/`); await ready(page);
   await page.getByRole("link", { name: "继续这一课", exact: true }).click();

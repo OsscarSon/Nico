@@ -281,3 +281,19 @@ a.pm-card:hover { border-color: var(--trace); }
 
 .device > header .pill { flex: none; white-space: nowrap; }
 .device > header h3 { min-width: 0; }
+
+/* 设置页 */
+.settings-list { padding-block: var(--s4); }
+.setting-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s3) var(--s5); padding: var(--s4) 0; border-top: 1px solid var(--grid); }
+.setting-row:first-child { border-top: 0; }
+.setting-text { flex: 1 1 260px; min-width: 0; }
+.setting-text strong { display: block; }
+.setting-text p { margin: 4px 0 0; color: var(--muted); font-size: 0.875rem; line-height: 1.6; }
+.segmented { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid var(--grid); border-radius: 12px; }
+.segmented button { min-height: 44px; min-width: 72px; padding: 0 18px; border: 0; border-radius: 8px; background: transparent; color: var(--ink); font: inherit; font-weight: 600; cursor: pointer; }
+.segmented button:hover { background: var(--trace-soft); }
+.segmented button[aria-pressed="true"] { background: var(--action, var(--trace)); color: #fff; }
+.settings-message { margin: 0; padding: var(--s3) var(--s4); border-radius: var(--r-button); font-size: 0.875rem; line-height: 1.6; }
+.settings-message.ok { background: var(--pass-soft); color: var(--pass); }
+.settings-message.error { background: var(--fault-soft); color: var(--fault); }
+.danger-zone { border-color: var(--fault); }

@@ -49,10 +49,10 @@ try {
       await page.screenshot({ path: `${OUT}/${id}-${width}.png` });
       await page.screenshot({ path: `${OUT}/${id}-${width}-full.png`, fullPage: true });
       if (width === 390) {
-        await page.locator(".theme-toggle").tap();
+        await page.evaluate(() => { document.documentElement.dataset.theme = "light"; });
         check(`${label} light mode keeps complete unfiltered art`, await page.locator("html").getAttribute("data-theme") === "light" && await image.evaluate(im => im.complete && im.naturalWidth === 1672 && getComputedStyle(im).filter === "none"));
         // Restore the default for the next course in this same context.
-        await page.locator(".theme-toggle").tap();
+        await page.evaluate(() => { document.documentElement.dataset.theme = "dark"; });
       }
       check(`${label} no JavaScript errors`, errors.length === 0); await page.close();
     }

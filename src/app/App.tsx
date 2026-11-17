@@ -1,13 +1,13 @@
 import { useEffect, useRef } from "react";
 import { Link, matchRoute, usePath } from "./router";
-import { ThemeToggle } from "../components/ThemeToggle";
 import { Logo, NavIcon } from "../components/ui";
 import { LessonPlayer } from "../features/lesson/LessonPlayer";
 import { PromptLab } from "../features/prompt-lab/PromptLab";
 import { TutorPage } from "../features/prompt-lab/TutorPage";
 import {
-  CoursesPage, HomePage, LabPage, MePage, NotFoundPage, PathsPage, ProjectsPage, SettingsPage, TrackPage,
+  CoursesPage, HomePage, LabPage, MePage, NotFoundPage, PathsPage, ProjectsPage, TrackPage,
 } from "../pages/pages";
+import { SettingsPage } from "../features/settings/SettingsPage";
 
 const nav = [
   { to: "/", label: "首页", icon: "home", match: (p: string) => p === "/" },
@@ -69,7 +69,7 @@ export function App() {
         <p className="nav-footer">从入门到深入<br />每天一点，动手理解。</p>
       </nav>
       <main id="main" className="main" tabIndex={-1} ref={mainRef}>
-        <header className="academy-topbar"><Link to="/" className="brand mobile-brand"><Logo /><span>Nico<small>ACADEMY</small></span></Link><span className="academy-breadcrumb">Nico Academy / 学习空间</span><ThemeToggle /></header>
+        <header className="academy-topbar"><Link to="/" className="brand mobile-brand"><Logo /><span>Nico<small>ACADEMY</small></span></Link><span className="academy-breadcrumb">Nico Academy / 学习空间</span></header>
         {page}
       </main>
       <nav className="bottomnav" aria-label="主导航（手机）">

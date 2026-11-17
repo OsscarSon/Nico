@@ -112,3 +112,52 @@ export function streak(p: Progress, today: Date): number {
   }
   return n;
 }
+
+const DAY = /^\d{4}-\d{2}-\d{2}$/;
+const UNSAFE_KEYS = new Set(["__proto__", "constructor", "prototype"]);
+
+/**
+ * 解析用户导入的备份文件。只接受当前版本、结构完整的数据；
+ * 任何一处不合法就整体拒绝（返回 null），不做"尽量修复"。
+ */
+export function parseProgress(raw: string): Progress | null {
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    return null;
+  }
+  if (!isProgress(parsed)) return null;
+  const lessons: Record<string, LessonRecord> = {};
+  for (const [id, rec] of Object.entries(parsed.lessons)) {
+    if (UNSAFE_KEYS.has(id) || id.length > 100) return null;
+    const r = rec as Partial<LessonRecord> | null;
+    if (
+      !r || typeof r.completedAt !== "string" || Number.isNaN(Date.parse(r.completedAt)) ||
+      !Number.isFinite(r.firstTryCorrect) || !Number.isFinite(r.quizTotal)
+    ) return null;
+    lessons[id] = { completedAt: r.completedAt, firstTryCorrect: r.firstTryCorrect as number, quizTotal: r.quizTotal as number };
+  }
+  if (!parsed.activeDays.every((d) => typeof d === "string" && DAY.test(d))) return null;
+  const rs = parsed.resume;
+  const resume = rs && typeof rs.lessonId === "string" && Number.isInteger(rs.step) && rs.step >= 0 ? { lessonId: rs.lessonId, step: rs.step } : null;
+  return { schemaVersion: 1, lessons, resume, activeDays: [...parsed.activeDays].sort().slice(-400) };
+}
+
+/**
+ * 合并两份进度：只增不减。同一课时两边都有记录时保留更早的那次（首次成绩不被覆盖）。
+ */
+export function mergeProgress(current: Progress, incoming: Progress): Progress {
+  const lessons: Record<string, LessonRecord> = { ...current.lessons };
+  for (const [id, rec] of Object.entries(incoming.lessons)) {
+    const mine = lessons[id];
+    if (!mine || Date.parse(rec.completedAt) < Date.parse(mine.completedAt)) lessons[id] = rec;
+  }
+  const resume = current.resume ?? incoming.resume;
+  return {
+    schemaVersion: 1,
+    lessons,
+    resume: resume && !lessons[resume.lessonId] ? resume : null,
+    activeDays: [...new Set([...current.activeDays, ...incoming.activeDays])].sort().slice(-400),
+  };
+}

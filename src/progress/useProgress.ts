@@ -3,6 +3,7 @@ import {
   loadProgress,
   saveProgress,
   emptyProgress,
+  mergeProgress,
   STORAGE_KEY,
   type Progress,
 } from "./store";
@@ -35,6 +36,10 @@ export function updateProgress(fn: (p: Progress) => Progress) {
   state = next;
   saveProgress(storage, state);
   listeners.forEach((l) => l());
+}
+/** 把导入的备份合并进当前进度（不覆盖已有记录）。 */
+export function importProgress(incoming: Progress) {
+  updateProgress((p) => mergeProgress(p, incoming));
 }
 export function clearProgress() {
   state = emptyProgress();
