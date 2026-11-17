@@ -68,7 +68,7 @@ export function PromptLab() {
         <h1>Prompt 训练场</h1>
         <p>写一条给 AI 的指令，先在本地检查六个要素，再决定要不要请 AI 点评。</p>
       </header>
-      <img className="lesson-art" src={artUrl("lesson-c05-prompt-structure.png")} alt="" width={1600} height={900} />
+      <img className="lesson-art compact" src={artUrl("lab-prompt-banner.png")} alt="" width={1600} height={533} />
 
       <Device title="我的指令">
         <label htmlFor="pl-text" className="pl-label">

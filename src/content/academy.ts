@@ -31,8 +31,8 @@ export const statusLabels: Record<CourseStatus, string> = {
 };
 export const academyTracks: { id: AcademyTrackId; title: string; subtitle: string; art?: string }[] = [
   ...tracks.map(t => ({ id: t.id.toUpperCase() as AcademyTrackId, title: t.title, subtitle: t.tagline, art: t.art })),
-  // TODO(official-art): 接入用户提供的 F/M 原版插画；不生成替代图案。
-  { id: "F", title: "硬件与机器人", subtitle: "连接软件与现实。" },
+  { id: "F", title: "硬件与机器人", subtitle: "连接软件与现实。", art: "track-f-hardware.png" },
+  // TODO(official-art): M 的原版插画仍待提供；不生成替代图案。
   { id: "M", title: "数学基础", subtitle: "理解技术背后的数学。" },
 ];
 

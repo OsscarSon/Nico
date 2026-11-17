@@ -34,19 +34,20 @@ describe("Academy catalog compatibility", () => {
     expect(filterCourses(curriculum, "A01", "planned")).toEqual([]);
     expect(filterCourses(curriculum, "no such course", "all")).toEqual([]);
   });
-  it("keeps all five original track image bytes (baseline 8e16933)", () => {
+  it("keeps track image bytes (A–E baseline 8e16933, F added later) (baseline 8e16933)", () => {
     const hashes: Record<string, string> = {
       "track-a-network.png": "fae722f8e2ca8773831362abf7460c210da098677eb34b81b81f033b36ec7dad",
       "track-b-code.png": "0e6692ba24c452da7a1f5d080e21bbd61a3c60de3c9f64e4e627df3222591ff8",
       "track-d-games.png": "59300ca681c09980369c54242fa66433e159fe6dbbfdaa7f417bc281a852134e",
       "track-e-google.png": "461039ea8890a7c2486e10a9bda65db3c5ddaefd6f1f4285ced3066e2bdc3d1b",
-      "track-c-ai.png": "34bfa7c45ae5d24f35b7f05ce4efa32026962c71b06da796df774ed067c9a6eb"
+      "track-c-ai.png": "34bfa7c45ae5d24f35b7f05ce4efa32026962c71b06da796df774ed067c9a6eb",
+      "track-f-hardware.png": "1bb028fde00619817a571b62afd1c0c2c2ca5987165a6bb69a288e6396547a77",
 };
-    expect(academyTracks.filter(t => t.art)).toHaveLength(5);
+    expect(academyTracks.filter(t => t.art)).toHaveLength(6);
     for (const t of academyTracks) {
       if (t.art) expect(createHash("sha256").update(readFileSync(`public/art/${t.art}`)).digest("hex")).toBe(hashes[t.art]);
     }
-    expect(academyTracks.filter(t => !t.art).map(t => t.id)).toEqual(["F", "M"]);
+    expect(academyTracks.filter(t => !t.art).map(t => t.id)).toEqual(["M"]);
   });
 });
 

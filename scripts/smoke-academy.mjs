@@ -38,12 +38,12 @@ try {
     await page.locator("#academy-tracks").waitFor();
     check(`${width}: Hero 按钮进入路线页`, new URL(page.url()).hash === "#/paths");
     const sources = await page.locator(".academy-track img").evaluateAll(images => images.map(i => new URL(i.src).pathname.split("/").pop()));
-    check(`${width}: 五张 A–E 图片都加载且路径正确`, JSON.stringify(sources) === JSON.stringify(["track-a-network.png", "track-b-code.png", "track-c-ai.png", "track-d-games.png", "track-e-google.png"])
+    check(`${width}: 六张路线图片（A–F）都加载且路径正确`, JSON.stringify(sources) === JSON.stringify(["track-a-network.png", "track-b-code.png", "track-c-ai.png", "track-d-games.png", "track-e-google.png", "track-f-hardware.png"])
       && await page.locator(".academy-track img").evaluateAll(images => images.every(i => i.complete && i.naturalWidth > 0)));
     check(`${width}: Foundation 只显示六条路线`, await page.locator(".academy-track").count() === 6);
     await page.getByRole("button", { name: /PHASE 02/ }).click();
     check(`${width}: Intermediate 有七条路线`, await page.locator(".academy-track").count() === 7);
-    check(`${width}: F/M 空位明确标记`, await page.locator(".art-placeholder").count() === 2);
+    check(`${width}: 仅 M 空位明确标记`, await page.locator(".art-placeholder").count() === 1);
     await page.getByRole("button", { name: /M · 数学基础/ }).click();
     check(`${width}: 中阶数学两门`, await page.locator(".academy-course").count() === 2);
     await page.getByRole("button", { name: /PHASE 03/ }).click();

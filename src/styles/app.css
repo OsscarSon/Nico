@@ -171,6 +171,9 @@ a.pm-card:hover { border-color: var(--trace); }
 .hero-art, .lesson-art { display: block; width: 100%; height: auto; border: 1px solid var(--grid); border-radius: var(--r-panel); background: var(--paper); }
 .hero-art { margin-bottom: var(--s4); max-height: 320px; object-fit: cover; object-position: center; }
 .lesson-art { margin-bottom: var(--s4); }
+/* 工具页顶部的紧凑横幅：不占满一屏，只露出画面中部 */
+.lesson-art.compact { max-height: 240px; object-fit: cover; object-position: center 45%; }
+@media (max-width: 540px) { .lesson-art.compact { max-height: 160px; } }
 .empty-art { display: block; width: 100%; max-width: 360px; height: auto; margin: 0 auto var(--s4); border-radius: var(--r-panel); }
 .badges { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s4); grid-template-columns: repeat(2, 1fr); }
 @media (min-width: 700px) { .badges { grid-template-columns: repeat(4, 1fr); } }
