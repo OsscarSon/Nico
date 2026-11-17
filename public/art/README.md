@@ -11,10 +11,10 @@
 | `lesson-a03-logic-gates.png` | A03 课头插图（AND、OR、NOT、XOR 四种门的传统形状，带开关和灯）。已用 GPT 重出，替换了看不出门形状的旧图，约 79KB |
 | `lesson-b01-variables.png` / `b02-conditions` / `b03-loops` / `b08-html` | 路线 B 八课（B01–B08）的课头插图（GPT 出图，已缩放为 1600×900 并压成 256 色调色板 PNG）；另有 `lesson-b04-functions` / `b05-lists` / `b06-dicts` / `b07-debugging` |
 | `lesson-a04-adder.png` | A04 课头插图（半加器：XOR 出「和」、AND 出「进位」，画的是 1 + 1 = 10）。约 62KB |
-| `empty-no-projects.png` | 作品页空状态 |
-| `error-404.png` | 找不到页面 |
+| `empty-no-projects.png`（1600×533） | 作品页空状态 |
+| `error-404.png`（1600×533） | 找不到页面 |
 | `badge-*.png`（8 张，已去掉背景） | 「我的」页徽章，按真实完成记录点亮 |
-| `track-a-network.png` 到 `track-e-google.png`、`track-f-hardware.png`（256px，已去掉背景） | 路线卡与路线页头的徽记 |
+| `track-a-network.png` 到 `track-e-google.png`、`track-f-hardware.png`、`track-m-math.png`（256px，已去掉背景） | 路线卡与路线页头的徽记 |
 | `lab-prompt-banner.png`（1600×533） | Prompt 训练场顶部横幅 |
 | `app-icon-512.png`、`app-icon-180.png`（N 图标，已去掉圆角外的底） | 180 用作手机「添加到主屏幕」图标；512 留给 Phase 8 的 PWA |
 

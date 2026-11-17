@@ -62,17 +62,20 @@ export function EmptyState({
   children,
   action,
   art,
+  wide,
 }: {
   title: string;
   children: ReactNode;
   action?: ReactNode;
   /** public/art/ 下的插图文件名；不传则用内置的占位图形 */
   art?: string;
+  /** 3:1 宽图（1600×533）用；默认是 4:3 */
+  wide?: boolean;
 }) {
   return (
     <div className="panel empty">
       {art ? (
-        <img className="empty-art" src={artUrl(art)} alt="" width={400} height={300} />
+        <img className={`empty-art${wide ? " wide" : ""}`} src={artUrl(art)} alt="" width={wide ? 600 : 400} height={wide ? 200 : 300} />
       ) : (
       <svg viewBox="0 0 72 72" aria-hidden="true" fill="none" stroke="#14213d" strokeWidth="2.5" strokeLinejoin="round">
         <rect x="20" y="20" width="32" height="32" rx="4" fill="#e6ecff" />

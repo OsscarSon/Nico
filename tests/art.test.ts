@@ -18,7 +18,7 @@ describe("art files referenced by the app exist", () => {
     for (const b of badges) expect(art(b.art)).toBe(true);
   });
   it("shared images used in pages exist", () => {
-    for (const f of ["hero-home-1600x900.png", "empty-no-projects.png", "error-404.png", "app-icon-180.png", "track-f-hardware.png", "lab-prompt-banner.png"])
+    for (const f of ["hero-home-1600x900.png", "empty-no-projects.png", "error-404.png", "app-icon-180.png", "track-f-hardware.png", "track-m-math.png", "lab-prompt-banner.png"])
       expect(art(f)).toBe(true);
   });
 });

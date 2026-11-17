@@ -43,7 +43,7 @@ try {
     check(`${width}: Foundation 只显示六条路线`, await page.locator(".academy-track").count() === 6);
     await page.getByRole("button", { name: /PHASE 02/ }).click();
     check(`${width}: Intermediate 有七条路线`, await page.locator(".academy-track").count() === 7);
-    check(`${width}: 仅 M 空位明确标记`, await page.locator(".art-placeholder").count() === 1);
+    check(`${width}: 七条路线都有插画，无占位`, await page.locator(".art-placeholder").count() === 0 && await page.locator(".academy-track img").count() === 7);
     await page.getByRole("button", { name: /M · 数学基础/ }).click();
     check(`${width}: 中阶数学两门`, await page.locator(".academy-course").count() === 2);
     await page.getByRole("button", { name: /PHASE 03/ }).click();

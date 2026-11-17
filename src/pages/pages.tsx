@@ -151,7 +151,7 @@ export function ProjectsPage() {
   return (
     <>
       <header className="page-head"><h1>作品</h1></header>
-      <EmptyState title="作品功能还在准备中" art="empty-no-projects.png" action={<Link to="/paths/a" className="btn">去学路线 A</Link>}>
+      <EmptyState title="作品功能还在准备中" art="empty-no-projects.png" wide action={<Link to="/paths/a" className="btn">去学路线 A</Link>}>
         每条路线结尾都会有一个小项目，做完后会收集在这里。
       </EmptyState>
     </>
@@ -198,7 +198,7 @@ export function MePage() {
 
 export function NotFoundPage() {
   return (
-    <EmptyState title="找不到这个页面" art="error-404.png" action={<Link to="/" className="btn">回到首页</Link>}>
+    <EmptyState title="找不到这个页面" art="error-404.png" wide action={<Link to="/" className="btn">回到首页</Link>}>
       地址可能输错了，或者这一课还没有开放。
     </EmptyState>
   );

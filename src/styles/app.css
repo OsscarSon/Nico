@@ -175,6 +175,7 @@ a.pm-card:hover { border-color: var(--trace); }
 .lesson-art.compact { max-height: 240px; object-fit: cover; object-position: center 45%; }
 @media (max-width: 540px) { .lesson-art.compact { max-height: 160px; } }
 .empty-art { display: block; width: 100%; max-width: 360px; height: auto; margin: 0 auto var(--s4); border-radius: var(--r-panel); }
+.empty-art.wide { max-width: 640px; }
 .badges { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s4); grid-template-columns: repeat(2, 1fr); }
 @media (min-width: 700px) { .badges { grid-template-columns: repeat(4, 1fr); } }
 .badge { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; padding: var(--s4); background: var(--panel); border: 1px solid var(--grid); border-radius: var(--r-panel); }
