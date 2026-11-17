@@ -1,6 +1,6 @@
 import { lessonSchema, type Lesson } from "../schema";
 export const a11: Lesson = lessonSchema.parse({
-  id: "a11-devices", track: "a", unit: "a3", title: "交换机与路由器：找到下一站", artPending: true,
+  id: "a11-devices", track: "a", unit: "a3", title: "交换机与路由器：找到下一站", art: "lesson-a11-devices.png",
   objectives: ["能区分 MAC、IP、交换机、路由器与默认网关", "能观察源 MAC 学习和未知单播泛洪", "能选择同网段/跨网段的正确首跳并解释逐跳 MAC 变化"],
   prerequisites: ["a09-network-layers", "a10-ip-subnet"], estimatedMinutes: 14,
   blocks: [

@@ -38,7 +38,7 @@ try {
   for (let index = 0; index < ids.length; index++) {
     const id = ids[index]; await page.goto(`${BASE}/#/lesson/${id}`); await page.locator(".hook").waitFor();
     check(`${id} 默认暗色与草稿标记`, await page.locator("html").getAttribute("data-theme") === "dark" && await page.locator(".pill.draft").count() === 1);
-    check(`${id} 正式图或明确空位`, index === 0 ? await page.locator(".lesson-art").evaluate(el => el.complete && el.naturalWidth > 0) : await page.getByText("课程插画待提供", { exact: true }).isVisible());
+    check(`${id} 插画加载且没有待补占位`, await page.locator(".lesson-art").evaluate(el => el.complete && el.naturalWidth > 0) && await page.locator(".foundation-art-pending").count() === 0);
     await page.screenshot({ path: `${OUT}/${id}-hook-390.png` });
     for (let i = 0; i < 4; i++) await next(page).click();
     check(`${id} 自由互动有模拟标记`, (await page.locator(".device header .pill").innerText()) === "模拟");

@@ -103,7 +103,7 @@ try {
   for (let course = 0; course < ids.length; course++) {
     const id = ids[course]; await p.goto(`${BASE}/#/lesson/${id}`); await p.locator(".hook").waitFor();
     check(`${id} 默认深色且为草稿`, await p.locator("html").getAttribute("data-theme") === "dark" && await p.locator(".pill.draft").count() === 1);
-    check(`${id} 插画待补且没有替代图`, await p.getByText("课程插画待提供", { exact: true }).isVisible() && await p.locator(".lesson-art").count() === 0);
+    check(`${id} 居中新插画加载且没有待补占位`, await p.locator(".lesson-art").evaluate((el, file) => el.complete && el.naturalWidth === 1672 && el.naturalHeight === 941 && new URL(el.src).pathname.endsWith(`/art/${file}`), id === "a12-packets" ? "lesson-a12-packets-centered-batch02.png" : `lesson-${id}.png`) && await p.locator(".foundation-art-pending").count() === 0);
     await toFree(p); check(`${id} 自由实验标模拟`, await p.locator(".device header .pill").innerText() === "模拟");
     if (course === 0) {
       await p.getByLabel("目标端", { exact: true }).selectOption("C"); await p.getByLabel("首跳策略").selectOption("direct"); await click(p, "开始发送");

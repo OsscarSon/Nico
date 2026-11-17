@@ -1,6 +1,6 @@
 import { lessonSchema, type Lesson } from "../schema";
 export const a12: Lesson = lessonSchema.parse({
-  id: "a12-packets", track: "a", unit: "a3", title: "数据包：切开、编号、再拼起来", artPending: true,
+  id: "a12-packets", track: "a", unit: "a3", title: "数据包：切开、编号、再拼起来", art: "lesson-a12-packets-centered-batch02.png",
   objectives: ["能用编号把乱序消息块恢复为原文", "能识别缺块并解释为何不能完整重组", "能区分本课应用消息块、IP 分片和 TCP 字节流"],
   prerequisites: ["a09-network-layers", "a11-devices"], estimatedMinutes: 13,
   blocks: [
