@@ -1,6 +1,6 @@
 import { lessonSchema, type Lesson } from "../schema";
 export const a14: Lesson = lessonSchema.parse({
-  id: "a14-tcp", track: "a", unit: "a3", title: "TCP：三次握手与可靠传输", artPending: true,
+  id: "a14-tcp", track: "a", unit: "a3", title: "TCP：三次握手与可靠传输", art: "lesson-a14-tcp.png",
   objectives: ["能操作 SYN、SYN-ACK、ACK 并解释双方连接状态", "能按字节理解序列号与下一个期待字节的确认号", "能通过丢包、超时重传和去重恢复完整有序数据"],
   prerequisites: ["a09-network-layers", "a12-packets", "a13-dns"], estimatedMinutes: 15,
   blocks: [

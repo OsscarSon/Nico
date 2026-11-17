@@ -1,7 +1,7 @@
 import { lessonSchema, type Lesson } from "../schema";
 
 export const a08: Lesson = lessonSchema.parse({
-  id: "a08-command-line", track: "a", unit: "a2", title: "命令行基础：在目录中找到方向", artPending: true,
+  id: "a08-command-line", track: "a", unit: "a2", title: "命令行基础：在目录中找到方向", art: "lesson-a08-command-line.png",
   objectives: ["能用 pwd、ls、cd 确认位置并导航", "能区分相对路径、绝对路径、. 与 ..", "能在虚拟终端新建目录、复制并读取文件，读懂错误反馈"],
   prerequisites: ["a07-os"], estimatedMinutes: 12,
   blocks: [

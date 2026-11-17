@@ -1,7 +1,7 @@
 import { lessonSchema, type Lesson } from "../schema";
 
 export const a07: Lesson = lessonSchema.parse({
-  id: "a07-os", track: "a", unit: "a2", title: "操作系统：管理进程、文件与权限", artPending: true,
+  id: "a07-os", track: "a", unit: "a2", title: "操作系统：管理进程、文件与权限", art: "lesson-a07-os.png",
   objectives: ["能区分程序与进程、就绪与运行及等待", "能操作单核调度模型让另一个进程继续工作", "能说明文件权限为何允许或拒绝一次写入"],
   prerequisites: ["a05-cpu-cycle", "a06-memory"], estimatedMinutes: 12,
   blocks: [
