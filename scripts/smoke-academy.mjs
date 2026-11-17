@@ -169,7 +169,7 @@ try {
   check("原进度：首页继续上次 B01", await page.locator(".today").innerText().then(t => t.includes("继续上次的位置") && t.includes("变量")));
   await page.goto(`${BASE}/#/paths`); await ready(page);
   await page.getByRole("button", { name: /PHASE 03/ }).click();
-    await page.getByRole("button", { name: /PHASE 03/ }).and(page.locator('[aria-pressed="true"]')).waitFor();
+  await page.getByRole("button", { name: /PHASE 03/ }).and(page.locator('[aria-pressed="true"]')).waitFor();
   await page.goto(`${BASE}/#/settings`); await ready(page);
   await page.getByRole("button", { name: "亮色", exact: true }).click();
   check("浏览目录/切换主题不写入或迁移学习进度", await page.evaluate(() => localStorage.getItem("nico-progress")) === JSON.stringify(saved));
