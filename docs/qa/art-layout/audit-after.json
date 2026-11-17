@@ -1,0 +1,5049 @@
+{
+  "phase": "after",
+  "courses": [
+    {
+      "id": "a01-binary",
+      "title": "二进制：电脑只认 0 和 1",
+      "art": "lesson-a01-bits-centered-audit.png"
+    },
+    {
+      "id": "a02-hex-encoding",
+      "title": "十六进制与文字编码",
+      "art": "lesson-a02-hex-encoding.png"
+    },
+    {
+      "id": "a03-logic-gates",
+      "title": "逻辑门：AND、OR、NOT、XOR",
+      "art": "lesson-a03-logic-gates.png"
+    },
+    {
+      "id": "a04-adder",
+      "title": "用门搭一个加法器",
+      "art": "lesson-a04-adder.png"
+    },
+    {
+      "id": "a05-cpu-cycle",
+      "title": "CPU：取指、译码、执行",
+      "art": "lesson-a05-cpu-cycle.png"
+    },
+    {
+      "id": "a06-memory",
+      "title": "内存与存储：为什么要分层",
+      "art": "lesson-a06-memory-layers-centered-audit.png"
+    },
+    {
+      "id": "a07-os",
+      "title": "操作系统：管理进程、文件与权限",
+      "art": "lesson-a07-os.png"
+    },
+    {
+      "id": "a08-command-line",
+      "title": "命令行基础：在目录中找到方向",
+      "art": "lesson-a08-command-line.png"
+    },
+    {
+      "id": "a09-network-layers",
+      "title": "网络是什么：分层的想法",
+      "art": "lesson-a09-network-layers.png"
+    },
+    {
+      "id": "a10-ip-subnet",
+      "title": "IP 地址与子网",
+      "art": null
+    },
+    {
+      "id": "a11-devices",
+      "title": "交换机与路由器：找到下一站",
+      "art": "lesson-a11-devices.png"
+    },
+    {
+      "id": "a12-packets",
+      "title": "数据包：切开、编号、再拼起来",
+      "art": "lesson-a12-packets-centered-batch02.png"
+    },
+    {
+      "id": "a13-dns",
+      "title": "DNS：名字怎么变成地址",
+      "art": "lesson-a13-dns.png"
+    },
+    {
+      "id": "a14-tcp",
+      "title": "TCP：三次握手与可靠传输",
+      "art": "lesson-a14-tcp.png"
+    },
+    {
+      "id": "b01-variables",
+      "title": "变量：给数据起名字",
+      "art": "lesson-b01-variables.png"
+    },
+    {
+      "id": "b02-conditions",
+      "title": "条件：让程序做选择",
+      "art": "lesson-b02-conditions.png"
+    },
+    {
+      "id": "b03-loops",
+      "title": "循环：让程序重复做事",
+      "art": "lesson-b03-loops.png"
+    },
+    {
+      "id": "b04-functions",
+      "title": "函数：把做法打包",
+      "art": "lesson-b04-functions.png"
+    },
+    {
+      "id": "b05-lists",
+      "title": "列表：一排数据",
+      "art": "lesson-b05-lists.png"
+    },
+    {
+      "id": "b06-dicts",
+      "title": "字典：用名字找数据",
+      "art": "lesson-b06-dicts.png"
+    },
+    {
+      "id": "b07-debugging",
+      "title": "调试：读懂报错",
+      "art": "lesson-b07-debugging.png"
+    },
+    {
+      "id": "b08-html",
+      "title": "HTML：网页的骨架",
+      "art": "lesson-b08-html.png"
+    },
+    {
+      "id": "b09-css",
+      "title": "CSS：给网页穿衣服",
+      "art": "lesson-b09-css.png"
+    },
+    {
+      "id": "b10-css-layout",
+      "title": "CSS 布局：盒子与弹性布局",
+      "art": "lesson-b10-css-layout.png"
+    },
+    {
+      "id": "b11-js-dom",
+      "title": "JavaScript 与 DOM",
+      "art": "lesson-b11-js-dom.png"
+    },
+    {
+      "id": "b12-events",
+      "title": "事件：让网页有反应",
+      "art": "lesson-b12-events.png"
+    },
+    {
+      "id": "b14-git-basics",
+      "title": "Git 第一步：保存快照",
+      "art": "lesson-b14-git-basics.png"
+    },
+    {
+      "id": "b15-git-branches",
+      "title": "分支与合并",
+      "art": "lesson-b10-git-branches-centered-audit.png"
+    },
+    {
+      "id": "c05-prompt-structure",
+      "title": "指令的六要素",
+      "art": "lesson-c05-prompt-structure-centered-audit.png"
+    }
+  ],
+  "files": [
+    {
+      "id": "a01-binary",
+      "title": "二进制：电脑只认 0 和 1",
+      "art": "lesson-a01-bits-centered-audit.png",
+      "sha256": "a87dcf44d8c5f37bd1b063aa7b3ab3b3dfdcf47b1f6147bd97e40ac1a97d2402"
+    },
+    {
+      "id": "a02-hex-encoding",
+      "title": "十六进制与文字编码",
+      "art": "lesson-a02-hex-encoding.png",
+      "sha256": "bd3f05e16c4ba6cedc93e172e4812567c58d678ad4af9dd1ed4479d38774185b"
+    },
+    {
+      "id": "a03-logic-gates",
+      "title": "逻辑门：AND、OR、NOT、XOR",
+      "art": "lesson-a03-logic-gates.png",
+      "sha256": "770f3377f9e880d659a067bddb4c83085cfa298fe8b2f079669c23df6660928a"
+    },
+    {
+      "id": "a04-adder",
+      "title": "用门搭一个加法器",
+      "art": "lesson-a04-adder.png",
+      "sha256": "52a6452d9ce12d866f513f13fcb82e2007f792f8c3c418d1face9edb8a6bd581"
+    },
+    {
+      "id": "a05-cpu-cycle",
+      "title": "CPU：取指、译码、执行",
+      "art": "lesson-a05-cpu-cycle.png",
+      "sha256": "e6894700c5dce619da2fe6de6cc20d23861cc2d2509a8de53f8c906beb25dd02"
+    },
+    {
+      "id": "a06-memory",
+      "title": "内存与存储：为什么要分层",
+      "art": "lesson-a06-memory-layers-centered-audit.png",
+      "sha256": "ddde775a6aa7aae3eb15781f1bc1b2079d0b184555683fdf122a3d65586cf8cb"
+    },
+    {
+      "id": "a07-os",
+      "title": "操作系统：管理进程、文件与权限",
+      "art": "lesson-a07-os.png",
+      "sha256": "eb58f21212a0420cae0488df05b0971d4c632e224a8423bb1327d6ce9de7b7b3"
+    },
+    {
+      "id": "a08-command-line",
+      "title": "命令行基础：在目录中找到方向",
+      "art": "lesson-a08-command-line.png",
+      "sha256": "44fc9dc6a4f7a2753cc16f21c1846445b77d1650ac81cc287d8fa0ef48fd165c"
+    },
+    {
+      "id": "a09-network-layers",
+      "title": "网络是什么：分层的想法",
+      "art": "lesson-a09-network-layers.png",
+      "sha256": "8beab7423f9daaa509c844ffd3f25f5eb5e5533a2725571741b8e0bce9be0979"
+    },
+    {
+      "id": "a11-devices",
+      "title": "交换机与路由器：找到下一站",
+      "art": "lesson-a11-devices.png",
+      "sha256": "2e3918813b2641725aaad04ba346b7267c93b71bb8d15a7720a6c77728f3eb5f"
+    },
+    {
+      "id": "a12-packets",
+      "title": "数据包：切开、编号、再拼起来",
+      "art": "lesson-a12-packets-centered-batch02.png",
+      "sha256": "fbdfe64158e0f9c6ee2813af04d35317eaf276fe85fea78590d5ae1b90609dc9"
+    },
+    {
+      "id": "a13-dns",
+      "title": "DNS：名字怎么变成地址",
+      "art": "lesson-a13-dns.png",
+      "sha256": "534020ecb53345d47a654f931397aa87556a0dd76fafa874f8c04c97791dd795"
+    },
+    {
+      "id": "a14-tcp",
+      "title": "TCP：三次握手与可靠传输",
+      "art": "lesson-a14-tcp.png",
+      "sha256": "f0b70959e22ac852280e1db8afd96d7751854fc57ae6895813724b6b484fec7d"
+    },
+    {
+      "id": "b01-variables",
+      "title": "变量：给数据起名字",
+      "art": "lesson-b01-variables.png",
+      "sha256": "2a551e1db37a64dc86e846e78e310f0bd644cb86e7efb7af525b9192391d496a"
+    },
+    {
+      "id": "b02-conditions",
+      "title": "条件：让程序做选择",
+      "art": "lesson-b02-conditions.png",
+      "sha256": "67ba762212914f8cb13060e0734c581ea27bacc6daeaf7229ce2427962cb0cd7"
+    },
+    {
+      "id": "b03-loops",
+      "title": "循环：让程序重复做事",
+      "art": "lesson-b03-loops.png",
+      "sha256": "b80c8ca7a504a37e93a93cf38940b83751e1cc4879719556fe68abd2df8d6bcb"
+    },
+    {
+      "id": "b04-functions",
+      "title": "函数：把做法打包",
+      "art": "lesson-b04-functions.png",
+      "sha256": "37a0364f68bf9971ef97e7e27023594c3920836355dcc59a428b50b4913d0d01"
+    },
+    {
+      "id": "b05-lists",
+      "title": "列表：一排数据",
+      "art": "lesson-b05-lists.png",
+      "sha256": "e72995bfad1ffa73e38b09114aa1a9d020cc2495d45a0fac8e95152380307e4d"
+    },
+    {
+      "id": "b06-dicts",
+      "title": "字典：用名字找数据",
+      "art": "lesson-b06-dicts.png",
+      "sha256": "4512decc3de3a413df9f9c41d288bdd2cd7229fe23997438672c667d4bf6a053"
+    },
+    {
+      "id": "b07-debugging",
+      "title": "调试：读懂报错",
+      "art": "lesson-b07-debugging.png",
+      "sha256": "6d24ae0c34a6e502d19724581c78e53013997d3dc72797f2abfcef51a0c52125"
+    },
+    {
+      "id": "b08-html",
+      "title": "HTML：网页的骨架",
+      "art": "lesson-b08-html.png",
+      "sha256": "0b4b10fe422875762f9f16624a2634b72760fde762c683ec9e1017a6e91b28fb"
+    },
+    {
+      "id": "b09-css",
+      "title": "CSS：给网页穿衣服",
+      "art": "lesson-b09-css.png",
+      "sha256": "f168d15e3dce75dc641acad135417bcbf8c304392c083b90ea895d545a65974b"
+    },
+    {
+      "id": "b10-css-layout",
+      "title": "CSS 布局：盒子与弹性布局",
+      "art": "lesson-b10-css-layout.png",
+      "sha256": "1fe6fc7ebfe6797e7818cf9b29de3442dcfbf959fa10f4eff432859129363650"
+    },
+    {
+      "id": "b11-js-dom",
+      "title": "JavaScript 与 DOM",
+      "art": "lesson-b11-js-dom.png",
+      "sha256": "ccb62eb1517553994582a27c7843bc8a8adb0bb4ca8e18241fa197ee98a673b5"
+    },
+    {
+      "id": "b12-events",
+      "title": "事件：让网页有反应",
+      "art": "lesson-b12-events.png",
+      "sha256": "cac15d2a5a57b6b2a753a17a6c3fd70fd101ea53850e25286b72f5cb344b62e6"
+    },
+    {
+      "id": "b14-git-basics",
+      "title": "Git 第一步：保存快照",
+      "art": "lesson-b14-git-basics.png",
+      "sha256": "217f47470656ef2556adfc8da3734f3fd572e0704712198f9e503328fb80c1b4"
+    },
+    {
+      "id": "b15-git-branches",
+      "title": "分支与合并",
+      "art": "lesson-b10-git-branches-centered-audit.png",
+      "sha256": "3762dd12639fe2e21a9a44526832c1e6c4e24b95abe54d798eef42bf0a92594f"
+    },
+    {
+      "id": "c05-prompt-structure",
+      "title": "指令的六要素",
+      "art": "lesson-c05-prompt-structure-centered-audit.png",
+      "sha256": "35512a997ae67bdaeabc25f1cd861370b5bad06fe299ed7d69a7cf9bad4f57dc"
+    }
+  ],
+  "records": [
+    {
+      "id": "a01-binary",
+      "title": "二进制：电脑只认 0 和 1",
+      "art": "lesson-a01-bits-centered-audit.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 513.125,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 152,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a01-bits-centered-audit.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 365,
+        "right": 365,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -2.5195190302398345
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "a02-hex-encoding",
+      "title": "十六进制与文字编码",
+      "art": "lesson-a02-hex-encoding.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 513.125,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 152,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a02-hex-encoding.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 243,
+        "right": 119,
+        "boundsErrorPct": 3.875,
+        "inkErrorPct": -6.77363152559554
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "a03-logic-gates",
+      "title": "逻辑门：AND、OR、NOT、XOR",
+      "art": "lesson-a03-logic-gates.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 547.125,
+        "right": 884,
+        "bottom": 802.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 186,
+        "right": 884,
+        "bottom": 802.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a03-logic-gates.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 88,
+        "right": 88,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -1.0601884410669484
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "a04-adder",
+      "title": "用门搭一个加法器",
+      "art": "lesson-a04-adder.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 513.125,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 152,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a04-adder.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 118,
+        "right": 139,
+        "boundsErrorPct": -0.65625,
+        "inkErrorPct": -6.40013503604856
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "a05-cpu-cycle",
+      "title": "CPU：取指、译码、执行",
+      "art": "lesson-a05-cpu-cycle.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 513.125,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 152,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a05-cpu-cycle.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 0,
+        "right": 0,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -16.139487090152357
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "a06-memory",
+      "title": "内存与存储：为什么要分层",
+      "art": "lesson-a06-memory-layers-centered-audit.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 513.125,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 152,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a06-memory-layers-centered-audit.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 463,
+        "right": 463,
+        "boundsErrorPct": 0,
+        "inkErrorPct": 0
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "a07-os",
+      "title": "操作系统：管理进程、文件与权限",
+      "art": "lesson-a07-os.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.296875,
+        "right": 884,
+        "bottom": 600.890625,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 513.296875,
+        "right": 884,
+        "bottom": 768.890625,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.890625,
+        "width": 612,
+        "height": 152,
+        "right": 884,
+        "bottom": 768.890625,
+        "center": 578
+      },
+      "natural": [
+        1672,
+        941
+      ],
+      "file": "lesson-a07-os.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 370,
+        "right": 371,
+        "boundsErrorPct": -0.029904306220095694,
+        "inkErrorPct": 4.334966925362113
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "a08-command-line",
+      "title": "命令行基础：在目录中找到方向",
+      "art": "lesson-a08-command-line.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.296875,
+        "right": 884,
+        "bottom": 600.890625,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 513.296875,
+        "right": 884,
+        "bottom": 768.890625,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.890625,
+        "width": 612,
+        "height": 152,
+        "right": 884,
+        "bottom": 768.890625,
+        "center": 578
+      },
+      "natural": [
+        1672,
+        941
+      ],
+      "file": "lesson-a08-command-line.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 405,
+        "right": 407,
+        "boundsErrorPct": -0.05980861244019139,
+        "inkErrorPct": 4.430131258685647
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "a09-network-layers",
+      "title": "网络是什么：分层的想法",
+      "art": "lesson-a09-network-layers.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 513.125,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 152,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a09-network-layers.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 0,
+        "right": 0,
+        "boundsErrorPct": 0,
+        "inkErrorPct": 0.08354454190098437
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "a10-ip-subnet",
+      "title": "IP 地址与子网",
+      "art": null,
+      "width": 1440,
+      "image": null
+    },
+    {
+      "id": "a11-devices",
+      "title": "交换机与路由器：找到下一站",
+      "art": "lesson-a11-devices.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.296875,
+        "right": 884,
+        "bottom": 600.890625,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 513.296875,
+        "right": 884,
+        "bottom": 768.890625,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.890625,
+        "width": 612,
+        "height": 152,
+        "right": 884,
+        "bottom": 768.890625,
+        "center": 578
+      },
+      "natural": [
+        1672,
+        941
+      ],
+      "file": "lesson-a11-devices.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 363,
+        "right": 361,
+        "boundsErrorPct": 0.05980861244019139,
+        "inkErrorPct": 0.04382808451839211
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "a12-packets",
+      "title": "数据包：切开、编号、再拼起来",
+      "art": "lesson-a12-packets-centered-batch02.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.296875,
+        "right": 884,
+        "bottom": 600.890625,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 547.296875,
+        "right": 884,
+        "bottom": 802.890625,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.890625,
+        "width": 612,
+        "height": 186,
+        "right": 884,
+        "bottom": 802.890625,
+        "center": 578
+      },
+      "natural": [
+        1672,
+        941
+      ],
+      "file": "lesson-a12-packets-centered-batch02.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 454,
+        "right": 441,
+        "boundsErrorPct": 0.388755980861244,
+        "inkErrorPct": -0.17129413185960568
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "a13-dns",
+      "title": "DNS：名字怎么变成地址",
+      "art": "lesson-a13-dns.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 513.125,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 152,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a13-dns.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 59,
+        "right": 59,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -1.243847477389025
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "a14-tcp",
+      "title": "TCP：三次握手与可靠传输",
+      "art": "lesson-a14-tcp.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.296875,
+        "right": 884,
+        "bottom": 600.890625,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 547.296875,
+        "right": 884,
+        "bottom": 802.890625,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.890625,
+        "width": 612,
+        "height": 186,
+        "right": 884,
+        "bottom": 802.890625,
+        "center": 578
+      },
+      "natural": [
+        1672,
+        941
+      ],
+      "file": "lesson-a14-tcp.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 429,
+        "right": 442,
+        "boundsErrorPct": -0.388755980861244,
+        "inkErrorPct": -0.21114138044278447
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "b01-variables",
+      "title": "变量：给数据起名字",
+      "art": "lesson-b01-variables.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 513.125,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 152,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b01-variables.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 194,
+        "right": 194,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -2.4876517875755653
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "b02-conditions",
+      "title": "条件：让程序做选择",
+      "art": "lesson-b02-conditions.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 479.125,
+        "right": 884,
+        "bottom": 734.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 118,
+        "right": 884,
+        "bottom": 734.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b02-conditions.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 200,
+        "right": 258,
+        "boundsErrorPct": -1.8124999999999998,
+        "inkErrorPct": 8.919392708069822
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "b03-loops",
+      "title": "循环：让程序重复做事",
+      "art": "lesson-b03-loops.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 479.125,
+        "right": 884,
+        "bottom": 734.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 118,
+        "right": 884,
+        "bottom": 734.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b03-loops.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 100,
+        "right": 100,
+        "boundsErrorPct": 0,
+        "inkErrorPct": 2.9461788575677588
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "b04-functions",
+      "title": "函数：把做法打包",
+      "art": "lesson-b04-functions.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 479.125,
+        "right": 884,
+        "bottom": 734.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 118,
+        "right": 884,
+        "bottom": 734.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b04-functions.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 143,
+        "right": 157,
+        "boundsErrorPct": -0.43750000000000006,
+        "inkErrorPct": 2.848828006716765
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "b05-lists",
+      "title": "列表：一排数据",
+      "art": "lesson-b05-lists.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 479.125,
+        "right": 884,
+        "bottom": 734.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 118,
+        "right": 884,
+        "bottom": 734.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b05-lists.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 200,
+        "right": 200,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -2.0766001504292078
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "b06-dicts",
+      "title": "字典：用名字找数据",
+      "art": "lesson-b06-dicts.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 479.125,
+        "right": 884,
+        "bottom": 734.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 118,
+        "right": 884,
+        "bottom": 734.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b06-dicts.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 521,
+        "right": 521,
+        "boundsErrorPct": 0,
+        "inkErrorPct": 0.05584220486034041
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "b07-debugging",
+      "title": "调试：读懂报错",
+      "art": "lesson-b07-debugging.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 479.125,
+        "right": 884,
+        "bottom": 734.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 118,
+        "right": 884,
+        "bottom": 734.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b07-debugging.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 49,
+        "right": 167,
+        "boundsErrorPct": -3.6875,
+        "inkErrorPct": -0.4430816611989954
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "b08-html",
+      "title": "HTML：网页的骨架",
+      "art": "lesson-b08-html.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 479.125,
+        "right": 884,
+        "bottom": 734.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 118,
+        "right": 884,
+        "bottom": 734.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b08-html.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 334,
+        "right": 333,
+        "boundsErrorPct": 0.03125,
+        "inkErrorPct": -1.5795659715178303
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "b09-css",
+      "title": "CSS：给网页穿衣服",
+      "art": "lesson-b09-css.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 513.125,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 152,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b09-css.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 95,
+        "right": 95,
+        "boundsErrorPct": 0,
+        "inkErrorPct": 4.666969900900469
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "b10-css-layout",
+      "title": "CSS 布局：盒子与弹性布局",
+      "art": "lesson-b10-css-layout.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 513.125,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 152,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b10-css-layout.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 59,
+        "right": 58,
+        "boundsErrorPct": 0.03125,
+        "inkErrorPct": 0.06310166389862815
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "b11-js-dom",
+      "title": "JavaScript 与 DOM",
+      "art": "lesson-b11-js-dom.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 513.125,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 152,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b11-js-dom.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 111,
+        "right": 185,
+        "boundsErrorPct": -2.3125,
+        "inkErrorPct": 8.580171929759615
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "b12-events",
+      "title": "事件：让网页有反应",
+      "art": "lesson-b12-events.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 513.125,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 152,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b12-events.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 158,
+        "right": 102,
+        "boundsErrorPct": 1.7500000000000002,
+        "inkErrorPct": 8.660253502405268
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "b14-git-basics",
+      "title": "Git 第一步：保存快照",
+      "art": "lesson-b14-git-basics.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 513.125,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 152,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b14-git-basics.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 85,
+        "right": 85,
+        "boundsErrorPct": 0,
+        "inkErrorPct": 0.2904393112047501
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "b15-git-branches",
+      "title": "分支与合并",
+      "art": "lesson-b10-git-branches-centered-audit.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 513.125,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 152,
+        "right": 884,
+        "bottom": 768.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b10-git-branches-centered-audit.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 416,
+        "right": 415,
+        "boundsErrorPct": 0.03125,
+        "inkErrorPct": -1.5574639807897555
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "c05-prompt-structure",
+      "title": "指令的六要素",
+      "art": "lesson-c05-prompt-structure-centered-audit.png",
+      "width": 1440,
+      "image": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 345.125,
+        "right": 884,
+        "bottom": 600.71875,
+        "center": 578
+      },
+      "body": {
+        "x": 272,
+        "y": 255.59375,
+        "width": 612,
+        "height": 547.125,
+        "right": 884,
+        "bottom": 802.71875,
+        "center": 578
+      },
+      "hook": {
+        "x": 272,
+        "y": 616.71875,
+        "width": 612,
+        "height": 186,
+        "right": 884,
+        "bottom": 802.71875,
+        "center": 578
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-c05-prompt-structure-centered-audit.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 440,
+        "right": 440,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -8.236358641858928
+      },
+      "limit": 1000,
+      "viewportWidth": 1440,
+      "overflow": false
+    },
+    {
+      "id": "a01-binary",
+      "title": "二进制：电脑只认 0 和 1",
+      "art": "lesson-a01-bits-centered-audit.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 438.25,
+        "right": 374,
+        "bottom": 673.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 220,
+        "right": 374,
+        "bottom": 673.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a01-bits-centered-audit.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 365,
+        "right": 365,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -2.5195190302398345
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "a02-hex-encoding",
+      "title": "十六进制与文字编码",
+      "art": "lesson-a02-hex-encoding.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 438.25,
+        "right": 374,
+        "bottom": 673.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 220,
+        "right": 374,
+        "bottom": 673.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a02-hex-encoding.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 243,
+        "right": 119,
+        "boundsErrorPct": 3.875,
+        "inkErrorPct": -6.77363152559554
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "a03-logic-gates",
+      "title": "逻辑门：AND、OR、NOT、XOR",
+      "art": "lesson-a03-logic-gates.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 472.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 358,
+        "height": 472.25,
+        "right": 374,
+        "bottom": 742.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 488.84375,
+        "width": 358,
+        "height": 254,
+        "right": 374,
+        "bottom": 742.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a03-logic-gates.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 88,
+        "right": 88,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -1.0601884410669484
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "a04-adder",
+      "title": "用门搭一个加法器",
+      "art": "lesson-a04-adder.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 438.25,
+        "right": 374,
+        "bottom": 673.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 220,
+        "right": 374,
+        "bottom": 673.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a04-adder.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 118,
+        "right": 139,
+        "boundsErrorPct": -0.65625,
+        "inkErrorPct": -6.40013503604856
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "a05-cpu-cycle",
+      "title": "CPU：取指、译码、执行",
+      "art": "lesson-a05-cpu-cycle.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 438.25,
+        "right": 374,
+        "bottom": 673.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 220,
+        "right": 374,
+        "bottom": 673.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a05-cpu-cycle.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 0,
+        "right": 0,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -16.139487090152357
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "a06-memory",
+      "title": "内存与存储：为什么要分层",
+      "art": "lesson-a06-memory-layers-centered-audit.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 404.25,
+        "right": 374,
+        "bottom": 639.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 186,
+        "right": 374,
+        "bottom": 639.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a06-memory-layers-centered-audit.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 463,
+        "right": 463,
+        "boundsErrorPct": 0,
+        "inkErrorPct": 0
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "a07-os",
+      "title": "操作系统：管理进程、文件与权限",
+      "art": "lesson-a07-os.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 358,
+        "height": 202.34375,
+        "right": 374,
+        "bottom": 472.9375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 358,
+        "height": 404.34375,
+        "right": 374,
+        "bottom": 674.9375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 488.9375,
+        "width": 358,
+        "height": 186,
+        "right": 374,
+        "bottom": 674.9375,
+        "center": 195
+      },
+      "natural": [
+        1672,
+        941
+      ],
+      "file": "lesson-a07-os.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 370,
+        "right": 371,
+        "boundsErrorPct": -0.029904306220095694,
+        "inkErrorPct": 4.334966925362113
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "a08-command-line",
+      "title": "命令行基础：在目录中找到方向",
+      "art": "lesson-a08-command-line.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 358,
+        "height": 202.34375,
+        "right": 374,
+        "bottom": 472.9375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 358,
+        "height": 438.34375,
+        "right": 374,
+        "bottom": 708.9375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 488.9375,
+        "width": 358,
+        "height": 220,
+        "right": 374,
+        "bottom": 708.9375,
+        "center": 195
+      },
+      "natural": [
+        1672,
+        941
+      ],
+      "file": "lesson-a08-command-line.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 405,
+        "right": 407,
+        "boundsErrorPct": -0.05980861244019139,
+        "inkErrorPct": 4.430131258685647
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "a09-network-layers",
+      "title": "网络是什么：分层的想法",
+      "art": "lesson-a09-network-layers.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 472.25,
+        "right": 374,
+        "bottom": 707.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 254,
+        "right": 374,
+        "bottom": 707.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a09-network-layers.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 0,
+        "right": 0,
+        "boundsErrorPct": 0,
+        "inkErrorPct": 0.08354454190098437
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "a10-ip-subnet",
+      "title": "IP 地址与子网",
+      "art": null,
+      "width": 390,
+      "image": null
+    },
+    {
+      "id": "a11-devices",
+      "title": "交换机与路由器：找到下一站",
+      "art": "lesson-a11-devices.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 358,
+        "height": 202.34375,
+        "right": 374,
+        "bottom": 472.9375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 358,
+        "height": 472.34375,
+        "right": 374,
+        "bottom": 742.9375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 488.9375,
+        "width": 358,
+        "height": 254,
+        "right": 374,
+        "bottom": 742.9375,
+        "center": 195
+      },
+      "natural": [
+        1672,
+        941
+      ],
+      "file": "lesson-a11-devices.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 363,
+        "right": 361,
+        "boundsErrorPct": 0.05980861244019139,
+        "inkErrorPct": 0.04382808451839211
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "a12-packets",
+      "title": "数据包：切开、编号、再拼起来",
+      "art": "lesson-a12-packets-centered-batch02.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 358,
+        "height": 202.34375,
+        "right": 374,
+        "bottom": 472.9375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 358,
+        "height": 506.34375,
+        "right": 374,
+        "bottom": 776.9375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 488.9375,
+        "width": 358,
+        "height": 288,
+        "right": 374,
+        "bottom": 776.9375,
+        "center": 195
+      },
+      "natural": [
+        1672,
+        941
+      ],
+      "file": "lesson-a12-packets-centered-batch02.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 454,
+        "right": 441,
+        "boundsErrorPct": 0.388755980861244,
+        "inkErrorPct": -0.17129413185960568
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "a13-dns",
+      "title": "DNS：名字怎么变成地址",
+      "art": "lesson-a13-dns.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 472.25,
+        "right": 374,
+        "bottom": 707.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 254,
+        "right": 374,
+        "bottom": 707.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a13-dns.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 59,
+        "right": 59,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -1.243847477389025
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "a14-tcp",
+      "title": "TCP：三次握手与可靠传输",
+      "art": "lesson-a14-tcp.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.34375,
+        "right": 374,
+        "bottom": 437.9375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 506.34375,
+        "right": 374,
+        "bottom": 741.9375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.9375,
+        "width": 358,
+        "height": 288,
+        "right": 374,
+        "bottom": 741.9375,
+        "center": 195
+      },
+      "natural": [
+        1672,
+        941
+      ],
+      "file": "lesson-a14-tcp.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 429,
+        "right": 442,
+        "boundsErrorPct": -0.388755980861244,
+        "inkErrorPct": -0.21114138044278447
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "b01-variables",
+      "title": "变量：给数据起名字",
+      "art": "lesson-b01-variables.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 404.25,
+        "right": 374,
+        "bottom": 639.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 186,
+        "right": 374,
+        "bottom": 639.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b01-variables.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 194,
+        "right": 194,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -2.4876517875755653
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "b02-conditions",
+      "title": "条件：让程序做选择",
+      "art": "lesson-b02-conditions.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 404.25,
+        "right": 374,
+        "bottom": 639.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 186,
+        "right": 374,
+        "bottom": 639.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b02-conditions.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 200,
+        "right": 258,
+        "boundsErrorPct": -1.8124999999999998,
+        "inkErrorPct": 8.919392708069822
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "b03-loops",
+      "title": "循环：让程序重复做事",
+      "art": "lesson-b03-loops.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 404.25,
+        "right": 374,
+        "bottom": 639.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 186,
+        "right": 374,
+        "bottom": 639.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b03-loops.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 100,
+        "right": 100,
+        "boundsErrorPct": 0,
+        "inkErrorPct": 2.9461788575677588
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "b04-functions",
+      "title": "函数：把做法打包",
+      "art": "lesson-b04-functions.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 404.25,
+        "right": 374,
+        "bottom": 639.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 186,
+        "right": 374,
+        "bottom": 639.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b04-functions.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 143,
+        "right": 157,
+        "boundsErrorPct": -0.43750000000000006,
+        "inkErrorPct": 2.848828006716765
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "b05-lists",
+      "title": "列表：一排数据",
+      "art": "lesson-b05-lists.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 404.25,
+        "right": 374,
+        "bottom": 639.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 186,
+        "right": 374,
+        "bottom": 639.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b05-lists.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 200,
+        "right": 200,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -2.0766001504292078
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "b06-dicts",
+      "title": "字典：用名字找数据",
+      "art": "lesson-b06-dicts.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 404.25,
+        "right": 374,
+        "bottom": 639.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 186,
+        "right": 374,
+        "bottom": 639.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b06-dicts.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 521,
+        "right": 521,
+        "boundsErrorPct": 0,
+        "inkErrorPct": 0.05584220486034041
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "b07-debugging",
+      "title": "调试：读懂报错",
+      "art": "lesson-b07-debugging.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 404.25,
+        "right": 374,
+        "bottom": 639.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 186,
+        "right": 374,
+        "bottom": 639.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b07-debugging.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 49,
+        "right": 167,
+        "boundsErrorPct": -3.6875,
+        "inkErrorPct": -0.4430816611989954
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "b08-html",
+      "title": "HTML：网页的骨架",
+      "art": "lesson-b08-html.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 404.25,
+        "right": 374,
+        "bottom": 639.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 186,
+        "right": 374,
+        "bottom": 639.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b08-html.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 334,
+        "right": 333,
+        "boundsErrorPct": 0.03125,
+        "inkErrorPct": -1.5795659715178303
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "b09-css",
+      "title": "CSS：给网页穿衣服",
+      "art": "lesson-b09-css.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 438.25,
+        "right": 374,
+        "bottom": 673.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 220,
+        "right": 374,
+        "bottom": 673.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b09-css.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 95,
+        "right": 95,
+        "boundsErrorPct": 0,
+        "inkErrorPct": 4.666969900900469
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "b10-css-layout",
+      "title": "CSS 布局：盒子与弹性布局",
+      "art": "lesson-b10-css-layout.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 438.25,
+        "right": 374,
+        "bottom": 673.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 220,
+        "right": 374,
+        "bottom": 673.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b10-css-layout.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 59,
+        "right": 58,
+        "boundsErrorPct": 0.03125,
+        "inkErrorPct": 0.06310166389862815
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "b11-js-dom",
+      "title": "JavaScript 与 DOM",
+      "art": "lesson-b11-js-dom.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 472.25,
+        "right": 374,
+        "bottom": 707.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 254,
+        "right": 374,
+        "bottom": 707.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b11-js-dom.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 111,
+        "right": 185,
+        "boundsErrorPct": -2.3125,
+        "inkErrorPct": 8.580171929759615
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "b12-events",
+      "title": "事件：让网页有反应",
+      "art": "lesson-b12-events.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 438.25,
+        "right": 374,
+        "bottom": 673.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 220,
+        "right": 374,
+        "bottom": 673.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b12-events.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 158,
+        "right": 102,
+        "boundsErrorPct": 1.7500000000000002,
+        "inkErrorPct": 8.660253502405268
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "b14-git-basics",
+      "title": "Git 第一步：保存快照",
+      "art": "lesson-b14-git-basics.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 472.25,
+        "right": 374,
+        "bottom": 707.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 254,
+        "right": 374,
+        "bottom": 707.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b14-git-basics.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 85,
+        "right": 85,
+        "boundsErrorPct": 0,
+        "inkErrorPct": 0.2904393112047501
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "b15-git-branches",
+      "title": "分支与合并",
+      "art": "lesson-b10-git-branches-centered-audit.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 438.25,
+        "right": 374,
+        "bottom": 673.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 220,
+        "right": 374,
+        "bottom": 673.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b10-git-branches-centered-audit.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 416,
+        "right": 415,
+        "boundsErrorPct": 0.03125,
+        "inkErrorPct": -1.5574639807897555
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "c05-prompt-structure",
+      "title": "指令的六要素",
+      "art": "lesson-c05-prompt-structure-centered-audit.png",
+      "width": 390,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 202.25,
+        "right": 374,
+        "bottom": 437.84375,
+        "center": 195
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 358,
+        "height": 506.25,
+        "right": 374,
+        "bottom": 741.84375,
+        "center": 195
+      },
+      "hook": {
+        "x": 16,
+        "y": 453.84375,
+        "width": 358,
+        "height": 288,
+        "right": 374,
+        "bottom": 741.84375,
+        "center": 195
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-c05-prompt-structure-centered-audit.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 440,
+        "right": 440,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -8.236358641858928
+      },
+      "limit": 782.609375,
+      "viewportWidth": 390,
+      "overflow": false
+    },
+    {
+      "id": "a01-binary",
+      "title": "二进制：电脑只认 0 和 1",
+      "art": "lesson-a01-bits-centered-audit.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 421.375,
+        "right": 344,
+        "bottom": 656.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 220,
+        "right": 344,
+        "bottom": 656.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a01-bits-centered-audit.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 365,
+        "right": 365,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -2.5195190302398345
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "a02-hex-encoding",
+      "title": "十六进制与文字编码",
+      "art": "lesson-a02-hex-encoding.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 455.375,
+        "right": 344,
+        "bottom": 690.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 254,
+        "right": 344,
+        "bottom": 690.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a02-hex-encoding.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 243,
+        "right": 119,
+        "boundsErrorPct": 3.875,
+        "inkErrorPct": -6.77363152559554
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "a03-logic-gates",
+      "title": "逻辑门：AND、OR、NOT、XOR",
+      "art": "lesson-a03-logic-gates.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 455.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 328,
+        "height": 489.375,
+        "right": 344,
+        "bottom": 759.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 471.96875,
+        "width": 328,
+        "height": 288,
+        "right": 344,
+        "bottom": 759.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a03-logic-gates.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 88,
+        "right": 88,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -1.0601884410669484
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "a04-adder",
+      "title": "用门搭一个加法器",
+      "art": "lesson-a04-adder.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 421.375,
+        "right": 344,
+        "bottom": 656.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 220,
+        "right": 344,
+        "bottom": 656.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a04-adder.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 118,
+        "right": 139,
+        "boundsErrorPct": -0.65625,
+        "inkErrorPct": -6.40013503604856
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "a05-cpu-cycle",
+      "title": "CPU：取指、译码、执行",
+      "art": "lesson-a05-cpu-cycle.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 455.375,
+        "right": 344,
+        "bottom": 690.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 254,
+        "right": 344,
+        "bottom": 690.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a05-cpu-cycle.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 0,
+        "right": 0,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -16.139487090152357
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "a06-memory",
+      "title": "内存与存储：为什么要分层",
+      "art": "lesson-a06-memory-layers-centered-audit.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 455.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 328,
+        "height": 421.375,
+        "right": 344,
+        "bottom": 691.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 471.96875,
+        "width": 328,
+        "height": 220,
+        "right": 344,
+        "bottom": 691.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a06-memory-layers-centered-audit.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 463,
+        "right": 463,
+        "boundsErrorPct": 0,
+        "inkErrorPct": 0
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "a07-os",
+      "title": "操作系统：管理进程、文件与权限",
+      "art": "lesson-a07-os.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 328,
+        "height": 185.46875,
+        "right": 344,
+        "bottom": 456.0625,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 328,
+        "height": 421.46875,
+        "right": 344,
+        "bottom": 692.0625,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 472.0625,
+        "width": 328,
+        "height": 220,
+        "right": 344,
+        "bottom": 692.0625,
+        "center": 180
+      },
+      "natural": [
+        1672,
+        941
+      ],
+      "file": "lesson-a07-os.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 370,
+        "right": 371,
+        "boundsErrorPct": -0.029904306220095694,
+        "inkErrorPct": 4.334966925362113
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "a08-command-line",
+      "title": "命令行基础：在目录中找到方向",
+      "art": "lesson-a08-command-line.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 328,
+        "height": 185.46875,
+        "right": 344,
+        "bottom": 456.0625,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 328,
+        "height": 455.46875,
+        "right": 344,
+        "bottom": 726.0625,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 472.0625,
+        "width": 328,
+        "height": 254,
+        "right": 344,
+        "bottom": 726.0625,
+        "center": 180
+      },
+      "natural": [
+        1672,
+        941
+      ],
+      "file": "lesson-a08-command-line.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 405,
+        "right": 407,
+        "boundsErrorPct": -0.05980861244019139,
+        "inkErrorPct": 4.430131258685647
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "a09-network-layers",
+      "title": "网络是什么：分层的想法",
+      "art": "lesson-a09-network-layers.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 489.375,
+        "right": 344,
+        "bottom": 724.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 288,
+        "right": 344,
+        "bottom": 724.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a09-network-layers.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 0,
+        "right": 0,
+        "boundsErrorPct": 0,
+        "inkErrorPct": 0.08354454190098437
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "a10-ip-subnet",
+      "title": "IP 地址与子网",
+      "art": null,
+      "width": 360,
+      "image": null
+    },
+    {
+      "id": "a11-devices",
+      "title": "交换机与路由器：找到下一站",
+      "art": "lesson-a11-devices.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 328,
+        "height": 185.46875,
+        "right": 344,
+        "bottom": 456.0625,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 328,
+        "height": 489.46875,
+        "right": 344,
+        "bottom": 760.0625,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 472.0625,
+        "width": 328,
+        "height": 288,
+        "right": 344,
+        "bottom": 760.0625,
+        "center": 180
+      },
+      "natural": [
+        1672,
+        941
+      ],
+      "file": "lesson-a11-devices.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 363,
+        "right": 361,
+        "boundsErrorPct": 0.05980861244019139,
+        "inkErrorPct": 0.04382808451839211
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "a12-packets",
+      "title": "数据包：切开、编号、再拼起来",
+      "art": "lesson-a12-packets-centered-batch02.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 328,
+        "height": 185.46875,
+        "right": 344,
+        "bottom": 456.0625,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 328,
+        "height": 489.46875,
+        "right": 344,
+        "bottom": 760.0625,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 472.0625,
+        "width": 328,
+        "height": 288,
+        "right": 344,
+        "bottom": 760.0625,
+        "center": 180
+      },
+      "natural": [
+        1672,
+        941
+      ],
+      "file": "lesson-a12-packets-centered-batch02.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 454,
+        "right": 441,
+        "boundsErrorPct": 0.388755980861244,
+        "inkErrorPct": -0.17129413185960568
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "a13-dns",
+      "title": "DNS：名字怎么变成地址",
+      "art": "lesson-a13-dns.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 489.375,
+        "right": 344,
+        "bottom": 724.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 288,
+        "right": 344,
+        "bottom": 724.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-a13-dns.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 59,
+        "right": 59,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -1.243847477389025
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "a14-tcp",
+      "title": "TCP：三次握手与可靠传输",
+      "art": "lesson-a14-tcp.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 328,
+        "height": 185.46875,
+        "right": 344,
+        "bottom": 456.0625,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 328,
+        "height": 523.46875,
+        "right": 344,
+        "bottom": 794.0625,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 472.0625,
+        "width": 328,
+        "height": 322,
+        "right": 344,
+        "bottom": 794.0625,
+        "center": 180
+      },
+      "natural": [
+        1672,
+        941
+      ],
+      "file": "lesson-a14-tcp.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 429,
+        "right": 442,
+        "boundsErrorPct": -0.388755980861244,
+        "inkErrorPct": -0.21114138044278447
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "b01-variables",
+      "title": "变量：给数据起名字",
+      "art": "lesson-b01-variables.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 421.375,
+        "right": 344,
+        "bottom": 656.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 220,
+        "right": 344,
+        "bottom": 656.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b01-variables.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 194,
+        "right": 194,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -2.4876517875755653
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "b02-conditions",
+      "title": "条件：让程序做选择",
+      "art": "lesson-b02-conditions.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 421.375,
+        "right": 344,
+        "bottom": 656.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 220,
+        "right": 344,
+        "bottom": 656.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b02-conditions.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 200,
+        "right": 258,
+        "boundsErrorPct": -1.8124999999999998,
+        "inkErrorPct": 8.919392708069822
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "b03-loops",
+      "title": "循环：让程序重复做事",
+      "art": "lesson-b03-loops.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 387.375,
+        "right": 344,
+        "bottom": 622.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 186,
+        "right": 344,
+        "bottom": 622.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b03-loops.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 100,
+        "right": 100,
+        "boundsErrorPct": 0,
+        "inkErrorPct": 2.9461788575677588
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "b04-functions",
+      "title": "函数：把做法打包",
+      "art": "lesson-b04-functions.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 387.375,
+        "right": 344,
+        "bottom": 622.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 186,
+        "right": 344,
+        "bottom": 622.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b04-functions.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 143,
+        "right": 157,
+        "boundsErrorPct": -0.43750000000000006,
+        "inkErrorPct": 2.848828006716765
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "b05-lists",
+      "title": "列表：一排数据",
+      "art": "lesson-b05-lists.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 387.375,
+        "right": 344,
+        "bottom": 622.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 186,
+        "right": 344,
+        "bottom": 622.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b05-lists.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 200,
+        "right": 200,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -2.0766001504292078
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "b06-dicts",
+      "title": "字典：用名字找数据",
+      "art": "lesson-b06-dicts.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 387.375,
+        "right": 344,
+        "bottom": 622.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 186,
+        "right": 344,
+        "bottom": 622.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b06-dicts.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 521,
+        "right": 521,
+        "boundsErrorPct": 0,
+        "inkErrorPct": 0.05584220486034041
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "b07-debugging",
+      "title": "调试：读懂报错",
+      "art": "lesson-b07-debugging.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 421.375,
+        "right": 344,
+        "bottom": 656.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 220,
+        "right": 344,
+        "bottom": 656.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b07-debugging.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 49,
+        "right": 167,
+        "boundsErrorPct": -3.6875,
+        "inkErrorPct": -0.4430816611989954
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "b08-html",
+      "title": "HTML：网页的骨架",
+      "art": "lesson-b08-html.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 421.375,
+        "right": 344,
+        "bottom": 656.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 220,
+        "right": 344,
+        "bottom": 656.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b08-html.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 334,
+        "right": 333,
+        "boundsErrorPct": 0.03125,
+        "inkErrorPct": -1.5795659715178303
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "b09-css",
+      "title": "CSS：给网页穿衣服",
+      "art": "lesson-b09-css.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 455.375,
+        "right": 344,
+        "bottom": 690.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 254,
+        "right": 344,
+        "bottom": 690.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b09-css.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 95,
+        "right": 95,
+        "boundsErrorPct": 0,
+        "inkErrorPct": 4.666969900900469
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "b10-css-layout",
+      "title": "CSS 布局：盒子与弹性布局",
+      "art": "lesson-b10-css-layout.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 455.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 270.59375,
+        "width": 328,
+        "height": 421.375,
+        "right": 344,
+        "bottom": 691.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 471.96875,
+        "width": 328,
+        "height": 220,
+        "right": 344,
+        "bottom": 691.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b10-css-layout.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 59,
+        "right": 58,
+        "boundsErrorPct": 0.03125,
+        "inkErrorPct": 0.06310166389862815
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "b11-js-dom",
+      "title": "JavaScript 与 DOM",
+      "art": "lesson-b11-js-dom.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 455.375,
+        "right": 344,
+        "bottom": 690.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 254,
+        "right": 344,
+        "bottom": 690.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b11-js-dom.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 111,
+        "right": 185,
+        "boundsErrorPct": -2.3125,
+        "inkErrorPct": 8.580171929759615
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "b12-events",
+      "title": "事件：让网页有反应",
+      "art": "lesson-b12-events.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 455.375,
+        "right": 344,
+        "bottom": 690.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 254,
+        "right": 344,
+        "bottom": 690.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b12-events.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 158,
+        "right": 102,
+        "boundsErrorPct": 1.7500000000000002,
+        "inkErrorPct": 8.660253502405268
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "b14-git-basics",
+      "title": "Git 第一步：保存快照",
+      "art": "lesson-b14-git-basics.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 455.375,
+        "right": 344,
+        "bottom": 690.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 254,
+        "right": 344,
+        "bottom": 690.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b14-git-basics.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 85,
+        "right": 85,
+        "boundsErrorPct": 0,
+        "inkErrorPct": 0.2904393112047501
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "b15-git-branches",
+      "title": "分支与合并",
+      "art": "lesson-b10-git-branches-centered-audit.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 455.375,
+        "right": 344,
+        "bottom": 690.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 254,
+        "right": 344,
+        "bottom": 690.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-b10-git-branches-centered-audit.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 416,
+        "right": 415,
+        "boundsErrorPct": 0.03125,
+        "inkErrorPct": -1.5574639807897555
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    },
+    {
+      "id": "c05-prompt-structure",
+      "title": "指令的六要素",
+      "art": "lesson-c05-prompt-structure-centered-audit.png",
+      "width": 360,
+      "image": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 185.375,
+        "right": 344,
+        "bottom": 420.96875,
+        "center": 180
+      },
+      "body": {
+        "x": 16,
+        "y": 235.59375,
+        "width": 328,
+        "height": 523.375,
+        "right": 344,
+        "bottom": 758.96875,
+        "center": 180
+      },
+      "hook": {
+        "x": 16,
+        "y": 436.96875,
+        "width": 328,
+        "height": 322,
+        "right": 344,
+        "bottom": 758.96875,
+        "center": 180
+      },
+      "natural": [
+        1600,
+        900
+      ],
+      "file": "lesson-c05-prompt-structure-centered-audit.png",
+      "css": {
+        "display": "block",
+        "objectFit": "fill",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "position": "static",
+        "filter": "none",
+        "clipPath": "none"
+      },
+      "subject": {
+        "left": 440,
+        "right": 440,
+        "boundsErrorPct": 0,
+        "inkErrorPct": -8.236358641858928
+      },
+      "limit": 738.609375,
+      "viewportWidth": 360,
+      "overflow": false
+    }
+  ],
+  "checks": 684,
+  "failures": []
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "id": "a01-binary",
+    "original": "lesson-a01-bits.png",
+    "centered": "lesson-a01-bits-centered-audit.png",
+    "originalSHA256": "75e3dd88f4960b3a237b2c944207d33ba06d0afbddc548a51fbf0a2dfb2afbe8",
+    "derivativeSHA256": "a87dcf44d8c5f37bd1b063aa7b3ab3b3dfdcf47b1f6147bd97e40ac1a97d2402",
+    "width": 1600,
+    "height": 900,
+    "oldBounds": {
+      "left": 598,
+      "right": 1467,
+      "top": 261,
+      "bottom": 571
+    },
+    "dx": -233,
+    "newBounds": {
+      "left": 365,
+      "right": 1234,
+      "top": 261,
+      "bottom": 571
+    },
+    "foregroundPixels": 136504,
+    "allForegroundPixelsPreserved": true,
+    "onlyBackgroundAndIntegerPlacementChanged": true,
+    "verified": true,
+    "independentPillowVerification": true
+  },
+  {
+    "id": "a06-memory",
+    "original": "lesson-a06-memory-layers.png",
+    "centered": "lesson-a06-memory-layers-centered-audit.png",
+    "originalSHA256": "25566691c2734270541bd9ee4a1c650f25b5c14922af9f3b1ac19aa2c62935c3",
+    "derivativeSHA256": "ddde775a6aa7aae3eb15781f1bc1b2079d0b184555683fdf122a3d65586cf8cb",
+    "width": 1600,
+    "height": 900,
+    "oldBounds": {
+      "left": 653,
+      "right": 1326,
+      "top": 228,
+      "bottom": 731
+    },
+    "dx": -190,
+    "newBounds": {
+      "left": 463,
+      "right": 1136,
+      "top": 228,
+      "bottom": 731
+    },
+    "foregroundPixels": 168990,
+    "allForegroundPixelsPreserved": true,
+    "onlyBackgroundAndIntegerPlacementChanged": true,
+    "verified": true,
+    "independentPillowVerification": true
+  },
+  {
+    "id": "b15-git-branches",
+    "original": "lesson-b10-git-branches.png",
+    "centered": "lesson-b10-git-branches-centered-audit.png",
+    "originalSHA256": "6a95a404d0acb463f899b553249b2a55b41150a190dc008536dcbf09d475854e",
+    "derivativeSHA256": "3762dd12639fe2e21a9a44526832c1e6c4e24b95abe54d798eef42bf0a92594f",
+    "width": 1600,
+    "height": 900,
+    "oldBounds": {
+      "left": 616,
+      "right": 1385,
+      "top": 436,
+      "bottom": 553
+    },
+    "dx": -201,
+    "newBounds": {
+      "left": 415,
+      "right": 1184,
+      "top": 436,
+      "bottom": 553
+    },
+    "foregroundPixels": 11650,
+    "allForegroundPixelsPreserved": true,
+    "onlyBackgroundAndIntegerPlacementChanged": true,
+    "verified": true,
+    "independentPillowVerification": true
+  },
+  {
+    "id": "c05-prompt-structure",
+    "original": "lesson-c05-prompt-structure.png",
+    "centered": "lesson-c05-prompt-structure-centered-audit.png",
+    "originalSHA256": "3bbd09b3cffae58a35c46f20910518c43672ef94cc8aad3335f9e7fa3c3f2f71",
+    "derivativeSHA256": "35512a997ae67bdaeabc25f1cd861370b5bad06fe299ed7d69a7cf9bad4f57dc",
+    "width": 1600,
+    "height": 900,
+    "oldBounds": {
+      "left": 598,
+      "right": 1318,
+      "top": 311,
+      "bottom": 558
+    },
+    "dx": -159,
+    "newBounds": {
+      "left": 439,
+      "right": 1159,
+      "top": 311,
+      "bottom": 558
+    },
+    "foregroundPixels": 90568,
+    "allForegroundPixelsPreserved": true,
+    "onlyBackgroundAndIntegerPlacementChanged": true,
+    "verified": true,
+    "independentPillowVerification": true
+  }
+]

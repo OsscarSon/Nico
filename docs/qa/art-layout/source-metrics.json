@@ -1,0 +1,394 @@
+[
+  {
+    "id": "a01-binary",
+    "title": "二进制：电脑只认 0 和 1",
+    "art": "lesson-a01-bits.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 598,
+    "right": 132,
+    "centerErrorPct": 14.562,
+    "inkCenterErrorPct": 12.043
+  },
+  {
+    "id": "a02-hex-encoding",
+    "title": "十六进制与文字编码",
+    "art": "lesson-a02-hex-encoding.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 243,
+    "right": 119,
+    "centerErrorPct": 3.875,
+    "inkCenterErrorPct": -6.774
+  },
+  {
+    "id": "a03-logic-gates",
+    "title": "逻辑门：AND、OR、NOT、XOR",
+    "art": "lesson-a03-logic-gates.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 88,
+    "right": 88,
+    "centerErrorPct": 0.0,
+    "inkCenterErrorPct": -1.06
+  },
+  {
+    "id": "a04-adder",
+    "title": "用门搭一个加法器",
+    "art": "lesson-a04-adder.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 118,
+    "right": 139,
+    "centerErrorPct": -0.656,
+    "inkCenterErrorPct": -6.4
+  },
+  {
+    "id": "a05-cpu-cycle",
+    "title": "CPU：取指、译码、执行",
+    "art": "lesson-a05-cpu-cycle.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 0,
+    "right": 0,
+    "centerErrorPct": 0.0,
+    "inkCenterErrorPct": -16.139
+  },
+  {
+    "id": "a06-memory",
+    "title": "内存与存储：为什么要分层",
+    "art": "lesson-a06-memory-layers.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 653,
+    "right": 273,
+    "centerErrorPct": 11.875,
+    "inkCenterErrorPct": 11.875
+  },
+  {
+    "id": "a07-os",
+    "title": "操作系统：管理进程、文件与权限",
+    "art": "lesson-a07-os.png",
+    "artPending": false,
+    "size": [
+      1672,
+      941
+    ],
+    "left": 370,
+    "right": 371,
+    "centerErrorPct": -0.03,
+    "inkCenterErrorPct": 4.335
+  },
+  {
+    "id": "a08-command-line",
+    "title": "命令行基础：在目录中找到方向",
+    "art": "lesson-a08-command-line.png",
+    "artPending": false,
+    "size": [
+      1672,
+      941
+    ],
+    "left": 405,
+    "right": 407,
+    "centerErrorPct": -0.06,
+    "inkCenterErrorPct": 4.43
+  },
+  {
+    "id": "a09-network-layers",
+    "title": "网络是什么：分层的想法",
+    "art": "lesson-a09-network-layers.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 0,
+    "right": 0,
+    "centerErrorPct": 0.0,
+    "inkCenterErrorPct": 0.084
+  },
+  {
+    "id": "a11-devices",
+    "title": "交换机与路由器：找到下一站",
+    "art": "lesson-a11-devices.png",
+    "artPending": false,
+    "size": [
+      1672,
+      941
+    ],
+    "left": 363,
+    "right": 361,
+    "centerErrorPct": 0.06,
+    "inkCenterErrorPct": 0.044
+  },
+  {
+    "id": "a12-packets",
+    "title": "数据包：切开、编号、再拼起来",
+    "art": "lesson-a12-packets-centered-batch02.png",
+    "artPending": false,
+    "size": [
+      1672,
+      941
+    ],
+    "left": 454,
+    "right": 441,
+    "centerErrorPct": 0.389,
+    "inkCenterErrorPct": -0.171
+  },
+  {
+    "id": "a13-dns",
+    "title": "DNS：名字怎么变成地址",
+    "art": "lesson-a13-dns.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 59,
+    "right": 59,
+    "centerErrorPct": 0.0,
+    "inkCenterErrorPct": -1.244
+  },
+  {
+    "id": "a14-tcp",
+    "title": "TCP：三次握手与可靠传输",
+    "art": "lesson-a14-tcp.png",
+    "artPending": false,
+    "size": [
+      1672,
+      941
+    ],
+    "left": 429,
+    "right": 442,
+    "centerErrorPct": -0.389,
+    "inkCenterErrorPct": -0.211
+  },
+  {
+    "id": "b01-variables",
+    "title": "变量：给数据起名字",
+    "art": "lesson-b01-variables.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 194,
+    "right": 194,
+    "centerErrorPct": 0.0,
+    "inkCenterErrorPct": -2.488
+  },
+  {
+    "id": "b02-conditions",
+    "title": "条件：让程序做选择",
+    "art": "lesson-b02-conditions.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 200,
+    "right": 258,
+    "centerErrorPct": -1.812,
+    "inkCenterErrorPct": 8.919
+  },
+  {
+    "id": "b03-loops",
+    "title": "循环：让程序重复做事",
+    "art": "lesson-b03-loops.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 100,
+    "right": 100,
+    "centerErrorPct": 0.0,
+    "inkCenterErrorPct": 2.946
+  },
+  {
+    "id": "b04-functions",
+    "title": "函数：把做法打包",
+    "art": "lesson-b04-functions.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 143,
+    "right": 157,
+    "centerErrorPct": -0.438,
+    "inkCenterErrorPct": 2.849
+  },
+  {
+    "id": "b05-lists",
+    "title": "列表：一排数据",
+    "art": "lesson-b05-lists.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 200,
+    "right": 200,
+    "centerErrorPct": 0.0,
+    "inkCenterErrorPct": -2.077
+  },
+  {
+    "id": "b06-dicts",
+    "title": "字典：用名字找数据",
+    "art": "lesson-b06-dicts.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 521,
+    "right": 521,
+    "centerErrorPct": 0.0,
+    "inkCenterErrorPct": 0.056
+  },
+  {
+    "id": "b07-debugging",
+    "title": "调试：读懂报错",
+    "art": "lesson-b07-debugging.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 49,
+    "right": 167,
+    "centerErrorPct": -3.688,
+    "inkCenterErrorPct": -0.443
+  },
+  {
+    "id": "b08-html",
+    "title": "HTML：网页的骨架",
+    "art": "lesson-b08-html.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 334,
+    "right": 333,
+    "centerErrorPct": 0.031,
+    "inkCenterErrorPct": -1.58
+  },
+  {
+    "id": "b09-css",
+    "title": "CSS：给网页穿衣服",
+    "art": "lesson-b09-css.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 95,
+    "right": 95,
+    "centerErrorPct": 0.0,
+    "inkCenterErrorPct": 4.667
+  },
+  {
+    "id": "b10-css-layout",
+    "title": "CSS 布局：盒子与弹性布局",
+    "art": "lesson-b10-css-layout.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 59,
+    "right": 58,
+    "centerErrorPct": 0.031,
+    "inkCenterErrorPct": 0.063
+  },
+  {
+    "id": "b11-js-dom",
+    "title": "JavaScript 与 DOM",
+    "art": "lesson-b11-js-dom.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 111,
+    "right": 185,
+    "centerErrorPct": -2.312,
+    "inkCenterErrorPct": 8.58
+  },
+  {
+    "id": "b12-events",
+    "title": "事件：让网页有反应",
+    "art": "lesson-b12-events.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 158,
+    "right": 102,
+    "centerErrorPct": 1.75,
+    "inkCenterErrorPct": 8.66
+  },
+  {
+    "id": "b14-git-basics",
+    "title": "Git 第一步：保存快照",
+    "art": "lesson-b14-git-basics.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 85,
+    "right": 85,
+    "centerErrorPct": 0.0,
+    "inkCenterErrorPct": 0.29
+  },
+  {
+    "id": "b15-git-branches",
+    "title": "分支与合并",
+    "art": "lesson-b10-git-branches.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 617,
+    "right": 214,
+    "centerErrorPct": 12.594,
+    "inkCenterErrorPct": 11.005
+  },
+  {
+    "id": "c05-prompt-structure",
+    "title": "指令的六要素",
+    "art": "lesson-c05-prompt-structure.png",
+    "artPending": false,
+    "size": [
+      1600,
+      900
+    ],
+    "left": 599,
+    "right": 281,
+    "centerErrorPct": 9.938,
+    "inkCenterErrorPct": 1.701
+  }
+]
