@@ -1,0 +1,601 @@
+PASS 1440/a01-binary actual lesson, default dark
+PASS 1440/a01-binary referenced original dimensions loaded
+PASS 1440/a01-binary image centered in reading column, hook edges aligned
+PASS 1440/a01-binary natural aspect ratio without stretching
+PASS 1440/a01-binary no crop, offset, positioning trick or filter
+PASS 1440/a01-binary full art visible without horizontal scroll or nav overlap
+PASS 1440/a01-binary no JavaScript errors
+PASS 1440/a02-hex-encoding actual lesson, default dark
+PASS 1440/a02-hex-encoding referenced original dimensions loaded
+PASS 1440/a02-hex-encoding image centered in reading column, hook edges aligned
+PASS 1440/a02-hex-encoding natural aspect ratio without stretching
+PASS 1440/a02-hex-encoding no crop, offset, positioning trick or filter
+PASS 1440/a02-hex-encoding full art visible without horizontal scroll or nav overlap
+PASS 1440/a02-hex-encoding no JavaScript errors
+PASS 1440/a03-logic-gates actual lesson, default dark
+PASS 1440/a03-logic-gates referenced original dimensions loaded
+PASS 1440/a03-logic-gates image centered in reading column, hook edges aligned
+PASS 1440/a03-logic-gates natural aspect ratio without stretching
+PASS 1440/a03-logic-gates no crop, offset, positioning trick or filter
+PASS 1440/a03-logic-gates full art visible without horizontal scroll or nav overlap
+PASS 1440/a03-logic-gates no JavaScript errors
+PASS 1440/a04-adder actual lesson, default dark
+PASS 1440/a04-adder referenced original dimensions loaded
+PASS 1440/a04-adder image centered in reading column, hook edges aligned
+PASS 1440/a04-adder natural aspect ratio without stretching
+PASS 1440/a04-adder no crop, offset, positioning trick or filter
+PASS 1440/a04-adder full art visible without horizontal scroll or nav overlap
+PASS 1440/a04-adder no JavaScript errors
+PASS 1440/a05-cpu-cycle actual lesson, default dark
+PASS 1440/a05-cpu-cycle referenced original dimensions loaded
+PASS 1440/a05-cpu-cycle image centered in reading column, hook edges aligned
+PASS 1440/a05-cpu-cycle natural aspect ratio without stretching
+PASS 1440/a05-cpu-cycle no crop, offset, positioning trick or filter
+PASS 1440/a05-cpu-cycle full art visible without horizontal scroll or nav overlap
+PASS 1440/a05-cpu-cycle no JavaScript errors
+PASS 1440/a06-memory actual lesson, default dark
+PASS 1440/a06-memory referenced original dimensions loaded
+PASS 1440/a06-memory image centered in reading column, hook edges aligned
+PASS 1440/a06-memory natural aspect ratio without stretching
+PASS 1440/a06-memory no crop, offset, positioning trick or filter
+PASS 1440/a06-memory full art visible without horizontal scroll or nav overlap
+PASS 1440/a06-memory no JavaScript errors
+PASS 1440/a07-os actual lesson, default dark
+PASS 1440/a07-os referenced original dimensions loaded
+PASS 1440/a07-os image centered in reading column, hook edges aligned
+PASS 1440/a07-os natural aspect ratio without stretching
+PASS 1440/a07-os no crop, offset, positioning trick or filter
+PASS 1440/a07-os full art visible without horizontal scroll or nav overlap
+PASS 1440/a07-os no JavaScript errors
+PASS 1440/a08-command-line actual lesson, default dark
+PASS 1440/a08-command-line referenced original dimensions loaded
+PASS 1440/a08-command-line image centered in reading column, hook edges aligned
+PASS 1440/a08-command-line natural aspect ratio without stretching
+PASS 1440/a08-command-line no crop, offset, positioning trick or filter
+PASS 1440/a08-command-line full art visible without horizontal scroll or nav overlap
+PASS 1440/a08-command-line no JavaScript errors
+PASS 1440/a09-network-layers actual lesson, default dark
+PASS 1440/a09-network-layers referenced original dimensions loaded
+PASS 1440/a09-network-layers image centered in reading column, hook edges aligned
+PASS 1440/a09-network-layers natural aspect ratio without stretching
+PASS 1440/a09-network-layers no crop, offset, positioning trick or filter
+PASS 1440/a09-network-layers full art visible without horizontal scroll or nav overlap
+PASS 1440/a09-network-layers no JavaScript errors
+PASS 1440/a10-ip-subnet actual lesson, default dark
+PASS 1440/a10-ip-subnet no invented art where no source exists
+PASS 1440/a10-ip-subnet no horizontal overflow
+PASS 1440/a10-ip-subnet no JavaScript errors
+PASS 1440/a11-devices actual lesson, default dark
+PASS 1440/a11-devices referenced original dimensions loaded
+PASS 1440/a11-devices image centered in reading column, hook edges aligned
+PASS 1440/a11-devices natural aspect ratio without stretching
+PASS 1440/a11-devices no crop, offset, positioning trick or filter
+PASS 1440/a11-devices full art visible without horizontal scroll or nav overlap
+PASS 1440/a11-devices no JavaScript errors
+PASS 1440/a12-packets actual lesson, default dark
+PASS 1440/a12-packets referenced original dimensions loaded
+PASS 1440/a12-packets image centered in reading column, hook edges aligned
+PASS 1440/a12-packets natural aspect ratio without stretching
+PASS 1440/a12-packets no crop, offset, positioning trick or filter
+PASS 1440/a12-packets full art visible without horizontal scroll or nav overlap
+PASS 1440/a12-packets no JavaScript errors
+PASS 1440/a13-dns actual lesson, default dark
+PASS 1440/a13-dns referenced original dimensions loaded
+PASS 1440/a13-dns image centered in reading column, hook edges aligned
+PASS 1440/a13-dns natural aspect ratio without stretching
+PASS 1440/a13-dns no crop, offset, positioning trick or filter
+PASS 1440/a13-dns full art visible without horizontal scroll or nav overlap
+PASS 1440/a13-dns no JavaScript errors
+PASS 1440/a14-tcp actual lesson, default dark
+PASS 1440/a14-tcp referenced original dimensions loaded
+PASS 1440/a14-tcp image centered in reading column, hook edges aligned
+PASS 1440/a14-tcp natural aspect ratio without stretching
+PASS 1440/a14-tcp no crop, offset, positioning trick or filter
+PASS 1440/a14-tcp full art visible without horizontal scroll or nav overlap
+PASS 1440/a14-tcp no JavaScript errors
+PASS 1440/b01-variables actual lesson, default dark
+PASS 1440/b01-variables referenced original dimensions loaded
+PASS 1440/b01-variables image centered in reading column, hook edges aligned
+PASS 1440/b01-variables natural aspect ratio without stretching
+PASS 1440/b01-variables no crop, offset, positioning trick or filter
+PASS 1440/b01-variables full art visible without horizontal scroll or nav overlap
+PASS 1440/b01-variables no JavaScript errors
+PASS 1440/b02-conditions actual lesson, default dark
+PASS 1440/b02-conditions referenced original dimensions loaded
+PASS 1440/b02-conditions image centered in reading column, hook edges aligned
+PASS 1440/b02-conditions natural aspect ratio without stretching
+PASS 1440/b02-conditions no crop, offset, positioning trick or filter
+PASS 1440/b02-conditions full art visible without horizontal scroll or nav overlap
+PASS 1440/b02-conditions no JavaScript errors
+PASS 1440/b03-loops actual lesson, default dark
+PASS 1440/b03-loops referenced original dimensions loaded
+PASS 1440/b03-loops image centered in reading column, hook edges aligned
+PASS 1440/b03-loops natural aspect ratio without stretching
+PASS 1440/b03-loops no crop, offset, positioning trick or filter
+PASS 1440/b03-loops full art visible without horizontal scroll or nav overlap
+PASS 1440/b03-loops no JavaScript errors
+PASS 1440/b04-functions actual lesson, default dark
+PASS 1440/b04-functions referenced original dimensions loaded
+PASS 1440/b04-functions image centered in reading column, hook edges aligned
+PASS 1440/b04-functions natural aspect ratio without stretching
+PASS 1440/b04-functions no crop, offset, positioning trick or filter
+PASS 1440/b04-functions full art visible without horizontal scroll or nav overlap
+PASS 1440/b04-functions no JavaScript errors
+PASS 1440/b05-lists actual lesson, default dark
+PASS 1440/b05-lists referenced original dimensions loaded
+PASS 1440/b05-lists image centered in reading column, hook edges aligned
+PASS 1440/b05-lists natural aspect ratio without stretching
+PASS 1440/b05-lists no crop, offset, positioning trick or filter
+PASS 1440/b05-lists full art visible without horizontal scroll or nav overlap
+PASS 1440/b05-lists no JavaScript errors
+PASS 1440/b06-dicts actual lesson, default dark
+PASS 1440/b06-dicts referenced original dimensions loaded
+PASS 1440/b06-dicts image centered in reading column, hook edges aligned
+PASS 1440/b06-dicts natural aspect ratio without stretching
+PASS 1440/b06-dicts no crop, offset, positioning trick or filter
+PASS 1440/b06-dicts full art visible without horizontal scroll or nav overlap
+PASS 1440/b06-dicts no JavaScript errors
+PASS 1440/b07-debugging actual lesson, default dark
+PASS 1440/b07-debugging referenced original dimensions loaded
+PASS 1440/b07-debugging image centered in reading column, hook edges aligned
+PASS 1440/b07-debugging natural aspect ratio without stretching
+PASS 1440/b07-debugging no crop, offset, positioning trick or filter
+PASS 1440/b07-debugging full art visible without horizontal scroll or nav overlap
+PASS 1440/b07-debugging no JavaScript errors
+PASS 1440/b08-html actual lesson, default dark
+PASS 1440/b08-html referenced original dimensions loaded
+PASS 1440/b08-html image centered in reading column, hook edges aligned
+PASS 1440/b08-html natural aspect ratio without stretching
+PASS 1440/b08-html no crop, offset, positioning trick or filter
+PASS 1440/b08-html full art visible without horizontal scroll or nav overlap
+PASS 1440/b08-html no JavaScript errors
+PASS 1440/b09-css actual lesson, default dark
+PASS 1440/b09-css referenced original dimensions loaded
+PASS 1440/b09-css image centered in reading column, hook edges aligned
+PASS 1440/b09-css natural aspect ratio without stretching
+PASS 1440/b09-css no crop, offset, positioning trick or filter
+PASS 1440/b09-css full art visible without horizontal scroll or nav overlap
+PASS 1440/b09-css no JavaScript errors
+PASS 1440/b10-css-layout actual lesson, default dark
+PASS 1440/b10-css-layout referenced original dimensions loaded
+PASS 1440/b10-css-layout image centered in reading column, hook edges aligned
+PASS 1440/b10-css-layout natural aspect ratio without stretching
+PASS 1440/b10-css-layout no crop, offset, positioning trick or filter
+PASS 1440/b10-css-layout full art visible without horizontal scroll or nav overlap
+PASS 1440/b10-css-layout no JavaScript errors
+PASS 1440/b11-js-dom actual lesson, default dark
+PASS 1440/b11-js-dom referenced original dimensions loaded
+PASS 1440/b11-js-dom image centered in reading column, hook edges aligned
+PASS 1440/b11-js-dom natural aspect ratio without stretching
+PASS 1440/b11-js-dom no crop, offset, positioning trick or filter
+PASS 1440/b11-js-dom full art visible without horizontal scroll or nav overlap
+PASS 1440/b11-js-dom no JavaScript errors
+PASS 1440/b12-events actual lesson, default dark
+PASS 1440/b12-events referenced original dimensions loaded
+PASS 1440/b12-events image centered in reading column, hook edges aligned
+PASS 1440/b12-events natural aspect ratio without stretching
+PASS 1440/b12-events no crop, offset, positioning trick or filter
+PASS 1440/b12-events full art visible without horizontal scroll or nav overlap
+PASS 1440/b12-events no JavaScript errors
+PASS 1440/b14-git-basics actual lesson, default dark
+PASS 1440/b14-git-basics referenced original dimensions loaded
+PASS 1440/b14-git-basics image centered in reading column, hook edges aligned
+PASS 1440/b14-git-basics natural aspect ratio without stretching
+PASS 1440/b14-git-basics no crop, offset, positioning trick or filter
+PASS 1440/b14-git-basics full art visible without horizontal scroll or nav overlap
+PASS 1440/b14-git-basics no JavaScript errors
+PASS 1440/b15-git-branches actual lesson, default dark
+PASS 1440/b15-git-branches referenced original dimensions loaded
+PASS 1440/b15-git-branches image centered in reading column, hook edges aligned
+PASS 1440/b15-git-branches natural aspect ratio without stretching
+PASS 1440/b15-git-branches no crop, offset, positioning trick or filter
+PASS 1440/b15-git-branches full art visible without horizontal scroll or nav overlap
+PASS 1440/b15-git-branches no JavaScript errors
+PASS 1440/c05-prompt-structure actual lesson, default dark
+PASS 1440/c05-prompt-structure referenced original dimensions loaded
+PASS 1440/c05-prompt-structure image centered in reading column, hook edges aligned
+PASS 1440/c05-prompt-structure natural aspect ratio without stretching
+PASS 1440/c05-prompt-structure no crop, offset, positioning trick or filter
+PASS 1440/c05-prompt-structure full art visible without horizontal scroll or nav overlap
+PASS 1440/c05-prompt-structure no JavaScript errors
+PASS 390/a01-binary actual lesson, default dark
+PASS 390/a01-binary referenced original dimensions loaded
+PASS 390/a01-binary image centered in reading column, hook edges aligned
+PASS 390/a01-binary natural aspect ratio without stretching
+PASS 390/a01-binary no crop, offset, positioning trick or filter
+PASS 390/a01-binary full art visible without horizontal scroll or nav overlap
+PASS 390/a01-binary no JavaScript errors
+PASS 390/a02-hex-encoding actual lesson, default dark
+PASS 390/a02-hex-encoding referenced original dimensions loaded
+PASS 390/a02-hex-encoding image centered in reading column, hook edges aligned
+PASS 390/a02-hex-encoding natural aspect ratio without stretching
+PASS 390/a02-hex-encoding no crop, offset, positioning trick or filter
+PASS 390/a02-hex-encoding full art visible without horizontal scroll or nav overlap
+PASS 390/a02-hex-encoding no JavaScript errors
+PASS 390/a03-logic-gates actual lesson, default dark
+PASS 390/a03-logic-gates referenced original dimensions loaded
+PASS 390/a03-logic-gates image centered in reading column, hook edges aligned
+PASS 390/a03-logic-gates natural aspect ratio without stretching
+PASS 390/a03-logic-gates no crop, offset, positioning trick or filter
+PASS 390/a03-logic-gates full art visible without horizontal scroll or nav overlap
+PASS 390/a03-logic-gates no JavaScript errors
+PASS 390/a04-adder actual lesson, default dark
+PASS 390/a04-adder referenced original dimensions loaded
+PASS 390/a04-adder image centered in reading column, hook edges aligned
+PASS 390/a04-adder natural aspect ratio without stretching
+PASS 390/a04-adder no crop, offset, positioning trick or filter
+PASS 390/a04-adder full art visible without horizontal scroll or nav overlap
+PASS 390/a04-adder no JavaScript errors
+PASS 390/a05-cpu-cycle actual lesson, default dark
+PASS 390/a05-cpu-cycle referenced original dimensions loaded
+PASS 390/a05-cpu-cycle image centered in reading column, hook edges aligned
+PASS 390/a05-cpu-cycle natural aspect ratio without stretching
+PASS 390/a05-cpu-cycle no crop, offset, positioning trick or filter
+PASS 390/a05-cpu-cycle full art visible without horizontal scroll or nav overlap
+PASS 390/a05-cpu-cycle no JavaScript errors
+PASS 390/a06-memory actual lesson, default dark
+PASS 390/a06-memory referenced original dimensions loaded
+PASS 390/a06-memory image centered in reading column, hook edges aligned
+PASS 390/a06-memory natural aspect ratio without stretching
+PASS 390/a06-memory no crop, offset, positioning trick or filter
+PASS 390/a06-memory full art visible without horizontal scroll or nav overlap
+PASS 390/a06-memory no JavaScript errors
+PASS 390/a07-os actual lesson, default dark
+PASS 390/a07-os referenced original dimensions loaded
+PASS 390/a07-os image centered in reading column, hook edges aligned
+PASS 390/a07-os natural aspect ratio without stretching
+PASS 390/a07-os no crop, offset, positioning trick or filter
+PASS 390/a07-os full art visible without horizontal scroll or nav overlap
+PASS 390/a07-os no JavaScript errors
+PASS 390/a08-command-line actual lesson, default dark
+PASS 390/a08-command-line referenced original dimensions loaded
+PASS 390/a08-command-line image centered in reading column, hook edges aligned
+PASS 390/a08-command-line natural aspect ratio without stretching
+PASS 390/a08-command-line no crop, offset, positioning trick or filter
+PASS 390/a08-command-line full art visible without horizontal scroll or nav overlap
+PASS 390/a08-command-line no JavaScript errors
+PASS 390/a09-network-layers actual lesson, default dark
+PASS 390/a09-network-layers referenced original dimensions loaded
+PASS 390/a09-network-layers image centered in reading column, hook edges aligned
+PASS 390/a09-network-layers natural aspect ratio without stretching
+PASS 390/a09-network-layers no crop, offset, positioning trick or filter
+PASS 390/a09-network-layers full art visible without horizontal scroll or nav overlap
+PASS 390/a09-network-layers no JavaScript errors
+PASS 390/a10-ip-subnet actual lesson, default dark
+PASS 390/a10-ip-subnet no invented art where no source exists
+PASS 390/a10-ip-subnet no horizontal overflow
+PASS 390/a10-ip-subnet no JavaScript errors
+PASS 390/a11-devices actual lesson, default dark
+PASS 390/a11-devices referenced original dimensions loaded
+PASS 390/a11-devices image centered in reading column, hook edges aligned
+PASS 390/a11-devices natural aspect ratio without stretching
+PASS 390/a11-devices no crop, offset, positioning trick or filter
+PASS 390/a11-devices full art visible without horizontal scroll or nav overlap
+PASS 390/a11-devices no JavaScript errors
+PASS 390/a12-packets actual lesson, default dark
+PASS 390/a12-packets referenced original dimensions loaded
+PASS 390/a12-packets image centered in reading column, hook edges aligned
+PASS 390/a12-packets natural aspect ratio without stretching
+PASS 390/a12-packets no crop, offset, positioning trick or filter
+PASS 390/a12-packets full art visible without horizontal scroll or nav overlap
+PASS 390/a12-packets no JavaScript errors
+PASS 390/a13-dns actual lesson, default dark
+PASS 390/a13-dns referenced original dimensions loaded
+PASS 390/a13-dns image centered in reading column, hook edges aligned
+PASS 390/a13-dns natural aspect ratio without stretching
+PASS 390/a13-dns no crop, offset, positioning trick or filter
+PASS 390/a13-dns full art visible without horizontal scroll or nav overlap
+PASS 390/a13-dns no JavaScript errors
+PASS 390/a14-tcp actual lesson, default dark
+PASS 390/a14-tcp referenced original dimensions loaded
+PASS 390/a14-tcp image centered in reading column, hook edges aligned
+PASS 390/a14-tcp natural aspect ratio without stretching
+PASS 390/a14-tcp no crop, offset, positioning trick or filter
+PASS 390/a14-tcp full art visible without horizontal scroll or nav overlap
+PASS 390/a14-tcp no JavaScript errors
+PASS 390/b01-variables actual lesson, default dark
+PASS 390/b01-variables referenced original dimensions loaded
+PASS 390/b01-variables image centered in reading column, hook edges aligned
+PASS 390/b01-variables natural aspect ratio without stretching
+PASS 390/b01-variables no crop, offset, positioning trick or filter
+PASS 390/b01-variables full art visible without horizontal scroll or nav overlap
+PASS 390/b01-variables no JavaScript errors
+PASS 390/b02-conditions actual lesson, default dark
+PASS 390/b02-conditions referenced original dimensions loaded
+PASS 390/b02-conditions image centered in reading column, hook edges aligned
+PASS 390/b02-conditions natural aspect ratio without stretching
+PASS 390/b02-conditions no crop, offset, positioning trick or filter
+PASS 390/b02-conditions full art visible without horizontal scroll or nav overlap
+PASS 390/b02-conditions no JavaScript errors
+PASS 390/b03-loops actual lesson, default dark
+PASS 390/b03-loops referenced original dimensions loaded
+PASS 390/b03-loops image centered in reading column, hook edges aligned
+PASS 390/b03-loops natural aspect ratio without stretching
+PASS 390/b03-loops no crop, offset, positioning trick or filter
+PASS 390/b03-loops full art visible without horizontal scroll or nav overlap
+PASS 390/b03-loops no JavaScript errors
+PASS 390/b04-functions actual lesson, default dark
+PASS 390/b04-functions referenced original dimensions loaded
+PASS 390/b04-functions image centered in reading column, hook edges aligned
+PASS 390/b04-functions natural aspect ratio without stretching
+PASS 390/b04-functions no crop, offset, positioning trick or filter
+PASS 390/b04-functions full art visible without horizontal scroll or nav overlap
+PASS 390/b04-functions no JavaScript errors
+PASS 390/b05-lists actual lesson, default dark
+PASS 390/b05-lists referenced original dimensions loaded
+PASS 390/b05-lists image centered in reading column, hook edges aligned
+PASS 390/b05-lists natural aspect ratio without stretching
+PASS 390/b05-lists no crop, offset, positioning trick or filter
+PASS 390/b05-lists full art visible without horizontal scroll or nav overlap
+PASS 390/b05-lists no JavaScript errors
+PASS 390/b06-dicts actual lesson, default dark
+PASS 390/b06-dicts referenced original dimensions loaded
+PASS 390/b06-dicts image centered in reading column, hook edges aligned
+PASS 390/b06-dicts natural aspect ratio without stretching
+PASS 390/b06-dicts no crop, offset, positioning trick or filter
+PASS 390/b06-dicts full art visible without horizontal scroll or nav overlap
+PASS 390/b06-dicts no JavaScript errors
+PASS 390/b07-debugging actual lesson, default dark
+PASS 390/b07-debugging referenced original dimensions loaded
+PASS 390/b07-debugging image centered in reading column, hook edges aligned
+PASS 390/b07-debugging natural aspect ratio without stretching
+PASS 390/b07-debugging no crop, offset, positioning trick or filter
+PASS 390/b07-debugging full art visible without horizontal scroll or nav overlap
+PASS 390/b07-debugging no JavaScript errors
+PASS 390/b08-html actual lesson, default dark
+PASS 390/b08-html referenced original dimensions loaded
+PASS 390/b08-html image centered in reading column, hook edges aligned
+PASS 390/b08-html natural aspect ratio without stretching
+PASS 390/b08-html no crop, offset, positioning trick or filter
+PASS 390/b08-html full art visible without horizontal scroll or nav overlap
+PASS 390/b08-html no JavaScript errors
+PASS 390/b09-css actual lesson, default dark
+PASS 390/b09-css referenced original dimensions loaded
+PASS 390/b09-css image centered in reading column, hook edges aligned
+PASS 390/b09-css natural aspect ratio without stretching
+PASS 390/b09-css no crop, offset, positioning trick or filter
+PASS 390/b09-css full art visible without horizontal scroll or nav overlap
+PASS 390/b09-css no JavaScript errors
+PASS 390/b10-css-layout actual lesson, default dark
+PASS 390/b10-css-layout referenced original dimensions loaded
+PASS 390/b10-css-layout image centered in reading column, hook edges aligned
+PASS 390/b10-css-layout natural aspect ratio without stretching
+PASS 390/b10-css-layout no crop, offset, positioning trick or filter
+PASS 390/b10-css-layout full art visible without horizontal scroll or nav overlap
+PASS 390/b10-css-layout no JavaScript errors
+PASS 390/b11-js-dom actual lesson, default dark
+PASS 390/b11-js-dom referenced original dimensions loaded
+PASS 390/b11-js-dom image centered in reading column, hook edges aligned
+PASS 390/b11-js-dom natural aspect ratio without stretching
+PASS 390/b11-js-dom no crop, offset, positioning trick or filter
+PASS 390/b11-js-dom full art visible without horizontal scroll or nav overlap
+PASS 390/b11-js-dom no JavaScript errors
+PASS 390/b12-events actual lesson, default dark
+PASS 390/b12-events referenced original dimensions loaded
+PASS 390/b12-events image centered in reading column, hook edges aligned
+PASS 390/b12-events natural aspect ratio without stretching
+PASS 390/b12-events no crop, offset, positioning trick or filter
+PASS 390/b12-events full art visible without horizontal scroll or nav overlap
+PASS 390/b12-events no JavaScript errors
+PASS 390/b14-git-basics actual lesson, default dark
+PASS 390/b14-git-basics referenced original dimensions loaded
+PASS 390/b14-git-basics image centered in reading column, hook edges aligned
+PASS 390/b14-git-basics natural aspect ratio without stretching
+PASS 390/b14-git-basics no crop, offset, positioning trick or filter
+PASS 390/b14-git-basics full art visible without horizontal scroll or nav overlap
+PASS 390/b14-git-basics no JavaScript errors
+PASS 390/b15-git-branches actual lesson, default dark
+PASS 390/b15-git-branches referenced original dimensions loaded
+PASS 390/b15-git-branches image centered in reading column, hook edges aligned
+PASS 390/b15-git-branches natural aspect ratio without stretching
+PASS 390/b15-git-branches no crop, offset, positioning trick or filter
+PASS 390/b15-git-branches full art visible without horizontal scroll or nav overlap
+PASS 390/b15-git-branches no JavaScript errors
+PASS 390/c05-prompt-structure actual lesson, default dark
+PASS 390/c05-prompt-structure referenced original dimensions loaded
+PASS 390/c05-prompt-structure image centered in reading column, hook edges aligned
+PASS 390/c05-prompt-structure natural aspect ratio without stretching
+PASS 390/c05-prompt-structure no crop, offset, positioning trick or filter
+PASS 390/c05-prompt-structure full art visible without horizontal scroll or nav overlap
+PASS 390/c05-prompt-structure no JavaScript errors
+PASS 360/a01-binary actual lesson, default dark
+PASS 360/a01-binary referenced original dimensions loaded
+PASS 360/a01-binary image centered in reading column, hook edges aligned
+PASS 360/a01-binary natural aspect ratio without stretching
+PASS 360/a01-binary no crop, offset, positioning trick or filter
+PASS 360/a01-binary full art visible without horizontal scroll or nav overlap
+PASS 360/a01-binary no JavaScript errors
+PASS 360/a02-hex-encoding actual lesson, default dark
+PASS 360/a02-hex-encoding referenced original dimensions loaded
+PASS 360/a02-hex-encoding image centered in reading column, hook edges aligned
+PASS 360/a02-hex-encoding natural aspect ratio without stretching
+PASS 360/a02-hex-encoding no crop, offset, positioning trick or filter
+PASS 360/a02-hex-encoding full art visible without horizontal scroll or nav overlap
+PASS 360/a02-hex-encoding no JavaScript errors
+PASS 360/a03-logic-gates actual lesson, default dark
+PASS 360/a03-logic-gates referenced original dimensions loaded
+PASS 360/a03-logic-gates image centered in reading column, hook edges aligned
+PASS 360/a03-logic-gates natural aspect ratio without stretching
+PASS 360/a03-logic-gates no crop, offset, positioning trick or filter
+PASS 360/a03-logic-gates full art visible without horizontal scroll or nav overlap
+PASS 360/a03-logic-gates no JavaScript errors
+PASS 360/a04-adder actual lesson, default dark
+PASS 360/a04-adder referenced original dimensions loaded
+PASS 360/a04-adder image centered in reading column, hook edges aligned
+PASS 360/a04-adder natural aspect ratio without stretching
+PASS 360/a04-adder no crop, offset, positioning trick or filter
+PASS 360/a04-adder full art visible without horizontal scroll or nav overlap
+PASS 360/a04-adder no JavaScript errors
+PASS 360/a05-cpu-cycle actual lesson, default dark
+PASS 360/a05-cpu-cycle referenced original dimensions loaded
+PASS 360/a05-cpu-cycle image centered in reading column, hook edges aligned
+PASS 360/a05-cpu-cycle natural aspect ratio without stretching
+PASS 360/a05-cpu-cycle no crop, offset, positioning trick or filter
+PASS 360/a05-cpu-cycle full art visible without horizontal scroll or nav overlap
+PASS 360/a05-cpu-cycle no JavaScript errors
+PASS 360/a06-memory actual lesson, default dark
+PASS 360/a06-memory referenced original dimensions loaded
+PASS 360/a06-memory image centered in reading column, hook edges aligned
+PASS 360/a06-memory natural aspect ratio without stretching
+PASS 360/a06-memory no crop, offset, positioning trick or filter
+PASS 360/a06-memory full art visible without horizontal scroll or nav overlap
+PASS 360/a06-memory no JavaScript errors
+PASS 360/a07-os actual lesson, default dark
+PASS 360/a07-os referenced original dimensions loaded
+PASS 360/a07-os image centered in reading column, hook edges aligned
+PASS 360/a07-os natural aspect ratio without stretching
+PASS 360/a07-os no crop, offset, positioning trick or filter
+PASS 360/a07-os full art visible without horizontal scroll or nav overlap
+PASS 360/a07-os no JavaScript errors
+PASS 360/a08-command-line actual lesson, default dark
+PASS 360/a08-command-line referenced original dimensions loaded
+PASS 360/a08-command-line image centered in reading column, hook edges aligned
+PASS 360/a08-command-line natural aspect ratio without stretching
+PASS 360/a08-command-line no crop, offset, positioning trick or filter
+PASS 360/a08-command-line full art visible without horizontal scroll or nav overlap
+PASS 360/a08-command-line no JavaScript errors
+PASS 360/a09-network-layers actual lesson, default dark
+PASS 360/a09-network-layers referenced original dimensions loaded
+PASS 360/a09-network-layers image centered in reading column, hook edges aligned
+PASS 360/a09-network-layers natural aspect ratio without stretching
+PASS 360/a09-network-layers no crop, offset, positioning trick or filter
+PASS 360/a09-network-layers full art visible without horizontal scroll or nav overlap
+PASS 360/a09-network-layers no JavaScript errors
+PASS 360/a10-ip-subnet actual lesson, default dark
+PASS 360/a10-ip-subnet no invented art where no source exists
+PASS 360/a10-ip-subnet no horizontal overflow
+PASS 360/a10-ip-subnet no JavaScript errors
+PASS 360/a11-devices actual lesson, default dark
+PASS 360/a11-devices referenced original dimensions loaded
+PASS 360/a11-devices image centered in reading column, hook edges aligned
+PASS 360/a11-devices natural aspect ratio without stretching
+PASS 360/a11-devices no crop, offset, positioning trick or filter
+PASS 360/a11-devices full art visible without horizontal scroll or nav overlap
+PASS 360/a11-devices no JavaScript errors
+PASS 360/a12-packets actual lesson, default dark
+PASS 360/a12-packets referenced original dimensions loaded
+PASS 360/a12-packets image centered in reading column, hook edges aligned
+PASS 360/a12-packets natural aspect ratio without stretching
+PASS 360/a12-packets no crop, offset, positioning trick or filter
+PASS 360/a12-packets full art visible without horizontal scroll or nav overlap
+PASS 360/a12-packets no JavaScript errors
+PASS 360/a13-dns actual lesson, default dark
+PASS 360/a13-dns referenced original dimensions loaded
+PASS 360/a13-dns image centered in reading column, hook edges aligned
+PASS 360/a13-dns natural aspect ratio without stretching
+PASS 360/a13-dns no crop, offset, positioning trick or filter
+PASS 360/a13-dns full art visible without horizontal scroll or nav overlap
+PASS 360/a13-dns no JavaScript errors
+PASS 360/a14-tcp actual lesson, default dark
+PASS 360/a14-tcp referenced original dimensions loaded
+PASS 360/a14-tcp image centered in reading column, hook edges aligned
+PASS 360/a14-tcp natural aspect ratio without stretching
+PASS 360/a14-tcp no crop, offset, positioning trick or filter
+PASS 360/a14-tcp full art visible without horizontal scroll or nav overlap
+PASS 360/a14-tcp no JavaScript errors
+PASS 360/b01-variables actual lesson, default dark
+PASS 360/b01-variables referenced original dimensions loaded
+PASS 360/b01-variables image centered in reading column, hook edges aligned
+PASS 360/b01-variables natural aspect ratio without stretching
+PASS 360/b01-variables no crop, offset, positioning trick or filter
+PASS 360/b01-variables full art visible without horizontal scroll or nav overlap
+PASS 360/b01-variables no JavaScript errors
+PASS 360/b02-conditions actual lesson, default dark
+PASS 360/b02-conditions referenced original dimensions loaded
+PASS 360/b02-conditions image centered in reading column, hook edges aligned
+PASS 360/b02-conditions natural aspect ratio without stretching
+PASS 360/b02-conditions no crop, offset, positioning trick or filter
+PASS 360/b02-conditions full art visible without horizontal scroll or nav overlap
+PASS 360/b02-conditions no JavaScript errors
+PASS 360/b03-loops actual lesson, default dark
+PASS 360/b03-loops referenced original dimensions loaded
+PASS 360/b03-loops image centered in reading column, hook edges aligned
+PASS 360/b03-loops natural aspect ratio without stretching
+PASS 360/b03-loops no crop, offset, positioning trick or filter
+PASS 360/b03-loops full art visible without horizontal scroll or nav overlap
+PASS 360/b03-loops no JavaScript errors
+PASS 360/b04-functions actual lesson, default dark
+PASS 360/b04-functions referenced original dimensions loaded
+PASS 360/b04-functions image centered in reading column, hook edges aligned
+PASS 360/b04-functions natural aspect ratio without stretching
+PASS 360/b04-functions no crop, offset, positioning trick or filter
+PASS 360/b04-functions full art visible without horizontal scroll or nav overlap
+PASS 360/b04-functions no JavaScript errors
+PASS 360/b05-lists actual lesson, default dark
+PASS 360/b05-lists referenced original dimensions loaded
+PASS 360/b05-lists image centered in reading column, hook edges aligned
+PASS 360/b05-lists natural aspect ratio without stretching
+PASS 360/b05-lists no crop, offset, positioning trick or filter
+PASS 360/b05-lists full art visible without horizontal scroll or nav overlap
+PASS 360/b05-lists no JavaScript errors
+PASS 360/b06-dicts actual lesson, default dark
+PASS 360/b06-dicts referenced original dimensions loaded
+PASS 360/b06-dicts image centered in reading column, hook edges aligned
+PASS 360/b06-dicts natural aspect ratio without stretching
+PASS 360/b06-dicts no crop, offset, positioning trick or filter
+PASS 360/b06-dicts full art visible without horizontal scroll or nav overlap
+PASS 360/b06-dicts no JavaScript errors
+PASS 360/b07-debugging actual lesson, default dark
+PASS 360/b07-debugging referenced original dimensions loaded
+PASS 360/b07-debugging image centered in reading column, hook edges aligned
+PASS 360/b07-debugging natural aspect ratio without stretching
+PASS 360/b07-debugging no crop, offset, positioning trick or filter
+PASS 360/b07-debugging full art visible without horizontal scroll or nav overlap
+PASS 360/b07-debugging no JavaScript errors
+PASS 360/b08-html actual lesson, default dark
+PASS 360/b08-html referenced original dimensions loaded
+PASS 360/b08-html image centered in reading column, hook edges aligned
+PASS 360/b08-html natural aspect ratio without stretching
+PASS 360/b08-html no crop, offset, positioning trick or filter
+PASS 360/b08-html full art visible without horizontal scroll or nav overlap
+PASS 360/b08-html no JavaScript errors
+PASS 360/b09-css actual lesson, default dark
+PASS 360/b09-css referenced original dimensions loaded
+PASS 360/b09-css image centered in reading column, hook edges aligned
+PASS 360/b09-css natural aspect ratio without stretching
+PASS 360/b09-css no crop, offset, positioning trick or filter
+PASS 360/b09-css full art visible without horizontal scroll or nav overlap
+PASS 360/b09-css no JavaScript errors
+PASS 360/b10-css-layout actual lesson, default dark
+PASS 360/b10-css-layout referenced original dimensions loaded
+PASS 360/b10-css-layout image centered in reading column, hook edges aligned
+PASS 360/b10-css-layout natural aspect ratio without stretching
+PASS 360/b10-css-layout no crop, offset, positioning trick or filter
+PASS 360/b10-css-layout full art visible without horizontal scroll or nav overlap
+PASS 360/b10-css-layout no JavaScript errors
+PASS 360/b11-js-dom actual lesson, default dark
+PASS 360/b11-js-dom referenced original dimensions loaded
+PASS 360/b11-js-dom image centered in reading column, hook edges aligned
+PASS 360/b11-js-dom natural aspect ratio without stretching
+PASS 360/b11-js-dom no crop, offset, positioning trick or filter
+PASS 360/b11-js-dom full art visible without horizontal scroll or nav overlap
+PASS 360/b11-js-dom no JavaScript errors
+PASS 360/b12-events actual lesson, default dark
+PASS 360/b12-events referenced original dimensions loaded
+PASS 360/b12-events image centered in reading column, hook edges aligned
+PASS 360/b12-events natural aspect ratio without stretching
+PASS 360/b12-events no crop, offset, positioning trick or filter
+PASS 360/b12-events full art visible without horizontal scroll or nav overlap
+PASS 360/b12-events no JavaScript errors
+PASS 360/b14-git-basics actual lesson, default dark
+PASS 360/b14-git-basics referenced original dimensions loaded
+PASS 360/b14-git-basics image centered in reading column, hook edges aligned
+PASS 360/b14-git-basics natural aspect ratio without stretching
+PASS 360/b14-git-basics no crop, offset, positioning trick or filter
+PASS 360/b14-git-basics full art visible without horizontal scroll or nav overlap
+PASS 360/b14-git-basics no JavaScript errors
+PASS 360/b15-git-branches actual lesson, default dark
+PASS 360/b15-git-branches referenced original dimensions loaded
+PASS 360/b15-git-branches image centered in reading column, hook edges aligned
+PASS 360/b15-git-branches natural aspect ratio without stretching
+PASS 360/b15-git-branches no crop, offset, positioning trick or filter
+PASS 360/b15-git-branches full art visible without horizontal scroll or nav overlap
+PASS 360/b15-git-branches no JavaScript errors
+PASS 360/c05-prompt-structure actual lesson, default dark
+PASS 360/c05-prompt-structure referenced original dimensions loaded
+PASS 360/c05-prompt-structure image centered in reading column, hook edges aligned
+PASS 360/c05-prompt-structure natural aspect ratio without stretching
+PASS 360/c05-prompt-structure no crop, offset, positioning trick or filter
+PASS 360/c05-prompt-structure full art visible without horizontal scroll or nav overlap
+PASS 360/c05-prompt-structure no JavaScript errors
+600 checks, 0 failures; 29 available lessons, 28 images
