@@ -1,3 +1,6 @@
+import { FetchLab } from "../../sims/FetchLab";
+import { GithubLab } from "../../sims/GithubLab";
+import { DeploymentLab } from "../../sims/DeploymentLab";
 import { UdpLab } from "../../sims/UdpLab";
 import { HttpLab } from "../../sims/HttpLab";
 import { JourneyLab } from "../../sims/JourneyLab";
@@ -63,7 +66,10 @@ export function SimBlock({
     <div>
       <p>{block.intro}</p>
       <Device title={block.title} label={simLabel(block.sim)}>
-        {block.sim === "udp" ? <UdpLab mode={block.mode} onSolved={onDone} />
+        {block.sim === "fetch-lab" ? <FetchLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "github-lab" ? <GithubLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "deployment-lab" ? <DeploymentLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "udp" ? <UdpLab mode={block.mode} onSolved={onDone} />
           : block.sim === "http" ? <HttpLab mode={block.mode} onSolved={onDone} />
           : block.sim === "journey" ? <JourneyLab mode={block.mode} onSolved={onDone} />
           : block.sim === "password" ? <PasswordLab mode={block.mode} onSolved={onDone} />

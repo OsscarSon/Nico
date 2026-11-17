@@ -1,0 +1,23 @@
+/* New course workbenches only. No Academy, brand, profile or Settings overrides. */
+.p3-lab { display: grid; gap: 16px; min-width: 0; overflow-wrap: anywhere; }
+.p3-lab > p { margin: 0; }
+.p3-lab label { display: grid; gap: 6px; min-width: 0; }
+.p3-lab input:not([type="checkbox"]), .p3-lab select, .p3-lab textarea { width: 100%; min-width: 0; }
+.p3-lab textarea { font-family: var(--font-mono); resize: vertical; }
+.p3-lab .row { flex-wrap: wrap; }
+.p3-fields { display: flex; align-items: end; flex-wrap: wrap; gap: 12px; }
+.p3-fields label { flex: 1 1 190px; }
+.p3-fields .p3-toggle { display: flex; align-items: center; min-height: 44px; gap: 10px; }
+.p3-toggle input { width: 20px; height: 20px; }
+.p3-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.p3-columns > section { min-width: 0; }
+.p3-snapshot { border: 1px solid var(--grid); border-radius: 8px; padding: 12px; }
+.p3-output { background: var(--console-bg); color: #e8ecf4; padding: 12px; border-radius: 6px; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 260px; overflow: auto; font: .8125rem/1.7 var(--font-mono); margin: 8px 0; }
+.p3-render { display: block; padding: 20px; border: 1px solid var(--trace); border-radius: 8px; background: var(--trace-soft); }
+.p3-task { color: var(--trace); font-weight: 700; }
+.p3-check { border-top: 1px solid var(--grid); padding-top: 16px; }
+.p3-lab .foundation-note { white-space: pre-wrap; }
+.p3-lab td, .p3-lab th { overflow-wrap: anywhere; }
+.p3-preview { min-width: 0; }
+.p3-preview .web-preview { height: 180px; }
+@media (max-width: 700px) { .p3-columns { grid-template-columns: minmax(0, 1fr); } }

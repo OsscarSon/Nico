@@ -1,0 +1,23 @@
+import { lessonSchema, type Lesson } from "../schema";
+export const b13: Lesson = lessonSchema.parse({
+  id: "b13-fetch-json", track: "b", unit: "b2", title: "fetch 与 JSON", artPending: true,
+  objectives: ["能编写合法JSON并说明JSON文本与JavaScript对象的区别", "能用Promise/await解释请求为何不能立刻读取结果", "能区分HTTP失败、网络失败与JSON解析失败，并将真实字段显示到页面"],
+  prerequisites: ["b12-events"], estimatedMinutes: 15, quality: { state: "draft" },
+  blocks: [
+    { type: "hook", text: "社团网页一直显示“名单加载中”，你刷新十次也没用。服务器真的没回话？还是回了404？或者名单已经拿到了，你却把name写成nickname？今天像修水管一样，一段一段找到数据堵在哪里。" },
+    { type: "explain", title: "JSON是寄来的信，对象是拆开的内容", body: ["JSON是一种文本格式，适合在系统间交换数据。`{\"name\":\"Mina\",\"points\":8}`是合法JSON文本；键和字符串必须用双引号，数字不加引号，没有注释或末尾多余逗号。数组、布尔值和null也可以出现在JSON中。", "JavaScript对象是程序里的值，可以通过`data.name`取出名字；JSON文本则只是字符串，不能直接当对象读字段。`JSON.parse(text)`把合法JSON文本转成JavaScript值，`JSON.stringify(data)`反向编码。JavaScript对象写法允许单引号键、函数等，但它们不一定能直接写进JSON。", "看见花括号不代表已经拿到对象：先确认变量是字符串还是解析后的值。JSON合法也不表示字段正确，例如`{\"nickname\":\"Mina\"}`没有name键。"], callout: "不要用eval解析JSON。JSON.parse只按JSON语法读数据，不把它当程序执行。" },
+    { type: "explain", title: "fetch先给一张取件单：Promise", body: ["`fetch(url)`通常立即返回Promise（承诺），不是成员名单。它先处于pending，稍后fulfilled（取得Response）或rejected（请求失败）。浏览器不必把整个页面卡住等它；按钮仍能响应。", "在async函数中，`const response = await fetch(url)`会暂停这个函数，直到请求Promise兑现，再让后面的代码继续；不是把所有JavaScript或整个浏览器暂停。也可以用`.then(...)`登记成功后要做的事。", "拿到Response还要读取响应体。`const data = await response.json()`也返回Promise，读完并解析成功才得到JavaScript值。不要写`fetch(url).name`，也不要在await之前当作结果已经到达。"], callout: "本实验让你手动展开请求、解析、显示三个阶段。API确实返回异步Promise；解析按钮用原生JSON.parse查看同样的JSON语法，而不是完整模拟浏览器流式Response。" },
+    { type: "explain", title: "404和断网是两种失败", body: ["服务器回了HTTP404，说明请求得到了Response，只是目标不存在。fetch仍会fulfilled；你要检查`response.ok`（200–299为true）或status，自己决定如何处理。try/catch不会自动把每个404当异常。", "断网等故障可能让fetch直接rejected，没有HTTP状态码。响应体不是合法JSON时，`response.json()`的Promise会被拒绝。这些错误都可用try/catch处理，但先分清发生在哪一步，才知道修路径、修网络还是修数据。", "HTTP200只说明服务器对本次HTTP请求给出了成功状态，不保证业务字段正确。先检查状态，再解析，再对照实际键名和类型；用`textContent`显示普通文本，避免把外部数据当成HTML执行。" ] },
+    { type: "explain", title: "本地名单API：参数会改变结果", body: ["实验的GET `/api/profile?id=1`返回Nico，id=2返回Mina；不存在的接口或成员得到404。POST同一路径，把合法`{\"name\":\"Ada\"}`放进请求体，会返回201和新成员。这份本地夹具只演示创建响应，不持久化新增成员；之后GET仍读取两位预置成员。POST不是“更快的GET”，它表达提交/创建意图。真实API还会规定Content-Type、认证等要求。", "这里的“响应JSON覆盖”是你扮演API作者修改测试夹具，留空时按请求参数生成。它不会修改真实服务器。你可以故意弄坏数据，比较请求失败和解析失败；修改请求后旧结果失效，避免把上一位成员的名字误当成这次响应。", "本课省略真实DNS、TCP/TLS、CORS、缓存与流式读取，只研究网页拿数据的逻辑；不会请求互联网。真实fetch的地址、权限和跨域政策还需按部署环境检查。" ] },
+    { type: "sim", sim: "fetch-lab", mode: "free", title: "网页数据实验室", intro: "先修复覆盖JSON的尾逗号，观察文本、对象和页面三个区域；再清空覆盖文本，改id，最后试POST创建虚构成员和离线请求。" },
+    { type: "sim", sim: "fetch-lab", mode: "challenge", title: "挑战：排查四种数据故障", intro: "每项先观察真实错误，再修正参数/JSON/字段并展示实际成员名。四项都通过才能继续；按发送次数或直接跳过错误不能完成。" },
+    { type: "quiz", items: [
+      { q: "哪段是可以直接交给JSON.parse的JSON文本？", options: ['{"name":"Nico","active":true}', "{name:'Nico'}", '{"name":"Nico",}', '{"greet":function(){}}'], answer: 0, why: "键和字符串用双引号，true是JSON布尔值；没有尾逗号和函数。", wrongHints: { "1": "这是某种JavaScript对象写法；JSON要求键和字符串用双引号。", "2": "JSON不允许最后一项后面多一个逗号。", "3": "JSON只表达数据，不能直接编码函数代码。" } },
+      { q: "服务器返回HTTP404，fetch一定会自动进入catch吗？", options: ["不会；通常仍得到Response，需要检查ok/status", "会；所有非200都自动reject", "不会；404就是正常业务成功", "没有Response，所以没有状态码"], answer: 0, why: "HTTP错误响应与网络拒绝不同。404有Response和status，只是ok为false；应用可以显式throw进入catch。", wrongHints: { "1": "网络失败会reject，HTTP404通常不会；检查response.ok。", "2": "不会自动catch不代表成功；404表示资源不存在。", "3": "404本身就是HTTP响应里的状态码，不是没有Response。" } },
+      { q: "async函数中为什么常写await fetch之后再await response.json？", options: ["先等Response，再读响应体并解析，两步都可能失败", "await会让网络永远成功", "fetch已经返回对象，第二个await只是装饰", "它会让整个浏览器冻结直到服务器回复"], answer: 0, why: "异步函数按依赖顺序取得Response和解析后的值；仍要分别考虑网络/HTTP/解析错误。", wrongHints: { "1": "await不会修复网络，也不会替你处理HTTP错误。", "2": "fetch得到Response，不是已经解析好的业务对象。", "3": "await暂停当前async函数，不是冻结整个页面。" } },
+    ] },
+    { type: "transfer", prompt: "你依次请求四份数据：①200且JSON正确；②404且错误说明是合法JSON；③200但JSON语法错误；④断网。代码先检查ok，再解析JSON，失败只显示错误提示。几份能走到正常数据展示？", answer: 1, why: "只有①同时通过HTTP检查和JSON解析。②在ok检查被拦下，③解析失败，④没有Response。能读到错误JSON不等于业务成功。", hint: "分别过HTTP成功和JSON可解析两道门。" },
+    { type: "summary", points: ["JSON是文本协议格式；parse后才是JavaScript值，键名和类型仍需核对。", "fetch/响应体读取是异步过程；用await或then在数据到达后继续。", "HTTP错误、网络拒绝、解析失败、字段错误分层排查，再把验证过的值写到页面。"], next: "b14-git-basics" },
+  ],
+  sources: [{ title: "MDN：使用Fetch", url: "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" }, { title: "MDN：JSON", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON" }, { title: "MDN：Promise", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" }],
+});

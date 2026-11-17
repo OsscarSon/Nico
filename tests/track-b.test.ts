@@ -56,9 +56,12 @@ describe("track B content", () => {
     expect(nextAvailableAfter("b08-html")?.id).toBe("b09-css");
     expect(nextAvailableAfter("b10-css-layout")?.id).toBe("b11-js-dom");
     expect(nextAvailableAfter("b11-js-dom")?.id).toBe("b12-events");
-    expect(nextAvailableAfter("b12-events")?.id).toBe("b14-git-basics");
+    expect(nextAvailableAfter("b12-events")?.id).toBe("b13-fetch-json");
     expect(nextAvailableAfter("b14-git-basics")?.id).toBe("b15-git-branches");
-    expect(nextAvailableAfter("b15-git-branches")).toBe(undefined);
+    expect(nextAvailableAfter("b13-fetch-json")?.id).toBe("b14-git-basics");
+    expect(nextAvailableAfter("b15-git-branches")?.id).toBe("b16-github");
+    expect(nextAvailableAfter("b16-github")?.id).toBe("b17-pages");
+    expect(nextAvailableAfter("b17-pages")).toBe(undefined);
   });
   it("every regex in a lesson compiles", () => {
     for (const s of pythonSims) for (const r of s.code.requires ?? []) expect(() => new RegExp(r.pattern, "m")).not.toThrow();
