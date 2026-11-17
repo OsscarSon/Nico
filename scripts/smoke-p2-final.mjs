@@ -11,8 +11,8 @@ const go = async (p, path) => { await p.goto(`${BASE}/#${path}`); await p.locato
 const overflow = p => p.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
 const click = (p, name) => p.getByRole("button", { name, exact: true }).click();
 try {
-  for (const width of [1440, 1280, 390, 360]) {
-    const c = await browser.newContext({ viewport: { width, height: 1000 }, hasTouch: width < 900, deviceScaleFactor: 1 });
+  for (const width of [1440, 1280, 1024, 390, 360]) {
+    const c = await browser.newContext({ viewport: { width, height: width < 900 ? 1200 : 1000 }, hasTouch: width < 900, deviceScaleFactor: 1 });
     const p = await c.newPage(), errors = []; p.on("pageerror", e => errors.push(e.message));
     await go(p, "/");
     await p.locator(".home-preview img").evaluate(i => i.decode());
@@ -21,7 +21,7 @@ try {
       const left = rect(".final-hero"), copy = rect(".hero-copy"), right = rect(".final-continue");
       const logo = [...document.querySelectorAll(".brand .nico-logo")].find(i => i.getBoundingClientRect().width > 0);
       const old = document.querySelector(".home-preview img");
-      return { left, copy, right, logo: { width: logo.width, height: logo.height, loaded: logo.complete && logo.naturalWidth > 0 }, old: { ...rect(".home-preview img"), loaded: old.complete && old.naturalWidth === 1600, src: old.getAttribute("src") }, preview: rect(".home-preview"), background: getComputedStyle(document.querySelector(".final-hero .hero-artwork")).backgroundSize, theme: document.documentElement.dataset.theme };
+      return { left, copy, right, logo: { width: logo.width, height: logo.height, loaded: logo.complete && logo.naturalWidth > 0 }, old: { ...rect(".home-preview img"), loaded: old.complete && old.naturalWidth === 1600, src: old.getAttribute("src") }, preview: { ...rect(".home-preview"), insideHero: old.closest(".final-hero") === document.querySelector(".final-hero"), onlyTwoCards: document.querySelector(".home-grid").children.length === 2 && document.querySelectorAll(".home-preview").length === 1, fit: getComputedStyle(old).objectFit }, background: getComputedStyle(document.querySelector(".final-hero .hero-artwork")).backgroundSize, theme: document.documentElement.dataset.theme };
     });
     measurements.push({ width, ...m });
     check(`${width}: default dark, no overflow, real CTA and no fabricated stats`, m.theme === "dark" && !await overflow(p) && await p.getByRole("button", { name: "探索学习路线 ↗", exact: true }).count() === 1 && await p.locator(".today .stat").count() === 0);
@@ -31,10 +31,10 @@ try {
       if (!sources[0]?.endsWith("home-hero-left-final.png") || !sources[1]?.endsWith("home-continue-final.png")) return false;
       return (await Promise.all(sources.map(async src => { const image = new window.Image(); image.src = src; await image.decode(); return image.naturalWidth === 1672 && image.naturalHeight === 941; }))).every(Boolean);
     }));
-    check(`${width}: old pale illustration intact, full ratio, separate and left aligned`, m.old.loaded && m.old.src.endsWith("hero-home-1600x900.png") && Math.abs(m.old.width / m.old.height - 16 / 9) < .01 && m.preview.y >= Math.max(m.left.bottom, m.right.bottom) && Math.abs(m.old.x - m.preview.x - 17) <= 1);
-    check(`${width}: actual logo ${width < 374 ? 24 : width < 900 ? 32 : 48}px`, m.logo.loaded && m.logo.width === (width < 374 ? 24 : width < 900 ? 32 : 48) && m.logo.height === m.logo.width);
-    if (width >= 900) check(`${width}: aligned desktop columns, copy stays in quiet left region`, Math.abs(m.left.height - m.right.height) < 1 && m.left.y === m.right.y && m.copy.right < m.left.x + m.left.width * .57);
-    else check(`${width}: full uncropped mobile background below all copy/CTA`, m.background === "100% auto" && m.copy.bottom <= m.left.bottom - m.left.width * 941 / 1672);
+    check(`${width}: old pale illustration intact, full ratio, inside left Hero below CTA, no third card`, m.old.loaded && m.old.src.endsWith("hero-home-1600x900.png") && Math.abs(m.old.width / m.old.height - 16 / 9) < .01 && m.preview.insideHero && m.preview.onlyTwoCards && m.preview.y >= m.copy.bottom && m.preview.bottom < m.left.bottom && m.old.right < m.left.right && m.preview.fit === "contain" && Math.abs(m.old.x - m.copy.x) <= 1);
+    check(`${width}: actual logo ${width < 374 ? 24 : width < 1200 ? 32 : 48}px`, m.logo.loaded && m.logo.width === (width < 374 ? 24 : width < 1200 ? 32 : 48) && m.logo.height === m.logo.width);
+    if (width >= 900) check(`${width}: aligned desktop columns, copy stays in quiet left region`, Math.abs(m.left.height - m.right.height) < 1 && m.left.y === m.right.y && m.copy.right < m.left.x + m.left.width * (width < 1200 ? .65 : .57));
+    else check(`${width}: stacked mobile cards, full background below copy/CTA and white preview`, m.right.y >= m.left.bottom && m.right.x === m.left.x && m.background === "100% auto" && m.preview.bottom <= m.left.bottom - m.left.width * 941 / 1672);
     await p.screenshot({ path: `${OUT}/home-dark-${width}.png`, fullPage: true });
     await p.getByRole("button", { name: "探索学习路线 ↗", exact: true }).focus(); await p.keyboard.press("Enter");
     await p.waitForURL(url => url.hash === "#/paths"); check(`${width}: CTA keyboard navigation`, new URL(p.url()).hash === "#/paths");
