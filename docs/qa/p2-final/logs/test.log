@@ -1,0 +1,77 @@
+
+> nico@0.1.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /workspace/Nico
+
+ ✓ tests/js.test.ts (32 tests) 2721ms
+   ✓ instrumentLoops: endless loops are stopped > without the guard the same code would hang (the test harness's own timeout catches it)  1003ms
+ ✓ tests/password.test.ts (5 tests) 1973ms
+   ✓ A18 real public-fixture password verification > matches an independent native PBKDF2 oracle, has public salt and reproducible derived bytes  413ms
+   ✓ A18 real public-fixture password verification > requires actual enrollment and wrong/right re-derivation; changing a draft cannot replace a record  505ms
+   ✓ A18 real public-fixture password verification > distinguishes long predictable/reused samples from independent samples and invalidates vault/login on reenrollment  621ms
+   ✓ A18 real public-fixture password verification > requires both actual factor validation and independent recovery, not configuration switches alone  429ms
+ ✓ tests/track-b.test.ts (53 tests) 1760ms
+ ✓ tests/p2.test.ts (11 tests) 330ms
+ ✓ tests/python-runner.test.ts (8 tests) 101ms
+stderr | tests/aiServer.test.ts > failures are reported honestly and leak nothing > upstream 500 → upstream_error without echoing the upstream body
+[ai] upstream_error: upstream 500
+
+stderr | tests/aiServer.test.ts > failures are reported honestly and leak nothing > upstream 429 → quota_exhausted
+[ai] quota_exhausted: upstream 429
+
+stderr | tests/aiServer.test.ts > failures are reported honestly and leak nothing > an empty or blocked reply → bad_output
+[ai] bad_output: empty reply
+
+stderr | tests/aiServer.test.ts > failures are reported honestly and leak nothing > an empty or blocked reply → bad_output
+[ai] bad_output: blocked
+
+stderr | tests/aiServer.test.ts > failures are reported honestly and leak nothing > a hanging upstream is cut off at the timeout
+[ai] timeout: upstream timeout
+
+stderr | tests/aiServer.test.ts > failures are reported honestly and leak nothing > a network failure to the upstream → upstream_error
+[ai] upstream_error: upstream unreachable
+
+ ✓ tests/aiServer.test.ts (35 tests) 97ms
+ ✓ tests/markdown.test.ts (8 tests) 68ms
+ ✓ tests/aiClient.test.ts (11 tests) 34ms
+ ✓ tests/reassembly.test.ts (16 tests) 30ms
+ ✓ tests/aiContext.test.ts (5 tests) 33ms
+ ✓ tests/academy.test.ts (6 tests) 30ms
+ ✓ tests/journey.test.ts (31 tests) 25ms
+ ✓ tests/http.test.ts (29 tests) 17ms
+ ✓ tests/foundation.test.ts (45 tests) 14ms
+ ✓ tests/promptScore.test.ts (22 tests) 18ms
+ ✓ tests/security-lessons.test.ts (5 tests) 31ms
+ ✓ tests/forwarding.test.ts (18 tests) 18ms
+ ✓ tests/network-lessons.test.ts (5 tests) 8ms
+ ✓ tests/aiProtocol.test.ts (9 tests) 9ms
+ ✓ tests/network.test.ts (33 tests) 10ms
+ ✓ tests/content.test.ts (20 tests) 11ms
+ ✓ tests/web-lessons.test.ts (5 tests) 12ms
+ ✓ tests/code.test.ts (19 tests) 10ms
+ ✓ tests/udp.test.ts (16 tests) 10ms
+ ✓ tests/git.test.ts (19 tests) 11ms
+ ✓ tests/tcp.test.ts (21 tests) 13ms
+ ✓ tests/binary.test.ts (6 tests) 15ms
+ ✓ tests/aiGuard.test.ts (11 tests) 9ms
+ ✓ tests/progress.test.ts (10 tests) 6ms
+ ✓ tests/phishing.test.ts (7 tests) 7ms
+ ✓ tests/leastPrivilege.test.ts (8 tests) 5ms
+ ✓ tests/cpu.test.ts (14 tests) 6ms
+ ✓ tests/tls.test.ts (13 tests) 11ms
+ ✓ tests/progress-import.test.ts (6 tests) 6ms
+ ✓ tests/badges.test.ts (8 tests) 5ms
+ ✓ tests/gates.test.ts (14 tests) 7ms
+ ✓ tests/adder.test.ts (10 tests) 7ms
+ ✓ tests/a02.test.ts (4 tests) 5ms
+ ✓ tests/quiz.test.ts (5 tests) 4ms
+ ✓ tests/web.test.ts (9 tests) 5ms
+ ✓ tests/p2-final.test.ts (2 tests) 44ms
+ ✓ tests/art.test.ts (4 tests) 4ms
+
+ Test Files  42 passed (42)
+      Tests  618 passed (618)
+   Start at  12:24:02
+   Duration  20.42s (transform 1.18s, setup 0ms, collect 4.22s, tests 7.54s, environment 7ms, prepare 2.46s)
