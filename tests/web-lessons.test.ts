@@ -6,8 +6,8 @@ import { initialHttp, sendHttp, processHttp, receiveHttp } from "../src/grading/
 import { initialJourney, navigateJourney, stepJourneyDns, tickJourney, type JourneyState } from "../src/grading/journey";
 const answer = (id: string) => { const b = lessons[id]!.blocks.find(b => b.type === "transfer"); return b?.type === "transfer" ? b.answer : NaN; };
 describe("A15–A17 complete draft lessons", () => {
-  for (const id of ["a15-udp", "a16-http-https", "a17-web-journey"]) it(`${id}: full teaching sequence, real lab, diagnostics, sources and formal art placeholder`, () => {
-    const s = lessons[id]!; expect(lessonSchema.safeParse(s).success).toBe(true); expect(s.quality).toEqual({ state: "draft" }); expect(s.artPending).toBe(true); expect(s.art).toBeUndefined();
+  for (const id of ["a15-udp", "a16-http-https", "a17-web-journey"]) it(`${id}: full teaching sequence, real lab, diagnostics, sources and installed formal art`, () => {
+    const s = lessons[id]!; expect(lessonSchema.safeParse(s).success).toBe(true); expect(s.quality).toEqual({ state: "draft" }); expect(s.artPending).toBeUndefined(); expect(s.art).toBe(`lesson-${id}.png`);
     expect(s.blocks[0]?.type).toBe("hook"); expect(s.blocks.filter(b => b.type === "explain")).toHaveLength(4);
     expect(s.blocks.filter(b => b.type === "sim").map(b => b.mode)).toEqual(["free", "challenge"]);
     const q = s.blocks.find(b => b.type === "quiz"); if (q?.type !== "quiz") throw Error("missing quiz"); expect(q.items).toHaveLength(3);

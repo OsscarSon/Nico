@@ -127,7 +127,7 @@ try {
   const page = await context.newPage(); const errors = []; page.on("pageerror", e => errors.push(e.message));
   for (let course = 0; course < ids.length; course++) {
     const id = ids[course]; await navigate(page, id, 0);
-    check(`${id} 默认深色、draft、正式插画占位`, await page.locator("html").getAttribute("data-theme") === "dark" && await page.locator(".pill.draft").count() === 1 && await page.locator(".foundation-art-pending").count() === 1 && await page.locator(".lesson-art").count() === 0);
+    check(`${id} 默认深色、draft、正式插画已安装`, await page.locator("html").getAttribute("data-theme") === "dark" && await page.locator(".pill.draft").count() === 1 && await page.locator(".foundation-art-pending").count() === 0 && await page.locator(".lesson-art").count() === 1);
     await page.screenshot({ path: `${OUT}/${id}-hook-390.png` });
     for (let n = 0; n < 5; n++) await next(page).click();
     check(`${id} 自由实验标模拟`, (await page.locator(".device header .pill").innerText()) === "模拟");

@@ -162,7 +162,7 @@ check("记录了真实的一次性答对数（3 道选择题 2 对 + 迁移题�
 await page.goto(`${BASE}/#/paths/a`);
 await soon("路线页头有徽记且图片加载成功", async () => (await page.locator(".track-head img").count()) === 1 && (await imagesOk()));
 await soon("路线地图显示已完成", async () => (await page.locator(".pm-card .pill.done").count()) === 1);
-await soon("路线地图里 A01–A20 已无规划中的课", async () => (await page.locator(".pm-card.planned").count()) === 0);
+await soon("路线地图里A01–A20已上线，另保留A21/A22两个规划节点", async () => (await page.locator("a.pm-card").count()) === 20 && (await page.locator(".pm-card.planned").count()) === 2);
 await soon("路线地图上其余十九门已上线课显示『可以开始』", async () => (await page.locator(".pm-card .pill.available").count()) === 19);
 await page.goto(`${BASE}/#/`);
 await soon("首页现在显示已完成 1 课", async () => (await text(".stats")).includes("1"));
@@ -455,6 +455,16 @@ await page.goto(`${BASE}/#/lesson/b16-github`);
 await soon("规划中的课不会显示假内容", async () => (await text("main")).includes("还没有开放"));
 
 // ---- 清除数据需要二次确认 ----
+if (process.env.P2_PROFILE_SCREENSHOTS) {
+  const { mkdirSync } = await import("node:fs");
+  mkdirSync(process.env.P2_PROFILE_SCREENSHOTS, { recursive: true });
+  await page.goto(`${BASE}/#/me`);
+  for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: width === 1440 ? 1000 : 844 });
+    await page.screenshot({ path: `${process.env.P2_PROFILE_SCREENSHOTS}/profile-real-ui-completions-${width}.png` });
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
+}
 await page.goto(`${BASE}/#/settings`);
 await btn("清除学习记录").click();
 check("清除前有二次确认", (await page.getByRole("button", { name: /确认清除/ }).count()) === 1);

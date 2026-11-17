@@ -90,7 +90,7 @@ try {
     const oldProgress = await p.evaluate(() => localStorage.getItem("nico-progress"));
     for (let course = 0; course < 3; course++) {
       const id = ids[course]; await p.goto(`${BASE}/#/lesson/${id}`); await p.locator(".lesson-wrap").waitFor();
-      check(`${width}/${id}草稿和正式插画占位`, await p.locator(".pill.draft").count() === 1 && await p.locator(".foundation-art-pending").count() === 1 && await p.locator(".lesson-art").count() === 0);
+      check(`${width}/${id}草稿和已安装正式插画`, await p.locator(".pill.draft").count() === 1 && await p.locator(".foundation-art-pending").count() === 0 && await p.locator(".lesson-art").count() === 1);
       for (let i = 0; i < 5; i++) { check(`${width}/${id}讲解${i}无溢出`, !(await overflow(p))); await next(p).click(); }
       await p.locator(".security-lab").waitFor(); check(`${width}/${id}自由实验可操作`, await p.locator('.security-lab button:enabled').count() >= 3);
       if (course === 1 && width === 390) {
@@ -135,7 +135,7 @@ try {
   await button(p, "检查请求内容").focus(); await p.keyboard.press("Enter"); check("键盘Enter实际检查请求", (await p.getByLabel("已查看邮件证据").innerText()).includes("MFA验证码"));
   // Final A-route audit: open every actual link at 360px without manufacturing completion records.
   await p.goto(`${BASE}/#/paths/a`); const links = await p.locator("a.pm-card").evaluateAll(nodes => nodes.map(a => a.getAttribute("href")));
-  check("A路线20个真实入口且无筹备课", links.length === 20 && await p.locator(".pm-card.planned").count() === 0);
+  check("A路线20个真实入口且A21/A22规划不冒充课程", links.length === 20 && await p.locator(".pm-card.planned").count() === 2);
   const issues = [];
   for (const href of links) {
     await p.goto(`${BASE}/${href}`); await p.locator(".lesson-body").waitFor();
