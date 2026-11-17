@@ -1,0 +1,11 @@
+
+> nico@0.1.0 lint
+> eslint .
+
+
+/workspace/Nico/scripts/check-lesson-art.mjs
+  39:30   error  'innerWidth' is not defined   no-undef
+  39:50   error  'innerHeight' is not defined  no-undef
+  39:131  error  'innerHeight' is not defined  no-undef
+
+✖ 3 problems (3 errors, 0 warnings)

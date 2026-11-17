@@ -1,0 +1,111 @@
+PASS 1440/a07-os supplied 1672x941 art loaded
+PASS 1440/a07-os default dark, draft, no pending placeholder
+PASS 1440/a07-os image centered in lesson body and aligned with hook
+PASS 1440/a07-os subject bounds and ink center within 5%
+PASS 1440/a07-os original aspect ratio, no crop, offset or filter
+PASS 1440/a07-os full art visible, no horizontal overflow or bottom-nav obstruction
+PASS 1440/a07-os no JavaScript errors
+PASS 1440/a08-command-line supplied 1672x941 art loaded
+PASS 1440/a08-command-line default dark, draft, no pending placeholder
+PASS 1440/a08-command-line image centered in lesson body and aligned with hook
+PASS 1440/a08-command-line subject bounds and ink center within 5%
+PASS 1440/a08-command-line original aspect ratio, no crop, offset or filter
+PASS 1440/a08-command-line full art visible, no horizontal overflow or bottom-nav obstruction
+PASS 1440/a08-command-line no JavaScript errors
+PASS 1440/a11-devices supplied 1672x941 art loaded
+PASS 1440/a11-devices default dark, draft, no pending placeholder
+PASS 1440/a11-devices image centered in lesson body and aligned with hook
+PASS 1440/a11-devices subject bounds and ink center within 5%
+PASS 1440/a11-devices original aspect ratio, no crop, offset or filter
+PASS 1440/a11-devices full art visible, no horizontal overflow or bottom-nav obstruction
+PASS 1440/a11-devices no JavaScript errors
+PASS 1440/a12-packets supplied 1672x941 art loaded
+PASS 1440/a12-packets default dark, draft, no pending placeholder
+PASS 1440/a12-packets image centered in lesson body and aligned with hook
+PASS 1440/a12-packets subject bounds and ink center within 5%
+PASS 1440/a12-packets original aspect ratio, no crop, offset or filter
+PASS 1440/a12-packets full art visible, no horizontal overflow or bottom-nav obstruction
+PASS 1440/a12-packets no JavaScript errors
+PASS 1440/a14-tcp supplied 1672x941 art loaded
+PASS 1440/a14-tcp default dark, draft, no pending placeholder
+PASS 1440/a14-tcp image centered in lesson body and aligned with hook
+PASS 1440/a14-tcp subject bounds and ink center within 5%
+PASS 1440/a14-tcp original aspect ratio, no crop, offset or filter
+PASS 1440/a14-tcp full art visible, no horizontal overflow or bottom-nav obstruction
+PASS 1440/a14-tcp no JavaScript errors
+PASS 390/a07-os supplied 1672x941 art loaded
+PASS 390/a07-os default dark, draft, no pending placeholder
+PASS 390/a07-os image centered in lesson body and aligned with hook
+PASS 390/a07-os subject bounds and ink center within 5%
+PASS 390/a07-os original aspect ratio, no crop, offset or filter
+PASS 390/a07-os full art visible, no horizontal overflow or bottom-nav obstruction
+PASS 390/a07-os light mode keeps complete unfiltered art
+PASS 390/a07-os no JavaScript errors
+PASS 390/a08-command-line supplied 1672x941 art loaded
+PASS 390/a08-command-line default dark, draft, no pending placeholder
+PASS 390/a08-command-line image centered in lesson body and aligned with hook
+PASS 390/a08-command-line subject bounds and ink center within 5%
+PASS 390/a08-command-line original aspect ratio, no crop, offset or filter
+PASS 390/a08-command-line full art visible, no horizontal overflow or bottom-nav obstruction
+PASS 390/a08-command-line light mode keeps complete unfiltered art
+PASS 390/a08-command-line no JavaScript errors
+PASS 390/a11-devices supplied 1672x941 art loaded
+PASS 390/a11-devices default dark, draft, no pending placeholder
+PASS 390/a11-devices image centered in lesson body and aligned with hook
+PASS 390/a11-devices subject bounds and ink center within 5%
+PASS 390/a11-devices original aspect ratio, no crop, offset or filter
+PASS 390/a11-devices full art visible, no horizontal overflow or bottom-nav obstruction
+PASS 390/a11-devices light mode keeps complete unfiltered art
+PASS 390/a11-devices no JavaScript errors
+PASS 390/a12-packets supplied 1672x941 art loaded
+PASS 390/a12-packets default dark, draft, no pending placeholder
+PASS 390/a12-packets image centered in lesson body and aligned with hook
+PASS 390/a12-packets subject bounds and ink center within 5%
+PASS 390/a12-packets original aspect ratio, no crop, offset or filter
+PASS 390/a12-packets full art visible, no horizontal overflow or bottom-nav obstruction
+PASS 390/a12-packets light mode keeps complete unfiltered art
+PASS 390/a12-packets no JavaScript errors
+PASS 390/a14-tcp supplied 1672x941 art loaded
+PASS 390/a14-tcp default dark, draft, no pending placeholder
+PASS 390/a14-tcp image centered in lesson body and aligned with hook
+PASS 390/a14-tcp subject bounds and ink center within 5%
+PASS 390/a14-tcp original aspect ratio, no crop, offset or filter
+PASS 390/a14-tcp full art visible, no horizontal overflow or bottom-nav obstruction
+PASS 390/a14-tcp light mode keeps complete unfiltered art
+PASS 390/a14-tcp no JavaScript errors
+PASS 360/a07-os supplied 1672x941 art loaded
+PASS 360/a07-os default dark, draft, no pending placeholder
+PASS 360/a07-os image centered in lesson body and aligned with hook
+PASS 360/a07-os subject bounds and ink center within 5%
+PASS 360/a07-os original aspect ratio, no crop, offset or filter
+PASS 360/a07-os full art visible, no horizontal overflow or bottom-nav obstruction
+PASS 360/a07-os no JavaScript errors
+PASS 360/a08-command-line supplied 1672x941 art loaded
+PASS 360/a08-command-line default dark, draft, no pending placeholder
+PASS 360/a08-command-line image centered in lesson body and aligned with hook
+PASS 360/a08-command-line subject bounds and ink center within 5%
+PASS 360/a08-command-line original aspect ratio, no crop, offset or filter
+PASS 360/a08-command-line full art visible, no horizontal overflow or bottom-nav obstruction
+PASS 360/a08-command-line no JavaScript errors
+PASS 360/a11-devices supplied 1672x941 art loaded
+PASS 360/a11-devices default dark, draft, no pending placeholder
+PASS 360/a11-devices image centered in lesson body and aligned with hook
+PASS 360/a11-devices subject bounds and ink center within 5%
+PASS 360/a11-devices original aspect ratio, no crop, offset or filter
+PASS 360/a11-devices full art visible, no horizontal overflow or bottom-nav obstruction
+PASS 360/a11-devices no JavaScript errors
+PASS 360/a12-packets supplied 1672x941 art loaded
+PASS 360/a12-packets default dark, draft, no pending placeholder
+PASS 360/a12-packets image centered in lesson body and aligned with hook
+PASS 360/a12-packets subject bounds and ink center within 5%
+PASS 360/a12-packets original aspect ratio, no crop, offset or filter
+PASS 360/a12-packets full art visible, no horizontal overflow or bottom-nav obstruction
+PASS 360/a12-packets no JavaScript errors
+PASS 360/a14-tcp supplied 1672x941 art loaded
+PASS 360/a14-tcp default dark, draft, no pending placeholder
+PASS 360/a14-tcp image centered in lesson body and aligned with hook
+PASS 360/a14-tcp subject bounds and ink center within 5%
+PASS 360/a14-tcp original aspect ratio, no crop, offset or filter
+PASS 360/a14-tcp full art visible, no horizontal overflow or bottom-nav obstruction
+PASS 360/a14-tcp no JavaScript errors
+110 checks, 0 failures

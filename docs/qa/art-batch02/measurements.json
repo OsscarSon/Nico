@@ -1,0 +1,872 @@
+[
+  {
+    "id": "a07-os",
+    "width": 1440,
+    "image": {
+      "x": 272,
+      "y": 255.59375,
+      "width": 612,
+      "height": 345.296875,
+      "right": 884,
+      "bottom": 600.890625,
+      "center": 578
+    },
+    "body": {
+      "x": 272,
+      "y": 255.59375,
+      "width": 612,
+      "height": 513.296875,
+      "right": 884,
+      "bottom": 768.890625,
+      "center": 578
+    },
+    "hook": {
+      "x": 272,
+      "y": 616.890625,
+      "width": 612,
+      "height": 152,
+      "right": 884,
+      "bottom": 768.890625,
+      "center": 578
+    },
+    "natural": [
+      1672,
+      941
+    ],
+    "file": "lesson-a07-os.png",
+    "theme": "dark",
+    "css": {
+      "display": "block",
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "transform": "none",
+      "position": "static",
+      "filter": "none",
+      "clipPath": "none"
+    },
+    "subject": {
+      "leftMargin": 370,
+      "rightMargin": 371,
+      "boundsCenterErrorPct": 0.029904306220095694,
+      "inkCenterErrorPct": 4.334966925362113
+    },
+    "overflow": false,
+    "viewport": {
+      "width": 1440,
+      "height": 1000,
+      "contentBottom": 1000
+    }
+  },
+  {
+    "id": "a08-command-line",
+    "width": 1440,
+    "image": {
+      "x": 272,
+      "y": 255.59375,
+      "width": 612,
+      "height": 345.296875,
+      "right": 884,
+      "bottom": 600.890625,
+      "center": 578
+    },
+    "body": {
+      "x": 272,
+      "y": 255.59375,
+      "width": 612,
+      "height": 513.296875,
+      "right": 884,
+      "bottom": 768.890625,
+      "center": 578
+    },
+    "hook": {
+      "x": 272,
+      "y": 616.890625,
+      "width": 612,
+      "height": 152,
+      "right": 884,
+      "bottom": 768.890625,
+      "center": 578
+    },
+    "natural": [
+      1672,
+      941
+    ],
+    "file": "lesson-a08-command-line.png",
+    "theme": "dark",
+    "css": {
+      "display": "block",
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "transform": "none",
+      "position": "static",
+      "filter": "none",
+      "clipPath": "none"
+    },
+    "subject": {
+      "leftMargin": 405,
+      "rightMargin": 407,
+      "boundsCenterErrorPct": 0.05980861244019139,
+      "inkCenterErrorPct": 4.430131258685647
+    },
+    "overflow": false,
+    "viewport": {
+      "width": 1440,
+      "height": 1000,
+      "contentBottom": 1000
+    }
+  },
+  {
+    "id": "a11-devices",
+    "width": 1440,
+    "image": {
+      "x": 272,
+      "y": 255.59375,
+      "width": 612,
+      "height": 345.296875,
+      "right": 884,
+      "bottom": 600.890625,
+      "center": 578
+    },
+    "body": {
+      "x": 272,
+      "y": 255.59375,
+      "width": 612,
+      "height": 513.296875,
+      "right": 884,
+      "bottom": 768.890625,
+      "center": 578
+    },
+    "hook": {
+      "x": 272,
+      "y": 616.890625,
+      "width": 612,
+      "height": 152,
+      "right": 884,
+      "bottom": 768.890625,
+      "center": 578
+    },
+    "natural": [
+      1672,
+      941
+    ],
+    "file": "lesson-a11-devices.png",
+    "theme": "dark",
+    "css": {
+      "display": "block",
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "transform": "none",
+      "position": "static",
+      "filter": "none",
+      "clipPath": "none"
+    },
+    "subject": {
+      "leftMargin": 363,
+      "rightMargin": 361,
+      "boundsCenterErrorPct": 0.05980861244019139,
+      "inkCenterErrorPct": 0.04382808451839211
+    },
+    "overflow": false,
+    "viewport": {
+      "width": 1440,
+      "height": 1000,
+      "contentBottom": 1000
+    }
+  },
+  {
+    "id": "a12-packets",
+    "width": 1440,
+    "image": {
+      "x": 272,
+      "y": 255.59375,
+      "width": 612,
+      "height": 345.296875,
+      "right": 884,
+      "bottom": 600.890625,
+      "center": 578
+    },
+    "body": {
+      "x": 272,
+      "y": 255.59375,
+      "width": 612,
+      "height": 547.296875,
+      "right": 884,
+      "bottom": 802.890625,
+      "center": 578
+    },
+    "hook": {
+      "x": 272,
+      "y": 616.890625,
+      "width": 612,
+      "height": 186,
+      "right": 884,
+      "bottom": 802.890625,
+      "center": 578
+    },
+    "natural": [
+      1672,
+      941
+    ],
+    "file": "lesson-a12-packets-centered-batch02.png",
+    "theme": "dark",
+    "css": {
+      "display": "block",
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "transform": "none",
+      "position": "static",
+      "filter": "none",
+      "clipPath": "none"
+    },
+    "subject": {
+      "leftMargin": 454,
+      "rightMargin": 441,
+      "boundsCenterErrorPct": 0.388755980861244,
+      "inkCenterErrorPct": 0.17129413185960568
+    },
+    "overflow": false,
+    "viewport": {
+      "width": 1440,
+      "height": 1000,
+      "contentBottom": 1000
+    }
+  },
+  {
+    "id": "a14-tcp",
+    "width": 1440,
+    "image": {
+      "x": 272,
+      "y": 255.59375,
+      "width": 612,
+      "height": 345.296875,
+      "right": 884,
+      "bottom": 600.890625,
+      "center": 578
+    },
+    "body": {
+      "x": 272,
+      "y": 255.59375,
+      "width": 612,
+      "height": 547.296875,
+      "right": 884,
+      "bottom": 802.890625,
+      "center": 578
+    },
+    "hook": {
+      "x": 272,
+      "y": 616.890625,
+      "width": 612,
+      "height": 186,
+      "right": 884,
+      "bottom": 802.890625,
+      "center": 578
+    },
+    "natural": [
+      1672,
+      941
+    ],
+    "file": "lesson-a14-tcp.png",
+    "theme": "dark",
+    "css": {
+      "display": "block",
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "transform": "none",
+      "position": "static",
+      "filter": "none",
+      "clipPath": "none"
+    },
+    "subject": {
+      "leftMargin": 429,
+      "rightMargin": 442,
+      "boundsCenterErrorPct": 0.388755980861244,
+      "inkCenterErrorPct": 0.21114138044278447
+    },
+    "overflow": false,
+    "viewport": {
+      "width": 1440,
+      "height": 1000,
+      "contentBottom": 1000
+    }
+  },
+  {
+    "id": "a07-os",
+    "width": 390,
+    "image": {
+      "x": 16,
+      "y": 270.59375,
+      "width": 358,
+      "height": 202.34375,
+      "right": 374,
+      "bottom": 472.9375,
+      "center": 195
+    },
+    "body": {
+      "x": 16,
+      "y": 270.59375,
+      "width": 358,
+      "height": 404.34375,
+      "right": 374,
+      "bottom": 674.9375,
+      "center": 195
+    },
+    "hook": {
+      "x": 16,
+      "y": 488.9375,
+      "width": 358,
+      "height": 186,
+      "right": 374,
+      "bottom": 674.9375,
+      "center": 195
+    },
+    "natural": [
+      1672,
+      941
+    ],
+    "file": "lesson-a07-os.png",
+    "theme": "dark",
+    "css": {
+      "display": "block",
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "transform": "none",
+      "position": "static",
+      "filter": "none",
+      "clipPath": "none"
+    },
+    "subject": {
+      "leftMargin": 370,
+      "rightMargin": 371,
+      "boundsCenterErrorPct": 0.029904306220095694,
+      "inkCenterErrorPct": 4.334966925362113
+    },
+    "overflow": false,
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "contentBottom": 782.609375
+    }
+  },
+  {
+    "id": "a08-command-line",
+    "width": 390,
+    "image": {
+      "x": 16,
+      "y": 270.59375,
+      "width": 358,
+      "height": 202.34375,
+      "right": 374,
+      "bottom": 472.9375,
+      "center": 195
+    },
+    "body": {
+      "x": 16,
+      "y": 270.59375,
+      "width": 358,
+      "height": 438.34375,
+      "right": 374,
+      "bottom": 708.9375,
+      "center": 195
+    },
+    "hook": {
+      "x": 16,
+      "y": 488.9375,
+      "width": 358,
+      "height": 220,
+      "right": 374,
+      "bottom": 708.9375,
+      "center": 195
+    },
+    "natural": [
+      1672,
+      941
+    ],
+    "file": "lesson-a08-command-line.png",
+    "theme": "dark",
+    "css": {
+      "display": "block",
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "transform": "none",
+      "position": "static",
+      "filter": "none",
+      "clipPath": "none"
+    },
+    "subject": {
+      "leftMargin": 405,
+      "rightMargin": 407,
+      "boundsCenterErrorPct": 0.05980861244019139,
+      "inkCenterErrorPct": 4.430131258685647
+    },
+    "overflow": false,
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "contentBottom": 782.609375
+    }
+  },
+  {
+    "id": "a11-devices",
+    "width": 390,
+    "image": {
+      "x": 16,
+      "y": 270.59375,
+      "width": 358,
+      "height": 202.34375,
+      "right": 374,
+      "bottom": 472.9375,
+      "center": 195
+    },
+    "body": {
+      "x": 16,
+      "y": 270.59375,
+      "width": 358,
+      "height": 472.34375,
+      "right": 374,
+      "bottom": 742.9375,
+      "center": 195
+    },
+    "hook": {
+      "x": 16,
+      "y": 488.9375,
+      "width": 358,
+      "height": 254,
+      "right": 374,
+      "bottom": 742.9375,
+      "center": 195
+    },
+    "natural": [
+      1672,
+      941
+    ],
+    "file": "lesson-a11-devices.png",
+    "theme": "dark",
+    "css": {
+      "display": "block",
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "transform": "none",
+      "position": "static",
+      "filter": "none",
+      "clipPath": "none"
+    },
+    "subject": {
+      "leftMargin": 363,
+      "rightMargin": 361,
+      "boundsCenterErrorPct": 0.05980861244019139,
+      "inkCenterErrorPct": 0.04382808451839211
+    },
+    "overflow": false,
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "contentBottom": 782.609375
+    }
+  },
+  {
+    "id": "a12-packets",
+    "width": 390,
+    "image": {
+      "x": 16,
+      "y": 270.59375,
+      "width": 358,
+      "height": 202.34375,
+      "right": 374,
+      "bottom": 472.9375,
+      "center": 195
+    },
+    "body": {
+      "x": 16,
+      "y": 270.59375,
+      "width": 358,
+      "height": 506.34375,
+      "right": 374,
+      "bottom": 776.9375,
+      "center": 195
+    },
+    "hook": {
+      "x": 16,
+      "y": 488.9375,
+      "width": 358,
+      "height": 288,
+      "right": 374,
+      "bottom": 776.9375,
+      "center": 195
+    },
+    "natural": [
+      1672,
+      941
+    ],
+    "file": "lesson-a12-packets-centered-batch02.png",
+    "theme": "dark",
+    "css": {
+      "display": "block",
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "transform": "none",
+      "position": "static",
+      "filter": "none",
+      "clipPath": "none"
+    },
+    "subject": {
+      "leftMargin": 454,
+      "rightMargin": 441,
+      "boundsCenterErrorPct": 0.388755980861244,
+      "inkCenterErrorPct": 0.17129413185960568
+    },
+    "overflow": false,
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "contentBottom": 782.609375
+    }
+  },
+  {
+    "id": "a14-tcp",
+    "width": 390,
+    "image": {
+      "x": 16,
+      "y": 235.59375,
+      "width": 358,
+      "height": 202.34375,
+      "right": 374,
+      "bottom": 437.9375,
+      "center": 195
+    },
+    "body": {
+      "x": 16,
+      "y": 235.59375,
+      "width": 358,
+      "height": 506.34375,
+      "right": 374,
+      "bottom": 741.9375,
+      "center": 195
+    },
+    "hook": {
+      "x": 16,
+      "y": 453.9375,
+      "width": 358,
+      "height": 288,
+      "right": 374,
+      "bottom": 741.9375,
+      "center": 195
+    },
+    "natural": [
+      1672,
+      941
+    ],
+    "file": "lesson-a14-tcp.png",
+    "theme": "dark",
+    "css": {
+      "display": "block",
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "transform": "none",
+      "position": "static",
+      "filter": "none",
+      "clipPath": "none"
+    },
+    "subject": {
+      "leftMargin": 429,
+      "rightMargin": 442,
+      "boundsCenterErrorPct": 0.388755980861244,
+      "inkCenterErrorPct": 0.21114138044278447
+    },
+    "overflow": false,
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "contentBottom": 782.609375
+    }
+  },
+  {
+    "id": "a07-os",
+    "width": 360,
+    "image": {
+      "x": 16,
+      "y": 270.59375,
+      "width": 328,
+      "height": 185.46875,
+      "right": 344,
+      "bottom": 456.0625,
+      "center": 180
+    },
+    "body": {
+      "x": 16,
+      "y": 270.59375,
+      "width": 328,
+      "height": 421.46875,
+      "right": 344,
+      "bottom": 692.0625,
+      "center": 180
+    },
+    "hook": {
+      "x": 16,
+      "y": 472.0625,
+      "width": 328,
+      "height": 220,
+      "right": 344,
+      "bottom": 692.0625,
+      "center": 180
+    },
+    "natural": [
+      1672,
+      941
+    ],
+    "file": "lesson-a07-os.png",
+    "theme": "dark",
+    "css": {
+      "display": "block",
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "transform": "none",
+      "position": "static",
+      "filter": "none",
+      "clipPath": "none"
+    },
+    "subject": {
+      "leftMargin": 370,
+      "rightMargin": 371,
+      "boundsCenterErrorPct": 0.029904306220095694,
+      "inkCenterErrorPct": 4.334966925362113
+    },
+    "overflow": false,
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "contentBottom": 738.609375
+    }
+  },
+  {
+    "id": "a08-command-line",
+    "width": 360,
+    "image": {
+      "x": 16,
+      "y": 270.59375,
+      "width": 328,
+      "height": 185.46875,
+      "right": 344,
+      "bottom": 456.0625,
+      "center": 180
+    },
+    "body": {
+      "x": 16,
+      "y": 270.59375,
+      "width": 328,
+      "height": 455.46875,
+      "right": 344,
+      "bottom": 726.0625,
+      "center": 180
+    },
+    "hook": {
+      "x": 16,
+      "y": 472.0625,
+      "width": 328,
+      "height": 254,
+      "right": 344,
+      "bottom": 726.0625,
+      "center": 180
+    },
+    "natural": [
+      1672,
+      941
+    ],
+    "file": "lesson-a08-command-line.png",
+    "theme": "dark",
+    "css": {
+      "display": "block",
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "transform": "none",
+      "position": "static",
+      "filter": "none",
+      "clipPath": "none"
+    },
+    "subject": {
+      "leftMargin": 405,
+      "rightMargin": 407,
+      "boundsCenterErrorPct": 0.05980861244019139,
+      "inkCenterErrorPct": 4.430131258685647
+    },
+    "overflow": false,
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "contentBottom": 738.609375
+    }
+  },
+  {
+    "id": "a11-devices",
+    "width": 360,
+    "image": {
+      "x": 16,
+      "y": 270.59375,
+      "width": 328,
+      "height": 185.46875,
+      "right": 344,
+      "bottom": 456.0625,
+      "center": 180
+    },
+    "body": {
+      "x": 16,
+      "y": 270.59375,
+      "width": 328,
+      "height": 489.46875,
+      "right": 344,
+      "bottom": 760.0625,
+      "center": 180
+    },
+    "hook": {
+      "x": 16,
+      "y": 472.0625,
+      "width": 328,
+      "height": 288,
+      "right": 344,
+      "bottom": 760.0625,
+      "center": 180
+    },
+    "natural": [
+      1672,
+      941
+    ],
+    "file": "lesson-a11-devices.png",
+    "theme": "dark",
+    "css": {
+      "display": "block",
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "transform": "none",
+      "position": "static",
+      "filter": "none",
+      "clipPath": "none"
+    },
+    "subject": {
+      "leftMargin": 363,
+      "rightMargin": 361,
+      "boundsCenterErrorPct": 0.05980861244019139,
+      "inkCenterErrorPct": 0.04382808451839211
+    },
+    "overflow": false,
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "contentBottom": 738.609375
+    }
+  },
+  {
+    "id": "a12-packets",
+    "width": 360,
+    "image": {
+      "x": 16,
+      "y": 270.59375,
+      "width": 328,
+      "height": 185.46875,
+      "right": 344,
+      "bottom": 456.0625,
+      "center": 180
+    },
+    "body": {
+      "x": 16,
+      "y": 270.59375,
+      "width": 328,
+      "height": 489.46875,
+      "right": 344,
+      "bottom": 760.0625,
+      "center": 180
+    },
+    "hook": {
+      "x": 16,
+      "y": 472.0625,
+      "width": 328,
+      "height": 288,
+      "right": 344,
+      "bottom": 760.0625,
+      "center": 180
+    },
+    "natural": [
+      1672,
+      941
+    ],
+    "file": "lesson-a12-packets-centered-batch02.png",
+    "theme": "dark",
+    "css": {
+      "display": "block",
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "transform": "none",
+      "position": "static",
+      "filter": "none",
+      "clipPath": "none"
+    },
+    "subject": {
+      "leftMargin": 454,
+      "rightMargin": 441,
+      "boundsCenterErrorPct": 0.388755980861244,
+      "inkCenterErrorPct": 0.17129413185960568
+    },
+    "overflow": false,
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "contentBottom": 738.609375
+    }
+  },
+  {
+    "id": "a14-tcp",
+    "width": 360,
+    "image": {
+      "x": 16,
+      "y": 270.59375,
+      "width": 328,
+      "height": 185.46875,
+      "right": 344,
+      "bottom": 456.0625,
+      "center": 180
+    },
+    "body": {
+      "x": 16,
+      "y": 270.59375,
+      "width": 328,
+      "height": 523.46875,
+      "right": 344,
+      "bottom": 794.0625,
+      "center": 180
+    },
+    "hook": {
+      "x": 16,
+      "y": 472.0625,
+      "width": 328,
+      "height": 322,
+      "right": 344,
+      "bottom": 794.0625,
+      "center": 180
+    },
+    "natural": [
+      1672,
+      941
+    ],
+    "file": "lesson-a14-tcp.png",
+    "theme": "dark",
+    "css": {
+      "display": "block",
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "transform": "none",
+      "position": "static",
+      "filter": "none",
+      "clipPath": "none"
+    },
+    "subject": {
+      "leftMargin": 429,
+      "rightMargin": 442,
+      "boundsCenterErrorPct": 0.388755980861244,
+      "inkCenterErrorPct": 0.21114138044278447
+    },
+    "overflow": false,
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "contentBottom": 738.609375
+    }
+  }
+]
