@@ -1,0 +1,20 @@
+{
+  "checked": "2026-11-17",
+  "candidates": [
+    {
+      "repo": "mswjs/msw",
+      "version": "3.0.6",
+      "license": "MIT",
+      "modified_date": "2026-11-15T01:11:43Z",
+      "url": "https://github.com/mswjs/msw/blob/main/package.json"
+    },
+    {
+      "repo": "isomorphic-git/isomorphic-git",
+      "version": "0.0.0-development",
+      "license": "MIT",
+      "modified_date": "2026-11-09T10:41:45Z",
+      "url": "https://github.com/isomorphic-git/isomorphic-git/blob/main/package.json"
+    }
+  ],
+  "decision": "Reuse existing CodeMirror, React, Acorn/JS sandbox and Git pure functions. No new dependencies or copied candidate code."
+}

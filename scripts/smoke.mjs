@@ -451,7 +451,7 @@ for (const p of ["/paths", "/paths/a", "/paths/c", "/lab", "/projects", "/me", "
   check(`页面非空：${p}`, (await text("main")).length > 20);
 }
 await soon("未知地址显示找不到页面", async () => (await text("main")).includes("找不到这个页面"));
-await page.goto(`${BASE}/#/lesson/b16-github`);
+await page.goto(`${BASE}/#/lesson/b18-project-page`);
 await soon("规划中的课不会显示假内容", async () => (await text("main")).includes("还没有开放"));
 
 // ---- 清除数据需要二次确认 ----

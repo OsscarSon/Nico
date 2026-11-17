@@ -1,0 +1,263 @@
+
+> nico@0.1.0 smoke:p2
+> node scripts/smoke-p2.mjs
+
+PASS 1440/: default dark / content / no horizontal overflow
+PASS 1440/paths: default dark / content / no horizontal overflow
+PASS 1440/paths/a: default dark / content / no horizontal overflow
+PASS 1440/courses: default dark / content / no horizontal overflow
+PASS 1440/lesson/a17-web-journey: default dark / content / no horizontal overflow
+PASS 1440/lab: default dark / content / no horizontal overflow
+PASS 1440/lab/prompt: default dark / content / no horizontal overflow
+PASS 1440/lab/tutor: default dark / content / no horizontal overflow
+PASS 1440/projects: default dark / content / no horizontal overflow
+PASS 1440/me: default dark / content / no horizontal overflow
+PASS 1440/settings: default dark / content / no horizontal overflow
+PASS 1440: named navigation works by keyboard
+PASS 1440: 20 real links, 2 nonlearnable previews, four units
+PASS 1440: A21 planned with its independent art
+PASS 1440: A22 planned with its independent art
+PASS 1440: keyboard collapse keeps focus and URL
+PASS 1440: unit context focuses real summary
+PASS 1440/a15-udp: formal PNG 200, 16:9, contain/center, draft
+PASS 1440/a16-http-https: formal PNG 200, 16:9, contain/center, draft
+PASS 1440/a17-web-journey: formal PNG 200, 16:9, contain/center, draft
+PASS 1440/a18-passwords: formal PNG 200, 16:9, contain/center, draft
+PASS 1440/a19-phishing: formal PNG 200, 16:9, contain/center, draft
+PASS 1440/a20-least-privilege: formal PNG 200, 16:9, contain/center, draft
+PASS 1440: catalog A21 matches planned map and never links to lesson
+PASS 1440: catalog A22 matches planned map and never links to lesson
+PASS 1440: direct planned URL stays unavailable
+PASS 1440: b actual route scope and honest planning
+PASS 1440: c actual route scope and honest planning
+PASS 1440: d actual route scope and honest planning
+PASS 1440: e actual route scope and honest planning
+PASS 1440: f actual route scope and honest planning
+PASS 1440: m actual route scope and honest planning
+PASS 1440/route/dark: actual screenshot and no overflow
+PASS 1440/lesson/dark: actual screenshot and no overflow
+PASS 1440/profile/dark: actual screenshot and no overflow
+PASS 1440/settings/dark: actual screenshot and no overflow
+PASS 1440/route/light: actual screenshot and no overflow
+PASS 1440/lesson/light: actual screenshot and no overflow
+PASS 1440/profile/light: actual screenshot and no overflow
+PASS 1440/settings/light: actual screenshot and no overflow
+PASS 1440: no JavaScript errors
+PASS 1280/: default dark / content / no horizontal overflow
+PASS 1280/paths: default dark / content / no horizontal overflow
+PASS 1280/paths/a: default dark / content / no horizontal overflow
+PASS 1280/courses: default dark / content / no horizontal overflow
+PASS 1280/lesson/a17-web-journey: default dark / content / no horizontal overflow
+PASS 1280/lab: default dark / content / no horizontal overflow
+PASS 1280/lab/prompt: default dark / content / no horizontal overflow
+PASS 1280/lab/tutor: default dark / content / no horizontal overflow
+PASS 1280/projects: default dark / content / no horizontal overflow
+PASS 1280/me: default dark / content / no horizontal overflow
+PASS 1280/settings: default dark / content / no horizontal overflow
+PASS 1280: named navigation works by keyboard
+PASS 1280: 20 real links, 2 nonlearnable previews, four units
+PASS 1280: A21 planned with its independent art
+PASS 1280: A22 planned with its independent art
+PASS 1280: keyboard collapse keeps focus and URL
+PASS 1280: unit context focuses real summary
+PASS 1280/a15-udp: formal PNG 200, 16:9, contain/center, draft
+PASS 1280/a16-http-https: formal PNG 200, 16:9, contain/center, draft
+PASS 1280/a17-web-journey: formal PNG 200, 16:9, contain/center, draft
+PASS 1280/a18-passwords: formal PNG 200, 16:9, contain/center, draft
+PASS 1280/a19-phishing: formal PNG 200, 16:9, contain/center, draft
+PASS 1280/a20-least-privilege: formal PNG 200, 16:9, contain/center, draft
+PASS 1280: catalog A21 matches planned map and never links to lesson
+PASS 1280: catalog A22 matches planned map and never links to lesson
+PASS 1280: direct planned URL stays unavailable
+PASS 1280: b actual route scope and honest planning
+PASS 1280: c actual route scope and honest planning
+PASS 1280: d actual route scope and honest planning
+PASS 1280: e actual route scope and honest planning
+PASS 1280: f actual route scope and honest planning
+PASS 1280: m actual route scope and honest planning
+PASS 1280: no JavaScript errors
+PASS 1024/: default dark / content / no horizontal overflow
+PASS 1024/paths: default dark / content / no horizontal overflow
+PASS 1024/paths/a: default dark / content / no horizontal overflow
+PASS 1024/courses: default dark / content / no horizontal overflow
+PASS 1024/lesson/a17-web-journey: default dark / content / no horizontal overflow
+PASS 1024/lab: default dark / content / no horizontal overflow
+PASS 1024/lab/prompt: default dark / content / no horizontal overflow
+PASS 1024/lab/tutor: default dark / content / no horizontal overflow
+PASS 1024/projects: default dark / content / no horizontal overflow
+PASS 1024/me: default dark / content / no horizontal overflow
+PASS 1024/settings: default dark / content / no horizontal overflow
+PASS 1024: named navigation works by keyboard
+PASS 1024: 20 real links, 2 nonlearnable previews, four units
+PASS 1024: A21 planned with its independent art
+PASS 1024: A22 planned with its independent art
+PASS 1024: keyboard collapse keeps focus and URL
+PASS 1024: unit context focuses real summary
+PASS 1024/a15-udp: formal PNG 200, 16:9, contain/center, draft
+PASS 1024/a16-http-https: formal PNG 200, 16:9, contain/center, draft
+PASS 1024/a17-web-journey: formal PNG 200, 16:9, contain/center, draft
+PASS 1024/a18-passwords: formal PNG 200, 16:9, contain/center, draft
+PASS 1024/a19-phishing: formal PNG 200, 16:9, contain/center, draft
+PASS 1024/a20-least-privilege: formal PNG 200, 16:9, contain/center, draft
+PASS 1024: catalog A21 matches planned map and never links to lesson
+PASS 1024: catalog A22 matches planned map and never links to lesson
+PASS 1024: direct planned URL stays unavailable
+PASS 1024: b actual route scope and honest planning
+PASS 1024: c actual route scope and honest planning
+PASS 1024: d actual route scope and honest planning
+PASS 1024: e actual route scope and honest planning
+PASS 1024: f actual route scope and honest planning
+PASS 1024: m actual route scope and honest planning
+PASS 1024: no JavaScript errors
+PASS 768/: default dark / content / no horizontal overflow
+PASS 768/paths: default dark / content / no horizontal overflow
+PASS 768/paths/a: default dark / content / no horizontal overflow
+PASS 768/courses: default dark / content / no horizontal overflow
+PASS 768/lesson/a17-web-journey: default dark / content / no horizontal overflow
+PASS 768/lab: default dark / content / no horizontal overflow
+PASS 768/lab/prompt: default dark / content / no horizontal overflow
+PASS 768/lab/tutor: default dark / content / no horizontal overflow
+PASS 768/projects: default dark / content / no horizontal overflow
+PASS 768/me: default dark / content / no horizontal overflow
+PASS 768/settings: default dark / content / no horizontal overflow
+PASS 768: named navigation works by keyboard
+PASS 768: 20 real links, 2 nonlearnable previews, four units
+PASS 768: A21 planned with its independent art
+PASS 768: A22 planned with its independent art
+PASS 768: keyboard collapse keeps focus and URL
+PASS 768: unit context focuses real summary
+PASS 768/a15-udp: formal PNG 200, 16:9, contain/center, draft
+PASS 768/a16-http-https: formal PNG 200, 16:9, contain/center, draft
+PASS 768/a17-web-journey: formal PNG 200, 16:9, contain/center, draft
+PASS 768/a18-passwords: formal PNG 200, 16:9, contain/center, draft
+PASS 768/a19-phishing: formal PNG 200, 16:9, contain/center, draft
+PASS 768/a20-least-privilege: formal PNG 200, 16:9, contain/center, draft
+PASS 768: catalog A21 matches planned map and never links to lesson
+PASS 768: catalog A22 matches planned map and never links to lesson
+PASS 768: direct planned URL stays unavailable
+PASS 768: b actual route scope and honest planning
+PASS 768: c actual route scope and honest planning
+PASS 768: d actual route scope and honest planning
+PASS 768: e actual route scope and honest planning
+PASS 768: f actual route scope and honest planning
+PASS 768: m actual route scope and honest planning
+PASS 768: no JavaScript errors
+PASS 390/: default dark / content / no horizontal overflow
+PASS 390/paths: default dark / content / no horizontal overflow
+PASS 390/paths/a: default dark / content / no horizontal overflow
+PASS 390/courses: default dark / content / no horizontal overflow
+PASS 390/lesson/a17-web-journey: default dark / content / no horizontal overflow
+PASS 390/lab: default dark / content / no horizontal overflow
+PASS 390/lab/prompt: default dark / content / no horizontal overflow
+PASS 390/lab/tutor: default dark / content / no horizontal overflow
+PASS 390/projects: default dark / content / no horizontal overflow
+PASS 390/me: default dark / content / no horizontal overflow
+PASS 390/settings: default dark / content / no horizontal overflow
+PASS 390: named navigation works by keyboard
+PASS 390: 20 real links, 2 nonlearnable previews, four units
+PASS 390: A21 planned with its independent art
+PASS 390: A22 planned with its independent art
+PASS 390: keyboard collapse keeps focus and URL
+PASS 390: unit context focuses real summary
+PASS 390/a15-udp: formal PNG 200, 16:9, contain/center, draft
+PASS 390/a16-http-https: formal PNG 200, 16:9, contain/center, draft
+PASS 390/a17-web-journey: formal PNG 200, 16:9, contain/center, draft
+PASS 390/a18-passwords: formal PNG 200, 16:9, contain/center, draft
+PASS 390/a19-phishing: formal PNG 200, 16:9, contain/center, draft
+PASS 390/a20-least-privilege: formal PNG 200, 16:9, contain/center, draft
+PASS 390: catalog A21 matches planned map and never links to lesson
+PASS 390: catalog A22 matches planned map and never links to lesson
+PASS 390: direct planned URL stays unavailable
+PASS 390: b actual route scope and honest planning
+PASS 390: c actual route scope and honest planning
+PASS 390: d actual route scope and honest planning
+PASS 390: e actual route scope and honest planning
+PASS 390: f actual route scope and honest planning
+PASS 390: m actual route scope and honest planning
+PASS 390/route/dark: actual screenshot and no overflow
+PASS 390/lesson/dark: actual screenshot and no overflow
+PASS 390/profile/dark: actual screenshot and no overflow
+PASS 390/settings/dark: actual screenshot and no overflow
+PASS 390/route/light: actual screenshot and no overflow
+PASS 390/lesson/light: actual screenshot and no overflow
+PASS 390/profile/light: actual screenshot and no overflow
+PASS 390/settings/light: actual screenshot and no overflow
+PASS 390: no JavaScript errors
+PASS 360/: default dark / content / no horizontal overflow
+PASS 360/paths: default dark / content / no horizontal overflow
+PASS 360/paths/a: default dark / content / no horizontal overflow
+PASS 360/courses: default dark / content / no horizontal overflow
+PASS 360/lesson/a17-web-journey: default dark / content / no horizontal overflow
+PASS 360/lab: default dark / content / no horizontal overflow
+PASS 360/lab/prompt: default dark / content / no horizontal overflow
+PASS 360/lab/tutor: default dark / content / no horizontal overflow
+PASS 360/projects: default dark / content / no horizontal overflow
+PASS 360/me: default dark / content / no horizontal overflow
+PASS 360/settings: default dark / content / no horizontal overflow
+PASS 360: named navigation works by keyboard
+PASS 360: 20 real links, 2 nonlearnable previews, four units
+PASS 360: A21 planned with its independent art
+PASS 360: A22 planned with its independent art
+PASS 360: keyboard collapse keeps focus and URL
+PASS 360: unit context focuses real summary
+PASS 360/a15-udp: formal PNG 200, 16:9, contain/center, draft
+PASS 360/a16-http-https: formal PNG 200, 16:9, contain/center, draft
+PASS 360/a17-web-journey: formal PNG 200, 16:9, contain/center, draft
+PASS 360/a18-passwords: formal PNG 200, 16:9, contain/center, draft
+PASS 360/a19-phishing: formal PNG 200, 16:9, contain/center, draft
+PASS 360/a20-least-privilege: formal PNG 200, 16:9, contain/center, draft
+PASS 360: catalog A21 matches planned map and never links to lesson
+PASS 360: catalog A22 matches planned map and never links to lesson
+PASS 360: direct planned URL stays unavailable
+PASS 360: b actual route scope and honest planning
+PASS 360: c actual route scope and honest planning
+PASS 360: d actual route scope and honest planning
+PASS 360: e actual route scope and honest planning
+PASS 360: f actual route scope and honest planning
+PASS 360: m actual route scope and honest planning
+PASS 360: no JavaScript errors
+PASS system preference resolves light
+PASS system preference reacts to OS change
+PASS system choice persists
+PASS explicit dark ignores OS
+PASS large font actual CSS effect
+PASS compact density has actual CSS effect
+PASS normal motion has an actual preview transition
+PASS reduced motion actually removes transitions
+PASS nickname validation blocks invalid save
+PASS nickname and preferred path persist
+PASS profile has real nickname and zero completed, no invented level
+PASS reduced-motion badge navigation jumps without smooth scrolling and keeps target focus
+PASS preferred path changes actual next lesson
+PASS unaddressed visit respects landing
+PASS explicit home stays home
+PASS planned preference hides map previews only
+PASS same planned preference hides catalog previews
+PASS AI shortcut visibility has real effect, local prompt remains
+PASS hiding shortcuts does not fabricate disconnection
+PASS preferences/profile browsing never writes progress
+PASS invalid import rejected without writes
+PASS valid import staged without writes
+PASS import cancel preserves all records
+PASS confirm actually merges resume under schema v1
+PASS resume recommendation uses stored unfinished lesson
+PASS turning home resume off uses preferred next lesson
+PASS home preference leaves actual lesson resume intact
+PASS export contains exact real progress, no profile
+PASS clear cancel preserves byte-identical record
+PASS clear success removes only progress, preserves preferences
+PASS profile clear cancel preserves nickname
+PASS profile clear leaves progress and appearance alone
+PASS cross-tab preference change updates current view
+PASS settings flows no JS errors or mobile overflow
+PASS 360 large font /: readable without page overflow
+PASS 360 large font /paths/a: readable without page overflow
+PASS 360 large font /courses: readable without page overflow
+PASS 360 large font /lesson/a16-http-https: readable without page overflow
+PASS 360 large font /lab: readable without page overflow
+PASS 360 large font /lab/prompt: readable without page overflow
+PASS 360 large font /me: readable without page overflow
+PASS 360 large font /settings: readable without page overflow
+PASS unsupported preference version is backed up before a user writes new choices
+PASS blocked storage remains usable and honest
+P2: 258/258 passed; 0 failures; 16 main after screenshots + 2 planned-node details.

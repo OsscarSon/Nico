@@ -1,0 +1,281 @@
+
+> nico@0.1.0 smoke:p3a
+> node scripts/smoke-p3a.mjs
+
+PASS 1440/b13-fetch-json: draft, formal art placeholder, preserved dark
+PASS 1440/b13-fetch-json: explicit simulated lab
+PASS 1440/B13: free POST JSON creates a different real response
+PASS 1440/b13-fetch-json: new challenge instance starts locked
+PASS 1440/B13/1: no-op cannot advance
+PASS 1440/B13/1: failure actually observed
+PASS 1440/B13/1: page displays actual returned value
+PASS 1440/B13/1: no overflow
+PASS 1440/B13/1: real state passes
+PASS 1440/B13/2: no-op cannot advance
+PASS 1440/B13/2: failure actually observed
+PASS 1440/B13/2: page displays actual returned value
+PASS 1440/B13/2: no overflow
+PASS 1440/B13/2: real state passes
+PASS 1440/B13/3: no-op cannot advance
+PASS 1440/B13/3: failure actually observed
+PASS 1440/B13/3: page displays actual returned value
+PASS 1440/B13/3: no overflow
+PASS 1440/B13/3: real state passes
+PASS 1440/B13/4: no-op cannot advance
+PASS 1440/B13/4: failure actually observed
+PASS 1440/B13/4: page displays actual returned value
+PASS 1440/B13/4: no overflow
+PASS 1440/B13/4: real state passes
+PASS 1440/b13-fetch-json: operations unlock next
+PASS 1440/b13-fetch-json/quiz0: targeted wrong feedback
+PASS 1440/b13-fetch-json/quiz1: targeted wrong feedback
+PASS 1440/b13-fetch-json/quiz2: targeted wrong feedback
+PASS 1440/b13-fetch-json: transfer wrong remains locked
+PASS 1440/b13-fetch-json: original v1 records actual completion and four assessments
+PASS 1440/b13-fetch-json: completion persists after reload
+PASS 1440/b16-github: draft, formal art placeholder, preserved dark
+PASS 1440/b16-github: explicit simulated lab
+PASS 1440/B16: free clone creates a local repository
+PASS 1440/b16-github: new challenge instance starts locked
+PASS 1440/B16: no-op cannot advance
+PASS 1440/B16: no staged changes cannot commit
+PASS 1440/B16: local commit has not updated remote
+PASS 1440/B16: unpublished branch cannot open PR
+PASS 1440/B16: review needs current diff inspection
+PASS 1440/B16: genuine divergent files block remote merge
+PASS 1440/B16: local conflict shows base and both actual versions
+PASS 1440/B16: unresolved markers rejected
+PASS 1440/B16: new push invalidates old approval
+PASS 1440/B16: remote merge alone cannot complete local sync
+PASS 1440/B16: both contributions really present locally
+PASS 1440/B16: no overflow
+PASS 1440/B16: real state passes
+PASS 1440/b16-github: operations unlock next
+PASS 1440/b16-github/quiz0: targeted wrong feedback
+PASS 1440/b16-github/quiz1: targeted wrong feedback
+PASS 1440/b16-github/quiz2: targeted wrong feedback
+PASS 1440/b16-github: transfer wrong remains locked
+PASS 1440/b16-github: original v1 records actual completion and four assessments
+PASS 1440/b16-github: completion persists after reload
+PASS 1440/b17-pages: draft, formal art placeholder, preserved dark
+PASS 1440/b17-pages: explicit simulated lab
+PASS 1440/B17: free wrong-dir publish has genuine404
+PASS 1440/b17-pages: new challenge instance starts locked
+PASS 1440/B17/1: no-op cannot advance
+PASS 1440/B17/1: no output cannot deploy
+PASS 1440/B17/1: actual page/asset 404
+PASS 1440/B17/1: page, CSS and JS actually 200
+PASS 1440/B17/1: published JS and CSS actually executed
+PASS 1440/B17/1: no overflow
+PASS 1440/B17/1: real state passes
+PASS 1440/B17/2: no-op cannot advance
+PASS 1440/B17/2: no output cannot deploy
+PASS 1440/B17/2: actual page/asset 404
+PASS 1440/B17/2: page, CSS and JS actually 200
+PASS 1440/B17/2: published JS and CSS actually executed
+PASS 1440/B17/2: editing source invalidates challenge but cannot change live snapshot
+PASS 1440/B17/2: old deployed JS still works until a new deployment
+PASS 1440/B17/2: newly published JS error truthfully fails
+PASS 1440/B17/2: no overflow
+PASS 1440/B17/2: real state passes
+PASS 1440/B17/3: no-op cannot advance
+PASS 1440/B17/3: no output cannot deploy
+PASS 1440/B17/3: actual page/asset 404
+PASS 1440/B17/3: page, CSS and JS actually 200
+PASS 1440/B17/3: published JS and CSS actually executed
+PASS 1440/B17/3: no overflow
+PASS 1440/B17/3: real state passes
+PASS 1440/b17-pages: operations unlock next
+PASS 1440/b17-pages/quiz0: targeted wrong feedback
+PASS 1440/b17-pages/quiz1: targeted wrong feedback
+PASS 1440/b17-pages/quiz2: targeted wrong feedback
+PASS 1440/b17-pages: transfer wrong remains locked
+PASS 1440/b17-pages: original v1 records actual completion and four assessments
+PASS 1440/b17-pages: completion persists after reload
+PASS 1440: no fake remote API, GitHub or deployment requests
+PASS 1440: no uncaught JavaScript errors
+PASS 390/b13-fetch-json: draft, formal art placeholder, preserved dark
+PASS 390/b13-fetch-json: explicit simulated lab
+PASS 390/B13: free POST JSON creates a different real response
+PASS 390/b13-fetch-json: new challenge instance starts locked
+PASS 390/B13/1: no-op cannot advance
+PASS 390/B13/1: failure actually observed
+PASS 390/B13/1: page displays actual returned value
+PASS 390/B13/1: no overflow
+PASS 390/B13/1: real state passes
+PASS 390/B13/2: no-op cannot advance
+PASS 390/B13/2: failure actually observed
+PASS 390/B13/2: page displays actual returned value
+PASS 390/B13/2: no overflow
+PASS 390/B13/2: real state passes
+PASS 390/B13/3: no-op cannot advance
+PASS 390/B13/3: failure actually observed
+PASS 390/B13/3: page displays actual returned value
+PASS 390/B13/3: no overflow
+PASS 390/B13/3: real state passes
+PASS 390/B13/4: no-op cannot advance
+PASS 390/B13/4: failure actually observed
+PASS 390/B13/4: page displays actual returned value
+PASS 390/B13/4: no overflow
+PASS 390/B13/4: real state passes
+PASS 390/b13-fetch-json: operations unlock next
+PASS 390/b13-fetch-json/quiz0: targeted wrong feedback
+PASS 390/b13-fetch-json/quiz1: targeted wrong feedback
+PASS 390/b13-fetch-json/quiz2: targeted wrong feedback
+PASS 390/b13-fetch-json: transfer wrong remains locked
+PASS 390/b13-fetch-json: original v1 records actual completion and four assessments
+PASS 390/b13-fetch-json: completion persists after reload
+PASS 390/b16-github: draft, formal art placeholder, preserved dark
+PASS 390/b16-github: explicit simulated lab
+PASS 390/B16: free clone creates a local repository
+PASS 390/b16-github: new challenge instance starts locked
+PASS 390/B16: no-op cannot advance
+PASS 390/B16: no staged changes cannot commit
+PASS 390/B16: local commit has not updated remote
+PASS 390/B16: unpublished branch cannot open PR
+PASS 390/B16: review needs current diff inspection
+PASS 390/B16: genuine divergent files block remote merge
+PASS 390/B16: local conflict shows base and both actual versions
+PASS 390/B16: unresolved markers rejected
+PASS 390/B16: new push invalidates old approval
+PASS 390/B16: remote merge alone cannot complete local sync
+PASS 390/B16: both contributions really present locally
+PASS 390/B16: no overflow
+PASS 390/B16: real state passes
+PASS 390/b16-github: operations unlock next
+PASS 390/b16-github/quiz0: targeted wrong feedback
+PASS 390/b16-github/quiz1: targeted wrong feedback
+PASS 390/b16-github/quiz2: targeted wrong feedback
+PASS 390/b16-github: transfer wrong remains locked
+PASS 390/b16-github: original v1 records actual completion and four assessments
+PASS 390/b16-github: completion persists after reload
+PASS 390/b17-pages: draft, formal art placeholder, preserved dark
+PASS 390/b17-pages: explicit simulated lab
+PASS 390/B17: free wrong-dir publish has genuine404
+PASS 390/b17-pages: new challenge instance starts locked
+PASS 390/B17/1: no-op cannot advance
+PASS 390/B17/1: no output cannot deploy
+PASS 390/B17/1: actual page/asset 404
+PASS 390/B17/1: page, CSS and JS actually 200
+PASS 390/B17/1: published JS and CSS actually executed
+PASS 390/B17/1: no overflow
+PASS 390/B17/1: real state passes
+PASS 390/B17/2: no-op cannot advance
+PASS 390/B17/2: no output cannot deploy
+PASS 390/B17/2: actual page/asset 404
+PASS 390/B17/2: page, CSS and JS actually 200
+PASS 390/B17/2: published JS and CSS actually executed
+PASS 390/B17/2: editing source invalidates challenge but cannot change live snapshot
+PASS 390/B17/2: old deployed JS still works until a new deployment
+PASS 390/B17/2: newly published JS error truthfully fails
+PASS 390/B17/2: no overflow
+PASS 390/B17/2: real state passes
+PASS 390/B17/3: no-op cannot advance
+PASS 390/B17/3: no output cannot deploy
+PASS 390/B17/3: actual page/asset 404
+PASS 390/B17/3: page, CSS and JS actually 200
+PASS 390/B17/3: published JS and CSS actually executed
+PASS 390/B17/3: no overflow
+PASS 390/B17/3: real state passes
+PASS 390/b17-pages: operations unlock next
+PASS 390/b17-pages/quiz0: targeted wrong feedback
+PASS 390/b17-pages/quiz1: targeted wrong feedback
+PASS 390/b17-pages/quiz2: targeted wrong feedback
+PASS 390/b17-pages: transfer wrong remains locked
+PASS 390/b17-pages: original v1 records actual completion and four assessments
+PASS 390/b17-pages: completion persists after reload
+PASS 390: no fake remote API, GitHub or deployment requests
+PASS 390: no uncaught JavaScript errors
+PASS 360/b13-fetch-json: draft, formal art placeholder, preserved dark
+PASS 360/b13-fetch-json: explicit simulated lab
+PASS 360/B13: free POST JSON creates a different real response
+PASS 360/b13-fetch-json: new challenge instance starts locked
+PASS 360/B13/1: no-op cannot advance
+PASS 360/B13/1: failure actually observed
+PASS 360/B13/1: page displays actual returned value
+PASS 360/B13/1: no overflow
+PASS 360/B13/1: real state passes
+PASS 360/B13/2: no-op cannot advance
+PASS 360/B13/2: failure actually observed
+PASS 360/B13/2: page displays actual returned value
+PASS 360/B13/2: no overflow
+PASS 360/B13/2: real state passes
+PASS 360/B13/3: no-op cannot advance
+PASS 360/B13/3: failure actually observed
+PASS 360/B13/3: page displays actual returned value
+PASS 360/B13/3: no overflow
+PASS 360/B13/3: real state passes
+PASS 360/B13/4: no-op cannot advance
+PASS 360/B13/4: failure actually observed
+PASS 360/B13/4: page displays actual returned value
+PASS 360/B13/4: no overflow
+PASS 360/B13/4: real state passes
+PASS 360/b13-fetch-json: operations unlock next
+PASS 360/b13-fetch-json/quiz0: targeted wrong feedback
+PASS 360/b13-fetch-json/quiz1: targeted wrong feedback
+PASS 360/b13-fetch-json/quiz2: targeted wrong feedback
+PASS 360/b13-fetch-json: transfer wrong remains locked
+PASS 360/b13-fetch-json: original v1 records actual completion and four assessments
+PASS 360/b13-fetch-json: completion persists after reload
+PASS 360/b16-github: draft, formal art placeholder, preserved dark
+PASS 360/b16-github: explicit simulated lab
+PASS 360/B16: free clone creates a local repository
+PASS 360/b16-github: new challenge instance starts locked
+PASS 360/B16: no-op cannot advance
+PASS 360/B16: no staged changes cannot commit
+PASS 360/B16: local commit has not updated remote
+PASS 360/B16: unpublished branch cannot open PR
+PASS 360/B16: review needs current diff inspection
+PASS 360/B16: genuine divergent files block remote merge
+PASS 360/B16: local conflict shows base and both actual versions
+PASS 360/B16: unresolved markers rejected
+PASS 360/B16: new push invalidates old approval
+PASS 360/B16: remote merge alone cannot complete local sync
+PASS 360/B16: both contributions really present locally
+PASS 360/B16: no overflow
+PASS 360/B16: real state passes
+PASS 360/b16-github: operations unlock next
+PASS 360/b16-github/quiz0: targeted wrong feedback
+PASS 360/b16-github/quiz1: targeted wrong feedback
+PASS 360/b16-github/quiz2: targeted wrong feedback
+PASS 360/b16-github: transfer wrong remains locked
+PASS 360/b16-github: original v1 records actual completion and four assessments
+PASS 360/b16-github: completion persists after reload
+PASS 360/b17-pages: draft, formal art placeholder, preserved dark
+PASS 360/b17-pages: explicit simulated lab
+PASS 360/B17: free wrong-dir publish has genuine404
+PASS 360/b17-pages: new challenge instance starts locked
+PASS 360/B17/1: no-op cannot advance
+PASS 360/B17/1: no output cannot deploy
+PASS 360/B17/1: actual page/asset 404
+PASS 360/B17/1: page, CSS and JS actually 200
+PASS 360/B17/1: published JS and CSS actually executed
+PASS 360/B17/1: no overflow
+PASS 360/B17/1: real state passes
+PASS 360/B17/2: no-op cannot advance
+PASS 360/B17/2: no output cannot deploy
+PASS 360/B17/2: actual page/asset 404
+PASS 360/B17/2: page, CSS and JS actually 200
+PASS 360/B17/2: published JS and CSS actually executed
+PASS 360/B17/2: editing source invalidates challenge but cannot change live snapshot
+PASS 360/B17/2: old deployed JS still works until a new deployment
+PASS 360/B17/2: newly published JS error truthfully fails
+PASS 360/B17/2: no overflow
+PASS 360/B17/2: real state passes
+PASS 360/B17/3: no-op cannot advance
+PASS 360/B17/3: no output cannot deploy
+PASS 360/B17/3: actual page/asset 404
+PASS 360/B17/3: page, CSS and JS actually 200
+PASS 360/B17/3: published JS and CSS actually executed
+PASS 360/B17/3: no overflow
+PASS 360/B17/3: real state passes
+PASS 360/b17-pages: operations unlock next
+PASS 360/b17-pages/quiz0: targeted wrong feedback
+PASS 360/b17-pages/quiz1: targeted wrong feedback
+PASS 360/b17-pages/quiz2: targeted wrong feedback
+PASS 360/b17-pages: transfer wrong remains locked
+PASS 360/b17-pages: original v1 records actual completion and four assessments
+PASS 360/b17-pages: completion persists after reload
+PASS 360: no fake remote API, GitHub or deployment requests
+PASS 360: no uncaught JavaScript errors
+P3-A: 276/276 passed; 0 failures; six key screenshots.
