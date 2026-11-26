@@ -1,5 +1,6 @@
 import { trackBUnits, trackBCatalog } from "./track-b-catalog";
 import { trackCUnits, trackCCatalog } from "./track-c-catalog";
+import { trackDCatalog, trackDUnits } from "./track-d";
 export type TrackId = "a" | "b" | "c" | "d" | "e";
 export type CatalogLesson = {
   id: string;
@@ -94,10 +95,10 @@ export const tracks: Track[] = [
     english: "Game Dev",
     art: "track-d-games.png",
     tagline: "从游戏循环到 Unity 的第一个场景。",
-    status: "planned",
+    status: "building",
     plannedSummary: "约 16 课 · 小游戏与 Unity 基础",
-    units: [],
-    lessons: [],
+    units: trackDUnits,
+    lessons: trackDCatalog,
   },
   {
     id: "e",

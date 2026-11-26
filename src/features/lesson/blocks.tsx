@@ -1,3 +1,4 @@
+import { GameCoordinateLab, GameInputLab, GameLoopLab, GameMotionLab } from "../../sims/GameBasics";
 import { FetchLab } from "../../sims/FetchLab";
 import { GithubLab } from "../../sims/GithubLab";
 import { DeploymentLab } from "../../sims/DeploymentLab";
@@ -69,6 +70,10 @@ export function SimBlock({
         {block.sim === "fetch-lab" ? <FetchLab mode={block.mode} onSolved={onDone} />
           : block.sim === "github-lab" ? <GithubLab mode={block.mode} onSolved={onDone} />
           : block.sim === "deployment-lab" ? <DeploymentLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "game-loop" ? <GameLoopLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "game-coordinates" ? <GameCoordinateLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "game-motion" ? <GameMotionLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "game-input" ? <GameInputLab mode={block.mode} onSolved={onDone} />
           : block.sim === "udp" ? <UdpLab mode={block.mode} onSolved={onDone} />
           : block.sim === "http" ? <HttpLab mode={block.mode} onSolved={onDone} />
           : block.sim === "journey" ? <JourneyLab mode={block.mode} onSolved={onDone} />
