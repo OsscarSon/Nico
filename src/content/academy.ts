@@ -22,7 +22,7 @@ export type CourseStatus = Course["status"];
 export const curriculum = z.array(courseSchema).parse(data);
 
 export const stages: { id: Stage; title: string; subtitle: string; note: string }[] = [
-  { id: "Foundation", title: "基础阶段", subtitle: "打好知识基础", note: "当前优先补齐 A / B / C 基础路线，其余路线仍在规划中。已上线课程可学习，内容质量仍以课内的草稿 / 试学标记为准。" },
+  { id: "Foundation", title: "基础阶段", subtitle: "打好知识基础", note: "已上线课程可直接学习，规划中的课程会在目录中单独标明。内容质量以课内的草稿 / 试学标记为准。" },
   { id: "Intermediate", title: "中阶阶段", subtitle: "从知识走向实践", note: "首批试点规划为 B-I01、C-I04、C-I05，目前尚未开放。先修仅作建议，可以自由探索目录。" },
   { id: "Advanced", title: "进阶阶段", subtitle: "深入专业主题", note: "精选主题是未来计划制作互动实验的方向；资料路径的资源尚待整理。两者都不表示已经上线。" },
 ];

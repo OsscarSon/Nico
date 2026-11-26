@@ -69,9 +69,9 @@ try {
     await page.getByRole("button", { name: "清除搜索与筛选" }).click();
     await page.getByRole("button", { name: "全部", exact: true }).click();
     await page.getByLabel("筛选课程状态").selectOption("live");
-    check(`${width}: 课程分页先显示30门且结果总数38`, await page.locator(".academy-course a").count() === 30 && (await page.locator(".academy-result-count").innerText()).includes("38"));
+    check(`${width}: 课程分页先显示30门且结果总数54`, await page.locator(".academy-course a").count() === 30 && (await page.locator(".academy-result-count").innerText()).includes("54"));
     await page.getByRole("button", { name: /^显示更多/ }).click();
-    check(`${width}: 跨阶段查找全部38个真实入口`, await page.locator(".academy-course a").count() === 38);
+    check(`${width}: 跨阶段查找全部54个真实入口`, await page.locator(".academy-course a").count() === 54);
     await search.fill("B01");
     check(`${width}: B01 保留旧课程地址`, await page.locator(".academy-course a").getAttribute("href") === "#/lesson/b01-variables");
     await search.fill("c05");

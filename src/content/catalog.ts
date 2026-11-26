@@ -1,5 +1,6 @@
 import { trackBUnits, trackBCatalog } from "./track-b-catalog";
 import { trackCUnits, trackCCatalog } from "./track-c-catalog";
+import { trackECatalog, trackEUnits } from "./track-e";
 export type TrackId = "a" | "b" | "c" | "d" | "e";
 export type CatalogLesson = {
   id: string;
@@ -105,10 +106,10 @@ export const tracks: Track[] = [
     english: "Sheets & Automation",
     art: "track-e-google.png",
     tagline: "用公式、脚本和 AI 把重复的事交给电脑。",
-    status: "planned",
-    plannedSummary: "约 16 课 · 公式、Apps Script、Gemini",
-    units: [],
-    lessons: [],
+    status: "building",
+    plannedSummary: "16 课 · 公式、Apps Script、Gemini",
+    units: trackEUnits,
+    lessons: trackECatalog,
   },
 ];
 

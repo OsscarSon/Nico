@@ -1,3 +1,5 @@
+import { ERoute } from "../../sims/e-route/ERoute";
+import { isESim } from "../../grading/e-route/ids";
 import { FetchLab } from "../../sims/FetchLab";
 import { GithubLab } from "../../sims/GithubLab";
 import { DeploymentLab } from "../../sims/DeploymentLab";
@@ -66,7 +68,8 @@ export function SimBlock({
     <div>
       <p>{block.intro}</p>
       <Device title={block.title} label={simLabel(block.sim)}>
-        {block.sim === "fetch-lab" ? <FetchLab mode={block.mode} onSolved={onDone} />
+        {isESim(block.sim) ? <ERoute sim={block.sim} mode={block.mode} onSolved={onDone} />
+          : block.sim === "fetch-lab" ? <FetchLab mode={block.mode} onSolved={onDone} />
           : block.sim === "github-lab" ? <GithubLab mode={block.mode} onSolved={onDone} />
           : block.sim === "deployment-lab" ? <DeploymentLab mode={block.mode} onSolved={onDone} />
           : block.sim === "udp" ? <UdpLab mode={block.mode} onSolved={onDone} />

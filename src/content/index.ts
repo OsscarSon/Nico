@@ -10,6 +10,7 @@ import { a08 } from "./lessons/a08-command-line";
 import { a05 } from "./lessons/a05-cpu-cycle";
 import { trackBLessons } from "./track-b";
 import { trackCLessons } from "./track-c";
+import { trackELessons } from "./track-e";
 import { networkLessons } from "./track-a-net";
 import { securityLessons } from "./track-a-security";
 
@@ -19,6 +20,7 @@ export const lessons: Record<string, Lesson> = {
   ...Object.fromEntries(securityLessons.map((l) => [l.id, l])),
   ...Object.fromEntries(trackBLessons.map((l) => [l.id, l])),
   ...Object.fromEntries(trackCLessons.map((l) => [l.id, l])),
+  ...Object.fromEntries(trackELessons.map((l) => [l.id, l])),
 };
 
 export const getLesson = (id: string): Lesson | undefined => lessons[id];
