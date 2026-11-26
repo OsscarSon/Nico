@@ -1,8 +1,8 @@
 # 状态
 
-基础目录 100 / 100 门可学，中阶 16 / 46 门可学。新增课程标为草稿，等待真实试学。
+Nico Academy 2.0 按 Word 蓝图提供 10 个知识领域、30 个课程入口、120 个模块和章节大纲。212 个旧目录条目均已归入新模块，其中 116 节现有课仍可学。
 
-- 基础阶段补齐 B18–B20、C01–C18、D01–D16、E01–E16、F01–F08，给 B13、B16、B17 补上正式插图。[B](qa/p3b/README.md) · [C](qa/c-route/README.md) · [D](qa/d-foundation/D05-D16.md) · [E](qa/e-foundation/README.md) · [F](qa/f-foundation/README.md) · [插图](qa/lesson-art/README.md)
-- 中阶首批 B-I01、C-I04、C-I05 使用浏览器 Python Worker、本地证据校验与检索。[设计](intermediate-pilots/DESIGN.md) · [测试与截图](qa/intermediate-pilots/README.md)
-- A21、A22 从规划转为完整课时。A-I01–A-I06 与 B-I01–B-I08 均可学，B-I01 沿用原课。新增 13 张中阶插图，A21 新增居中副本，A22 复用原插图。[课程设计](ab-course-expansion/DESIGN.md) · [测试和截图](qa/ab-courses/README.md)
-- 其它中阶和进阶规划保持原状。网络、系统、Web 工程和数据库实验使用本地教学数据。下一步记录真实试学的完成率和卡点，再依据记录调整课程。
+- 首页、课程目录、课程大纲、知识关联图、6 条专业路线与 7 个实验室入口已接入。旧目录通过 `?view=legacy` 访问，旧课时和 A–F 地址继续有效。
+- 数学绘图、统计抽样、插入排序和原有位开关可以直接操作。ML Playground、Data Studio、Research Hub 提供已有资源，其完整工作台仍在规划。
+- 原课程、插图、质量状态与进度数据沿用。课堂建设仍按蓝图分期；优先数学与统计，其次算法。课程正式状态仍需真实试学。
+- [Word 14 节对照与迁移说明](academy-2/WORD_COVERAGE.md) · [验收、测试与截图](qa/academy-2/README.md)。

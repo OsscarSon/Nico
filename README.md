@@ -1,8 +1,8 @@
-# Nico
+# Nico Academy 2.0
 
-边学边做的电脑科技实验室。手机优先的网页应用，用于和朋友一起学电脑、网络、编程、AI、游戏开发和效率自动化。
+面向计算机科学、数据科学与人工智能的中文自学平台。10 个知识领域分成基础、中阶和进阶，30 个课程入口通过模块、章节和实践项目组织内容。
 
-当前进度：Phase 0 + Phase 1 完成，Phase 2 已开始：可学 **A01 二进制**、**A02 十六进制与文字编码**、**A03 逻辑门**、**A04 用门搭一个加法器**、**A05 CPU：取指、译码、执行**、**A09 网络分层**、**A10 IP 地址与子网**、**A13 DNS**。详见 `docs/STATUS.md`。
+现有 116 节课时可学。课程目录、六条专业主线、知识关联图和七个实验室入口已接入。详见 [当前状态](docs/STATUS.md) 与 [Word 蓝图对照](docs/academy-2/WORD_COVERAGE.md)。
 
 ## 运行
 
@@ -27,8 +27,9 @@ npm run preview
 
 # 窗口 2：Windows PowerShell
 $env:BASE_URL = "http://localhost:4173"
-npm run smoke
-# macOS / Linux：BASE_URL=http://localhost:4173 npm run smoke
+npm run smoke:academy2
+# macOS / Linux：BASE_URL=http://localhost:4173 npm run smoke:academy2
+# 原课时回归：npm run smoke
 ```
 
 第一次 `npm install` 后，请把生成的 `package-lock.json` 一起提交到 Git。
@@ -49,6 +50,7 @@ src/app/         外壳、导航、hash 路由
 src/features/    lesson（课时播放器）、path（走线路线图）
 src/sims/        互动模拟（位开关、逻辑门、半加器、迷你 CPU、网络分层、子网计算器、DNS）
 src/content/     课时数据 + Zod 校验 + 目录
+src/content/academy2/  2.0 课程大纲、旧编号映射与先修
 src/grading/     判分纯函数（有单元测试）
 src/progress/    进度存储（localStorage，带版本与损坏备份）
 src/styles/      设计令牌与样式
