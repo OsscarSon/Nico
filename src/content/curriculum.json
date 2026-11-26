@@ -338,7 +338,7 @@
    "路由算法",
    "性能分析"
   ],
-  "prerequisites": "A-I03、M02",
+  "prerequisites": "A-I03、M05",
   "project": "分布式平台与故障注入",
   "status": "flagship",
   "phase": 4
@@ -370,7 +370,7 @@
    "系统安全",
    "威胁建模"
   ],
-  "prerequisites": "A-I05、M02",
+  "prerequisites": "A-I05、M05",
   "project": "分布式平台与故障注入",
   "status": "reading",
   "phase": 4
@@ -762,7 +762,7 @@
    "图算法",
    "动态规划"
   ],
-  "prerequisites": "B-I06、M01–M02",
+  "prerequisites": "B-I06、M01、M05",
   "project": "生产级 Web 平台",
   "status": "flagship",
   "phase": 4
@@ -778,7 +778,7 @@
    "摊还分析",
    "NP 完全性"
   ],
-  "prerequisites": "B-U01、M02",
+  "prerequisites": "B-U01、M05",
   "project": "生产级 Web 平台",
   "status": "flagship",
   "phase": 4
@@ -794,7 +794,7 @@
    "事务并发",
    "存储恢复"
   ],
-  "prerequisites": "B-I05、M02",
+  "prerequisites": "B-I05、M05",
   "project": "生产级 Web 平台",
   "status": "flagship",
   "phase": 4
@@ -810,7 +810,7 @@
    "函数式",
    "解释器"
   ],
-  "prerequisites": "B-I01、M02",
+  "prerequisites": "B-I01、M05",
   "project": "生产级 Web 平台",
   "status": "reading",
   "phase": 4
@@ -890,7 +890,7 @@
    "模型检查",
    "属性测试"
   ],
-  "prerequisites": "B-U01、M02",
+  "prerequisites": "B-U01、M05",
   "project": "生产级 Web 平台",
   "status": "reading",
   "phase": 4
@@ -1118,7 +1118,7 @@
    "概率分布",
    "优化"
   ],
-  "prerequisites": "M01–M03",
+  "prerequisites": "M01–M04",
   "project": "RAG 学习导师",
   "status": "planned",
   "phase": 3
@@ -1230,7 +1230,7 @@
    "集成模型",
    "泛化"
   ],
-  "prerequisites": "C-I03、M03–M04",
+  "prerequisites": "C-I03、M02–M04",
   "project": "模型研究或 AI 工程项目",
   "status": "reading",
   "phase": 4
@@ -1246,7 +1246,7 @@
    "CNN",
    "序列模型"
   ],
-  "prerequisites": "C-U01、M03",
+  "prerequisites": "C-U01、M02–M03",
   "project": "模型研究或 AI 工程项目",
   "status": "flagship",
   "phase": 4
@@ -1662,7 +1662,7 @@
    "光照",
    "纹理"
   ],
-  "prerequisites": "M03、D-I03",
+  "prerequisites": "M02–M03、D-I03",
   "project": "游戏引擎或专业垂直切片",
   "status": "flagship",
   "phase": 4

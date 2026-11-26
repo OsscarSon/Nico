@@ -1,4 +1,4 @@
-import { useSyncExternalStore, type AnchorHTMLAttributes } from "react";
+import { useSyncExternalStore, type ComponentProps } from "react";
 
 /** 极简 hash 路由：不依赖第三方库，GitHub Pages 上刷新也不会 404。 */
 const subscribe = (cb: () => void) => {
@@ -18,7 +18,7 @@ export const navigate = (to: string) => {
 export function Link({
   to,
   ...rest
-}: { to: string } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href">) {
+}: { to: string } & Omit<ComponentProps<"a">, "href">) {
   return <a href={`#${to}`} {...rest} />;
 }
 
@@ -26,9 +26,13 @@ export type Match =
   | { name: "home" }
   | { name: "paths" }
   | { name: "courses" }
+  | { name: "course"; courseId: string }
   | { name: "track"; trackId: string }
   | { name: "lesson"; lessonId: string }
   | { name: "lab" }
+  | { name: "academy-lab"; id: string }
+  | { name: "knowledge" }
+  | { name: "resources" }
   | { name: "prompt-lab" }
   | { name: "tutor"; lessonId?: string }
   | { name: "projects" }
@@ -45,10 +49,14 @@ export function matchRoute(path: string): Match {
   if (c) return { name: "notfound" };
   if (!a) return { name: "home" };
   if (a === "courses" && !b) return { name: "courses" };
+  if (a === "courses" && b) return { name: "course", courseId: b };
   if (a === "paths" && !b) return { name: "paths" };
   if (a === "paths" && b) return { name: "track", trackId: b };
   if (a === "lesson" && b) return { name: "lesson", lessonId: b };
   if (!b && a === "lab") return { name: "lab" };
+  if (a === "lab" && b) return { name: "academy-lab", id: b };
+  if (!b && a === "graph") return { name: "knowledge" };
+  if (!b && a === "resources") return { name: "resources" };
   if (!b && a === "projects") return { name: "projects" };
   if (!b && a === "me") return { name: "me" };
   if (!b && a === "settings") return { name: "settings" };

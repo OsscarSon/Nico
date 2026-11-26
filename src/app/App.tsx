@@ -5,14 +5,17 @@ import { LessonPlayer } from "../features/lesson/LessonPlayer";
 import { PromptLab } from "../features/prompt-lab/PromptLab";
 import { TutorPage } from "../features/prompt-lab/TutorPage";
 import {
-  CoursesPage, HomePage, LabPage, MePage, NotFoundPage, PathsPage, ProjectsPage, TrackPage,
+  CoursesPage, HomePage, MePage, NotFoundPage, PathsPage, ProjectsPage, TrackPage,
 } from "../pages/pages";
 import { SettingsPage } from "../features/settings/SettingsPage";
+import { CurriculumPage, CoursePage } from "../features/academy2/Curriculum";
+import { KnowledgeGraphPage, LabsHomePage, LearningPathsPage, ResourcesPage } from "../features/academy2/Guides";
+import { AcademyLabPage } from "../features/academy2/Labs";
 
 const nav = [
   { to: "/", label: "首页", icon: "home", match: (p: string) => p === "/" },
-  { to: "/paths", label: "路线", icon: "paths", match: (p: string) => p.startsWith("/paths") || p.startsWith("/lesson") },
-  { to: "/courses", label: "课程", icon: "courses", match: (p: string) => p === "/courses" },
+  { to: "/paths", label: "路线", icon: "paths", match: (p: string) => p.startsWith("/paths") || p === "/graph" },
+  { to: "/courses", label: "课程", icon: "courses", match: (p: string) => p.startsWith("/courses") || p.startsWith("/lesson") },
   { to: "/lab", label: "实验", icon: "lab", match: (p: string) => p.startsWith("/lab") },
   { to: "/projects", label: "作品", icon: "projects", match: (p: string) => p.startsWith("/projects") },
   { to: "/me", label: "我的", icon: "me", match: (p: string) => p.startsWith("/me") },
@@ -36,10 +39,13 @@ export function App() {
   const path = usePath();
   const route = matchRoute(path);
   const routePath = path.split("?")[0];
+  const params = new URLSearchParams(path.split("?")[1]);
+  const legacy = params.get("view") === "legacy";
   const mainRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if (new URLSearchParams(window.location.hash.split("?")[1]).has("unit")) return;
+    const query = new URLSearchParams(window.location.hash.split("?")[1]);
+    if (query.has("unit") || query.has("module")) return;
     window.scrollTo(0, 0);
     mainRef.current?.focus({ preventScroll: true });
   }, [routePath]);
@@ -47,11 +53,15 @@ export function App() {
   const page = (() => {
     switch (route.name) {
       case "home": return <HomePage />;
-      case "paths": return <PathsPage />;
-      case "courses": return <CoursesPage />;
+      case "paths": return legacy || params.has("track") || params.has("stage") ? <PathsPage /> : <LearningPathsPage />;
+      case "courses": return legacy ? <CoursesPage /> : <CurriculumPage />;
+      case "course": return <CoursePage key={route.courseId} courseId={route.courseId} />;
       case "track": return <TrackPage trackId={route.trackId} />;
       case "lesson": return <LessonPlayer lessonId={route.lessonId} />;
-      case "lab": return <LabPage />;
+      case "lab": return <LabsHomePage />;
+      case "academy-lab": return <AcademyLabPage key={route.id} id={route.id} />;
+      case "knowledge": return <KnowledgeGraphPage />;
+      case "resources": return <ResourcesPage />;
       case "prompt-lab": return <PromptLab />;
       case "tutor": return <TutorPage lessonId={route.lessonId} />;
       case "projects": return <ProjectsPage />;

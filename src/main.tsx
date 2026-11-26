@@ -8,6 +8,7 @@ import "./styles/app.css";
 import "./styles/academy.css";
 import "./styles/p2.css";
 import "./styles/p2-final.css";
+import "./styles/academy2.css";
 
 initializePreferences();
 

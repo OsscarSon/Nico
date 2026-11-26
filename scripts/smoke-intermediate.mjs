@@ -131,7 +131,7 @@ try {
     p.on("request", req => {
       if (/api\.openai\.com|generativelanguage\.googleapis\.com|\/api\/ai/.test(req.url())) ai.push(req.url());
     });
-    await p.goto(base + "/#/courses");
+    await p.goto(base + "/#/courses?view=legacy");
     await click(p, "中阶阶段");
     await p.getByRole("searchbox").fill("b-i01");
     const first = p.locator(".academy-course a");

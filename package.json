@@ -30,7 +30,8 @@
     "smoke:d": "node scripts/smoke-d.mjs && node scripts/smoke-d-rest.mjs",
     "smoke:e": "node scripts/smoke-e.mjs",
     "smoke:f": "node scripts/smoke-f.mjs",
-    "smoke:ab-courses": "node scripts/smoke-ab-courses.mjs"
+    "smoke:ab-courses": "node scripts/smoke-ab-courses.mjs",
+    "smoke:academy2": "node scripts/smoke-academy2.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.0",
