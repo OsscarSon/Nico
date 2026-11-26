@@ -1,6 +1,6 @@
 import { lessonSchema, type Lesson } from "../schema";
 export const b13: Lesson = lessonSchema.parse({
-  id: "b13-fetch-json", track: "b", unit: "b2", title: "fetch 与 JSON", artPending: true,
+  id: "b13-fetch-json", track: "b", unit: "b2", title: "fetch 与 JSON", art: "lesson-b13-fetch-json.png",
   objectives: ["能编写合法JSON并说明JSON文本与JavaScript对象的区别", "能用Promise/await解释请求为何不能立刻读取结果", "能区分HTTP失败、网络失败与JSON解析失败，并将真实字段显示到页面"],
   prerequisites: ["b12-events"], estimatedMinutes: 15, quality: { state: "draft" },
   blocks: [

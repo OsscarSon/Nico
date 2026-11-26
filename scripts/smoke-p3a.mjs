@@ -107,7 +107,21 @@ try {
     p.on("request", r => { if (/pages\.example\.invalid|api\.example\.invalid|api\.github\.com/.test(r.url())) external.push(r.url()); });
     for (let i = 0; i < ids.length; i++) {
       await p.goto(`${BASE}/#/lesson/${ids[i]}`); await p.locator(".lesson-body").waitFor();
-      check(`${width}/${ids[i]}: draft, formal art placeholder, preserved dark`, (await p.locator(".lesson-head").innerText()).includes("草稿") && await p.locator(".foundation-art-pending").count() === 1 && await p.locator("html").getAttribute("data-theme") === "dark");
+      check(`${width}/${ids[i]}: draft, no art placeholder, preserved dark`, (await p.locator(".lesson-head").innerText()).includes("草稿") && await p.locator(".foundation-art-pending").count() === 0 && await p.locator("html").getAttribute("data-theme") === "dark");
+      const art = p.locator(".lesson-body img.lesson-art");
+      await art.waitFor();
+      check(`${width}/${ids[i]}: PNG loads, centered and uncropped`, await art.evaluate(async (image, file) => {
+        await image.decode();
+        const style = getComputedStyle(image);
+        const rect = image.getBoundingClientRect();
+        const body = image.closest(".lesson-body").getBoundingClientRect();
+        return new URL(image.src).pathname.endsWith(`/art/${file}`)
+          && image.naturalWidth === 1600 && image.naturalHeight === 900
+          && style.objectFit === "contain" && style.objectPosition === "50% 50%"
+          && Math.abs(rect.width / rect.height - 16 / 9) < .02
+          && Math.abs(rect.left + rect.right - body.left - body.right) < 2
+          && rect.left >= 0 && rect.right <= document.documentElement.clientWidth;
+      }, `lesson-${ids[i]}.png`) && !await overflow(p));
       for (let step = 0; step < 5; step++) await next(p).click();
       check(`${width}/${ids[i]}: explicit simulated lab`, await p.locator(".device header .pill").innerText() === "模拟");
       if (i === 0) {

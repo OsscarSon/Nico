@@ -1,6 +1,6 @@
 import { lessonSchema, type Lesson } from "../schema";
 export const b17: Lesson = lessonSchema.parse({
-  id: "b17-pages", track: "b", unit: "b3", title: "发布一个静态网页", artPending: true,
+  id: "b17-pages", track: "b", unit: "b3", title: "发布一个静态网页", art: "lesson-b17-pages.png",
   objectives: ["能检查HTML/CSS/JS入口及引用并区分源码与构建产物", "能选择正确发布目录并解释项目子路径中的相对URL", "能排查入口404、资源404和大小写错误，实际验证发布页面的样式与脚本"], prerequisites: ["b12-events", "b16-github"], estimatedMinutes: 15, quality: { state: "draft" },
   blocks: [
     { type: "hook", text: "你把社团网页“发布”了，发给朋友却只看见404；改好后有标题，却没样式，按钮也不动。本机打开明明好好的，为什么？今天不靠“部署成功”的绿色字样，而是沿着真实访问路径找到发布的到底是什么。" },
