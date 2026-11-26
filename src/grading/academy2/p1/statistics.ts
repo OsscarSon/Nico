@@ -70,3 +70,12 @@ export function anova(groups: readonly (readonly number[])[]) {
 }
 export const mannWhitney = (a: readonly number[], b: readonly number[]) =>
   sum(a.map(a=>sum(b.map(b=>a>b ? 1 : a===b ? .5 : 0))));
+
+export function treeProbabilities(prior:number, hit:number, falseAlarm:number) {
+  if (![prior,hit,falseAlarm].every(value=>Number.isFinite(value)&&value>=0&&value<=1)) {
+    throw new RangeError("所有概率必须介于 0 与 1。");
+  }
+  const trueAlert=prior*hit, falseAlert=(1-prior)*falseAlarm;
+  const positive=trueAlert+falseAlert;
+  return {trueAlert,falseAlert,positive,posterior:positive>0?trueAlert/positive:null};
+}

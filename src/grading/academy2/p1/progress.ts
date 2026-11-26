@@ -1,7 +1,7 @@
 import { z } from "zod";
 import type { Exercise } from "../../../content/academy2/p1/types";
 
-const attemptSchema = z.object({
+export const attemptSchema = z.object({
   count: z.number().int().positive(),
   lastCorrect: z.boolean(),
   passed: z.boolean(),
@@ -18,6 +18,7 @@ export const knowledgeProgressSchema = z.object({
   version: z.literal(1),
   records: z.record(topicKey, recordSchema),
   selfChecks: z.record(selfKey, z.boolean()),
+  questionBank: z.record(topicKey, z.record(topicKey, attemptSchema)).optional(),
 });
 
 export type KnowledgeProgress = z.infer<typeof knowledgeProgressSchema>;

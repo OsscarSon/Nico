@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { lazy, Suspense, useEffect, useRef, useState, type FormEvent } from "react";
 import { Link } from "../../app/router";
 import { EmptyState } from "../../components/ui";
 import { courseLink, getAcademyCourse } from "../../content/academy2/model";
@@ -14,6 +14,12 @@ import type { Bench, Output } from "../../content/academy2/p1/workbench";
 import { gradeExercise, gradeTopic, beginTopic, knowledgeStatus, practicePassed } from "../../grading/academy2/p1/progress";
 import { updateKnowledge, useKnowledgeProgress } from "../../progress/knowledge";
 import { Prerequisites, PageHeading, LearningStatus } from "./Curriculum";
+
+import { legacyBlocks } from "../../content/academy2/p1/types";
+import { RichText } from "./teaching/math";
+import { BlockList } from "./teaching/TeachingBlocks";
+
+const P1Teaching = lazy(() => import("./teaching/P1Teaching"));
 
 export const benches = {...mathBenches,...statBenches};
 
@@ -125,12 +131,8 @@ export function KnowledgeLessonPage({ id }:{id:string}) {
     <PageHeading title={location.title} english={id.toUpperCase()} intro="概念、推导、例题与练习" />
     <div className="row"><LearningStatus status={knowledgeStatus(record,Date.now())}/><span className="pill draft">草稿 · 尚未经真实试学</span></div>
     {warning&&<p role="status">{warning}</p>}
-    <div className="p1-teaching">
-      <section className="a2-panel"><h2>概念 · Concept</h2><p>{lesson.concept}</p></section>
-      <section className="a2-panel"><h2>原理与推导 · Theory</h2><p>{lesson.theory}</p></section>
-      <section className="a2-panel"><h2>例题 · Worked Example</h2><p>{lesson.example}</p></section>
-      <section className="a2-panel"><h2>常见误区 · Common Mistakes</h2><p>{lesson.mistake}</p></section>
-    </div>
+    <div className="p1-teaching"><BlockList blocks={legacyBlocks(lesson)} sectionClass="a2-panel"/></div>
+    <Suspense fallback={<p role="status">正在加载专题例题与进阶练习…</p>}><P1Teaching id={id}/></Suspense>
     {dependenciesOf(id).length>0&&<section className="a2-panel"><h2>先修与关联</h2><Prerequisites targets={dependenciesOf(id)} /></section>}
     {reasoning&&<section className="a2-panel p1-inside"><h2>开放推理练习</h2><p>{reasoning[0]}</p>
       <details><summary>查看论证检查点（自行核对）</summary><p>{reasoning[1]}</p></details>
@@ -151,11 +153,11 @@ export function KnowledgeLessonPage({ id }:{id:string}) {
           updateKnowledge(state=>gradeTopic(state,id,index,exercise,submitted,Date.now()));
           setFeedback(old=>{const next=[...old];next[index]=gradeExercise(exercise,submitted);return next;});
         }}>
-          <h3>{scales[index]} {attempted&&<small>· {attempted.lastCorrect?"已答对":"请复习后重试"}</small>}</h3><p>{exercise.prompt}</p>
+          <h3>{scales[index]} {attempted&&<small>· {attempted.lastCorrect?"已答对":"请复习后重试"}</small>}</h3><p><RichText text={exercise.prompt}/></p>
           <div className="row"><label className="sr-only" htmlFor={"p1-answer-"+index}>{scales[index]}答案</label><input id={"p1-answer-"+index} value={answers[index]} maxLength={80}
             onChange={event=>setAnswers(old=>old.map((value,i)=>i===index?event.target.value:value))} disabled={index===3&&!completed} required />
             <button className="btn secondary" disabled={index===3&&!completed}>{index===3?"核验掌握":"检查"+scales[index]}</button></div>
-          {feedback[index]!==undefined&&<p role="status" className={"feedback "+(feedback[index]?"ok":"bad")}>{feedback[index]?exercise.explanation:"答案和计算结果不同。请回看定义、单位和例题后再试。"}</p>}
+          {feedback[index]!==undefined&&<p role="status" className={"feedback "+(feedback[index]?"ok":"bad")}>{feedback[index]?<RichText text={exercise.explanation}/>:"答案和计算结果不同。请回看定义、单位和例题后再试。"}</p>}
         </form>;
       })}
     </section>
