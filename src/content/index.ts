@@ -12,6 +12,7 @@ import { trackBLessons } from "./track-b";
 import { trackCLessons } from "./track-c";
 import { networkLessons } from "./track-a-net";
 import { securityLessons } from "./track-a-security";
+import { intermediateLessons } from "./lessons/intermediate/pilots";
 
 export const lessons: Record<string, Lesson> = {
   [a01.id]: a01, [a02.id]: a02, [a03.id]: a03, [a04.id]: a04, [a05.id]: a05, [a06.id]: a06, [a07.id]: a07, [a08.id]: a08,
@@ -19,12 +20,17 @@ export const lessons: Record<string, Lesson> = {
   ...Object.fromEntries(securityLessons.map((l) => [l.id, l])),
   ...Object.fromEntries(trackBLessons.map((l) => [l.id, l])),
   ...Object.fromEntries(trackCLessons.map((l) => [l.id, l])),
+  ...Object.fromEntries(intermediateLessons.map(l => [l.id, l])),
 };
 
 export const getLesson = (id: string): Lesson | undefined => lessons[id];
 
+export const foundationCatalogLessons = (): CatalogLesson[] =>
+  tracks.flatMap(track => track.lessons);
+
+const intermediateCatalog: CatalogLesson[] = intermediateLessons.map(({ id, title, unit }) => ({ id, title, unit, status: "available" }));
 export const allCatalogLessons = (): CatalogLesson[] =>
-  tracks.flatMap((t) => t.lessons);
+  [...foundationCatalogLessons(), ...intermediateCatalog];
 
 /** 目录和课时内容必须一致：标为 available 的必须有内容，反之亦然。 */
 export function validateContent(): string[] {

@@ -82,7 +82,7 @@ export const blockSchema = z.discriminatedUnion("type", [
   }),
   z.object({
     type: z.literal("sim"),
-    sim: z.enum(["bit-switches", "logic-gate", "half-adder", "mini-cpu", "layers", "subnet", "dns", "python", "web", "js", "git", "prompt-check", "memory", "os", "terminal", "forwarding", "reassembly", "tcp", "udp", "http", "journey", "password", "phishing", "privilege", "fetch-lab", "github-lab", "deployment-lab"]),
+    sim: z.enum(["bit-switches", "logic-gate", "half-adder", "mini-cpu", "layers", "subnet", "dns", "python", "web", "js", "git", "prompt-check", "memory", "os", "terminal", "forwarding", "reassembly", "tcp", "udp", "http", "journey", "password", "phishing", "privilege", "fetch-lab", "github-lab", "deployment-lab", "evidence-contract", "retrieval-pilot"]),
     mode: z.enum(["free", "challenge"]),
     title: z.string().min(1),
     intro: z.string().min(1),
@@ -116,7 +116,8 @@ export const blockSchema = z.discriminatedUnion("type", [
 
 export const lessonSchema = z
   .object({
-    id: z.string().regex(/^[a-e]\d{2}-[a-z0-9-]+$/),
+    id: z.string().regex(/^(?:[a-e]\d{2}-[a-z0-9-]+|[a-e]-i\d{2})$/),
+    stage: z.literal("Intermediate").optional(),
     track: z.enum(["a", "b", "c", "d", "e"]),
     unit: z.string().min(1),
     title: z.string().min(1),
@@ -134,6 +135,7 @@ export const lessonSchema = z
       evidenceRef: z.string().optional(),
     }),
   })
+  .refine(l => l.stage === "Intermediate" ? l.id.startsWith(l.track + "-i") : /^[a-e]\d/.test(l.id), "中阶课时 ID 需与阶段和路线一致")
   .refine((l) => l.blocks[0]?.type === "hook", "第一个块必须是 hook")
   .refine((l) => l.blocks.at(-1)?.type === "summary", "最后一个块必须是 summary")
   .refine(

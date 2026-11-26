@@ -1,3 +1,4 @@
+import { EvidenceContractLab, RetrievalLab } from "../../sims/IntermediateLab";
 import { FetchLab } from "../../sims/FetchLab";
 import { GithubLab } from "../../sims/GithubLab";
 import { DeploymentLab } from "../../sims/DeploymentLab";
@@ -66,7 +67,9 @@ export function SimBlock({
     <div>
       <p>{block.intro}</p>
       <Device title={block.title} label={simLabel(block.sim)}>
-        {block.sim === "fetch-lab" ? <FetchLab mode={block.mode} onSolved={onDone} />
+        {block.sim === "evidence-contract" ? <EvidenceContractLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "retrieval-pilot" ? <RetrievalLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "fetch-lab" ? <FetchLab mode={block.mode} onSolved={onDone} />
           : block.sim === "github-lab" ? <GithubLab mode={block.mode} onSolved={onDone} />
           : block.sim === "deployment-lab" ? <DeploymentLab mode={block.mode} onSolved={onDone} />
           : block.sim === "udp" ? <UdpLab mode={block.mode} onSolved={onDone} />

@@ -1,0 +1,10 @@
+.intermediate-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: .75rem;
+}
+.intermediate-code {
+  margin: .3rem 0 .7rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}

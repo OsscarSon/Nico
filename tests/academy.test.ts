@@ -11,8 +11,8 @@ describe("Academy catalog compatibility", () => {
     expect(coursesFor("Foundation")).toHaveLength(100);
     expect(coursesFor("Intermediate")).toHaveLength(46);
     expect(coursesFor("Advanced")).toHaveLength(66);
-    expect(stageSummary("Foundation")).toBe("已上线 38 / 100");
-    expect(stageSummary("Intermediate")).toBe("试点规划 3 · 46 门目录");
+    expect(stageSummary("Foundation")).toBe("已上线 " + Object.values(lessons).filter(lesson => !lesson.stage).length + " / 100");
+    expect(stageSummary("Intermediate")).toBe("已上线 3 / 46");
     expect(stageSummary("Advanced")).toBe("精选 16 · 资料路径 50");
     expect(coursesFor("Foundation", "M")).toEqual([]);
   });
@@ -29,7 +29,8 @@ describe("Academy catalog compatibility", () => {
     }
   });
   it("searches case-insensitive titles and IDs and combines filters", () => {
-    expect(filterCourses(curriculum, " c-i04 ", "next").map(c => c.id)).toEqual(["C-I04"]);
+    expect(filterCourses(curriculum, " c-i04 ", "live").map(c => c.id)).toEqual(["C-I04"]);
+    expect(filterCourses(curriculum, " c-i04 ", "next")).toEqual([]);
     expect(filterCourses(coursesFor("Foundation", "A"), "二进制", "live").map(c => c.id)).toEqual(["A01"]);
     expect(filterCourses(curriculum, "A01", "planned")).toEqual([]);
     expect(filterCourses(curriculum, "no such course", "all")).toEqual([]);

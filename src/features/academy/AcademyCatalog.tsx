@@ -94,7 +94,7 @@ export function PathsCatalog() {
           {!selectedCourses.some(c => preferences.showPlanned || routeNode(c).available) && <div className="academy-empty"><p>此路线尚无已上线课程，规划内容已按设置隐藏。</p><Link to="/settings" className="btn secondary">管理规划显示</Link></div>}
         </section>
       </div>
-      <p className="academy-footnote">上线数量表示课程可访问，不代表个人学习进度。下一批、试点、精选主题与资料路径均为未来规划。</p>
+      <p className="academy-footnote">上线数量表示课程可访问，不代表个人学习进度。下一批、精选主题与资料路径仍属规划。</p>
     </div>
   );
 }
@@ -136,7 +136,7 @@ export function CoursesCatalog() {
           {results.length > shown && <button type="button" className="btn secondary" onClick={() => setShown(n => n + PAGE_SIZE)}>显示更多（还有 {results.length - shown} 门）</button>}
         </> : <div className="academy-empty"><p>没有符合条件的课程</p><button className="btn secondary" onClick={reset}>清除搜索与筛选</button></div>}
       </section>
-      <p className="academy-footnote">上线数量表示课程可访问，不代表个人学习进度。下一批、试点、精选主题与资料路径均为未来规划。</p>
+      <p className="academy-footnote">上线数量表示课程可访问，不代表个人学习进度。下一批、精选主题与资料路径仍属规划。</p>
     </div>
   );
 }
