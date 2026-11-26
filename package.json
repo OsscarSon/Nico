@@ -29,7 +29,8 @@
     "smoke:c": "node scripts/smoke-c.mjs",
     "smoke:d": "node scripts/smoke-d.mjs && node scripts/smoke-d-rest.mjs",
     "smoke:e": "node scripts/smoke-e.mjs",
-    "smoke:f": "node scripts/smoke-f.mjs"
+    "smoke:f": "node scripts/smoke-f.mjs",
+    "smoke:ab-courses": "node scripts/smoke-ab-courses.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.0",

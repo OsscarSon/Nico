@@ -212,7 +212,7 @@
   ],
   "prerequisites": "A01–A06",
   "project": "虚拟企业网络与故障排查",
-  "status": "planned",
+  "status": "live",
   "phase": 3
  },
  {
@@ -228,7 +228,7 @@
   ],
   "prerequisites": "A07–A08、B 基础",
   "project": "虚拟企业网络与故障排查",
-  "status": "planned",
+  "status": "live",
   "phase": 3
  },
  {
@@ -244,7 +244,7 @@
   ],
   "prerequisites": "A09–A17",
   "project": "虚拟企业网络与故障排查",
-  "status": "planned",
+  "status": "live",
   "phase": 3
  },
  {
@@ -260,7 +260,7 @@
   ],
   "prerequisites": "A-I03",
   "project": "虚拟企业网络与故障排查",
-  "status": "planned",
+  "status": "live",
   "phase": 3
  },
  {
@@ -276,7 +276,7 @@
   ],
   "prerequisites": "A18–A20、B-I03",
   "project": "虚拟企业网络与故障排查",
-  "status": "planned",
+  "status": "live",
   "phase": 3
  },
  {
@@ -292,7 +292,7 @@
   ],
   "prerequisites": "A-I02、A-I03",
   "project": "虚拟企业网络与故障排查",
-  "status": "planned",
+  "status": "live",
   "phase": 3
  },
  {
@@ -652,7 +652,7 @@
   ],
   "prerequisites": "B08–B13",
   "project": "全栈学习管理系统",
-  "status": "planned",
+  "status": "live",
   "phase": 3
  },
  {
@@ -668,7 +668,7 @@
   ],
   "prerequisites": "B-I01、B-I02",
   "project": "全栈学习管理系统",
-  "status": "planned",
+  "status": "live",
   "phase": 3
  },
  {
@@ -684,7 +684,7 @@
   ],
   "prerequisites": "B-I02",
   "project": "全栈学习管理系统",
-  "status": "planned",
+  "status": "live",
   "phase": 3
  },
  {
@@ -700,7 +700,7 @@
   ],
   "prerequisites": "B-I01",
   "project": "全栈学习管理系统",
-  "status": "planned",
+  "status": "live",
   "phase": 3
  },
  {
@@ -716,7 +716,7 @@
   ],
   "prerequisites": "B-I01、M01",
   "project": "全栈学习管理系统",
-  "status": "planned",
+  "status": "live",
   "phase": 3
  },
  {
@@ -732,7 +732,7 @@
   ],
   "prerequisites": "B14–B17",
   "project": "全栈学习管理系统",
-  "status": "planned",
+  "status": "live",
   "phase": 3
  },
  {
@@ -748,7 +748,7 @@
   ],
   "prerequisites": "B-I03–B-I07",
   "project": "全栈学习管理系统",
-  "status": "planned",
+  "status": "live",
   "phase": 3
  },
  {
@@ -2218,7 +2218,7 @@
   "title": "状态码是服务器的回话（404、429）",
   "source": "proposal 2026-11-17",
   "project": "",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -2228,7 +2228,7 @@
   "title": "读懂报错与日志",
   "source": "proposal 2026-11-17",
   "project": "",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {

@@ -1,4 +1,5 @@
 import { EvidenceContractLab, RetrievalLab } from "../../sims/IntermediateLab";
+import { AbCourseLab } from "../../sims/AbCourseLab";
 import { RouteReviewLab } from "../../sims/RouteReviewLab";
 import { CRouteLab } from "../../sims/CRouteLab";
 import { GameCoordinateLab, GameInputLab, GameLoopLab, GameMotionLab } from "../../sims/GameBasics";
@@ -78,6 +79,7 @@ export function SimBlock({
       <Device title={block.title} label={simLabel(block.sim)}>
         {block.sim === "evidence-contract" ? <EvidenceContractLab mode={block.mode} onSolved={onDone} />
           : block.sim === "retrieval-pilot" ? <RetrievalLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "ab-course-lab" && block.abLab ? <AbCourseLab id={block.abLab} mode={block.mode} onSolved={onDone} />
           : block.sim === "fetch-lab" ? <FetchLab mode={block.mode} onSolved={onDone} />
           : block.sim === "github-lab" ? <GithubLab mode={block.mode} onSolved={onDone} />
           : block.sim === "deployment-lab" ? <DeploymentLab mode={block.mode} onSolved={onDone} />

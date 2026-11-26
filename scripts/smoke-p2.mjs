@@ -27,25 +27,27 @@ try {
     await navigation.getByRole("link", { name: "课程", exact: true }).focus(); await p.keyboard.press("Enter"); await p.waitForURL(url => url.hash === "#/courses");
     check(`${width}: named navigation works by keyboard`, new URL(p.url()).hash === "#/courses");
     await go(p, "/paths/a");
-    check(`${width}: 20 real links, 2 nonlearnable previews, four units`, await p.locator("a.pm-card").count() === 20 && await p.locator(".pm-card.planned").count() === 2 && await p.locator(".route-unit").count() === 4 && await p.locator(".pm-card.planned a").count() === 0);
-    for (const code of ["A21", "A22"]) check(`${width}: ${code} planned with its independent art`, await p.locator(`li[data-code="${code}"]`).getAttribute("data-state") === "planned" && await p.locator(`li[data-code="${code}"] img`).evaluate(i => i.complete && i.naturalWidth > 0));
+    check(`${width}: 22 lesson links, four units`, await p.locator("a.pm-card").count() === 22 && await p.locator(".pm-card.planned").count() === 0 && await p.locator(".route-unit").count() === 4 && await p.locator(".pm-card.planned a").count() === 0);
+    for (const code of ["A21", "A22"]) check(`${width}: ${code} has a playable route link`, await p.locator(`li[data-code="${code}"] a.pm-card`).isVisible());
     if ([1440, 390].includes(width)) {
       await p.locator('li[data-code="A21"]').evaluate(el => el.scrollIntoView({ block: "start", behavior: "instant" }));
-      await p.screenshot({ path: `${OUT}/route-planned-dark-${width}.png` });
+      await p.screenshot({ path: `${OUT}/route-diagnostics-dark-${width}.png` });
     }
     const summary = p.locator('details[data-unit="a1"] > summary'); await summary.focus(); await p.keyboard.press("Enter");
     check(`${width}: keyboard collapse keeps focus and URL`, await p.locator('details[data-unit="a1"]').getAttribute("open") === null && await summary.evaluate(el => el === document.activeElement) && new URL(p.url()).hash === "#/paths/a"); await p.keyboard.press("Enter");
     await go(p, "/paths/a?unit=a3"); check(`${width}: unit context focuses real summary`, await p.locator('details[data-unit="a3"] > summary').evaluate(el => el === document.activeElement));
-    for (const [id, file] of [["a15-udp", "lesson-a15-udp.png"], ["a16-http-https", "lesson-a16-http-https.png"], ["a17-web-journey", "lesson-a17-web-journey.png"], ["a18-passwords", "lesson-a18-passwords.png"], ["a19-phishing", "lesson-a19-phishing.png"], ["a20-least-privilege", "lesson-a20-least-privilege.png"]]) {
+    for (const [id, file] of [["a15-udp", "lesson-a15-udp.png"], ["a16-http-https", "lesson-a16-http-https.png"], ["a17-web-journey", "lesson-a17-web-journey.png"], ["a18-passwords", "lesson-a18-passwords.png"], ["a19-phishing", "lesson-a19-phishing.png"], ["a20-least-privilege", "lesson-a20-least-privilege.png"], ["a21-http-status", "lesson-a21-http-status-centered.png"], ["a22-error-logs", "planned-a22-error-logs.png"]]) {
       await go(p, `/lesson/${id}`); await p.locator(".lesson-art").waitFor();
       const art = await p.locator(".lesson-art").evaluate(async i => { await i.decode(); const s = getComputedStyle(i); return { width: i.width, height: i.height, natural: i.naturalWidth / i.naturalHeight, fit: s.objectFit, position: s.objectPosition, src: i.getAttribute("src") }; });
       check(`${width}/${id}: formal PNG 200, 16:9, contain/center, draft`, art.src.endsWith(file) && art.natural === 16 / 9 && Math.abs(art.width / art.height - 16 / 9) < .02 && art.fit === "contain" && art.position === "50% 50%" && await p.locator(".pill.draft").count() === 1 && (await c.request.get(new URL(art.src, p.url()).href)).status() === 200);
     }
-    for (const code of ["A21", "A22"]) {
-      await go(p, "/courses"); await p.getByRole("searchbox").fill(code); await p.locator(".academy-course summary").click();
-      check(`${width}: catalog ${code} matches planned map and never links to lesson`, await p.locator(".academy-course a").count() === 0 && (await p.locator(".course-details").innerText()).includes("尚未开放") && await p.locator(".planned-preview").count() === 1);
+    for (const [code, id] of [["A21", "a21-http-status"], ["A22", "a22-error-logs"]]) {
+      await go(p, "/courses"); await p.getByRole("searchbox").fill(code);
+      check(`${width}: catalog ${code} links to the same lesson as the map`, await p.locator(".academy-course a").getAttribute("href") === "#/lesson/" + id);
     }
-    await go(p, "/lesson/a21"); check(`${width}: direct planned URL stays unavailable`, (await p.locator("main").innerText()).includes("这一课还没有开放"));
+    await click(p, "中阶阶段"); await p.getByRole("searchbox").fill("C-I03"); await p.locator(".academy-course summary").click();
+    check(`${width}: planned C-I03 never links to a lesson`, await p.locator(".academy-course a").count() === 0 && (await p.locator(".course-details").innerText()).includes("尚未开放"));
+    await go(p, "/lesson/c-i03"); check(`${width}: direct planned URL stays unavailable`, (await p.locator("main").innerText()).includes("这一课还没有开放"));
     for (const [id, stage, available] of [["b", "Foundation", 20], ["c", "Foundation", 18], ["d", "Foundation", 16], ["e", "Foundation", 16], ["f", "Foundation", 8], ["m", "Intermediate", 0]]) {
       await go(p, `/paths/${id}?stage=${stage}`);
       check(`${width}: ${id} actual route scope and honest planning`, (await p.locator("main").innerText()).length > 30 && await noOverflow(p) && await p.locator("a.pm-card").count() === available);
@@ -75,7 +77,7 @@ try {
   await go(p, "/me"); check("profile has real nickname and zero completed, no invented level", (await p.locator(".identity-person").innerText()).includes("认真学习的Nico") && (await p.locator(".stat strong").first().innerText()) === "0" && await p.locator(".badge.earned").count() === 0); await click(p, "查看徽章条件"); check("reduced-motion badge navigation jumps without smooth scrolling and keeps target focus", await p.locator("#profile-badges").evaluate(el => Math.abs(el.getBoundingClientRect().top) < 2 && el === document.activeElement)); await go(p, "/"); check("preferred path changes actual next lesson", (await p.locator(".today").innerText()).includes("变量"));
   await go(p, "/settings"); await p.getByLabel("默认进入页面", { exact: true }).selectOption("/courses");
   const tab = await c.newPage(); await tab.goto(BASE); await tab.waitForURL(url => url.hash === "#/courses"); check("unaddressed visit respects landing", new URL(tab.url()).hash === "#/courses"); await tab.goto(`${BASE}/#/`); check("explicit home stays home", (await tab.locator("h1").innerText()).includes("你的知识世界"));
-  await p.getByRole("checkbox", { name: "显示规划课程", exact: true }).uncheck(); await go(p, "/paths/a"); check("planned preference hides map previews only", await p.locator(".pm-card.planned").count() === 0 && await p.locator("a.pm-card").count() === 20); await go(p, "/courses"); await p.getByRole("searchbox").fill("A21"); check("same planned preference hides catalog previews", await p.locator(".academy-course").count() === 0);
+  await p.getByRole("checkbox", { name: "显示规划课程", exact: true }).uncheck(); await go(p, "/paths/c?stage=Intermediate"); check("planned preference hides map previews only", await p.locator(".pm-card.planned").count() === 0 && await p.locator("a.pm-card").count() === 2); await go(p, "/courses"); await click(p, "中阶阶段"); await p.getByRole("searchbox").fill("C-I03"); check("same planned preference hides catalog previews", await p.locator(".academy-course").count() === 0);
   await go(p, "/settings"); await p.getByRole("checkbox", { name: "显示规划课程", exact: true }).check(); await p.getByRole("checkbox", { name: "显示AI快捷入口", exact: true }).uncheck(); await go(p, "/lab"); check("AI shortcut visibility has real effect, local prompt remains", await p.locator(".ai-shortcut:visible").count() === 0 && await p.getByRole("link", { name: /Prompt 训练场/ }).isVisible()); await go(p, "/lab/tutor"); check("hiding shortcuts does not fabricate disconnection", (await p.locator("main").innerText()).includes("AI"));
   await go(p, "/settings"); check("preferences/profile browsing never writes progress", await raw(p) === untouched);
   const fileInput = p.getByLabel("选择要导入的学习记录文件");
@@ -104,5 +106,5 @@ try {
   check("unsupported preference version is backed up before a user writes new choices", await futurePage.evaluate(value => Object.keys(localStorage).some(k => k.startsWith("nico-preferences-backup-") && localStorage.getItem(k) === value), futureRaw)); await future.close();
   const blocked = await browser.newContext(); await blocked.addInitScript(() => Object.defineProperty(window, "localStorage", { get() { throw Error("blocked"); } })); const bp = await blocked.newPage(); await go(bp, "/settings"); await setOption(bp, "主题", "亮色"); check("blocked storage remains usable and honest", await bp.locator("html").getAttribute("data-theme") === "light" && (await bp.locator("main").innerText()).includes("浏览器无法保存偏好")); await blocked.close();
 } finally { await browser.close(); }
-console.log(`P2: ${checks - failures.length}/${checks} passed; ${failures.length} failures; 16 main after screenshots + 2 planned-node details.`);
+console.log(`P2: ${checks - failures.length}/${checks} passed; ${failures.length} failures; 16 main after screenshots + 2 diagnostic-node views.`);
 if (failures.length) throw Error(failures.join("\n"));

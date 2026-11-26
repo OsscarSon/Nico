@@ -34,7 +34,8 @@ const needsInteraction = (b: Block) =>
   b.type === "quiz" || b.type === "transfer" || (b.type === "sim" && b.mode === "challenge");
 
 export function LessonPlayer({ lessonId }: { lessonId: string }) {
-  const lesson = getLesson(lessonId);
+  const canonicalId = lessonId === "a21" ? "a21-http-status" : lessonId === "a22" ? "a22-error-logs" : lessonId;
+  const lesson = getLesson(canonicalId);
   if (!lesson)
     return (
       <EmptyState
