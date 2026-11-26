@@ -436,7 +436,8 @@ await soon("首页推荐下一门还没学的课（A06）", async () => {
 await page.goto(`${BASE}/#/me`);
 await soon("完成 A01、A03、A04 后获得『第一个比特』和『守门人』", async () => (await page.locator(".badge.earned").count()) === 2 && (await page.locator(".badge.earned", { hasText: "第一个比特" }).count()) === 1 && (await page.locator(".badge.earned", { hasText: "守门人" }).count()) === 1);
 // C05与A09–A17均开放后，提示词匠/数据包领航员可按真实完成记录获得，剩余3种仍未开放。
-check("课程未开放的徽章如实标注", (await page.getByText("对应课程尚未开放").count()) === 3);
+check("课程未开放的徽章如实标注", (await page.getByText("对应课程尚未开放").count()) === 2);
+check("游戏制作人仍要求完成 D16", await page.locator(".badge").filter({ hasText: "游戏制作人" }).getByText("未获得", { exact: true }).isVisible());
 check("连续七天徽章未获得但可获得", (await page.locator(".badge", { hasText: "连续七天" }).getByText("未获得").count()) === 1);
 
 await page.goto(`${BASE}/#/projects`);

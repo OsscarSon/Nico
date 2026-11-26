@@ -155,7 +155,8 @@ export const d04 = gameLesson({
     { q: "空格在两帧间快速按下再松开，继续更新会怎样？", options: ["下一帧仍消费一次缓存的按下", "信号必须维持按住才有", "下一帧消费两次，按下和松开各一次", "从下一帧开始一直重复发送"], answer: 0, why: "本模型保留待处理的按下，松开只更新按住状态。信号消费后会清除。", wrongHints: { "1": "缓存了边沿，所以短按也能得到响应。", "2": "题目的动作只有按下才触发。", "3": "待处理标记消费后清空，无新按下就不触发。" } },
   ],
   transfer: { prompt: "小船每次新按下鸣笛键响一次。第一次按着过了两帧后松开。第二次按下又立刻松开，接着推进一帧，模型保留两帧间的按下。总共响几次？", answer: 2, why: "第一次只响一次，第二次短按保存在待处理标记中，再响一次。", hint: "数从抬起到按下的变化，再检查是否在后续帧消费。" },
-  summary: ["持续动作在每帧检查按住状态。", "单次动作由新的按下触发，可暂存等待下一次更新。", "触屏和键盘可以共用行为规则。后续碰撞课将检查移动时有没有碰到障碍。"],
+  summary: ["持续动作在每帧检查按住状态。", "单次动作由新的按下触发，可暂存等待下一次更新。", "触屏和键盘可以共用行为规则。下一课检查移动时有没有碰到障碍。"],
+  next: "d05-collision",
   sources: [
     { title: "MDN · KeyboardEvent.repeat", url: "https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/repeat" },
     { title: "Godot Docs · Input", url: "https://docs.godotengine.org/en/stable/classes/class_input.html" },

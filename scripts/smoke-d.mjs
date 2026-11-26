@@ -132,8 +132,8 @@ try {
     p.on("pageerror", error => errors.push(error.message));
     await p.goto(`${base}/#/paths/d`);
     await p.locator(".pathmap").waitFor();
-    assert.equal(await p.locator("a.pm-card").count(), 4);
-    assert.equal(await p.locator(".pm-card.planned").count(), 12);
+    assert.equal(await p.locator("a.pm-card").count(), 16);
+    assert.equal(await p.locator(".pm-card.planned").count(), 0);
     assert.equal(await p.locator(".pm-card.planned a").count(), 0);
     await fits(p);
     for (const [index, id] of lessonIds.entries()) {

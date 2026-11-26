@@ -24,7 +24,7 @@
     "smoke:p2": "node scripts/smoke-p2.mjs",
     "smoke:p2-final": "node scripts/smoke-p2-final.mjs",
     "smoke:p3a": "node scripts/smoke-p3a.mjs",
-    "smoke:d": "node scripts/smoke-d.mjs"
+    "smoke:d": "node scripts/smoke-d.mjs && node scripts/smoke-d-rest.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.0",

@@ -1,3 +1,5 @@
+import { isGameRouteSim } from "../../grading/game-route/ids";
+import { GameRoute } from "../../sims/game-route/GameRoute";
 import { GameCoordinateLab, GameInputLab, GameLoopLab, GameMotionLab } from "../../sims/GameBasics";
 import { FetchLab } from "../../sims/FetchLab";
 import { GithubLab } from "../../sims/GithubLab";
@@ -70,6 +72,7 @@ export function SimBlock({
         {block.sim === "fetch-lab" ? <FetchLab mode={block.mode} onSolved={onDone} />
           : block.sim === "github-lab" ? <GithubLab mode={block.mode} onSolved={onDone} />
           : block.sim === "deployment-lab" ? <DeploymentLab mode={block.mode} onSolved={onDone} />
+          : isGameRouteSim(block.sim) ? <GameRoute sim={block.sim} mode={block.mode} onSolved={onDone} />
           : block.sim === "game-loop" ? <GameLoopLab mode={block.mode} onSolved={onDone} />
           : block.sim === "game-coordinates" ? <GameCoordinateLab mode={block.mode} onSolved={onDone} />
           : block.sim === "game-motion" ? <GameMotionLab mode={block.mode} onSolved={onDone} />

@@ -1,3 +1,4 @@
+import { gameRouteSims } from "../grading/game-route/ids";
 import { z } from "zod";
 import { ELEMENT_IDS } from "../ai/elements";
 
@@ -82,7 +83,7 @@ export const blockSchema = z.discriminatedUnion("type", [
   }),
   z.object({
     type: z.literal("sim"),
-    sim: z.enum(["bit-switches", "logic-gate", "half-adder", "mini-cpu", "layers", "subnet", "dns", "python", "web", "js", "git", "prompt-check", "memory", "os", "terminal", "forwarding", "reassembly", "tcp", "udp", "http", "journey", "password", "phishing", "privilege", "fetch-lab", "github-lab", "deployment-lab", "game-loop", "game-coordinates", "game-motion", "game-input"]),
+    sim: z.enum(["bit-switches", "logic-gate", "half-adder", "mini-cpu", "layers", "subnet", "dns", "python", "web", "js", "git", "prompt-check", "memory", "os", "terminal", "forwarding", "reassembly", "tcp", "udp", "http", "journey", "password", "phishing", "privilege", "fetch-lab", "github-lab", "deployment-lab", "game-loop", "game-coordinates", "game-motion", "game-input", ...gameRouteSims]),
     mode: z.enum(["free", "challenge"]),
     title: z.string().min(1),
     intro: z.string().min(1),

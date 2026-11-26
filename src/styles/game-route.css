@@ -1,0 +1,68 @@
+.game-bench-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: .75rem;
+}
+.game-bench-plot {
+  position: relative;
+  width: min(100%, 22rem);
+  margin-inline: auto;
+  border: 1px solid var(--grid);
+  border-radius: var(--r-panel);
+  background: var(--paper);
+}
+.game-bench-plot span {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--ink);
+  background: #89a9ffbd;
+  color: #101727;
+  font-size: .8rem;
+}
+.game-bench-plot .first-plot-item {
+  background: #ffc153bd;
+}
+.game-fall {
+  position: relative;
+  min-height: 8rem;
+  border: 1px solid var(--grid);
+  border-bottom: .45rem solid var(--ink);
+  background: var(--paper);
+}
+.game-fall span {
+  position: absolute;
+  left: 50%;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  background: var(--trace);
+}
+.p3-lab .game-toggle {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+.game-delivery {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  border: 1px solid var(--grid);
+  border-radius: var(--r-panel);
+  background: var(--paper);
+}
+.game-delivery span {
+  display: grid;
+  min-height: 2rem;
+  place-items: center;
+  border: 1px solid var(--grid);
+}
+.game-delivery strong {
+  border-radius: .35rem;
+  padding: 0 .2rem;
+  color: #14213d;
+  background: #ffc153;
+}
+.game-delivery .game-ground {
+  background: var(--grid);
+}

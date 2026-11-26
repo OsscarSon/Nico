@@ -104,14 +104,14 @@ describe("D04 key events", () => {
   });
 });
 
-it("opens only D01–D04, each with a complete illustrated draft and planned successors", () => {
+it("retains the first four illustrated drafts in the first D-route unit", () => {
   const courses = coursesFor("Foundation", "D");
   expect(courses).toHaveLength(16);
-  const live = courses.flatMap(c => c.status === "live" ? [c.id] : []);
+  const live = courses.slice(0, 4).flatMap(c => c.status === "live" ? [c.id] : []);
   expect(live).toEqual(["D01", "D02", "D03", "D04"]);
   const view = routeView("d");
   expect(view?.units[0]?.nodes.map(node => node.code)).toEqual(live);
-  expect(view?.nodes.filter(node => !node.available)).toHaveLength(12);
+  expect(view?.nodes.filter(node => node.available)).toHaveLength(16);
   for (const course of courses.slice(0, 4)) {
     const lesson = liveLessonFor(course);
     if (!lesson?.art) throw new Error(`Missing lesson artwork: ${course.id}`);
