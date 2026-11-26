@@ -8,7 +8,14 @@ import { gradeChoice } from "../src/grading/quiz";
 import protectedFiles from "../docs/p3a/PROTECTED_BASELINE.json";
 describe("P3-A teaching integration and protected baseline", () => {
   for (const id of ["b13-fetch-json", "b16-github", "b17-pages"]) it(`${id}: complete sourced draft with free operation, challenge and diagnostic assessment`, () => {
-    const l = lessons[id]!; expect(lessonSchema.safeParse(l).success).toBe(true); expect(l.quality).toEqual({ state: "draft" }); expect(l.artPending).toBe(true); expect(l.art).toBeUndefined();
+    const l = lessons[id]!;
+    expect(lessonSchema.safeParse(l).success).toBe(true);
+    expect(l.quality).toEqual({ state: "draft" });
+    expect(l.artPending).toBeUndefined();
+    expect(l.art).toBe(`lesson-${id}.png`);
+    const png = readFileSync(`public/art/${l.art}`);
+    expect(png.subarray(0, 8).toString("hex")).toBe("89504e470d0a1a0a");
+    expect([png.readUInt32BE(16), png.readUInt32BE(20)]).toEqual([1600, 900]);
     expect(l.blocks.filter(b => b.type === "explain").length).toBeGreaterThanOrEqual(3);
     expect(l.blocks.filter(b => b.type === "sim").map(b => b.mode)).toEqual(["free", "challenge"]);
     const q = l.blocks.find(b => b.type === "quiz"); if (q?.type !== "quiz") throw Error("missing quiz"); expect(q.items).toHaveLength(3);

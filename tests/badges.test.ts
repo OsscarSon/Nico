@@ -21,10 +21,16 @@ describe("badges", () => {
   });
   it("a badge whose lessons do not exist yet is not obtainable and never earned", () => {
     // 即使进度里伪造了这些课时，课程没开放也不发徽章
-    const future = badges.find((b) => b.id === "agent-builder")!;
-    const list = evaluateBadges(done(future.requires), day("2026-11-14"));
-    expect(byId(list, "agent-builder").obtainable).toBe(false);
-    expect(byId(list, "agent-builder").earned).toBe(false);
+    const future = badges.find((b) => b.id === "formula-wizard")!;
+    const list = evaluateBadges(done(future.requires), day("2026-11-14"), id => !future.requires.includes(id));
+    expect(byId(list, "formula-wizard").obtainable).toBe(false);
+    expect(byId(list, "formula-wizard").earned).toBe(false);
+  });
+  it.each(["agent-builder", "formula-wizard", "game-maker"])("%s is obtainable and requires actual completion", id => {
+    const badge = badges.find(b => b.id === id)!;
+    const today = day("2026-11-14");
+    expect(byId(evaluateBadges(emptyProgress(), today), id)).toMatchObject({ obtainable: true, earned: false });
+    expect(byId(evaluateBadges(done(badge.requires), today), id).earned).toBe(true);
   });
   it("packet-pilot is obtainable after A15–A17 arrive but still needs all actual completion records", () => {
     const packet = badges.find(b => b.id === "packet-pilot")!;

@@ -1,0 +1,56 @@
+.game-plot {
+  position: relative;
+  width: min(100%, 19rem);
+  justify-self: center;
+  border: 1px solid var(--grid);
+  border-radius: var(--r-panel);
+  background-color: var(--paper);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+}
+.game-point {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: .55rem;
+  height: .55rem;
+  border: 1px solid var(--grid);
+  border-radius: 50%;
+  background: var(--trace);
+}
+.game-point-label {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translateX(-50%);
+  padding: .15rem .35rem;
+  border: 1px solid var(--grid);
+  border-radius: var(--r-panel);
+  color: white;
+  background: var(--trace);
+  font-size: .75rem;
+  white-space: nowrap;
+}
+.game-point-label[data-align="start"] {
+  left: 0;
+  transform: none;
+}
+.game-point-label[data-align="end"] {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+.game-point-label[data-below="true"] {
+  top: 100%;
+  bottom: auto;
+}
+.game-point.target, .game-point.target .game-point-label {
+  color: #14213d;
+  background: #ffb020;
+}
+.game-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: .75rem;
+}
+.game-keyboard {
+  justify-self: start;
+}

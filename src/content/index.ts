@@ -10,6 +10,9 @@ import { a08 } from "./lessons/a08-command-line";
 import { a05 } from "./lessons/a05-cpu-cycle";
 import { trackBLessons } from "./track-b";
 import { trackCLessons } from "./track-c";
+import { trackDLessons } from "./track-d";
+import { trackELessons } from "./track-e";
+import { trackFLessons } from "./track-f";
 import { networkLessons } from "./track-a-net";
 import { securityLessons } from "./track-a-security";
 import { intermediateLessons } from "./lessons/intermediate/pilots";
@@ -20,6 +23,9 @@ export const lessons: Record<string, Lesson> = {
   ...Object.fromEntries(securityLessons.map((l) => [l.id, l])),
   ...Object.fromEntries(trackBLessons.map((l) => [l.id, l])),
   ...Object.fromEntries(trackCLessons.map((l) => [l.id, l])),
+  ...Object.fromEntries(trackDLessons.map((l) => [l.id, l])),
+  ...Object.fromEntries(trackELessons.map((l) => [l.id, l])),
+  ...Object.fromEntries(trackFLessons.map((l) => [l.id, l])),
   ...Object.fromEntries(intermediateLessons.map(l => [l.id, l])),
 };
 

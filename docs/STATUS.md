@@ -1,8 +1,7 @@
 # 状态
 
-基于 `main` 的 `48cef2b`，在独立分支实现中阶首批 B-I01、C-I04、C-I05。三门均为草稿，等待真实试学。
+基础目录 98 / 100 门可学，中阶 3 / 46 门可学。新增课程标为草稿，等待真实试学。
 
-- B-I01 使用现有的浏览器 Python Worker 和虚构 CSV，实际验证文件、实例、异常、模块和类型。两门 AI 课在本地核对契约、权限、分块、召回与重排。
-- 使用原目录编号注册课时，搜索和路线可进入中阶，离开课时保留阶段。原有进度数据格式、基础课入口和插图保留。
-- 三课配独立居中插图。其余中阶及进阶的计划不变，无新增依赖。
-- [课程设计](intermediate-pilots/DESIGN.md) · [测试与截图](qa/intermediate-pilots/README.md)。
+- 基础阶段补齐 B18–B20、C01–C18、D01–D16、E01–E16、F01–F08，给 B13、B16、B17 补上正式插图。[B](qa/p3b/README.md) · [C](qa/c-route/README.md) · [D](qa/d-foundation/D05-D16.md) · [E](qa/e-foundation/README.md) · [F](qa/f-foundation/README.md) · [插图](qa/lesson-art/README.md)
+- 中阶首批 B-I01、C-I04、C-I05 使用浏览器 Python Worker、本地证据校验与检索。[设计](intermediate-pilots/DESIGN.md) · [测试与截图](qa/intermediate-pilots/README.md)
+- A21、A22 和其余中阶仍在规划，进阶目录仍供探索。下一步记录真实试学的完成率和卡点，再依据记录调整课程。

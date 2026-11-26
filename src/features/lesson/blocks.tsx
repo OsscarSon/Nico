@@ -1,4 +1,13 @@
 import { EvidenceContractLab, RetrievalLab } from "../../sims/IntermediateLab";
+import { RouteReviewLab } from "../../sims/RouteReviewLab";
+import { CRouteLab } from "../../sims/CRouteLab";
+import { GameCoordinateLab, GameInputLab, GameLoopLab, GameMotionLab } from "../../sims/GameBasics";
+import { GameRoute } from "../../sims/game-route/GameRoute";
+import { ERoute } from "../../sims/e-route/ERoute";
+import { HardwareLab } from "../../sims/f-route/HardwareLab";
+import { isGameRouteSim } from "../../grading/game-route/ids";
+import { isESim } from "../../grading/e-route/ids";
+import { isFSim } from "../../grading/f-route/ids";
 import { FetchLab } from "../../sims/FetchLab";
 import { GithubLab } from "../../sims/GithubLab";
 import { DeploymentLab } from "../../sims/DeploymentLab";
@@ -72,6 +81,15 @@ export function SimBlock({
           : block.sim === "fetch-lab" ? <FetchLab mode={block.mode} onSolved={onDone} />
           : block.sim === "github-lab" ? <GithubLab mode={block.mode} onSolved={onDone} />
           : block.sim === "deployment-lab" ? <DeploymentLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "route-review" ? <RouteReviewLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "ai-route-lab" && block.cLab ? <CRouteLab labKey={block.cLab} mode={block.mode} onSolved={onDone} />
+          : isGameRouteSim(block.sim) ? <GameRoute sim={block.sim} mode={block.mode} onSolved={onDone} />
+          : block.sim === "game-loop" ? <GameLoopLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "game-coordinates" ? <GameCoordinateLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "game-motion" ? <GameMotionLab mode={block.mode} onSolved={onDone} />
+          : block.sim === "game-input" ? <GameInputLab mode={block.mode} onSolved={onDone} />
+          : isESim(block.sim) ? <ERoute sim={block.sim} mode={block.mode} onSolved={onDone} />
+          : isFSim(block.sim) ? <HardwareLab sim={block.sim} mode={block.mode} onSolved={onDone} />
           : block.sim === "udp" ? <UdpLab mode={block.mode} onSolved={onDone} />
           : block.sim === "http" ? <HttpLab mode={block.mode} onSolved={onDone} />
           : block.sim === "journey" ? <JourneyLab mode={block.mode} onSolved={onDone} />

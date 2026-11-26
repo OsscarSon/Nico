@@ -1,0 +1,39 @@
+.e-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: .75rem;
+}
+.e-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  overflow-wrap: anywhere;
+}
+.e-table caption {
+  padding: .4rem 0;
+  text-align: left;
+  font-weight: 600;
+}
+.e-table td, .e-table th {
+  padding: .4rem .35rem;
+  border-bottom: 1px solid var(--grid);
+  text-align: left;
+  vertical-align: top;
+}
+.e-code {
+  margin-bottom: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.e-chart {
+  width: min(100%, 25rem);
+  margin: 1rem auto;
+}
+.e-chart figcaption {
+  text-align: center;
+}
+.e-chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}

@@ -30,7 +30,7 @@ export const trackBCatalog: CatalogLesson[] = [
   L("b15-git-branches", "分支与合并", "b3", "available"),
   L("b16-github", "GitHub：把代码放到网上", "b3", "available"),
   L("b17-pages", "发布一个静态网页", "b3", "available"),
-  L("b18-project-page", "作品一：个人网页", "b4"),
-  L("b19-project-tool", "作品二：一个小工具", "b4"),
-  L("b20-review", "路线回顾与自测", "b4"),
+  L("b18-project-page", "作品一：个人网页", "b4", "available"),
+  L("b19-project-tool", "作品二：一个小工具", "b4", "available"),
+  L("b20-review", "路线回顾与自测", "b4", "available"),
 ];
