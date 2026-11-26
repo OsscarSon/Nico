@@ -1,11 +1,15 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { Link } from "../../app/router";
+import { Link, usePath } from "../../app/router";
 import { Device, EmptyState } from "../../components/ui";
 import { courseLink } from "../../content/academy2/model";
 import { laboratories } from "../../content/academy2/resources";
 import { initialSortInput, insertionFrames, parseSortInput, sampleBernoulliDistribution, samplePolynomial } from "../../grading/academy2/labs";
 import { BitSwitches } from "../../sims/BitSwitches";
 import { PageHeading } from "./Curriculum";
+import { benches, Workbench } from "./P1";
+import { benchLink } from "../../content/academy2/p1/navigation";
+import { findP1Lesson } from "../../content/academy2/p1";
+import { knowledgeLink } from "../../content/academy2/knowledgeRegistry";
 
 function MathWorkbench() {
   const [a, setA] = useState(1), [b, setB] = useState(0), [c, setC] = useState(0);
@@ -97,13 +101,24 @@ function AlgorithmWorkbench() {
 }
 
 export function AcademyLabPage({ id }: { id: string }) {
+  const params=new URLSearchParams(usePath().split("?")[1]);
+  const bench=params.get("bench");
+  const from=params.get("from");
+  const subject=id==="math" ? "-mathematics/" : id==="statistics" ? "-statistics/" : null;
+  const labs=subject ? Object.entries(benches).filter(([key])=>key.includes(subject)) : [];
+  const selected=labs.find(([key])=>key===bench);
   const lab = laboratories.find(item => item.id === id);
   if (!lab) return <EmptyState title="找不到这个实验室" action={<Link to="/lab" className="btn">查看实验室</Link>}>请从实验室目录选择一个场景。</EmptyState>;
   return <div className="a2-page">
     <div className="a2-crumbs"><Link to="/lab">实验室</Link><span>/</span><span>{lab.title}</span></div>
     <PageHeading title={lab.title} english={lab.english} intro={lab.intro} />
-    {id === "math" && <MathWorkbench />}
-    {id === "statistics" && <StatisticsWorkbench />}
+    {selected&&<>
+      {from&&findP1Lesson(from)&&<Link to={knowledgeLink(from)}>← 返回知识点学习</Link>}
+      <Workbench key={selected[0]} bench={selected[1]} />
+    </>}
+    {!selected&&id === "math" && <MathWorkbench />}
+    {!selected&&id === "statistics" && <StatisticsWorkbench />}
+    {labs.length>0&&<section className="a2-panel"><h2>课程配套实验</h2><ul className="a2-link-list">{labs.map(([key,work])=><li key={key}><Link to={benchLink(key)}>{work.title} ↗</Link></li>)}</ul></section>}
     {id === "algorithms" && <AlgorithmWorkbench />}
     {id === "systems" && <Device title="位开关" label="模拟"><p>切换各位，看二进制与十进制之间的关系。</p><BitSwitches mode="free" /></Device>}
     {lab.links.length > 0 && <section className="a2-panel a2-lab-links"><h2>{lab.available ? "继续动手" : lab.primary}</h2><ul className="a2-link-list">

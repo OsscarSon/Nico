@@ -100,64 +100,21 @@ export function recommendedLesson(progress: Progress, resume: boolean, oldTrack:
   return recent ?? pathContinuation(personal, progress) ?? continuation(progress, false, oldTrack);
 }
 
-export type Target = { course: string; module?: string; topic?: string };
-const target = (course: string, module?: string, topic?: string): Target => ({ course, module, topic });
-const crossCourse: Record<string, Target[]> = {
-  "foundation-algorithms": [target("foundation-programming", "control"), target("foundation-mathematics", "proof")],
-  "foundation-data-science": [target("foundation-statistics", "data"), target("foundation-programming", "collections")],
-  "foundation-ai": [target("foundation-mathematics", "vectors"), target("foundation-statistics", "probability")],
-  "foundation-software": [target("foundation-programming", "syntax")],
-  "foundation-security": [target("foundation-systems", "network")],
-  "foundation-applied": [target("foundation-programming", "control")],
-  "intermediate-mathematics": [target("foundation-programming", "control")],
-  "intermediate-statistics": [target("intermediate-mathematics", "calculus")],
-  "intermediate-algorithms": [target("intermediate-mathematics", "discrete"), target("intermediate-programming", "python")],
-  "intermediate-data-science": [target("intermediate-statistics", "inference"), target("intermediate-programming", "python")],
-  "intermediate-ai": [target("intermediate-mathematics", "linear-algebra"), target("intermediate-statistics", "inference"), target("intermediate-algorithms", "structures")],
-  "intermediate-software": [target("intermediate-programming", "async"), target("intermediate-data-science", "database-design")],
-  "intermediate-security": [target("intermediate-systems", "networks"), target("intermediate-mathematics", "discrete")],
-  "intermediate-applied": [target("intermediate-programming", "languages")],
-  "advanced-algorithms": [target("intermediate-mathematics", "discrete")],
-  "advanced-programming": [target("intermediate-mathematics", "discrete")],
-  "advanced-systems": [target("intermediate-algorithms", "graphs"), target("advanced-data-science", "pipelines"), target("intermediate-ai", "evaluation")],
-  "advanced-data-science": [target("intermediate-algorithms", "design")],
-  "advanced-ai": [target("intermediate-statistics", "inference"), target("intermediate-mathematics", "calculus"), target("advanced-systems", "distributed")],
-  "advanced-software": [target("intermediate-systems", "virtualization"), target("intermediate-data-science", "database-design")],
-  "advanced-security": [target("intermediate-statistics", "inference"), target("intermediate-ai", "evaluation")],
+export type { Target, Dependency } from "./knowledgeGraph";
+import { dependenciesOf, type Target } from "./knowledgeGraph";
+import { knowledgeAt } from "./knowledgeRegistry";
+
+export const courseDependencies = (course: AcademyCourse) => dependenciesOf(course.id);
+export const moduleDependencies = (course: AcademyCourse, moduleId: string) => dependenciesOf(course.id + "/" + moduleId);
+export const topicDependencies = {
+  "advanced-ai/attention/Attention": dependenciesOf(knowledgeAt("advanced-ai", "attention", "Attention")!.id),
 };
-export const topicDependencies: Record<string, Target[]> = {
-  "advanced-ai/attention/Attention": [
-    target("intermediate-mathematics", "linear-algebra", "线性代数：矩阵运算"),
-    target("foundation-mathematics", "vectors", "向量点积"),
-    target("intermediate-ai", "reasoning", "Softmax"),
-    target("intermediate-statistics", "variables", "联合与条件分布"),
-    target("intermediate-mathematics", "calculus", "梯度"),
-  ],
-  "intermediate-ai/supervised/线性回归": [
-    target("intermediate-mathematics", "linear-algebra", "最小二乘"), target("foundation-statistics", "visualization", "相关性"),
-  ],
-  "intermediate-algorithms/graphs/Dijkstra": [
-    target("intermediate-algorithms", "graphs", "图表示"), target("intermediate-algorithms", "structures", "Heap"),
-  ],
-};
-export function courseDependencies(course: AcademyCourse): Target[] {
-  const index = phases.findIndex(phase => phase.id === course.stage);
-  return [...index > 0 ? [target(phases[index - 1]!.id + "-" + course.domain)] : [], ...crossCourse[course.id] ?? []];
-}
-export function moduleDependencies(course: AcademyCourse, moduleId: string): Target[] {
-  const index = course.modules.findIndex(module => module.id === moduleId);
-  const context = courseDependencies(course);
-  return index > 0 ? [target(course.id, course.modules[index - 1]!.id), ...context.slice(0, 2)] : context;
-}
+
 export function lessonDependencies(id: string) {
   return getLesson(id)?.prerequisites.map(lessonId => ({ lesson: getLesson(lessonId), position: primaryLocation(lessonId) })).filter(result => result.lesson || result.position) ?? [];
 }
-export function topicPrerequisites(course: AcademyCourse, module: AcademyModule, topic: string): Target[] {
-  const explicit = topicDependencies[course.id + "/" + module.id + "/" + topic];
-  if (explicit) return explicit;
-  const topics = module.chapters.flat();
-  const prior = topics[topics.indexOf(topic) - 1];
-  return prior ? [target(course.id, module.id, prior), ...moduleDependencies(course, module.id).slice(0, 1)] : moduleDependencies(course, module.id);
+export function topicPrerequisites(course: AcademyCourse, module: AcademyModule, topic: string) {
+  return dependenciesOf(knowledgeAt(course.id, module.id, topic)?.id ?? "");
 }
 export function labelTarget(value: Target) {
   const course = getAcademyCourse(value.course)!;
