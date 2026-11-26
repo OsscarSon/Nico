@@ -636,7 +636,7 @@
   ],
   "prerequisites": "B01–B07",
   "project": "全栈学习管理系统",
-  "status": "next",
+  "status": "live",
   "phase": 2
  },
  {
@@ -1152,7 +1152,7 @@
   ],
   "prerequisites": "C05–C13",
   "project": "RAG 学习导师",
-  "status": "next",
+  "status": "live",
   "phase": 2
  },
  {
@@ -1168,7 +1168,7 @@
   ],
   "prerequisites": "C11、B-I03",
   "project": "RAG 学习导师",
-  "status": "next",
+  "status": "live",
   "phase": 2
  },
  {

@@ -52,6 +52,7 @@ function Player({ lessonId }: { lessonId: string }) {
   const progress = useProgress();
   const total = lesson.blocks.length;
   const track = getTrack(lesson.track);
+  const routeHref = "/paths/" + lesson.track + (lesson.stage === "Intermediate" ? "?stage=Intermediate" : "");
 
   const [step, setStep] = useState(() => {
     const r = getProgress().resume;
@@ -140,7 +141,7 @@ function Player({ lessonId }: { lessonId: string }) {
     <div className="lesson-wrap">
       <div>
         <header className="lesson-head">
-          <Link to={`/paths/${lesson.track}`} className="backlink">
+          <Link to={routeHref} className="backlink">
             ← {track?.title ?? "路线"}
           </Link>
           <h1>{lesson.title}</h1>
@@ -166,7 +167,7 @@ function Player({ lessonId }: { lessonId: string }) {
             ) : fallback ? (
               <Link to={`/lesson/${fallback.id}`} className="btn">继续：{fallback.title}</Link>
             ) : (
-              <Link to={`/paths/${lesson.track}`} className="btn">回到路线</Link>
+              <Link to={routeHref} className="btn">回到路线</Link>
             )
           ) : (
             <button
