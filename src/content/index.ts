@@ -16,17 +16,23 @@ import { trackFLessons } from "./track-f";
 import { networkLessons } from "./track-a-net";
 import { securityLessons } from "./track-a-security";
 import { intermediateLessons } from "./lessons/intermediate/pilots";
+import { diagnosticsLessons } from "./lessons/ab-courses/foundation";
+import { intermediateALessons } from "./lessons/ab-courses/intermediate-a";
+import { intermediateBLessons } from "./lessons/ab-courses/intermediate-b";
+
+const intermediate = [...intermediateLessons, ...intermediateALessons, ...intermediateBLessons];
 
 export const lessons: Record<string, Lesson> = {
   [a01.id]: a01, [a02.id]: a02, [a03.id]: a03, [a04.id]: a04, [a05.id]: a05, [a06.id]: a06, [a07.id]: a07, [a08.id]: a08,
   ...Object.fromEntries(networkLessons.map((l) => [l.id, l])),
   ...Object.fromEntries(securityLessons.map((l) => [l.id, l])),
+  ...Object.fromEntries(diagnosticsLessons.map((l) => [l.id, l])),
   ...Object.fromEntries(trackBLessons.map((l) => [l.id, l])),
   ...Object.fromEntries(trackCLessons.map((l) => [l.id, l])),
   ...Object.fromEntries(trackDLessons.map((l) => [l.id, l])),
   ...Object.fromEntries(trackELessons.map((l) => [l.id, l])),
   ...Object.fromEntries(trackFLessons.map((l) => [l.id, l])),
-  ...Object.fromEntries(intermediateLessons.map(l => [l.id, l])),
+  ...Object.fromEntries(intermediate.map(l => [l.id, l])),
 };
 
 export const getLesson = (id: string): Lesson | undefined => lessons[id];
@@ -34,7 +40,8 @@ export const getLesson = (id: string): Lesson | undefined => lessons[id];
 export const foundationCatalogLessons = (): CatalogLesson[] =>
   tracks.flatMap(track => track.lessons);
 
-const intermediateCatalog: CatalogLesson[] = intermediateLessons.map(({ id, title, unit }) => ({ id, title, unit, status: "available" }));
+const intermediateCatalog = intermediate.map(({ id, title, unit }): CatalogLesson => ({ id, title, unit, status: "available" }))
+  .sort((a, b) => a.id.localeCompare(b.id));
 export const allCatalogLessons = (): CatalogLesson[] =>
   [...foundationCatalogLessons(), ...intermediateCatalog];
 
@@ -61,6 +68,11 @@ export function validateContent(): string[] {
 
 /** 同一条路线里，当前课之后第一个已经开放的课（不会跳到别的路线）。 */
 export function nextAvailableAfter(id: string): CatalogLesson | undefined {
+  const lesson = getLesson(id);
+  if (lesson?.stage === "Intermediate") {
+    const next = intermediateCatalog[intermediateCatalog.findIndex(entry => entry.id === id) + 1];
+    return next?.id.startsWith(lesson.track + "-") ? next : undefined;
+  }
   const track = tracks.find((t) => t.lessons.some((l) => l.id === id));
   if (!track) return undefined;
   const idx = track.lessons.findIndex((l) => l.id === id);

@@ -8,7 +8,7 @@ export const plannedArt: Record<string, string> = { A21: "planned-a21-http-statu
 export function routeNode(course: Course) {
   const legacy = course.stage === "Foundation" ? foundationCatalogLessons().find(l => l.id.split("-")[0]?.toUpperCase() === course.id) : undefined;
   const lesson = liveLessonFor(course);
-  return { code: course.id, course, lesson, id: lesson?.id ?? legacy?.id ?? course.id.toLowerCase(), available: !!lesson, unit: lesson?.unit ?? legacy?.unit ?? (course.track === "A" && course.stage === "Foundation" ? "a3" : `${course.track.toLowerCase()}-planned`), plannedArt: plannedArt[course.id] };
+  return { code: course.id, course, lesson, id: lesson?.id ?? legacy?.id ?? course.id.toLowerCase(), available: !!lesson, unit: lesson?.unit ?? legacy?.unit ?? (course.track === "A" && course.stage === "Foundation" ? "a3" : `${course.track.toLowerCase()}-planned`), plannedArt: lesson ? undefined : plannedArt[course.id] };
 }
 export type RouteNode = ReturnType<typeof routeNode>;
 /** Curriculum availability + existing registry identity, one deterministic view for catalog, map and summaries. */

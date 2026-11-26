@@ -71,8 +71,8 @@ try {
     await page.getByLabel("筛选课程状态").selectOption("live");
     const more = page.getByRole("button", { name: /^显示更多/ });
     const courseLinks = page.locator(".academy-course a");
-    check(`${width}: 课程分页先显示30门且结果总数101`, await courseLinks.count() === 30 && (await page.locator(".academy-result-count").innerText()) === "找到 101 门课程");
-    for (const count of [60, 90, 101]) {
+    check(`${width}: 课程分页先显示30门且结果总数116`, await courseLinks.count() === 30 && (await page.locator(".academy-result-count").innerText()) === "找到 116 门课程");
+    for (const count of [60, 90, 116]) {
       await more.click();
       check(`${width}: 分页显示 ${count} 个真实入口`, await courseLinks.count() === count);
     }

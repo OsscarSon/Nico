@@ -39,7 +39,7 @@ export const tracks: Track[] = [
     art: "track-a-network.png",
     tagline: "从 0 和 1 一路走到一次网页访问。",
     status: "building",
-    plannedSummary: "约 20 课 · 4 个单元",
+    plannedSummary: "22 课 · 4 个单元",
     units: [
       { id: "a1", title: "数字世界的语言" },
       { id: "a2", title: "电脑内部" },
@@ -67,6 +67,8 @@ export const tracks: Track[] = [
       L("a18-passwords", "密码与哈希", "a4", "available"),
       L("a19-phishing", "识别钓鱼与社会工程", "a4", "available"),
       L("a20-least-privilege", "最小权限与日常防护", "a4", "available"),
+      L("a21-http-status", "状态码是服务器的回话（404、429）", "a3", "available"),
+      L("a22-error-logs", "读懂报错与日志", "a3", "available"),
     ],
   },
   {

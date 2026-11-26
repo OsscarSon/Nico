@@ -35,16 +35,16 @@ describe("P2 versioned independent preferences", () => {
   });
 });
 describe("P2 deterministic route consistency without new lesson semantics", () => {
-  it("puts A21/A22 in A3 only as planned previews and preserves all 20 available IDs/four units", () => {
+  it("keeps A21/A22 in A3 as learnable draft lessons and preserves four units", () => {
     const a = routeView("a")!; expect(a.units.map(u => u.id)).toEqual(["a1", "a2", "a3", "a4"]); expect(a.nodes).toHaveLength(22);
-    expect(routeCounts(a.nodes, emptyProgress())).toEqual({ total: 22, available: 20, planned: 2, completed: 0 });
-    for (const code of ["A21", "A22"]) { const c = curriculum.find(c => c.id === code)!; const n = a.nodes.find(n => n.code === code)!; expect(n).toEqual(routeNode(c)); expect(n.unit).toBe("a3"); expect(n.available).toBe(false); expect(n.lesson).toBeUndefined(); expect(n.plannedArt).toMatch(/^planned-a2/); expect(getLesson(n.id)).toBeUndefined(); }
+    expect(routeCounts(a.nodes, emptyProgress())).toEqual({ total: 22, available: 22, planned: 0, completed: 0 });
+    for (const code of ["A21", "A22"]) { const c = curriculum.find(c => c.id === code)!; const n = a.nodes.find(n => n.code === code)!; expect(n).toEqual(routeNode(c)); expect(n.unit).toBe("a3"); expect(n.available).toBe(true); expect(n.lesson?.quality.state).toBe("draft"); expect(n.plannedArt).toBeUndefined(); expect(getLesson(n.id)?.art).toBe(code === "A21" ? "lesson-a21-http-status-centered.png" : "planned-a22-error-logs.png"); }
     expect(a.units.flatMap(u => u.nodes).map(n => n.code).sort()).toEqual(a.nodes.map(n => n.code).sort());
   });
   it("distinguishes availability, real completion, next state and draft/pilot quality", () => {
     const a = routeView("a")!, p = completeLesson(emptyProgress(), "a01-binary", { firstTryCorrect: 3, quizTotal: 4 }, new Date("2026-11-17T00:00:00Z"));
     expect(nodeState(a.nodes[0]!, p, a.nodes[0]!.id)).toBe("completed"); expect(nodeState(a.nodes[1]!, p, a.nodes[1]!.id)).toBe("current"); expect(nodeState(a.nodes[2]!, p)).toBe("available");
-    const planned = a.nodes.find(n => n.code === "A21")!; expect(nodeState(planned, { ...p, lessons: { ...p.lessons, [planned.id]: p.lessons["a01-binary"]! } })).toBe("planned");
+    const planned = routeView("c", "Intermediate")!.nodes.find(n => n.code === "C-I03")!; expect(nodeState(planned, { ...p, lessons: { ...p.lessons, [planned.id]: p.lessons["a01-binary"]! } })).toBe("planned");
     expect(routeCounts(a.nodes, p).completed).toBe(1); expect(a.nodes[0]!.lesson?.quality.state).toBe("draft");
   });
   it("scales all stages/routes with no invented availability and rejects unknown identities", () => {

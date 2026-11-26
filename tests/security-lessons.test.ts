@@ -16,13 +16,13 @@ describe("A18–A20 teaching and whole A-route integrity", () => {
     expect(l.sources.length).toBeGreaterThanOrEqual(3); expect(lessonSchema.safeParse({ ...l, quality: { state: "published" } }).success).toBe(false);
   });
   it("opens all original 20 IDs, keeps every prerequisite backward and connects summaries through A20", () => {
-    const a = tracks.find(t => t.id === "a")!.lessons; expect(a).toHaveLength(20); expect(validateContent()).toEqual([]);
+    const a = tracks.find(t => t.id === "a")!.lessons.slice(0, 20); expect(a).toHaveLength(20); expect(validateContent()).toEqual([]);
     for (let i = 0; i < a.length; i++) {
       const c = a[i]!, l = lessons[c.id]!; expect(c.id.startsWith(`a${String(i + 1).padStart(2, "0")}-`)).toBe(true); expect(c.status).toBe("available"); expect(lessonSchema.safeParse(l).success).toBe(true);
       const record = curriculum.find(item => item.id === `A${String(i + 1).padStart(2, "0")}`)!; expect(liveLessonFor(record)?.id).toBe(c.id);
       for (const p of l.prerequisites) { const prerequisite = a.findIndex(item => item.id === p); expect(prerequisite).toBeGreaterThanOrEqual(0); expect(prerequisite).toBeLessThan(i); }
       const end = l.blocks.at(-1); expect(end?.type).toBe("summary"); if (end?.type === "summary") expect(end.next).toBe(a[i + 1]?.id);
-      expect(nextAvailableAfter(c.id)?.id).toBe(a[i + 1]?.id);
+      expect(nextAvailableAfter(c.id)?.id).toBe(a[i + 1]?.id ?? "a21-http-status");
     }
     expect(Object.keys(lessons).filter(id => /^b\d/.test(id))).toHaveLength(20); expect(Object.keys(lessons).filter(id => /^c\d/.test(id))).toHaveLength(18);
   });

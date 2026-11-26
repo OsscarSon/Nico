@@ -140,7 +140,7 @@ try {
     await p.locator(".pathmap").waitFor();
     assert.equal(await p.locator("a.pm-card").count(), 2);
     assert.equal(await p.locator(".pm-card.planned a").count(), 0);
-    await p.goto(base + "/#/lesson/b-i02");
+    await p.goto(base + "/#/lesson/c-i03");
     assert.ok(await p.getByText("这一课还没有开放", { exact: true }).isVisible());
     for (const [i, lesson] of lessons.entries()) {
       await p.goto(base + "/#/lesson/" + lesson.id);

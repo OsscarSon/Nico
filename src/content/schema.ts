@@ -4,6 +4,7 @@ import { cLabKeys } from "../grading/c-route/types";
 import { gameRouteSims } from "../grading/game-route/ids";
 import { eSims } from "../grading/e-route/ids";
 import { fSims } from "../grading/f-route/ids";
+import { labIds } from "../grading/ab-courses/model";
 
 /** 选择题：每个错误选项都必须有"诊断提示"，说明它对应的常见误解。 */
 export const quizItemSchema = z
@@ -92,10 +93,11 @@ export const blockSchema = z.discriminatedUnion("type", [
       "forwarding", "reassembly", "tcp", "udp", "http", "journey", "password", "phishing", "privilege",
       "fetch-lab", "github-lab", "deployment-lab", "route-review", "ai-route-lab",
       "game-loop", "game-coordinates", "game-motion", "game-input", ...gameRouteSims,
-      ...eSims, ...fSims, "evidence-contract", "retrieval-pilot",
+      ...eSims, ...fSims, "evidence-contract", "retrieval-pilot", "ab-course-lab",
     ]),
     mode: z.enum(["free", "challenge"]),
     cLab: z.enum(cLabKeys).optional(),
+    abLab: z.enum(labIds).optional(),
     title: z.string().min(1),
     intro: z.string().min(1),
     /** bit-switches 挑战：依次要拨出的数 */
@@ -158,6 +160,7 @@ export const lessonSchema = z
     "课时模板要求：至少一个互动、一组检查题、一道迁移题",
   )
   .refine(l => l.blocks.every(b => b.type !== "sim" || b.sim !== "ai-route-lab" || b.cLab !== undefined), "C 路线实验需要已注册的实验编号")
+  .refine(l => l.blocks.every(b => b.type !== "sim" || b.sim !== "ab-course-lab" || b.abLab !== undefined), "A / B 路线实验需要已注册的实验编号")
   .refine(
     (l) =>
       l.blocks.every(

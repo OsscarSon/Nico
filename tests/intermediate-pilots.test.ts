@@ -11,13 +11,13 @@ import { pythonChallenge, pythonFree } from "../src/content/lessons/intermediate
 import { emptyProgress } from "../src/progress/store";
 
 describe("中阶目录接入", () => {
-  it("only opens the three intended intermediate records and keeps their stable identifiers", () => {
-    expect(coursesFor("Intermediate").filter(c => c.status === "live").map(c => c.id)).toEqual(["B-I01", "C-I04", "C-I05"]);
+  it("keeps the three pilot identifiers available after other intermediate lessons are opened", () => {
+    expect(coursesFor("Intermediate").filter(c => c.status === "live").map(c => c.id)).toEqual(expect.arrayContaining(["B-I01", "C-I04", "C-I05"]));
     expect(coursesFor("Advanced").some(c => liveLessonFor(c))).toBe(false);
-    expect(stageSummary("Intermediate")).toBe("已上线 3 / 46");
-    expect(routeView("b", "Intermediate")?.units[0]?.nodes.map(n => n.id)).toEqual(["b-i01"]);
+    expect(stageSummary("Intermediate")).toBe("已上线 16 / 46");
+    expect(routeView("b", "Intermediate")?.units[0]?.nodes[0]?.id).toBe("b-i01");
     expect(routeView("c", "Intermediate")?.units[0]?.nodes.map(n => n.id)).toEqual(["c-i04", "c-i05"]);
-    const future = coursesFor("Intermediate", "B").find(c => c.id === "B-I02")!;
+    const future = coursesFor("Intermediate", "C").find(c => c.id === "C-I03")!;
     expect(liveLessonFor({ ...future, status: "live" })).toBeUndefined();
     expect(routeView("c", "Foundation")?.nodes.some(n => n.id === "c-i04")).toBe(false);
     expect(allCatalogLessons().some(c => c.id === "c-i05" && c.status === "available")).toBe(true);

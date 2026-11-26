@@ -95,7 +95,7 @@ try {
   }
   check("完整学习流程无 JS 异常", errors.length === 0);
   await page.goto(`${BASE}/#/paths/a`); await page.locator(".pm-card").first().waitFor();
-  check("PathMap 可学20门、A21/A22规划2门", await page.locator(".pm-card.planned").count() === 2 && await page.locator("a.pm-card").count() === 20);
+  check("PathMap 可学 22 门", await page.locator(".pm-card.planned").count() === 0 && await page.locator("a.pm-card").count() === 22);
   await ctx.close();
   for (const width of [1440, 360]) for (const theme of ["dark", "light"]) {
     const context = await browser.newContext({ viewport: { width, height: width === 1440 ? 1000 : 844 } });

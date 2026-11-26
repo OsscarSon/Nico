@@ -115,7 +115,7 @@ try {
         await next(p).click(); await p.getByLabel("你的答案（一个整数）").fill(String(transfers[course] + 1)); await click(p, "检查答案"); check(`${id}迁移错答未放行`, await next(p).isDisabled());
         await p.getByLabel("你的答案（一个整数）").fill(String(transfers[course])); await click(p, "检查答案"); await next(p).click();
         check(`${id}三点总结与参考来源`, await p.locator(".points li").count() === 3 && await p.locator(".foundation-sources a").count() >= 3);
-        check(`${id}下一课或返回A路线`, await p.locator(".stepnav a").getAttribute("href") === (course < 2 ? `#/lesson/${ids[course + 1]}` : "#/paths/a"));
+        check(`${id}可继续下一课`, await p.locator(".stepnav a").getAttribute("href") === (course < 2 ? `#/lesson/${ids[course + 1]}` : "#/lesson/a21-http-status"));
         const progress = await p.evaluate(() => JSON.parse(localStorage.getItem("nico-progress")));
         check(`${id}真实首次成绩2/4与版本1`, progress.schemaVersion === 1 && progress.lessons[id]?.firstTryCorrect === 2 && progress.lessons[id]?.quizTotal === 4);
       }
@@ -135,7 +135,7 @@ try {
   await button(p, "检查请求内容").focus(); await p.keyboard.press("Enter"); check("键盘Enter实际检查请求", (await p.getByLabel("已查看邮件证据").innerText()).includes("MFA验证码"));
   // Final A-route audit: open every actual link at 360px without manufacturing completion records.
   await p.goto(`${BASE}/#/paths/a`); const links = await p.locator("a.pm-card").evaluateAll(nodes => nodes.map(a => a.getAttribute("href")));
-  check("A路线20个真实入口且A21/A22规划不冒充课程", links.length === 20 && await p.locator(".pm-card.planned").count() === 2);
+  check("A 路线 22 个真实入口", links.length === 22 && await p.locator(".pm-card.planned").count() === 0);
   const issues = [];
   for (const href of links) {
     await p.goto(`${BASE}/${href}`); await p.locator(".lesson-body").waitFor();

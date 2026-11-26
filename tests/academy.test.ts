@@ -12,7 +12,7 @@ describe("Academy catalog compatibility", () => {
     expect(coursesFor("Intermediate")).toHaveLength(46);
     expect(coursesFor("Advanced")).toHaveLength(66);
     expect(stageSummary("Foundation")).toBe("已上线 " + Object.values(lessons).filter(lesson => !lesson.stage).length + " / 100");
-    expect(stageSummary("Intermediate")).toBe("已上线 3 / 46");
+    expect(stageSummary("Intermediate")).toBe("已上线 16 / 46");
     expect(stageSummary("Advanced")).toBe("精选 16 · 资料路径 50");
     expect(coursesFor("Foundation", "M")).toEqual([]);
   });
