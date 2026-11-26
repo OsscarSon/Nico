@@ -5,4 +5,5 @@ Nico Academy 2.0 延续 PR #21 的 10 个领域、30 个入口和 120 个模块�
 - P1A–P1D 接入 82 个知识点教学页，覆盖 Word 原列 81 项及 PR #21 的向量点积。配套 15 个数学与统计实验、4 个可验收导出项目。全部新课为草稿。
 - 知识图谱使用显式 Required / Recommended / Related 和稳定 ID。知识点、课时、章节、模块和课程显示依据实际练习和原有成绩汇总的进度。先修自评单独保存。
 - 原课时、插图、互动、AI 与学习记录继续通过既有机制。专业路线行为延用 PR #21。
+- P1.5 接入可组合教学块、按需 KaTeX 与通用题库，补强全部 82 页。旧掌握记录继续读取，追加题库保存在同一版本记录的独立字段。[覆盖](academy-2-p15/COVERAGE.md) · [依赖选型](academy-2-p15/TECHNOLOGY.md) · [测试与截图](qa/academy-2-p15/README.md)
 - 后续收集真实试学和开放题反馈。[覆盖表](academy-2-p1/COVERAGE.md) · [教学质量与边界](academy-2-p1/QUALITY.md) · [测试与截图](qa/academy-2-p1/README.md)
