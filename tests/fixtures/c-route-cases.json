@@ -1,0 +1,19 @@
+[
+  {"id":"c01-what-is-llm","lab":"predict","values":{"prefix":"class"},"answers":[1,2,0],"transfer":8,"evidence":"书包"},
+  {"id":"c02-tokens-context","lab":"context","values":{"text":"雨天改室内 周六见"},"answers":[1,0,2],"transfer":18,"evidence":"两条证据都进入"},
+  {"id":"c03-temperature","lab":"sample","values":{"temp":"2"},"answers":[2,0,1],"transfer":3,"evidence":"3 种续写"},
+  {"id":"c04-hallucination","lab":"claims","values":{"集合时间":"keep","集合地点":"correct","票价":"unknown"},"answers":[0,1,2],"transfer":3,"evidence":"西门"},
+  {"id":"c06-few-shot","lab":"examples","values":{"booking":"预约","cancel":"取消","change":"改期"},"answers":[1,2,0],"transfer":7,"evidence":"4/4"},
+  {"id":"c07-output-format","lab":"format","values":{"json":"{\"title\":\"社团例会\",\"minutes\":30}"},"answers":[2,0,1],"transfer":4,"evidence":"字段约定通过"},
+  {"id":"c08-task-splitting","lab":"pipeline","values":{"first":"facts","second":"validate","third":"publish"},"answers":[1,2,0],"transfer":4,"evidence":"地点待定"},
+  {"id":"c09-self-check","lab":"verify","values":{"draft":"周六西门集合。"},"answers":[0,2,1],"transfer":4,"evidence":"长度 7/12"},
+  {"id":"c10-prompt-loop","lab":"iterate","values":{"missing":"mark","format":"plain"},"answers":[2,0,1],"transfer":8,"evidence":"净变化 2"},
+  {"id":"c11-rag","lab":"retrieve","values":{"query":"周六 开放","edition":"current","cite":"source"},"answers":[1,0,2],"transfer":2,"evidence":"[L2]"},
+  {"id":"c12-agent-loop","lab":"agent","values":{"tool":"rules","arg":"loan","consent":"yes"},"answers":[2,0,1],"transfer":1,"evidence":"14 天 [L3]"},
+  {"id":"c13-evaluation","lab":"evaluate","values":{"set":"full","choose":"b"},"answers":[1,2,0],"transfer":20,"evidence":"B · 4/5"},
+  {"id":"c14-local-models","lab":"local","values":{"size":"3","bits":"4","plugin":"off"},"answers":[2,0,1],"transfer":4,"evidence":"估算合计 3 GB"},
+  {"id":"c15-bias-copyright","lab":"fairness","values":{"version":"b","art":"own"},"answers":[1,2,0],"transfer":30,"evidence":"组间差 0"},
+  {"id":"c16-prompt-injection","lab":"trust","values":{"origin":"data","permissions":"read","summarize":"yes"},"answers":[2,0,1],"transfer":1,"evidence":"资料夹带操作：阻止"},
+  {"id":"c17-when-not-ai","lab":"delegate","values":{"sum":"formula","ideas":"brainstorm","decision":"human"},"answers":[1,0,2],"transfer":3,"evidence":"凭证合计 ¥40.00"},
+  {"id":"c18-assistant-project","lab":"capstone","values":{"docs":"current","unknown":"abstain","access":"block","citation":"cite"},"answers":[2,0,1],"transfer":9,"evidence":"基准通过 4/4"}
+]

@@ -1,6 +1,9 @@
 import { trackBUnits, trackBCatalog } from "./track-b-catalog";
 import { trackCUnits, trackCCatalog } from "./track-c-catalog";
-export type TrackId = "a" | "b" | "c" | "d" | "e";
+import { trackDCatalog, trackDUnits } from "./track-d";
+import { trackECatalog, trackEUnits } from "./track-e";
+import { trackFCatalog, trackFUnits } from "./track-f";
+export type TrackId = "a" | "b" | "c" | "d" | "e" | "f";
 export type CatalogLesson = {
   id: string;
   title: string;
@@ -94,10 +97,10 @@ export const tracks: Track[] = [
     english: "Game Dev",
     art: "track-d-games.png",
     tagline: "从游戏循环到 Unity 的第一个场景。",
-    status: "planned",
+    status: "building",
     plannedSummary: "约 16 课 · 小游戏与 Unity 基础",
-    units: [],
-    lessons: [],
+    units: trackDUnits,
+    lessons: trackDCatalog,
   },
   {
     id: "e",
@@ -105,10 +108,21 @@ export const tracks: Track[] = [
     english: "Sheets & Automation",
     art: "track-e-google.png",
     tagline: "用公式、脚本和 AI 把重复的事交给电脑。",
-    status: "planned",
-    plannedSummary: "约 16 课 · 公式、Apps Script、Gemini",
-    units: [],
-    lessons: [],
+    status: "building",
+    plannedSummary: "16 课 · 公式、Apps Script、Gemini",
+    units: trackEUnits,
+    lessons: trackECatalog,
+  },
+  {
+    id: "f",
+    title: "硬件与机器人",
+    english: "Hardware & Robotics",
+    art: "track-f-hardware.png",
+    tagline: "连接软件与现实。",
+    status: "building",
+    plannedSummary: "8 课 · 电路、Arduino 与避障小车",
+    units: trackFUnits,
+    lessons: trackFCatalog,
   },
 ];
 

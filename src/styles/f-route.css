@@ -1,0 +1,35 @@
+.f-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: .75rem;
+}
+.f-pwm {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: .3rem;
+  margin-top: .75rem;
+}
+.f-pwm span, .f-map span {
+  display: grid;
+  place-items: center;
+  min-height: 2rem;
+  border: 1px solid var(--grid);
+}
+.f-pwm .high {
+  background: var(--trace);
+  color: white;
+}
+.f-map {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  border: 1px solid var(--grid);
+}
+.f-map .wall {
+  background-color: var(--grid);
+}
+.f-map strong {
+  padding: .12rem .3rem;
+  border-radius: .3rem;
+  color: #14213d;
+  background: #ffb020;
+}

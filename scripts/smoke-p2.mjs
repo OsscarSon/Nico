@@ -46,7 +46,10 @@ try {
       check(`${width}: catalog ${code} matches planned map and never links to lesson`, await p.locator(".academy-course a").count() === 0 && (await p.locator(".course-details").innerText()).includes("尚未开放") && await p.locator(".planned-preview").count() === 1);
     }
     await go(p, "/lesson/a21"); check(`${width}: direct planned URL stays unavailable`, (await p.locator("main").innerText()).includes("这一课还没有开放"));
-    for (const [id, stage] of [["b", "Foundation"], ["c", "Foundation"], ["d", "Foundation"], ["e", "Foundation"], ["f", "Foundation"], ["m", "Intermediate"]]) { await go(p, `/paths/${id}?stage=${stage}`); check(`${width}: ${id} actual route scope and honest planning`, (await p.locator("main").innerText()).length > 30 && await noOverflow(p) && (["d", "e", "f", "m"].includes(id) ? await p.locator("a.pm-card").count() === 0 : await p.locator("a.pm-card").count() > 0)); }
+    for (const [id, stage, available] of [["b", "Foundation", 20], ["c", "Foundation", 18], ["d", "Foundation", 16], ["e", "Foundation", 16], ["f", "Foundation", 8], ["m", "Intermediate", 0]]) {
+      await go(p, `/paths/${id}?stage=${stage}`);
+      check(`${width}: ${id} actual route scope and honest planning`, (await p.locator("main").innerText()).length > 30 && await noOverflow(p) && await p.locator("a.pm-card").count() === available);
+    }
     if ([1440, 390].includes(width)) for (const theme of ["dark", "light"]) {
       await go(p, "/settings"); await setOption(p, "主题", theme === "dark" ? "暗色" : "亮色");
       for (const [name, path] of [["route", "/paths/a"], ["lesson", "/lesson/a17-web-journey"], ["profile", "/me"], ["settings", "/settings"]]) { await go(p, path); await p.screenshot({ path: `${OUT}/${name}-${theme}-${width}.png` }); check(`${width}/${name}/${theme}: actual screenshot and no overflow`, await noOverflow(p)); }

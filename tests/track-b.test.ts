@@ -61,7 +61,10 @@ describe("track B content", () => {
     expect(nextAvailableAfter("b13-fetch-json")?.id).toBe("b14-git-basics");
     expect(nextAvailableAfter("b15-git-branches")?.id).toBe("b16-github");
     expect(nextAvailableAfter("b16-github")?.id).toBe("b17-pages");
-    expect(nextAvailableAfter("b17-pages")).toBe(undefined);
+    expect(nextAvailableAfter("b17-pages")?.id).toBe("b18-project-page");
+    expect(nextAvailableAfter("b18-project-page")?.id).toBe("b19-project-tool");
+    expect(nextAvailableAfter("b19-project-tool")?.id).toBe("b20-review");
+    expect(nextAvailableAfter("b20-review")).toBeUndefined();
   });
   it("every regex in a lesson compiles", () => {
     for (const s of pythonSims) for (const r of s.code.requires ?? []) expect(() => new RegExp(r.pattern, "m")).not.toThrow();
@@ -212,8 +215,8 @@ function runJsNode(program: string): RunOutcome {
   }
 }
 describe("javascript challenges", () => {
-  it("there are js sims in B11 and B12", () => {
-    expect(new Set(jsSims.map((s) => s.id))).toEqual(new Set(["b11-js-dom", "b12-events"]));
+  it("B11, B12 and B19 include JavaScript interactions", () => {
+    expect(new Set(jsSims.map((s) => s.id))).toEqual(new Set(["b11-js-dom", "b12-events", "b19-project-tool"]));
   });
   for (const c of jsSims.filter((s) => s.mode === "challenge" && !s.code.page)) {
     const checks = c.code.checks ?? [];

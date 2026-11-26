@@ -69,9 +69,14 @@ try {
     await page.getByRole("button", { name: "清除搜索与筛选" }).click();
     await page.getByRole("button", { name: "全部", exact: true }).click();
     await page.getByLabel("筛选课程状态").selectOption("live");
-    check(`${width}: 课程分页先显示30门且结果总数41`, await page.locator(".academy-course a").count() === 30 && (await page.locator(".academy-result-count").innerText()).includes("41"));
-    await page.getByRole("button", { name: /^显示更多/ }).click();
-    check(`${width}: 跨阶段查找全部41个真实入口`, await page.locator(".academy-course a").count() === 41);
+    const more = page.getByRole("button", { name: /^显示更多/ });
+    const courseLinks = page.locator(".academy-course a");
+    check(`${width}: 课程分页先显示30门且结果总数101`, await courseLinks.count() === 30 && (await page.locator(".academy-result-count").innerText()) === "找到 101 门课程");
+    for (const count of [60, 90, 101]) {
+      await more.click();
+      check(`${width}: 分页显示 ${count} 个真实入口`, await courseLinks.count() === count);
+    }
+    check(`${width}: 已显示全部课程`, await more.count() === 0);
     await search.fill("B01");
     check(`${width}: B01 保留旧课程地址`, await page.locator(".academy-course a").getAttribute("href") === "#/lesson/b01-variables");
     await search.fill("c05");

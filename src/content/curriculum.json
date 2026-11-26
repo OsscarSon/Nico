@@ -600,7 +600,7 @@
   "title": "个人网页",
   "source": "existing curriculum",
   "project": "个人网站与小工具",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -610,7 +610,7 @@
   "title": "小工具",
   "source": "existing curriculum",
   "project": "个人网站与小工具",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -620,7 +620,7 @@
   "title": "综合自测",
   "source": "existing curriculum",
   "project": "个人网站与小工具",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -918,7 +918,7 @@
   "title": "大模型",
   "source": "existing curriculum",
   "project": "AI 助手与评估表",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -928,7 +928,7 @@
   "title": "Token 与上下文",
   "source": "existing curriculum",
   "project": "AI 助手与评估表",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -938,7 +938,7 @@
   "title": "温度",
   "source": "existing curriculum",
   "project": "AI 助手与评估表",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -948,7 +948,7 @@
   "title": "幻觉",
   "source": "existing curriculum",
   "project": "AI 助手与评估表",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -968,7 +968,7 @@
   "title": "Few-shot",
   "source": "existing curriculum",
   "project": "AI 助手与评估表",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -978,7 +978,7 @@
   "title": "指定格式",
   "source": "existing curriculum",
   "project": "AI 助手与评估表",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -988,7 +988,7 @@
   "title": "拆任务",
   "source": "existing curriculum",
   "project": "AI 助手与评估表",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -998,7 +998,7 @@
   "title": "自我检查",
   "source": "existing curriculum",
   "project": "AI 助手与评估表",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -1008,7 +1008,7 @@
   "title": "调优循环",
   "source": "existing curriculum",
   "project": "AI 助手与评估表",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -1018,7 +1018,7 @@
   "title": "RAG",
   "source": "existing curriculum",
   "project": "AI 助手与评估表",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -1028,7 +1028,7 @@
   "title": "Agent",
   "source": "existing curriculum",
   "project": "AI 助手与评估表",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -1038,7 +1038,7 @@
   "title": "评估",
   "source": "existing curriculum",
   "project": "AI 助手与评估表",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -1048,7 +1048,7 @@
   "title": "本地模型",
   "source": "existing curriculum",
   "project": "AI 助手与评估表",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -1058,7 +1058,7 @@
   "title": "偏见与版权",
   "source": "existing curriculum",
   "project": "AI 助手与评估表",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -1068,7 +1068,7 @@
   "title": "提示词注入",
   "source": "existing curriculum",
   "project": "AI 助手与评估表",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -1078,7 +1078,7 @@
   "title": "AI 适用边界",
   "source": "existing curriculum",
   "project": "AI 助手与评估表",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -1088,7 +1088,7 @@
   "title": "AI 助手项目",
   "source": "existing curriculum",
   "project": "AI 助手与评估表",
-  "status": "next",
+  "status": "live",
   "phase": 1
  },
  {
@@ -1386,7 +1386,7 @@
   "title": "游戏循环",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "2D 平台游戏",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1396,7 +1396,7 @@
   "title": "坐标",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "2D 平台游戏",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1406,7 +1406,7 @@
   "title": "向量与移动",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "2D 平台游戏",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1416,7 +1416,7 @@
   "title": "输入",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "2D 平台游戏",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1426,7 +1426,7 @@
   "title": "碰撞",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "2D 平台游戏",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1436,7 +1436,7 @@
   "title": "物理与重力",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "2D 平台游戏",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1446,7 +1446,7 @@
   "title": "状态机",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "2D 平台游戏",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1456,7 +1456,7 @@
   "title": "音效与反馈",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "2D 平台游戏",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1466,7 +1466,7 @@
   "title": "Unity 编辑器",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "2D 平台游戏",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1476,7 +1476,7 @@
   "title": "GameObject",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "2D 平台游戏",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1486,7 +1486,7 @@
   "title": "C#",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "2D 平台游戏",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1496,7 +1496,7 @@
   "title": "Unity Physics",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "2D 平台游戏",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1506,7 +1506,7 @@
   "title": "UI",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "2D 平台游戏",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1516,7 +1516,7 @@
   "title": "资源",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "2D 平台游戏",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1526,7 +1526,7 @@
   "title": "发布",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "2D 平台游戏",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1536,7 +1536,7 @@
   "title": "游戏项目",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "2D 平台游戏",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1802,7 +1802,7 @@
   "title": "数据类型",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "学习 Dashboard",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1812,7 +1812,7 @@
   "title": "单元格引用",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "学习 Dashboard",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1822,7 +1822,7 @@
   "title": "IF",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "学习 Dashboard",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1832,7 +1832,7 @@
   "title": "查找函数",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "学习 Dashboard",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1842,7 +1842,7 @@
   "title": "日期与文本",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "学习 Dashboard",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1852,7 +1852,7 @@
   "title": "数据清洗",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "学习 Dashboard",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1862,7 +1862,7 @@
   "title": "数据透视",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "学习 Dashboard",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1872,7 +1872,7 @@
   "title": "图表",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "学习 Dashboard",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1882,7 +1882,7 @@
   "title": "Apps Script",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "学习 Dashboard",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1892,7 +1892,7 @@
   "title": "触发器",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "学习 Dashboard",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1902,7 +1902,7 @@
   "title": "工作流",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "学习 Dashboard",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1912,7 +1912,7 @@
   "title": "Gemini API",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "学习 Dashboard",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1922,7 +1922,7 @@
   "title": "Colab",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "学习 Dashboard",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1932,7 +1932,7 @@
   "title": "Looker Studio",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "学习 Dashboard",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1942,7 +1942,7 @@
   "title": "数据工作流",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "学习 Dashboard",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -1952,7 +1952,7 @@
   "title": "综合项目",
   "source": "existing blueprint or proposed for planned tracks",
   "project": "学习 Dashboard",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -2238,7 +2238,7 @@
   "title": "电路与电流",
   "source": "proposal 2026-11-17",
   "project": "",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -2248,7 +2248,7 @@
   "title": "传感器与执行器",
   "source": "proposal 2026-11-17",
   "project": "",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -2258,7 +2258,7 @@
   "title": "Arduino 入门",
   "source": "proposal 2026-11-17",
   "project": "",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -2268,7 +2268,7 @@
   "title": "数字与模拟信号",
   "source": "proposal 2026-11-17",
   "project": "",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -2278,7 +2278,7 @@
   "title": "用 Arduino 读传感器",
   "source": "proposal 2026-11-17",
   "project": "",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -2288,7 +2288,7 @@
   "title": "电机与舵机",
   "source": "proposal 2026-11-17",
   "project": "",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -2298,7 +2298,7 @@
   "title": "串口与 I2C 通信",
   "source": "proposal 2026-11-17",
   "project": "",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -2308,7 +2308,7 @@
   "title": "小项目：避障小车",
   "source": "proposal 2026-11-17",
   "project": "",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {

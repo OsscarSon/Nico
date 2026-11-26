@@ -1,6 +1,6 @@
 import { lessonSchema, type Lesson } from "../schema";
 export const b16: Lesson = lessonSchema.parse({
-  id: "b16-github", track: "b", unit: "b3", title: "GitHub：把代码放到网上", artPending: true,
+  id: "b16-github", track: "b", unit: "b3", title: "GitHub：把代码放到网上", art: "lesson-b16-github.png",
   objectives: ["能区分Git、本地仓库、GitHub远程仓库及commit/push", "能用clone/pull同步提交并通过分支PR与审查协作", "能对照双方内容处理简单冲突，验证远程与本地最终版本一致"], prerequisites: ["b15-git-branches"], estimatedMinutes: 15, quality: { state: "draft" },
   blocks: [
     { type: "hook", text: "你对队友说：“我已经commit了，怎么你还看不到？”她也保存了联系方式，你保存了新标题。两个人手里的“最新版本”居然不一样！今天让两份历史真的相遇，而不是靠发“最终最终版.zip”碰运气。" },
