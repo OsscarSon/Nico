@@ -36,21 +36,6 @@ function CourseRow({ course }: { course: Course }) {
   );
 }
 
-/** 首页：只给三个阶段的概览，点进「路线」再展开细节，避免和路线/课程页重复。 */
-export function StageOverview() {
-  return (
-    <>
-      <div className="academy-section-head"><div><h2 id="stages-heading">选择你的学习阶段</h2><p>从基础起步，逐渐深入。每个阶段都可以自由探索。</p></div><span className="academy-eyebrow">3 PHASES</span></div>
-      <div className="academy-stages" role="group" aria-labelledby="stages-heading">
-        {stages.map((s, i) => <Link key={s.id} to={`/paths?stage=${s.id}`} className="academy-stage">
-          <span className="academy-eyebrow">PHASE 0{i + 1}<span>{s.id}</span></span>
-          <strong>{s.title}</strong><span className="muted">{s.subtitle}</span><span className="stage-count">{stageSummary(s.id)}</span>
-        </Link>)}
-      </div>
-    </>
-  );
-}
-
 /** 路线页：先选阶段，再选路线，右侧看这条路线下的课程（不带搜索，搜索归「课程」页）。 */
 export function PathsCatalog() {
   const params = new URLSearchParams(usePath().split("?")[1]);

@@ -14,7 +14,7 @@ const check = (name, ok) => {
 };
 const noOverflow = page => page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1);
 const ready = async page => {
-  await page.locator(".academy-course, .academy-stage, .settings-list").first().waitFor();
+  await page.locator(".academy-course, .academy-stage, .a2-stage-grid, .settings-list").first().waitFor();
   await page.evaluate(() => document.fonts.ready);
   await page.evaluate(async () => Promise.all([...document.images].map(i => i.decode().catch(() => {}))));
 };
@@ -32,11 +32,12 @@ try {
     check(`${width}: 首页无横向溢出`, await noOverflow(page));
     await page.screenshot({ path: `${OUT}/after-home-${width}.png` });
     await page.screenshot({ path: `${OUT}/after-home-full-${width}.png`, fullPage: true });
-    check(`${width}: 首页不再重复路线列表`, await page.locator(".academy-track").count() === 0 && await page.locator(".academy-stage").count() === 3);
+    check(`${width}: 首页分开展示三个阶段与专业路线`, await page.locator(".academy-track").count() === 0 && await page.locator(".a2-stage-grid a").count() === 3);
     await page.getByRole("button", { name: "探索学习路线 ↗" }).click();
     await page.waitForFunction(() => window.location.hash === "#/paths");
-    await page.locator("#academy-tracks").waitFor();
+    await page.locator(".a2-guide-nav").waitFor();
     check(`${width}: Hero 按钮进入路线页`, new URL(page.url()).hash === "#/paths");
+    await page.goto(`${BASE}/#/paths?view=legacy`); await ready(page);
     const sources = await page.locator(".academy-track img").evaluateAll(images => images.map(i => new URL(i.src).pathname.split("/").pop()));
     check(`${width}: 六张路线图片（A–F）都加载且路径正确`, JSON.stringify(sources) === JSON.stringify(["track-a-network.png", "track-b-code.png", "track-c-ai.png", "track-d-games.png", "track-e-google.png", "track-f-hardware.png"])
       && await page.locator(".academy-track img").evaluateAll(images => images.every(i => i.complete && i.naturalWidth > 0)));
@@ -57,9 +58,9 @@ try {
     await page.locator(".academy-course summary").first().click();
     check(`${width}: 规划详情诚实说明尚未开放`, await page.locator("details[open]").innerText().then(t => t.includes("尚未开放")));
     check(`${width}: 长英文标题与展开详情无横向溢出`, await noOverflow(page));
-    await page.goto(`${BASE}/#/paths`); await ready(page);
+    await page.goto(`${BASE}/#/paths?view=legacy`); await ready(page);
     check(`${width}: 路线页不带搜索框`, await page.getByRole("searchbox").count() === 0);
-    await page.goto(`${BASE}/#/courses`); await ready(page);
+    await page.goto(`${BASE}/#/courses?view=legacy`); await ready(page);
     check(`${width}: 课程页不显示路线卡片`, await page.locator(".academy-track").count() === 0);
     const search = page.getByRole("searchbox", { name: "搜索课程标题或编号" });
     await search.fill(" a01 ");
@@ -90,14 +91,14 @@ try {
     await page.getByRole("button", { name: "暗色", exact: true }).click();
     await page.reload(); await ready(page);
     check(`${width}: 暗色选择刷新后保留`, await page.locator("html").getAttribute("data-theme") === "dark");
-    await page.goto(`${BASE}/#/paths`); await ready(page);
+    await page.goto(`${BASE}/#/paths?view=legacy`); await ready(page);
     const stageButton = page.getByRole("button", { name: /PHASE 02/ });
     await stageButton.focus();
     check(`${width}: 键盘焦点可见`, await stageButton.evaluate(el => getComputedStyle(el).outlineStyle !== "none"));
     await page.keyboard.press("Enter");
     await stageButton.and(page.locator('[aria-pressed="true"]')).waitFor();
     check(`${width}: 键盘可切换阶段`, await stageButton.getAttribute("aria-pressed") === "true");
-    await page.goto(`${BASE}/#/paths`); await ready(page);
+    await page.goto(`${BASE}/#/paths?view=legacy`); await ready(page);
     await page.locator("#academy-tracks").evaluate(el => el.scrollIntoView({ block: "start", behavior: "instant" }));
     await page.screenshot({ path: `${OUT}/after-tracks-${width}.png` });
     await page.locator(".academy-course-panel").evaluate(el => el.scrollIntoView({ block: "start", behavior: "instant" }));
@@ -172,7 +173,7 @@ try {
   await page.goto(`${BASE}/#/`); await ready(page);
   check("原进度：首页显示真实已完成1课", await page.locator(".stats .stat strong").first().innerText() === "1");
   check("原进度：首页继续上次 B01", await page.locator(".today").innerText().then(t => t.includes("继续上次的位置") && t.includes("变量")));
-  await page.goto(`${BASE}/#/paths`); await ready(page);
+  await page.goto(`${BASE}/#/paths?view=legacy`); await ready(page);
   await page.getByRole("button", { name: /PHASE 03/ }).click();
   await page.getByRole("button", { name: /PHASE 03/ }).and(page.locator('[aria-pressed="true"]')).waitFor();
   await page.goto(`${BASE}/#/settings`); await ready(page);

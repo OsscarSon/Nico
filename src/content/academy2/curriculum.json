@@ -1,0 +1,1996 @@
+[
+  {
+    "id": "foundation-mathematics",
+    "domain": "mathematics",
+    "stage": "foundation",
+    "title": "数学基础",
+    "english": "Mathematical Foundations",
+    "project": "交互式函数与数学可视化实验室",
+    "modules": [
+      {
+        "id": "algebra",
+        "title": "集合与代数",
+        "chapters": [
+          [
+            "集合",
+            "数系",
+            "代数运算",
+            "方程与不等式"
+          ]
+        ]
+      },
+      {
+        "id": "functions",
+        "title": "函数与数列",
+        "chapters": [
+          [
+            "函数与反函数",
+            "多项式",
+            "指数与对数",
+            "数列"
+          ]
+        ]
+      },
+      {
+        "id": "vectors",
+        "title": "几何、向量与矩阵",
+        "chapters": [
+          [
+            "三角函数",
+            "坐标几何",
+            "向量",
+            "矩阵入门"
+          ]
+        ]
+      },
+      {
+        "id": "proof",
+        "title": "逻辑与证明",
+        "chapters": [
+          [
+            "数学逻辑",
+            "数学证明入门"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foundation-statistics",
+    "domain": "statistics",
+    "stage": "foundation",
+    "title": "概率与统计基础",
+    "english": "Probability & Statistics Foundations",
+    "project": "真实数据统计分析报告",
+    "modules": [
+      {
+        "id": "data",
+        "title": "样本与描述统计",
+        "chapters": [
+          [
+            "总体与样本",
+            "变量分类",
+            "测量尺度",
+            "平均数"
+          ],
+          [
+            "中位数",
+            "众数",
+            "方差",
+            "标准差"
+          ]
+        ]
+      },
+      {
+        "id": "distribution",
+        "title": "分布与异常值",
+        "chapters": [
+          [
+            "四分位数",
+            "百分位数",
+            "异常值"
+          ]
+        ]
+      },
+      {
+        "id": "probability",
+        "title": "计数与概率",
+        "chapters": [
+          [
+            "排列组合",
+            "概率规则",
+            "条件概率",
+            "贝叶斯公式入门"
+          ]
+        ]
+      },
+      {
+        "id": "visualization",
+        "title": "相关性与统计图",
+        "chapters": [
+          [
+            "相关性",
+            "常见统计图表"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foundation-programming",
+    "domain": "programming",
+    "stage": "foundation",
+    "title": "编程与计算思维",
+    "english": "Programming & Computational Thinking",
+    "project": "独立编写 Python 学习管理工具",
+    "modules": [
+      {
+        "id": "thinking",
+        "title": "计算思维",
+        "chapters": [
+          [
+            "问题拆解",
+            "抽象",
+            "伪代码",
+            "流程图"
+          ]
+        ]
+      },
+      {
+        "id": "syntax",
+        "title": "Python 语法",
+        "chapters": [
+          [
+            "Python",
+            "变量",
+            "类型",
+            "运算符"
+          ],
+          [
+            "字符串"
+          ]
+        ]
+      },
+      {
+        "id": "control",
+        "title": "控制流与函数",
+        "chapters": [
+          [
+            "条件",
+            "循环",
+            "函数"
+          ]
+        ]
+      },
+      {
+        "id": "collections",
+        "title": "集合与容器",
+        "chapters": [
+          [
+            "列表",
+            "元组",
+            "字典",
+            "集合"
+          ]
+        ]
+      },
+      {
+        "id": "testing",
+        "title": "文件、调试与测试",
+        "chapters": [
+          [
+            "文件读写",
+            "异常处理",
+            "调试",
+            "基础测试"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foundation-algorithms",
+    "domain": "algorithms",
+    "stage": "foundation",
+    "title": "数据结构与算法入门",
+    "english": "Introduction to Algorithms",
+    "project": "算法执行过程可视化工具",
+    "modules": [
+      {
+        "id": "basics",
+        "title": "正确性与复杂度",
+        "chapters": [
+          [
+            "算法正确性",
+            "时间与空间复杂度入门"
+          ]
+        ]
+      },
+      {
+        "id": "search-sort",
+        "title": "搜索与排序",
+        "chapters": [
+          [
+            "线性搜索",
+            "二分搜索",
+            "基础排序"
+          ]
+        ]
+      },
+      {
+        "id": "structures",
+        "title": "线性结构与哈希",
+        "chapters": [
+          [
+            "数组",
+            "链表概念",
+            "栈",
+            "队列"
+          ],
+          [
+            "哈希"
+          ]
+        ]
+      },
+      {
+        "id": "recursion",
+        "title": "递归、树与图",
+        "chapters": [
+          [
+            "递归",
+            "树与图入门"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foundation-systems",
+    "domain": "systems",
+    "stage": "foundation",
+    "title": "计算机与互联网基础",
+    "english": "Computer & Internet Fundamentals",
+    "project": "从输入网址到网页显示的完整模拟",
+    "modules": [
+      {
+        "id": "representation",
+        "title": "数据表示",
+        "chapters": [
+          [
+            "二进制",
+            "十六进制",
+            "ASCII",
+            "Unicode"
+          ],
+          [
+            "浮点数概念"
+          ]
+        ]
+      },
+      {
+        "id": "hardware",
+        "title": "逻辑门与硬件",
+        "chapters": [
+          [
+            "布尔逻辑",
+            "逻辑门",
+            "加法器",
+            "CPU"
+          ],
+          [
+            "GPU",
+            "内存与存储"
+          ]
+        ]
+      },
+      {
+        "id": "os",
+        "title": "操作系统与命令行",
+        "chapters": [
+          [
+            "操作系统",
+            "命令行"
+          ]
+        ]
+      },
+      {
+        "id": "network",
+        "title": "互联网与应用协议",
+        "chapters": [
+          [
+            "网络分层",
+            "IP",
+            "MAC",
+            "DNS"
+          ],
+          [
+            "TCP",
+            "UDP",
+            "HTTP",
+            "HTTPS"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foundation-data-science",
+    "domain": "data-science",
+    "stage": "foundation",
+    "title": "数据素养与分析",
+    "english": "Data Literacy & Analysis",
+    "project": "从原始数据制作交互式 Dashboard",
+    "modules": [
+      {
+        "id": "collection",
+        "title": "数据来源与格式",
+        "chapters": [
+          [
+            "数据生命周期",
+            "结构化与非结构化数据",
+            "CSV",
+            "JSON"
+          ],
+          [
+            "数据采集"
+          ]
+        ]
+      },
+      {
+        "id": "cleaning",
+        "title": "清洗与转换",
+        "chapters": [
+          [
+            "缺失值",
+            "重复值",
+            "清洗",
+            "转换"
+          ]
+        ]
+      },
+      {
+        "id": "tables",
+        "title": "表格、透视与查询",
+        "chapters": [
+          [
+            "电子表格",
+            "透视表",
+            "基础 SQL"
+          ]
+        ]
+      },
+      {
+        "id": "stories",
+        "title": "可视化与数据故事",
+        "chapters": [
+          [
+            "图表选择",
+            "Dashboard",
+            "数据故事"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foundation-ai",
+    "domain": "ai",
+    "stage": "foundation",
+    "title": "人工智能基础",
+    "english": "Artificial Intelligence Foundations",
+    "project": "训练简单分类模型并构建 AI 助手",
+    "modules": [
+      {
+        "id": "principles",
+        "title": "AI 分类与传统方法",
+        "chapters": [
+          [
+            "AI / ML / DL 的关系",
+            "监督与非监督学习",
+            "规则系统",
+            "搜索与决策"
+          ]
+        ]
+      },
+      {
+        "id": "models",
+        "title": "训练、推理与大模型",
+        "chapters": [
+          [
+            "训练与推理",
+            "神经网络入门",
+            "大模型",
+            "Token"
+          ],
+          [
+            "Temperature",
+            "Embedding"
+          ]
+        ]
+      },
+      {
+        "id": "prompts",
+        "title": "指令与验证",
+        "chapters": [
+          [
+            "Prompt",
+            "幻觉"
+          ]
+        ]
+      },
+      {
+        "id": "assistants",
+        "title": "检索、工具与评估",
+        "chapters": [
+          [
+            "RAG",
+            "Agent",
+            "基础模型评估"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foundation-software",
+    "domain": "software",
+    "stage": "foundation",
+    "title": "Web 与开发工具",
+    "english": "Web Development & Developer Tools",
+    "project": "个人网站与实用 Web App",
+    "modules": [
+      {
+        "id": "interface",
+        "title": "网页结构与交互",
+        "chapters": [
+          [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "DOM"
+          ],
+          [
+            "事件"
+          ]
+        ]
+      },
+      {
+        "id": "requests",
+        "title": "API 与异步数据",
+        "chapters": [
+          [
+            "API",
+            "Fetch",
+            "JSON"
+          ]
+        ]
+      },
+      {
+        "id": "versioning",
+        "title": "版本协作与发布",
+        "chapters": [
+          [
+            "Git",
+            "分支合并",
+            "GitHub",
+            "部署"
+          ]
+        ]
+      },
+      {
+        "id": "quality",
+        "title": "环境、响应式与无障碍",
+        "chapters": [
+          [
+            "开发环境",
+            "基础 UI/UX",
+            "响应式布局与无障碍设计"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foundation-security",
+    "domain": "security",
+    "stage": "foundation",
+    "title": "数字安全与研究素养",
+    "english": "Digital Security & Research Literacy",
+    "project": "安全审查与资料可信度评估",
+    "modules": [
+      {
+        "id": "account",
+        "title": "账户、隐私与权限",
+        "chapters": [
+          [
+            "密码",
+            "哈希",
+            "MFA",
+            "钓鱼"
+          ],
+          [
+            "权限",
+            "数据隐私"
+          ]
+        ]
+      },
+      {
+        "id": "ethics",
+        "title": "版权、偏见与 AI 安全",
+        "chapters": [
+          [
+            "版权",
+            "开源许可",
+            "AI 偏见",
+            "提示词注入"
+          ]
+        ]
+      },
+      {
+        "id": "research",
+        "title": "证据、引用与研究",
+        "chapters": [
+          [
+            "学术诚信",
+            "资料检索",
+            "引用",
+            "科学研究基本流程"
+          ],
+          [
+            "技术英文"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foundation-applied",
+    "domain": "applied",
+    "stage": "foundation",
+    "title": "计算机应用基础",
+    "english": "Applied Computing Fundamentals",
+    "project": "小游戏、自动化工具或避障小车",
+    "modules": [
+      {
+        "id": "games",
+        "title": "游戏与 Unity",
+        "chapters": [
+          [
+            "游戏循环",
+            "坐标",
+            "向量移动",
+            "碰撞"
+          ],
+          [
+            "状态机",
+            "Unity",
+            "C# 入门"
+          ]
+        ]
+      },
+      {
+        "id": "hardware",
+        "title": "电路与 Arduino",
+        "chapters": [
+          [
+            "电路",
+            "Arduino",
+            "传感器",
+            "电机"
+          ]
+        ]
+      },
+      {
+        "id": "automation",
+        "title": "办公与自动化",
+        "chapters": [
+          [
+            "Apps Script",
+            "触发器",
+            "办公工作流与自动化"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "intermediate-mathematics",
+    "domain": "mathematics",
+    "stage": "intermediate",
+    "title": "计算数学核心",
+    "english": "Core Mathematics for Computing",
+    "project": "矩阵、梯度与图论交互实验室",
+    "modules": [
+      {
+        "id": "linear-algebra",
+        "title": "线性代数",
+        "chapters": [
+          [
+            "线性代数：矩阵运算",
+            "行列式",
+            "秩",
+            "线性方程组"
+          ],
+          [
+            "向量空间",
+            "基底",
+            "线性变换",
+            "特征值与特征向量"
+          ],
+          [
+            "正交投影",
+            "最小二乘",
+            "SVD"
+          ]
+        ]
+      },
+      {
+        "id": "calculus",
+        "title": "微积分与多元函数",
+        "chapters": [
+          [
+            "微积分：极限",
+            "连续",
+            "微分",
+            "积分"
+          ],
+          [
+            "多元函数",
+            "偏导数",
+            "梯度",
+            "Jacobian"
+          ],
+          [
+            "Hessian"
+          ]
+        ]
+      },
+      {
+        "id": "discrete",
+        "title": "离散数学",
+        "chapters": [
+          [
+            "离散数学：集合论",
+            "命题与谓词逻辑",
+            "归纳法",
+            "关系"
+          ],
+          [
+            "组合数学",
+            "图论",
+            "数论"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "intermediate-statistics",
+    "domain": "statistics",
+    "stage": "intermediate",
+    "title": "概率论与统计推断",
+    "english": "Probability Theory & Statistical Inference",
+    "project": "设计并分析一次 A/B Test",
+    "modules": [
+      {
+        "id": "variables",
+        "title": "随机变量与概率分布",
+        "chapters": [
+          [
+            "随机变量",
+            "期望",
+            "方差",
+            "协方差"
+          ],
+          [
+            "联合与条件分布",
+            "Bernoulli",
+            "Binomial",
+            "Poisson"
+          ],
+          [
+            "Normal",
+            "Exponential 分布"
+          ]
+        ]
+      },
+      {
+        "id": "sampling",
+        "title": "抽样与极限定理",
+        "chapters": [
+          [
+            "大数定律",
+            "中心极限定理",
+            "抽样分布"
+          ]
+        ]
+      },
+      {
+        "id": "inference",
+        "title": "估计与假设检验",
+        "chapters": [
+          [
+            "置信区间",
+            "假设检验",
+            "p-value",
+            "效应量"
+          ],
+          [
+            "Z-test",
+            "T-test"
+          ]
+        ]
+      },
+      {
+        "id": "models",
+        "title": "统计模型和非参数推断",
+        "chapters": [
+          [
+            "卡方检验",
+            "ANOVA",
+            "线性回归",
+            "非参数检验"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "intermediate-programming",
+    "domain": "programming",
+    "stage": "intermediate",
+    "title": "高级编程与编程范式",
+    "english": "Advanced Programming & Paradigms",
+    "project": "使用不同编程语言实现同一个系统",
+    "modules": [
+      {
+        "id": "python",
+        "title": "Python 与面向对象",
+        "chapters": [
+          [
+            "Python 深入",
+            "OOP",
+            "封装继承多态",
+            "模块与包"
+          ]
+        ]
+      },
+      {
+        "id": "paradigms",
+        "title": "迭代、类型与函数式",
+        "chapters": [
+          [
+            "生成器",
+            "迭代器",
+            "装饰器",
+            "类型系统"
+          ],
+          [
+            "函数式编程",
+            "异常处理",
+            "正则表达式"
+          ]
+        ]
+      },
+      {
+        "id": "languages",
+        "title": "系统编程与多语言",
+        "chapters": [
+          [
+            "C/C++",
+            "指针",
+            "引用",
+            "内存管理"
+          ],
+          [
+            "Java/C#"
+          ]
+        ]
+      },
+      {
+        "id": "async",
+        "title": "异步、测试与分析",
+        "chapters": [
+          [
+            "TypeScript",
+            "异步编程",
+            "单元测试",
+            "性能分析"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "intermediate-algorithms",
+    "domain": "algorithms",
+    "stage": "intermediate",
+    "title": "数据结构与算法设计",
+    "english": "Data Structures & Algorithm Design",
+    "project": "算法竞赛训练与最短路径求解器",
+    "modules": [
+      {
+        "id": "complexity",
+        "title": "复杂度分析",
+        "chapters": [
+          [
+            "Big O",
+            "Omega",
+            "Theta",
+            "递归关系"
+          ],
+          [
+            "复杂度推导"
+          ]
+        ]
+      },
+      {
+        "id": "structures",
+        "title": "查找与动态数据结构",
+        "chapters": [
+          [
+            "链表",
+            "哈希表",
+            "二叉搜索树",
+            "AVL"
+          ],
+          [
+            "Heap",
+            "Trie",
+            "Union-Find"
+          ]
+        ]
+      },
+      {
+        "id": "graphs",
+        "title": "图与路径",
+        "chapters": [
+          [
+            "图表示",
+            "BFS",
+            "DFS",
+            "拓扑排序"
+          ],
+          [
+            "Dijkstra",
+            "Bellman-Ford",
+            "最小生成树"
+          ]
+        ]
+      },
+      {
+        "id": "design",
+        "title": "算法设计策略",
+        "chapters": [
+          [
+            "分治",
+            "贪心",
+            "回溯",
+            "动态规划"
+          ],
+          [
+            "滑动窗口",
+            "双指针",
+            "前缀和"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "intermediate-systems",
+    "domain": "systems",
+    "stage": "intermediate",
+    "title": "计算机体系结构、操作系统与网络",
+    "english": "Computer Architecture, OS & Networks",
+    "project": "虚拟计算机与企业网络实验室",
+    "modules": [
+      {
+        "id": "architecture",
+        "title": "体系结构与指令",
+        "chapters": [
+          [
+            "ISA",
+            "汇编",
+            "寄存器",
+            "ALU"
+          ],
+          [
+            "缓存",
+            "流水线"
+          ]
+        ]
+      },
+      {
+        "id": "os",
+        "title": "操作系统与并发",
+        "chapters": [
+          [
+            "进程与线程",
+            "CPU 调度",
+            "同步",
+            "死锁"
+          ],
+          [
+            "虚拟内存",
+            "文件系统",
+            "Linux",
+            "Shell"
+          ]
+        ]
+      },
+      {
+        "id": "networks",
+        "title": "网络协议与转发",
+        "chapters": [
+          [
+            "IPv4/IPv6",
+            "ARP",
+            "DHCP",
+            "NAT"
+          ],
+          [
+            "VLAN",
+            "路由",
+            "Socket",
+            "TCP 拥塞控制"
+          ]
+        ]
+      },
+      {
+        "id": "virtualization",
+        "title": "虚拟化与容器",
+        "chapters": [
+          [
+            "虚拟机",
+            "Docker"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "intermediate-data-science",
+    "domain": "data-science",
+    "stage": "intermediate",
+    "title": "数据科学与数据库",
+    "english": "Data Science & Database Systems",
+    "project": "完整真实数据分析项目与 SQL 数据库",
+    "modules": [
+      {
+        "id": "tools",
+        "title": "科学计算工具",
+        "chapters": [
+          [
+            "Jupyter",
+            "NumPy",
+            "Pandas",
+            "Polars"
+          ],
+          [
+            "Matplotlib",
+            "Seaborn"
+          ]
+        ]
+      },
+      {
+        "id": "analysis",
+        "title": "探索与特征处理",
+        "chapters": [
+          [
+            "探索性数据分析",
+            "数据清洗",
+            "特征处理",
+            "缺失值策略"
+          ],
+          [
+            "数据转换"
+          ]
+        ]
+      },
+      {
+        "id": "sql",
+        "title": "关系查询",
+        "chapters": [
+          [
+            "关系数据库",
+            "SQL",
+            "JOIN",
+            "窗口函数"
+          ],
+          [
+            "CTE"
+          ]
+        ]
+      },
+      {
+        "id": "database-design",
+        "title": "建模、索引与事务",
+        "chapters": [
+          [
+            "ER 模型",
+            "规范化",
+            "索引",
+            "事务"
+          ],
+          [
+            "NoSQL"
+          ]
+        ]
+      },
+      {
+        "id": "bi",
+        "title": "可视化与 BI",
+        "chapters": [
+          [
+            "数据可视化",
+            "BI"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "intermediate-ai",
+    "domain": "ai",
+    "stage": "intermediate",
+    "title": "机器学习与智能系统",
+    "english": "Machine Learning & Intelligent Systems",
+    "project": "独立训练、比较和解释多个 ML 模型",
+    "modules": [
+      {
+        "id": "supervised",
+        "title": "监督学习与分类",
+        "chapters": [
+          [
+            "监督学习",
+            "非监督与半监督学习",
+            "线性回归",
+            "逻辑回归"
+          ],
+          [
+            "KNN",
+            "Naive Bayes",
+            "决策树",
+            "Random Forest"
+          ],
+          [
+            "SVM",
+            "Boosting"
+          ]
+        ]
+      },
+      {
+        "id": "unsupervised",
+        "title": "无监督与降维",
+        "chapters": [
+          [
+            "K-means",
+            "DBSCAN",
+            "PCA"
+          ]
+        ]
+      },
+      {
+        "id": "evaluation",
+        "title": "特征与模型评估",
+        "chapters": [
+          [
+            "特征工程",
+            "交叉验证",
+            "超参数",
+            "过拟合"
+          ],
+          [
+            "数据泄漏",
+            "评估指标"
+          ]
+        ]
+      },
+      {
+        "id": "reasoning",
+        "title": "神经网络与符号推理",
+        "chapters": [
+          [
+            "神经网络",
+            "反向传播入门",
+            "知识表示",
+            "推理"
+          ],
+          [
+            "A* 搜索",
+            "Minimax"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "intermediate-software",
+    "domain": "software",
+    "stage": "intermediate",
+    "title": "全栈开发与软件工程",
+    "english": "Software Engineering & Full-stack Development",
+    "project": "开发一套具备数据库和用户系统的完整应用",
+    "modules": [
+      {
+        "id": "design",
+        "title": "软件设计与需求",
+        "chapters": [
+          [
+            "需求分析",
+            "UML",
+            "设计模式",
+            "SOLID"
+          ]
+        ]
+      },
+      {
+        "id": "full-stack",
+        "title": "全栈与应用状态",
+        "chapters": [
+          [
+            "React",
+            "前后端分离",
+            "REST API",
+            "认证授权"
+          ],
+          [
+            "数据库整合",
+            "状态管理"
+          ]
+        ]
+      },
+      {
+        "id": "delivery",
+        "title": "测试、协作与持续交付",
+        "chapters": [
+          [
+            "软件测试",
+            "Git 协作",
+            "代码审查",
+            "CI/CD"
+          ]
+        ]
+      },
+      {
+        "id": "quality",
+        "title": "维护与体验",
+        "chapters": [
+          [
+            "可维护性",
+            "重构",
+            "UI/UX 研究与可用性测试"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "intermediate-security",
+    "domain": "security",
+    "stage": "intermediate",
+    "title": "网络安全与研究方法",
+    "english": "Cybersecurity & Scientific Methods",
+    "project": "系统安全审查与小型研究论文",
+    "modules": [
+      {
+        "id": "cryptography",
+        "title": "加密、签名与 TLS",
+        "chapters": [
+          [
+            "对称及非对称加密",
+            "数字签名",
+            "TLS"
+          ]
+        ]
+      },
+      {
+        "id": "defensive",
+        "title": "访问控制与防御",
+        "chapters": [
+          [
+            "访问控制",
+            "OWASP",
+            "安全编码",
+            "威胁建模"
+          ],
+          [
+            "隐私保护"
+          ]
+        ]
+      },
+      {
+        "id": "methods",
+        "title": "科学方法与技术报告",
+        "chapters": [
+          [
+            "研究问题",
+            "文献综述",
+            "实验设计",
+            "混杂变量"
+          ],
+          [
+            "可复现性",
+            "技术报告",
+            "研究伦理"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "intermediate-applied",
+    "domain": "applied",
+    "stage": "intermediate",
+    "title": "跨领域应用工程",
+    "english": "Applied Computing Engineering",
+    "project": "选择一个跨领域工程项目进行开发",
+    "modules": [
+      {
+        "id": "games",
+        "title": "游戏系统与图形",
+        "chapters": [
+          [
+            "Unity 架构",
+            "2D/3D 游戏机制",
+            "行为树",
+            "多人网络"
+          ],
+          [
+            "计算机图形基础"
+          ]
+        ]
+      },
+      {
+        "id": "embedded",
+        "title": "嵌入式与信号",
+        "chapters": [
+          [
+            "嵌入式 C++",
+            "中断",
+            "IoT",
+            "信号处理"
+          ]
+        ]
+      },
+      {
+        "id": "robotics",
+        "title": "控制与机器人",
+        "chapters": [
+          [
+            "PID",
+            "机器人运动学",
+            "模拟实验"
+          ]
+        ]
+      },
+      {
+        "id": "automation",
+        "title": "自动化与跨端",
+        "chapters": [
+          [
+            "API 自动化",
+            "Webhook",
+            "工作流编排",
+            "移动应用开发"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "advanced-mathematics",
+    "domain": "mathematics",
+    "stage": "advanced",
+    "title": "高等数学、优化与数值计算",
+    "english": "Advanced Mathematics & Numerical Computing",
+    "project": "从零实现数学优化器与数值计算库",
+    "modules": [
+      {
+        "id": "numerics",
+        "title": "数值计算与误差",
+        "chapters": [
+          [
+            "数值误差",
+            "数值稳定性",
+            "浮点精度",
+            "LU/QR 分解"
+          ],
+          [
+            "数值积分",
+            "插值"
+          ]
+        ]
+      },
+      {
+        "id": "differential",
+        "title": "微分方程",
+        "chapters": [
+          [
+            "常微分方程",
+            "偏微分方程入门"
+          ]
+        ]
+      },
+      {
+        "id": "optimization",
+        "title": "优化与运筹",
+        "chapters": [
+          [
+            "凸优化",
+            "梯度下降",
+            "Newton Method",
+            "Lagrange Multipliers"
+          ],
+          [
+            "约束优化",
+            "线性规划",
+            "整数规划"
+          ]
+        ]
+      },
+      {
+        "id": "information",
+        "title": "变换、张量与信息论",
+        "chapters": [
+          [
+            "傅里叶变换",
+            "张量分析",
+            "信息论",
+            "熵与 KL Divergence"
+          ],
+          [
+            "运筹学"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "advanced-statistics",
+    "domain": "statistics",
+    "stage": "advanced",
+    "title": "高等统计与决策科学",
+    "english": "Advanced Statistics & Decision Science",
+    "project": "完成统计建模、预测与因果分析研究",
+    "modules": [
+      {
+        "id": "bayesian",
+        "title": "统计估计与贝叶斯",
+        "chapters": [
+          [
+            "最大似然估计",
+            "MAP",
+            "贝叶斯统计",
+            "先验与后验"
+          ]
+        ]
+      },
+      {
+        "id": "simulation",
+        "title": "重采样与模拟",
+        "chapters": [
+          [
+            "Bootstrap",
+            "Monte Carlo",
+            "MCMC"
+          ]
+        ]
+      },
+      {
+        "id": "modeling",
+        "title": "高等模型与时序",
+        "chapters": [
+          [
+            "多元统计",
+            "GLM",
+            "时间序列",
+            "ARIMA"
+          ],
+          [
+            "状态空间模型",
+            "随机过程",
+            "Markov Chain"
+          ]
+        ]
+      },
+      {
+        "id": "causal",
+        "title": "图模型与因果推断",
+        "chapters": [
+          [
+            "贝叶斯网络",
+            "生存分析",
+            "层级模型",
+            "因果推断"
+          ],
+          [
+            "DAG",
+            "倾向评分"
+          ]
+        ]
+      },
+      {
+        "id": "decisions",
+        "title": "实验设计与决策",
+        "chapters": [
+          [
+            "实验功效",
+            "多重检验",
+            "决策理论",
+            "不确定性量化"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "advanced-programming",
+    "domain": "programming",
+    "stage": "advanced",
+    "title": "编程语言理论与编译器",
+    "english": "Programming Languages & Compiler Systems",
+    "project": "设计一门简单的编程语言及解释器",
+    "modules": [
+      {
+        "id": "language",
+        "title": "语义与类型",
+        "chapters": [
+          [
+            "编程语言语义",
+            "作用域",
+            "类型推导",
+            "泛型"
+          ],
+          [
+            "高阶函数",
+            "Lambda Calculus"
+          ]
+        ]
+      },
+      {
+        "id": "grammar",
+        "title": "语言与语法分析",
+        "chapters": [
+          [
+            "正则语言",
+            "形式文法",
+            "词法分析",
+            "语法分析"
+          ],
+          [
+            "AST"
+          ]
+        ]
+      },
+      {
+        "id": "compiler",
+        "title": "解释器与编译器",
+        "chapters": [
+          [
+            "解释器",
+            "编译器",
+            "中间表示",
+            "代码生成"
+          ]
+        ]
+      },
+      {
+        "id": "runtime",
+        "title": "运行时与验证",
+        "chapters": [
+          [
+            "内存模型",
+            "垃圾回收",
+            "JIT",
+            "程序分析"
+          ],
+          [
+            "形式验证"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "advanced-algorithms",
+    "domain": "algorithms",
+    "stage": "advanced",
+    "title": "高级算法与计算理论",
+    "english": "Advanced Algorithms & Theory of Computation",
+    "project": "高级算法工具库与性能基准测试",
+    "modules": [
+      {
+        "id": "advanced-structures",
+        "title": "高级数据结构",
+        "chapters": [
+          [
+            "摊还分析",
+            "算法正确性证明",
+            "Segment Tree",
+            "Fenwick Tree"
+          ],
+          [
+            "Suffix Array",
+            "字符串匹配 KMP"
+          ]
+        ]
+      },
+      {
+        "id": "algorithms",
+        "title": "网络流与算法策略",
+        "chapters": [
+          [
+            "网络流",
+            "二分图匹配",
+            "计算几何",
+            "随机算法"
+          ],
+          [
+            "近似算法",
+            "在线算法",
+            "参数化算法"
+          ]
+        ]
+      },
+      {
+        "id": "computability",
+        "title": "自动机与可计算性",
+        "chapters": [
+          [
+            "自动机",
+            "图灵机",
+            "可计算性",
+            "停机问题"
+          ]
+        ]
+      },
+      {
+        "id": "complexity",
+        "title": "复杂度类与归约",
+        "chapters": [
+          [
+            "P",
+            "NP",
+            "NP-hard",
+            "NP-complete"
+          ],
+          [
+            "归约证明"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "advanced-systems",
+    "domain": "systems",
+    "stage": "advanced",
+    "title": "分布式、并行与高性能计算",
+    "english": "Distributed, Parallel & High-performance Systems",
+    "project": "构建分布式计算平台并进行故障测试",
+    "modules": [
+      {
+        "id": "parallel",
+        "title": "并发与并行",
+        "chapters": [
+          [
+            "多核与 GPU 架构",
+            "SIMD",
+            "并发模型",
+            "锁与无锁结构"
+          ],
+          [
+            "CUDA",
+            "并行算法",
+            "性能分析"
+          ]
+        ]
+      },
+      {
+        "id": "distributed",
+        "title": "分布式时间、一致性与共识",
+        "chapters": [
+          [
+            "分布式时钟",
+            "一致性",
+            "复制",
+            "共识算法"
+          ],
+          [
+            "Raft",
+            "CAP",
+            "分布式事务"
+          ]
+        ]
+      },
+      {
+        "id": "production",
+        "title": "消息、容错与云基础设施",
+        "chapters": [
+          [
+            "消息系统",
+            "容错",
+            "负载均衡",
+            "Kubernetes"
+          ],
+          [
+            "云基础设施",
+            "可观测性"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "advanced-data-science",
+    "domain": "data-science",
+    "stage": "advanced",
+    "title": "数据工程与大数据系统",
+    "english": "Data Engineering & Big Data Architecture",
+    "project": "搭建端到端批处理与实时数据平台",
+    "modules": [
+      {
+        "id": "storage",
+        "title": "数据库内部",
+        "chapters": [
+          [
+            "数据库内部机制",
+            "关系代数",
+            "查询优化",
+            "B+ Tree"
+          ],
+          [
+            "LSM Tree",
+            "WAL"
+          ]
+        ]
+      },
+      {
+        "id": "transactions",
+        "title": "事务、恢复与分布式存储",
+        "chapters": [
+          [
+            "事务隔离",
+            "MVCC",
+            "存储恢复",
+            "分布式数据库"
+          ]
+        ]
+      },
+      {
+        "id": "warehousing",
+        "title": "数仓与数据湖",
+        "chapters": [
+          [
+            "数据仓库",
+            "数据湖",
+            "Lakehouse",
+            "Parquet"
+          ]
+        ]
+      },
+      {
+        "id": "pipelines",
+        "title": "批处理与流处理",
+        "chapters": [
+          [
+            "ETL/ELT",
+            "Spark",
+            "MapReduce",
+            "Kafka"
+          ],
+          [
+            "流式计算",
+            "Airflow"
+          ]
+        ]
+      },
+      {
+        "id": "governance",
+        "title": "数据质量与治理",
+        "chapters": [
+          [
+            "数据血缘",
+            "质量检测",
+            "治理与云数据架构"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "advanced-ai",
+    "domain": "ai",
+    "stage": "advanced",
+    "title": "深度学习与高级 AI",
+    "english": "Deep Learning & Advanced Artificial Intelligence",
+    "project": "从模型训练到实际部署的完整 AI 系统",
+    "modules": [
+      {
+        "id": "deep-models",
+        "title": "深度网络与训练工具",
+        "chapters": [
+          [
+            "统计学习理论",
+            "泛化能力",
+            "优化与正则化",
+            "PyTorch"
+          ],
+          [
+            "CNN",
+            "RNN",
+            "LSTM",
+            "GRU"
+          ]
+        ]
+      },
+      {
+        "id": "attention",
+        "title": "序列、注意力与语言",
+        "chapters": [
+          [
+            "Attention",
+            "Transformer",
+            "NLP"
+          ]
+        ]
+      },
+      {
+        "id": "vision",
+        "title": "视觉与生成模型",
+        "chapters": [
+          [
+            "计算机视觉",
+            "目标检测",
+            "语义分割",
+            "自监督学习"
+          ],
+          [
+            "GAN",
+            "VAE",
+            "Diffusion"
+          ]
+        ]
+      },
+      {
+        "id": "llm",
+        "title": "大模型与检索系统",
+        "chapters": [
+          [
+            "LLM 预训练",
+            "微调",
+            "LoRA",
+            "量化"
+          ],
+          [
+            "向量检索",
+            "RAG",
+            "Agent"
+          ]
+        ]
+      },
+      {
+        "id": "specialized",
+        "title": "多模态、推荐与强化学习",
+        "chapters": [
+          [
+            "多模态模型",
+            "GNN",
+            "推荐系统",
+            "强化学习"
+          ],
+          [
+            "MDP",
+            "Q-learning",
+            "Policy Gradient"
+          ]
+        ]
+      },
+      {
+        "id": "mlops",
+        "title": "模型工程",
+        "chapters": [
+          [
+            "MLOps"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "advanced-software",
+    "domain": "software",
+    "stage": "advanced",
+    "title": "软件架构与生产工程",
+    "english": "Software Architecture & Production Engineering",
+    "project": "生产级系统设计与负载测试",
+    "modules": [
+      {
+        "id": "architecture",
+        "title": "架构与系统边界",
+        "chapters": [
+          [
+            "领域驱动设计",
+            "模块化单体",
+            "微服务",
+            "事件驱动架构"
+          ],
+          [
+            "消息队列",
+            "缓存",
+            "API Gateway"
+          ]
+        ]
+      },
+      {
+        "id": "scaling",
+        "title": "规模化与架构决策",
+        "chapters": [
+          [
+            "系统设计",
+            "架构决策记录",
+            "可扩展性"
+          ]
+        ]
+      },
+      {
+        "id": "operations",
+        "title": "生产运维与可靠性",
+        "chapters": [
+          [
+            "DevOps",
+            "IaC",
+            "SRE",
+            "SLI/SLO"
+          ],
+          [
+            "监控日志追踪"
+          ]
+        ]
+      },
+      {
+        "id": "resilience",
+        "title": "恢复、验证与演进",
+        "chapters": [
+          [
+            "容量规划",
+            "灾难恢复",
+            "分布式应用测试",
+            "软件演化"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "advanced-security",
+    "domain": "security",
+    "stage": "advanced",
+    "title": "高级安全、AI 伦理与科研",
+    "english": "Advanced Security, AI Safety & Research",
+    "project": "复现一篇 AI 或计算机科学研究论文",
+    "modules": [
+      {
+        "id": "systems",
+        "title": "系统、协议与供应链安全",
+        "chapters": [
+          [
+            "现代密码学",
+            "安全协议",
+            "系统安全模型",
+            "云安全"
+          ],
+          [
+            "供应链安全"
+          ]
+        ]
+      },
+      {
+        "id": "privacy",
+        "title": "隐私和安全机器学习",
+        "chapters": [
+          [
+            "隐私计算",
+            "差分隐私",
+            "联邦学习",
+            "对抗样本"
+          ],
+          [
+            "模型安全"
+          ]
+        ]
+      },
+      {
+        "id": "research",
+        "title": "可解释性、评估与科研",
+        "chapters": [
+          [
+            "公平性",
+            "可解释 AI",
+            "消融实验",
+            "统计显著性"
+          ],
+          [
+            "Benchmark",
+            "论文复现",
+            "研究报告",
+            "学术写作"
+          ],
+          [
+            "科研发表流程"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "advanced-applied",
+    "domain": "applied",
+    "stage": "advanced",
+    "title": "高级计算机跨领域应用",
+    "english": "Advanced Applied & Interdisciplinary Computing",
+    "project": "自主选择一个专业方向完成毕业级项目",
+    "modules": [
+      {
+        "id": "graphics",
+        "title": "图形学与引擎",
+        "chapters": [
+          [
+            "计算机图形学",
+            "渲染管线",
+            "Shader",
+            "PBR"
+          ],
+          [
+            "游戏引擎"
+          ]
+        ]
+      },
+      {
+        "id": "simulation",
+        "title": "模拟与控制",
+        "chapters": [
+          [
+            "物理模拟",
+            "程序化生成",
+            "控制理论"
+          ]
+        ]
+      },
+      {
+        "id": "robotics",
+        "title": "机器人定位与感知",
+        "chapters": [
+          [
+            "Kalman Filter",
+            "Particle Filter",
+            "SLAM",
+            "路径规划"
+          ],
+          [
+            "机器人视觉",
+            "RTOS",
+            "机器人学习"
+          ]
+        ]
+      },
+      {
+        "id": "interdisciplinary",
+        "title": "交叉领域与科学计算",
+        "chapters": [
+          [
+            "科学计算",
+            "计算生物学",
+            "GIS",
+            "金融数据建模"
+          ],
+          [
+            "量子计算入门"
+          ]
+        ]
+      }
+    ]
+  }
+]

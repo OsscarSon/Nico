@@ -2,7 +2,10 @@ import { Link } from "../../app/router";
 import { artUrl } from "../../art";
 import { getLesson } from "../../content";
 import { academyTracks } from "../../content/academy";
-import { continuation, routeCounts, routeView } from "../../content/route-view";
+import { routeCounts, routeView } from "../../content/route-view";
+import { recommendedLesson } from "../../content/academy2/model";
+import { getPersonalPath } from "../../content/academy2/paths";
+import { useAcademyPath } from "../academy2/learningPreference";
 import { ProgressBar } from "../../components/ui";
 import { evaluateBadges } from "../../progress/badges";
 import { streak } from "../../progress/store";
@@ -13,14 +16,16 @@ import { ProfileEditor } from "./ProfileEditor";
 export function ProfilePage() {
   const progress = useProgress(), preferences = usePreferences(), today = new Date(), days = streak(progress, today);
   const earned = evaluateBadges(progress, today), nextBadge = earned.find(b => b.obtainable && !b.earned);
-  const next = continuation(progress, preferences.resumeHome, preferences.learningPath);
+  const { id: personalId } = useAcademyPath();
+  const selectedPath = getPersonalPath(personalId);
+  const next = recommendedLesson(progress, preferences.resumeHome, preferences.learningPath, personalId);
   const recent = Object.entries(progress.lessons).sort((a, b) => Date.parse(b[1].completedAt) - Date.parse(a[1].completedAt)).slice(0, 4);
   const preferred = academyTracks.find(t => t.id.toLowerCase() === preferences.learningPath);
   return <>
     <header className="page-head"><h1>我的</h1><p>你的学习空间。每一点进步，都来自实际学习记录。</p></header>
     <section className="identity-card" aria-label="本机学习身份卡">
       <img className="identity-backdrop" src={artUrl("profile-identity-background.png")} alt="" width={1600} height={900} />
-      <div className="identity-person"><img className="identity-avatar" src={artUrl("nico-academy-icon-final-180.png")} alt="Nico，默认学习头像" width={88} height={88} /><div><span className="identity-caption">NICO · 本机学习档案</span><h2>{preferences.nickname || "学习者"}</h2><p>{preferred ? `${preferred.id} 路线学习者` : "自主学习者"} · 记录仅存本机</p></div></div>
+      <div className="identity-person"><img className="identity-avatar" src={artUrl("nico-academy-icon-final-180.png")} alt="Nico，默认学习头像" width={88} height={88} /><div><span className="identity-caption">NICO · 本机学习档案</span><h2>{preferences.nickname || "学习者"}</h2><p>{selectedPath ? selectedPath.title + "主线" : preferred ? `${preferred.id} 路线学习者` : "自主学习者"} · 记录仅存本机</p></div></div>
       <div className="stats"><div className="stat"><strong>{Object.keys(progress.lessons).length}</strong><span>已完成课时</span></div><div className="stat"><strong>{days}</strong><span>连续学习天数</span></div><div className="stat"><strong>{earned.filter(b => b.earned).length}</strong><span>已获得徽章</span></div></div>
       <details className="identity-edit"><summary>编辑个人资料</summary><ProfileEditor /></details>
     </section>

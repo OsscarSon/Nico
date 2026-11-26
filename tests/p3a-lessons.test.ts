@@ -24,8 +24,12 @@ describe("P3-A teaching integration and protected baseline", () => {
     const c = curriculum.find(c => c.id === id.split("-")[0]!.toUpperCase())!; expect(c.status).toBe("live"); expect(liveLessonFor(c)?.id).toBe(id);
     expect(lessonSchema.safeParse({ ...l, quality: { state: "published" } }).success).toBe(false);
   });
-  it("keeps all old art/course/grading/simulator/runtime/AI/progress/P2 bytes unchanged", () => {
-    for (const [file, hash] of Object.entries(protectedFiles)) expect(createHash("sha256").update(readFileSync(file)).digest("hex"), file).toBe(hash);
+  it("keeps the P3-A protected baseline outside the Academy 2.0 home/profile redesign", () => {
+    const redesigned = new Set(["src/pages/pages.tsx", "src/features/profile/ProfilePage.tsx", "src/features/profile/ProfileEditor.tsx"]);
+    for (const [file, hash] of Object.entries(protectedFiles)) {
+      if (redesigned.has(file)) continue; // These three shell files have behavioral coverage in smoke:academy2 and smoke:p2.
+      expect(createHash("sha256").update(readFileSync(file)).digest("hex"), file).toBe(hash);
+    }
     expect(validateContent()).toEqual([]);
   });
 });

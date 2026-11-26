@@ -1,16 +1,19 @@
 import { Link, navigate } from "../app/router";
-import { continuation, routeView } from "../content/route-view";
+import { routeView } from "../content/route-view";
 import { usePreferences } from "../preferences/store";
 import { usePath } from "../app/router";
 import { type Stage } from "../content/academy";
 import { ProfilePage } from "../features/profile/ProfilePage";
-import { Device, EmptyState } from "../components/ui";
+import { EmptyState } from "../components/ui";
 import { artUrl } from "../art";
-import { CoursesCatalog, PathsCatalog, StageOverview } from "../features/academy/AcademyCatalog";
+import { CoursesCatalog, PathsCatalog } from "../features/academy/AcademyCatalog";
 import { PathMap } from "../features/path/PathMap";
-import { BitSwitches } from "../sims/BitSwitches";
 import { useProgress } from "../progress/useProgress";
 import { streak } from "../progress/store";
+import { AcademyDashboard } from "../features/academy2/Guides";
+import { useAcademyPath } from "../features/academy2/learningPreference";
+import { recommendedLesson, uniqueLiveCount } from "../content/academy2/model";
+import { getPersonalPath } from "../content/academy2/paths";
 
 export function HomePage() {
   const progress = useProgress();
@@ -18,21 +21,21 @@ export function HomePage() {
   const days = streak(progress, new Date());
 
   const preferences = usePreferences();
-  const targetLesson = continuation(progress, preferences.resumeHome, preferences.learningPath);
+  const { id: selected } = useAcademyPath();
+  const targetLesson = recommendedLesson(progress, preferences.resumeHome, preferences.learningPath, selected);
   const resume = preferences.resumeHome && progress.resume && targetLesson?.id === progress.resume.lessonId ? progress.resume : null;
 
   return (
-    <>
+    <div className="a2-page a2-home">
       <div className="home-grid"><section className="academy-hero final-hero">
         <div className="hero-artwork" aria-hidden="true" style={{ backgroundImage: `url(${artUrl("home-hero-left-final.png")})` }} />
-        <div className="hero-copy"><span className="academy-eyebrow">EXPLORE · BUILD · UNDERSTAND</span>
-          <h1>每一步，都在构建<br />你的知识世界。</h1>
-          <p>从第一行代码，到理解复杂系统。<br />选择你的路线，让学习真正发生。</p>
-          <button className="btn" onClick={() => navigate("/paths")}>探索学习路线 ↗</button>
+        <div className="hero-copy"><span className="academy-eyebrow">NICO ACADEMY 2.0</span>
+          <h1>构建你的知识世界</h1>
+          <p>从函数与第一行代码，到独立理解数据、算法和人工智能。</p>
+          <div className="a2-hero-actions"><button className="btn" onClick={() => navigate("/paths")}>探索学习路线 ↗</button><Link to="/courses" className="a2-hero-secondary">浏览课程</Link></div>
         </div>
         <figure className="home-preview">
           <img src={artUrl("hero-home-1600x900.png")} alt="Nico 原版 Byte 与电路学习路线插画" width={1600} height={900} />
-          <figcaption><span className="eyebrow">从好奇到理解</span><p>认识 Byte，一起把知识连成路线。<br />读一读，动手试，再用自己的话讲明白。</p></figcaption>
         </figure>
       </section>
 
@@ -43,6 +46,7 @@ export function HomePage() {
             <span className="pill available" style={{ justifySelf: "start" }}>
               {resume ? "继续上次的位置" : completedCount ? "下一课" : "从这里开始"}
             </span>
+            {selected && <Link className="a2-pinned" to="/paths">我的主线 · {getPersonalPath(selected)?.title}</Link>}
             <h2 id="today-title">{targetLesson.title}</h2>
             <p className="muted" style={{ margin: 0 }}>
               约 {targetLesson.estimatedMinutes} 分钟 · 有互动、检查题和一道迁移题
@@ -74,8 +78,9 @@ export function HomePage() {
       </section>
 
       </div>
-      <StageOverview />
-    </>
+      <div className="a2-home-summary"><strong>10</strong> 个知识领域 <i /> <strong>30</strong> 个课程入口 <i /> <strong>{uniqueLiveCount}</strong> 节可学课时 <Link to="/lab">打开实验室 ↗</Link></div>
+      <AcademyDashboard />
+    </div>
   );
 }
 
@@ -99,42 +104,6 @@ export function TrackPage({ trackId }: { trackId: string }) {
     <div className="route-overview"><p>共 {track.nodes.length} 门目录，现在可学 {available} 课。规划节点不开放；所有已上线课均可自由学习。</p><img src={artUrl("roadmap-trace-banner.png")} alt="" width={1600} height={900} /></div>
     {track.nodes.length ? <PathMap track={track} /> : <EmptyState title="这个阶段还没有课程目录" action={<Link to="/paths" className="btn">查看其他路线</Link>}>当前没有可学习课程，也不会用虚拟节点冒充上线内容。</EmptyState>}
   </>;
-}
-
-export function LabPage() {
-  const planned = ["子网计算器", "DNS 解析动画", "TCP 握手时序图", "公式沙盒"];
-  return (
-    <>
-      <header className="page-head">
-        <h1>实验台</h1>
-        <p>不用上课，直接动手。这里放所有可以单独使用的小器件。</p>
-      </header>
-      <Device title="位开关" label="模拟">
-        <p className="muted">点开关，看二进制怎么变成十进制。</p>
-        <BitSwitches mode="free" />
-      </Device>
-      <h2 className="section-title">AI 与提示词</h2>
-      <div className="grid cols-2">
-        <Link to="/lab/prompt" className="panel trackcard">
-          <h3>Prompt 训练场</h3>
-          <p>写一条给 AI 的指令，检查六个要素有没有写到。不联网也能用。</p>
-        </Link>
-        <Link to="/lab/tutor" className="panel trackcard ai-shortcut">
-          <h3>AI 导师</h3>
-          <p>围绕一节课向 AI 提问。需要接上 AI 服务才能用。</p>
-        </Link>
-      </div>
-      <h2 className="section-title">制作中</h2>
-      <div className="grid cols-3">
-        {planned.map((p) => (
-          <div key={p} className="panel" style={{ borderStyle: "dashed" }}>
-            <h3 style={{ marginBottom: 4 }}>{p}</h3>
-            <span className="pill">规划中</span>
-          </div>
-        ))}
-      </div>
-    </>
-  );
 }
 
 export function ProjectsPage() {

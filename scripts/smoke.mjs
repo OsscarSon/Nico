@@ -53,7 +53,7 @@ check("首页没有假进度（未学习时不显示统计）", (await page.loca
 check("手机宽度无横向溢出：首页", await noOverflow());
 check("首页主视觉图片加载成功", await imagesOk());
 // Latest main moved route cards from Home to Paths; preserve the original art/count assertions there.
-await page.goto(`${BASE}/#/paths`);
+await page.goto(`${BASE}/#/paths?view=legacy`);
 check("基础阶段有 A–F 六条路线", (await page.locator(".academy-track").count()) === 6);
 check("A–E 仍使用五张原版插画", await page.locator(".academy-track img.track-emblem").evaluateAll(images => {
   const originals = ["track-a-network.png", "track-b-code.png", "track-c-ai.png", "track-d-games.png", "track-e-google.png"];

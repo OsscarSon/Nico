@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { allCatalogLessons, getLesson, nextAvailableAfter } from "../../content";
 import { getTrack } from "../../content/catalog";
 import type { Block } from "../../content/schema";
+import { courseLink, lessonDependencies, primaryLocation } from "../../content/academy2/model";
 import { Link } from "../../app/router";
 import { artUrl } from "../../art";
 import { aiEnabled } from "../../ai/config";
@@ -54,6 +55,8 @@ function Player({ lessonId }: { lessonId: string }) {
   const total = lesson.blocks.length;
   const track = getTrack(lesson.track);
   const routeHref = "/paths/" + lesson.track + (lesson.stage === "Intermediate" ? "?stage=Intermediate" : "");
+  const placement = primaryLocation(lessonId);
+  const prerequisites = lessonDependencies(lessonId);
 
   const [step, setStep] = useState(() => {
     const r = getProgress().resume;
@@ -145,6 +148,7 @@ function Player({ lessonId }: { lessonId: string }) {
           <Link to={routeHref} className="backlink">
             ← {track?.title ?? "路线"}
           </Link>
+          {placement && <Link to={courseLink(placement.course.id, placement.module.id)} className="a2-lesson-link">课程大纲 ↗</Link>}
           <h1>{lesson.title}</h1>
           <div className="row">
             <span className="muted">约 {lesson.estimatedMinutes} 分钟</span>
@@ -152,6 +156,11 @@ function Player({ lessonId }: { lessonId: string }) {
             {completed && <span className="pill done">已完成</span>}
             {aiEnabled() && <Link to={`/lab/tutor/${lessonId}`} className="pill available ai-shortcut">问 AI 导师</Link>}
           </div>
+          {block.type === "hook" && prerequisites.length > 0 && <details className="a2-lesson-prereq"><summary>复习建议先修</summary><ul>
+            {prerequisites.map(({ lesson: prior, position }) => prior
+              ? <li key={prior.id}><Link to={"/lesson/" + prior.id}>{prior.title}</Link>{progress.lessons[prior.id] && " · 已完成"}</li>
+              : position && <li key={position.module.id}><Link to={courseLink(position.course.id, position.module.id)}>{position.module.title}</Link></li>)}
+          </ul></details>}
           <ProgressBar value={step + 1} max={total} label={`课程进度，第 ${step + 1} 步，共 ${total} 步`} />
         </header>
         <div className={`lesson-body lesson-${block.type}`} ref={bodyRef} tabIndex={-1} aria-live="off">

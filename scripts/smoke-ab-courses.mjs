@@ -58,7 +58,7 @@ try {
 
     for (const [catalogId, id, settings, answers, transfer, witness] of cases) {
       const intermediate = catalogId.includes("-");
-      await p.goto(base + "/#/courses");
+      await p.goto(base + "/#/courses?view=legacy");
       if (intermediate) await click(p, "中阶阶段");
       await p.getByRole("searchbox").fill(catalogId);
       const entry = p.locator(".academy-course a");
