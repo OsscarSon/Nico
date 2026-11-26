@@ -1,3 +1,4 @@
+import { fSims } from "../grading/f-route/ids";
 import { z } from "zod";
 import { ELEMENT_IDS } from "../ai/elements";
 
@@ -82,7 +83,7 @@ export const blockSchema = z.discriminatedUnion("type", [
   }),
   z.object({
     type: z.literal("sim"),
-    sim: z.enum(["bit-switches", "logic-gate", "half-adder", "mini-cpu", "layers", "subnet", "dns", "python", "web", "js", "git", "prompt-check", "memory", "os", "terminal", "forwarding", "reassembly", "tcp", "udp", "http", "journey", "password", "phishing", "privilege", "fetch-lab", "github-lab", "deployment-lab"]),
+    sim: z.enum(["bit-switches", "logic-gate", "half-adder", "mini-cpu", "layers", "subnet", "dns", "python", "web", "js", "git", "prompt-check", "memory", "os", "terminal", "forwarding", "reassembly", "tcp", "udp", "http", "journey", "password", "phishing", "privilege", "fetch-lab", "github-lab", "deployment-lab", ...fSims]),
     mode: z.enum(["free", "challenge"]),
     title: z.string().min(1),
     intro: z.string().min(1),
@@ -116,8 +117,8 @@ export const blockSchema = z.discriminatedUnion("type", [
 
 export const lessonSchema = z
   .object({
-    id: z.string().regex(/^[a-e]\d{2}-[a-z0-9-]+$/),
-    track: z.enum(["a", "b", "c", "d", "e"]),
+    id: z.string().regex(/^[a-f]\d{2}-[a-z0-9-]+$/),
+    track: z.enum(["a", "b", "c", "d", "e", "f"]),
     unit: z.string().min(1),
     title: z.string().min(1),
     /** public/art/ 下的课头插图文件名（可选，纯装饰） */

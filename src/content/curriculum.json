@@ -2238,7 +2238,7 @@
   "title": "电路与电流",
   "source": "proposal 2026-11-17",
   "project": "",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -2248,7 +2248,7 @@
   "title": "传感器与执行器",
   "source": "proposal 2026-11-17",
   "project": "",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -2258,7 +2258,7 @@
   "title": "Arduino 入门",
   "source": "proposal 2026-11-17",
   "project": "",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -2268,7 +2268,7 @@
   "title": "数字与模拟信号",
   "source": "proposal 2026-11-17",
   "project": "",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -2278,7 +2278,7 @@
   "title": "用 Arduino 读传感器",
   "source": "proposal 2026-11-17",
   "project": "",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -2288,7 +2288,7 @@
   "title": "电机与舵机",
   "source": "proposal 2026-11-17",
   "project": "",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -2298,7 +2298,7 @@
   "title": "串口与 I2C 通信",
   "source": "proposal 2026-11-17",
   "project": "",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {
@@ -2308,7 +2308,7 @@
   "title": "小项目：避障小车",
   "source": "proposal 2026-11-17",
   "project": "",
-  "status": "planned",
+  "status": "live",
   "phase": 5
  },
  {

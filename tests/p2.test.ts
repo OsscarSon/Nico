@@ -50,13 +50,13 @@ describe("P2 deterministic route consistency without new lesson semantics", () =
   it("scales all stages/routes with no invented availability and rejects unknown identities", () => {
     for (const stage of ["Foundation", "Intermediate", "Advanced"] as const) for (const track of ["a", "b", "c", "d", "e", "f", "m"]) {
       const r = routeView(track, stage)!; expect(r.nodes).toHaveLength(curriculum.filter(c => c.stage === stage && c.track.toLowerCase() === track).length);
-      expect(r.nodes.every(n => n.available === Boolean(n.lesson))).toBe(true); if (stage !== "Foundation" || ["d", "e", "f", "m"].includes(track)) expect(r.nodes.filter(n => n.available)).toHaveLength(0);
+      expect(r.nodes.every(n => n.available === Boolean(n.lesson))).toBe(true); if (stage !== "Foundation" || ["d", "e", "m"].includes(track)) expect(r.nodes.filter(n => n.available)).toHaveLength(0);
     }
     expect(routeView("unknown")).toBeUndefined();
   });
   it("recommendations use actual resume/unfinished lessons and a nonempty preferred route only when available", () => {
     const p = { ...emptyProgress(), resume: { lessonId: "a07-os", step: 3 } };
-    expect(continuation(p)?.id).toBe("a07-os"); expect(continuation(p, false)?.id).toBe("a01-binary"); expect(continuation(p, false, "b")?.id).toBe("b01-variables"); expect(continuation(p, false, "f")?.id).toBe("a01-binary");
+    expect(continuation(p)?.id).toBe("a07-os"); expect(continuation(p, false)?.id).toBe("a01-binary"); expect(continuation(p, false, "b")?.id).toBe("b01-variables"); expect(continuation(p, false, "f")?.id).toBe("f01-circuits-current"); expect(continuation(p, false, "m")?.id).toBe("a01-binary");
   });
 });
 describe("P2 art and implementation protection", () => {
