@@ -1,3 +1,4 @@
+import { CRouteLab } from "../../sims/CRouteLab";
 import { FetchLab } from "../../sims/FetchLab";
 import { GithubLab } from "../../sims/GithubLab";
 import { DeploymentLab } from "../../sims/DeploymentLab";
@@ -66,7 +67,8 @@ export function SimBlock({
     <div>
       <p>{block.intro}</p>
       <Device title={block.title} label={simLabel(block.sim)}>
-        {block.sim === "fetch-lab" ? <FetchLab mode={block.mode} onSolved={onDone} />
+        {block.sim === "ai-route-lab" && block.cLab ? <CRouteLab labKey={block.cLab} mode={block.mode} onSolved={onDone} />
+          : block.sim === "fetch-lab" ? <FetchLab mode={block.mode} onSolved={onDone} />
           : block.sim === "github-lab" ? <GithubLab mode={block.mode} onSolved={onDone} />
           : block.sim === "deployment-lab" ? <DeploymentLab mode={block.mode} onSolved={onDone} />
           : block.sim === "udp" ? <UdpLab mode={block.mode} onSolved={onDone} />

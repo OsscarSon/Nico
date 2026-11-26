@@ -24,7 +24,7 @@ describe("A18–A20 teaching and whole A-route integrity", () => {
       const end = l.blocks.at(-1); expect(end?.type).toBe("summary"); if (end?.type === "summary") expect(end.next).toBe(a[i + 1]?.id);
       expect(nextAvailableAfter(c.id)?.id).toBe(a[i + 1]?.id);
     }
-    expect(Object.keys(lessons).filter(id => id.startsWith("b"))).toHaveLength(17); expect(Object.keys(lessons).filter(id => id.startsWith("c"))).toHaveLength(1);
+    expect(Object.keys(lessons).filter(id => id.startsWith("b"))).toHaveLength(17); expect(Object.keys(lessons).filter(id => id.startsWith("c"))).toHaveLength(18);
   });
   it("derives phishing transfer from complete host boundaries", () => {
     const t = lessons["a19-phishing"]!.blocks.find(b => b.type === "transfer"); expect(t?.type === "transfer" && t.answer).toBe(["portal.campus.example", "campus.example.reset.example", "evilcampus.example"].filter(h => belongsToDomain(h, "campus.example")).length);

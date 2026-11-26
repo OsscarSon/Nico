@@ -1,3 +1,4 @@
+import { cLabKeys } from "../grading/c-route/types";
 import { z } from "zod";
 import { ELEMENT_IDS } from "../ai/elements";
 
@@ -82,8 +83,9 @@ export const blockSchema = z.discriminatedUnion("type", [
   }),
   z.object({
     type: z.literal("sim"),
-    sim: z.enum(["bit-switches", "logic-gate", "half-adder", "mini-cpu", "layers", "subnet", "dns", "python", "web", "js", "git", "prompt-check", "memory", "os", "terminal", "forwarding", "reassembly", "tcp", "udp", "http", "journey", "password", "phishing", "privilege", "fetch-lab", "github-lab", "deployment-lab"]),
+    sim: z.enum(["bit-switches", "logic-gate", "half-adder", "mini-cpu", "layers", "subnet", "dns", "python", "web", "js", "git", "prompt-check", "memory", "os", "terminal", "forwarding", "reassembly", "tcp", "udp", "http", "journey", "password", "phishing", "privilege", "fetch-lab", "github-lab", "deployment-lab", "ai-route-lab"]),
     mode: z.enum(["free", "challenge"]),
+    cLab: z.enum(cLabKeys).optional(),
     title: z.string().min(1),
     intro: z.string().min(1),
     /** bit-switches 挑战：依次要拨出的数 */
@@ -143,6 +145,7 @@ export const lessonSchema = z
       ),
     "课时模板要求：至少一个互动、一组检查题、一道迁移题",
   )
+  .refine(l => l.blocks.every(b => b.type !== "sim" || b.sim !== "ai-route-lab" || b.cLab !== undefined), "C 路线实验需要已注册的实验编号")
   .refine(
     (l) =>
       l.blocks.every(

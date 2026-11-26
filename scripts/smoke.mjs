@@ -435,8 +435,8 @@ await soon("首页推荐下一门还没学的课（A06）", async () => {
 // ---- 完成后徽章按真实条件点亮 ----
 await page.goto(`${BASE}/#/me`);
 await soon("完成 A01、A03、A04 后获得『第一个比特』和『守门人』", async () => (await page.locator(".badge.earned").count()) === 2 && (await page.locator(".badge.earned", { hasText: "第一个比特" }).count()) === 1 && (await page.locator(".badge.earned", { hasText: "守门人" }).count()) === 1);
-// C05与A09–A17均开放后，提示词匠/数据包领航员可按真实完成记录获得，剩余3种仍未开放。
-check("课程未开放的徽章如实标注", (await page.getByText("对应课程尚未开放").count()) === 3);
+// C18 已开放。D、E 路线的两个徽章仍缺少对应课程。
+check("课程未开放的徽章如实标注", (await page.getByText("对应课程尚未开放").count()) === 2);
 check("连续七天徽章未获得但可获得", (await page.locator(".badge", { hasText: "连续七天" }).getByText("未获得").count()) === 1);
 
 await page.goto(`${BASE}/#/projects`);
@@ -451,7 +451,7 @@ for (const p of ["/paths", "/paths/a", "/paths/c", "/lab", "/projects", "/me", "
   check(`页面非空：${p}`, (await text("main")).length > 20);
 }
 await soon("未知地址显示找不到页面", async () => (await text("main")).includes("找不到这个页面"));
-await page.goto(`${BASE}/#/lesson/b18-project-page`);
+await page.goto(`${BASE}/#/lesson/a21`);
 await soon("规划中的课不会显示假内容", async () => (await text("main")).includes("还没有开放"));
 
 // ---- 清除数据需要二次确认 ----
