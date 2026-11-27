@@ -405,6 +405,38 @@ try {
   console.log(
     "PASS 浏览器实际执行 NumPy、Pandas、Polars、Seaborn 和 scikit-learn，并完成自动判题",
   );
+  if (process.env.AI_BASE_URL) {
+    const tutor = await browser.newPage();
+    let sent;
+    await tutor.route("**/api/p3-test", async (route) => {
+      sent = route.request().postDataJSON();
+      await route.fulfill({
+        json: {
+          ok: true,
+          kind: "tutor",
+          model: "本地测试替身",
+          text: "从训练样本的中心化计算开始。",
+        },
+      });
+    });
+    await tutor.goto(
+      process.env.AI_BASE_URL +
+        "/#/lab/ml?experiment=linear&from=k-8e3c17ec3572",
+    );
+    await details(tutor, "实验 AI 学习帮助").click();
+    await tutor.getByLabel("帮助方式").selectOption("答题提示");
+    await tutor.getByLabel("补充问题").fill("怎样开始最小二乘推导？");
+    await button(tutor, "向 AI 导师提问").click();
+    await tutor
+      .getByText("从训练样本的中心化计算开始。", { exact: true })
+      .waitFor();
+    assert.equal(sent.lessonTitle, "线性回归");
+    assert.match(sent.context, /实验目标：ML Playground/);
+    assert.match(sent.context, /练习题面/);
+    assert.doesNotMatch(sent.context, /训练样本的中心化计算开始/);
+    await tutor.close();
+    console.log("PASS AI 导师使用公开课材与实验目标，本地测试响应正常显示");
+  }
 } finally {
   await browser.close();
 }
