@@ -30,10 +30,11 @@ function NetworkFigure({
       ] as const;
     }),
   );
+  const edgeLabels: [number, number][] = [];
   return (
     <figure className="p2-network">
       <svg
-        viewBox="0 0 400 232"
+        viewBox="0 -14 400 246"
         role="img"
         aria-label={network.directed ? "有向图" : "无向图"}
       >
@@ -71,6 +72,26 @@ function NetworkFigure({
             : 0;
           const midX = (x + u) / 2 - ((v - y) * offset) / d,
             midY = (y + v) / 2 + ((u - x) * offset) / d;
+          const candidates: [number, number][] =
+            from === to
+              ? [
+                  [x, Math.max(13, y - 39)],
+                  [x + 20, Math.max(13, y - 28)],
+                ]
+              : [0.44, 0.57, 0.32, 0.68].map((t) => {
+                  const before = (1 - t) ** 2;
+                  const between = 2 * t * (1 - t);
+                  const after = t ** 2;
+                  return [
+                    before * x + between * midX + after * u - ((v - y) * 8) / d,
+                    before * y + between * midY + after * v + ((u - x) * 8) / d,
+                  ];
+                });
+          const [labelX, labelY] =
+            candidates.find(([a, b]) =>
+              edgeLabels.every(([c, e]) => Math.hypot(a - c, b - e) >= 15),
+            ) ?? candidates[0]!;
+          edgeLabels.push([labelX, labelY]);
           return (
             <g key={index} data-highlight={highlighted}>
               {from === to ? (
@@ -84,10 +105,7 @@ function NetworkFigure({
                   markerEnd={markerEnd}
                 />
               )}
-              <text
-                x={from === to ? x : midX}
-                y={from === to ? y - 42 : midY - 5}
-              >
+              <text x={labelX} y={labelY}>
                 {weight}
               </text>
             </g>
