@@ -13,6 +13,10 @@ import { KnowledgeGraphPage, LabsHomePage, LearningPathsPage, ResourcesPage } fr
 import { AcademyLabPage } from "../features/academy2/Labs";
 import { KnowledgeLessonPage, AcademyProjectPage } from "../features/academy2/P1";
 
+import { algorithmTopic, isAlgorithmCourse } from "../content/academy2/algorithms/registry";
+
+const P2Lesson=lazy(()=>import("../features/academy2/algorithms/P2Lesson"));
+const AlgorithmProject=lazy(()=>import("../features/academy2/algorithms/AlgorithmProject"));
 const StudyPage=lazy(()=>import("../features/academy2/study/StudyPage"));
 
 const nav = [
@@ -61,7 +65,9 @@ export function App() {
       case "course": return <CoursePage key={route.courseId} courseId={route.courseId} />;
       case "track": return <TrackPage trackId={route.trackId} />;
       case "lesson": return <LessonPlayer lessonId={route.lessonId} />;
-      case "knowledge-lesson": return <KnowledgeLessonPage key={route.id} id={route.id} />;
+      case "knowledge-lesson": return algorithmTopic(route.id)
+        ? <Suspense fallback={<p role="status">加载算法课时…</p>}><P2Lesson key={route.id} id={route.id}/></Suspense>
+        : <KnowledgeLessonPage key={route.id} id={route.id} />;
       case "lab": return <LabsHomePage />;
       case "academy-lab": return <AcademyLabPage key={route.id} id={route.id} />;
       case "knowledge": return <KnowledgeGraphPage />;
@@ -70,7 +76,9 @@ export function App() {
       case "prompt-lab": return <PromptLab />;
       case "tutor": return <TutorPage lessonId={route.lessonId} />;
       case "projects": return <ProjectsPage />;
-      case "academy-project": return <AcademyProjectPage key={route.id} courseId={route.id} />;
+      case "academy-project": return isAlgorithmCourse(route.id)
+        ? <Suspense fallback={<p role="status">加载算法项目…</p>}><AlgorithmProject key={route.id} courseId={route.id}/></Suspense>
+        : <AcademyProjectPage key={route.id} courseId={route.id} />;
       case "me": return <MePage />;
       case "settings": return <><SettingsPage/><section className="panel settings-list" aria-label="完整学习备份">
         <h2>在设备间迁移学习资料</h2><Link to="/study?view=backup" className="btn secondary">打开完整备份 ↗</Link>

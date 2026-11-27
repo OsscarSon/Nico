@@ -1,11 +1,12 @@
 import { academyCourses, courseLink } from "../model";
 import { knowledgeRegistry } from "../knowledgeRegistry";
+import { algorithmLessons,findAlgorithmLesson } from "../algorithms";
 import { p1Lessons } from "../p1";
 import { allCatalogLessons, getLesson } from "../../index";
 import { enhanceLesson } from "./p1";
 import type { TeachingBlock } from "./schema";
 
-const terminology = [
+const p1Terminology = [
   ["集合", "Set", "由元素决定的对象。重复和顺序不影响成员资格。", "fm-sets"],
   ["定义域", "Domain", "函数允许的输入集合。复合需要兼顾内外两层。", "fm-inverse"],
   ["单位圆", "Unit circle", "半径为一的圆，坐标与正弦、余弦有关。", "fm-trig"],
@@ -51,7 +52,10 @@ const terminology = [
   ["残差", "Residual", "实际观察值减去模型拟合值。", "is-regression"],
   ["方差分析", "Analysis of variance · ANOVA", "以组间与组内变异比较组均值。", "is-anova"],
 ] as const;
-export { terminology };
+export const terminology = [
+  ...p1Terminology,
+  ...algorithmLessons.map(lesson => [lesson.title, lesson.material.term, lesson.material.definition, lesson.id] as const),
+];
 
 type Entry = { id: string; title: string; body: string; kind: string; path: string };
 type Formula = { title: string; topic: string; anchor: string; latex: string; caption?: string };
@@ -133,7 +137,8 @@ export function studyCatalogue() {
   }));
   const formula: Formula[] = [];
   for (const topic of knowledgeRegistry) {
-    const taught = p1Lessons.find((lesson) => lesson.id === topic.id);
+    const algorithm=findAlgorithmLesson(topic.id);
+    const taught = algorithm?.base ?? p1Lessons.find((lesson) => lesson.id === topic.id);
     if (!taught)
       search.push({
         id: topic.id,
@@ -156,7 +161,7 @@ export function studyCatalogue() {
         kind: "知识点",
         path: pathFor(topic.id),
       });
-      const enhanced = enhanceLesson(topic.id);
+      const enhanced = algorithm?.lesson ?? enhanceLesson(topic.id);
       collectBlocks(enhanced.blocks, (block, anchor) => {
         const body = readBlock(block);
         if (block.type === "math")

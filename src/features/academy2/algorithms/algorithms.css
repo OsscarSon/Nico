@@ -1,0 +1,186 @@
+.p2-arena,
+.p2-player,
+.p2-inputs,
+.p2-trace-frame,
+.p2-project,
+.p2-teaching {
+  min-width: 0;
+  display: grid;
+  gap: 1rem;
+}
+.p2-arena h2,
+.p2-arena h3,
+.p2-arena p,
+.p2-network,
+.p2-variables {
+  margin: 0;
+}
+.p2-inputs label,
+.p2-player > label,
+.p2-transport label,
+.p2-project label {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+}
+.p2-inputs :is(input, select, textarea),
+.p2-player input[type="range"],
+.p2-project :is(input, textarea) {
+  width: 100%;
+  box-sizing: border-box;
+}
+.p2-inputs textarea {
+  resize: vertical;
+}
+.p2-player {
+  border-top: 1px solid #37516d;
+  padding-top: 1rem;
+}
+.p2-transport {
+  flex-wrap: wrap;
+  align-items: end;
+}
+.p2-transport label {
+  margin-inline-start: auto;
+}
+.p2-transport .btn {
+  white-space: nowrap;
+}
+.p2-trace-frame {
+  padding: clamp(0.7rem, 3vw, 1.4rem);
+  border: 1px solid #3d6592;
+  border-radius: 1rem;
+  background: rgba(21, 98, 178, 0.12);
+}
+.p2-tokens,
+.p2-variables {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0;
+  margin: 0;
+}
+.p2-tokens {
+  list-style: none;
+}
+.p2-tokens li,
+.p2-variables > div {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 2.6rem;
+  max-width: 100%;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid #43617d;
+  border-radius: 0.5rem;
+  overflow-wrap: anywhere;
+}
+.p2-tokens li[data-highlight="true"] {
+  border-color: #59a9ff;
+  background: rgba(55, 142, 249, 0.25);
+}
+.p2-variables dd {
+  margin: 0;
+  font-weight: 650;
+}
+.p2-network {
+  max-width: 44rem;
+}
+.p2-network svg {
+  width: 100%;
+  display: block;
+  border-radius: 0.65rem;
+  background: rgba(83, 141, 192, 0.12);
+}
+.p2-network g > path {
+  fill: none;
+  stroke: #719ece;
+  stroke-width: 1.4;
+}
+.p2-network circle {
+  fill: #183552;
+  stroke: #7dbffc;
+}
+.p2-network text {
+  fill: currentColor;
+  text-anchor: middle;
+  font-size: 12px;
+  paint-order: stroke fill;
+  stroke: #1a2b42;
+  stroke-width: 2px;
+}
+.p2-network svg {
+  color: #edf6ff;
+  background: #142338;
+}
+.p2-network g[data-highlight="true"] > path {
+  stroke: #ffba6d;
+  stroke-width: 3;
+}
+.p2-network g[data-highlight="true"] circle {
+  fill: #764714;
+  stroke: #ffba6d;
+}
+.p2-path,
+.p2-complexity,
+.p2-project-result {
+  overflow-wrap: anywhere;
+}
+.p2-compare {
+  display: grid;
+  gap: 0.65rem;
+  justify-items: start;
+}
+.p2-teaching .p2-exercises > :is(form, section) {
+  margin-block: 0.7rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid #37516d;
+}
+.p2-teaching :is(pre, code, input, select) {
+  max-width: 100%;
+}
+@media (max-width: 430px) {
+  .p2-transport label {
+    margin-inline-start: 0;
+  }
+  .p2-transport {
+    gap: 0.4rem;
+  }
+  .p2-transport .btn {
+    padding-inline: 0.55rem;
+  }
+  .p2-trace-frame {
+    border-radius: 0.65rem;
+  }
+}
+.p2-diagram svg {
+  max-height: 28rem;
+}
+.p2-diagram figcaption {
+  padding-block-start: 0.45rem;
+}
+.p2-diagram :is(polygon, polyline) {
+  fill: none;
+  stroke: #ffba6d;
+  stroke-width: 2;
+}
+.p2-diagram g[data-highlight="true"] > .p2-axis {
+  stroke: #719ece;
+  stroke-width: 1;
+}
+.p2-teaching {
+  grid-template-columns: minmax(0, 1fr);
+}
+.p2-teaching .p2-reading {
+  grid-template-columns: minmax(0, 1fr);
+}
+.p2-reading :is(section, figure, details, div, dd),
+.p2-project section {
+  min-width: 0;
+}
+.p2-reading :is(p, dd, li) {
+  overflow-wrap: anywhere;
+}
+.p2-reading > .teaching-example,
+.p2-reading > .teaching-disclosure {
+  background: var(--panel);
+}

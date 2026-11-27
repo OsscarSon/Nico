@@ -312,6 +312,7 @@ export function BlockList({
   sectionClass,
   topic,
   prefix="advanced",
+  start=0,
 }: {
   blocks: TeachingBlock[];
   widgets?: Interactives;
@@ -319,6 +320,7 @@ export function BlockList({
   sectionClass?: string;
   topic?: string;
   prefix?: string;
+  start?: number;
 }) {
   return (
     <>
@@ -330,7 +332,7 @@ export function BlockList({
           level={level}
           sectionClass={sectionClass}
           topic={topic}
-          anchor={prefix+"-"+(i+1)}
+          anchor={prefix+"-"+(start+i+1)}
         />
       ))}
     </>

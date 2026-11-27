@@ -5,6 +5,8 @@ import { buildTopicContext, type TutorMode } from "../../../ai/topicContext";
 import { LIMITS, type AiResult } from "../../../ai/protocol";
 import { AiBox } from "../../../components/AiLabel";
 import { Markdown } from "../../../ai/markdown";
+import type { LegacyTopicLesson } from "../../../content/academy2/p1/types";
+import type { TopicLesson } from "../../../content/academy2/teaching/schema";
 import { findP1Lesson } from "../../../content/academy2/p1";
 import { enhanceLesson } from "../../../content/academy2/teaching/p1";
 import { findKnowledge } from "../../../content/academy2/knowledgeRegistry";
@@ -19,8 +21,10 @@ const templates: Record<TutorMode, string> = {
 export default function TopicTutor({
   id,
   experiment,
+  lesson,
 }: {
   id: string;
+  lesson?: { base:LegacyTopicLesson; lesson:TopicLesson };
   experiment?: { title: string; objective: string };
 }) {
   const [mode, setMode] = useState<TutorMode>("解释知识");
@@ -28,7 +32,7 @@ export default function TopicTutor({
     [busy, setBusy] = useState(false);
   const [result, setResult] = useState<AiResult>();
   const prefs = usePreferences();
-  const legacy = findP1Lesson(id),
+  const legacy = lesson?.base ?? findP1Lesson(id),
     location = findKnowledge(id);
   if (!legacy || !location || !prefs.showAiLinks) return null;
   return (
@@ -46,7 +50,7 @@ export default function TopicTutor({
                 await askAi({
                   kind: "tutor",
                   lessonTitle: location.title,
-                  context: buildTopicContext(legacy, enhanceLesson(id), mode, experiment),
+                  context: buildTopicContext(legacy, lesson?.lesson ?? enhanceLesson(id), mode, experiment),
                   question: (templates[mode] + " " + question.trim()).slice(0, LIMITS.question),
                 }),
               );
