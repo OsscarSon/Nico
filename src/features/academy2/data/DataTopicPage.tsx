@@ -1,3 +1,4 @@
+import { usePreferences } from "../../../preferences/store";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { Link } from "../../../app/router";
 import { EmptyState } from "../../../components/ui";
@@ -99,6 +100,7 @@ function Examples({
   );
 }
 export default function DataTopicPage({ id }: { id: string }) {
+  const { showAiLinks } = usePreferences();
   const item = findDataLesson(id);
   const { data, warning } = useKnowledgeProgress();
   const [focus, setFocus] = useState(false),
@@ -399,26 +401,28 @@ export default function DataTopicPage({ id }: { id: string }) {
           <Prerequisites targets={dependenciesOf(id)} />
         </section>
       )}
-      <details
-        className="a2-panel"
-        onToggle={(e) => {
-          if (e.currentTarget.open) setShowTutor(true);
-        }}
-      >
-        <summary>AI 学习帮助</summary>
-        {showTutor && (
-          <Suspense fallback={<p>加载导师…</p>}>
-            <Tutor
-              id={id}
-              lesson={item}
-              experiment={{
-                title: lab === "data" ? "Data Studio" : "ML Playground",
-                objective: material.aim,
-              }}
-            />
-          </Suspense>
-        )}
-      </details>
+      {showAiLinks && (
+        <details
+          className="a2-panel"
+          onToggle={(e) => {
+            if (e.currentTarget.open) setShowTutor(true);
+          }}
+        >
+          <summary>AI 学习帮助</summary>
+          {showTutor && (
+            <Suspense fallback={<p>加载导师…</p>}>
+              <Tutor
+                id={id}
+                lesson={item}
+                experiment={{
+                  title: lab === "data" ? "Data Studio" : "ML Playground",
+                  objective: material.aim,
+                }}
+              />
+            </Suspense>
+          )}
+        </details>
+      )}
       <nav className="study-nav" aria-label="相邻课时">
         {previous && (
           <Link className="btn secondary" to={knowledgeLink(previous)}>

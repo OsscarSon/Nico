@@ -1,7 +1,8 @@
 import type { Question } from "../teaching/schema";
+import { additionalPrograms } from "../applied/programs";
 
 type Case = { args: number[][]; expected: number };
-type Specs = {
+export type ProgramSpec = {
   name: string;
   parameters: string;
   prompt: string;
@@ -16,7 +17,8 @@ const entry = (args: number[][], expected: number): Case => ({
   args,
   expected,
 });
-export const advancedPrograms: Record<string, Specs> = {
+export const advancedPrograms: Record<string, ProgramSpec> = {
+  ...additionalPrograms,
   "study-log": {
     name: "valid_duration",
     parameters: "minutes",

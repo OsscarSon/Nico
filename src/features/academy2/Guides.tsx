@@ -1,5 +1,5 @@
 import { useKnowledgeProgress } from "../../progress/knowledge";
-import { knowledgeStatus } from "../../grading/academy2/p1/progress";
+import { knowledgeStatus, practicePassed } from "../../grading/academy2/p1/progress";
 import { p4Topic } from "../../content/academy2/advanced/registry";
 import { p4LegacyLesson } from "../../content/academy2/advanced/legacy";
 import { dataTopic } from "../../content/academy2/data/registry";
@@ -49,6 +49,7 @@ export function LearningPathsPage() {
   const path = usePath();
   const preference = useAcademyPath();
   const { lessons } = useProgress();
+  const { data: knowledge } = useKnowledgeProgress();
   const id = new URLSearchParams(path.split("?")[1]).get("path") ?? preference.id;
   const selected = getPersonalPath(id) ?? personalPaths[0];
   const pinned = preference.id === selected.id;
@@ -66,7 +67,10 @@ export function LearningPathsPage() {
           const course = getAcademyCourse(id)!;
           const available = moduleLessons(course, module);
           const completed = available.filter(lesson => lessons[lesson.id]).length;
-          return <li key={name}><Link to={courseLink(id, module)}><div><strong>{name}</strong><small>{getPhase(course.stage).title} · {course.title}</small></div><span>{available.length ? completed + "/" + available.length + " 节已完成" : "查看大纲"} ↗</span></Link></li>;
+          const topics = knowledgeRegistry.filter(topic => topic.course === id && topic.module === module && (findP1Lesson(topic.id)||algorithmTopic(topic.id)||dataTopic(topic.id)||p4Topic(topic.id)));
+          const learned = topics.filter(topic => practicePassed(knowledge.records[topic.id])).length;
+          const status = [topics.length ? `${learned}/${topics.length} 知识点` : "", available.length ? `${completed}/${available.length} 节已完成` : ""].filter(Boolean).join(" · ") || "查看大纲";
+          return <li key={name}><Link to={courseLink(id, module)}><div><strong>{name}</strong><small>{getPhase(course.stage).title} · {course.title}</small></div><span>{status} ↗</span></Link></li>;
         })}</ol>
       </section>
     </div>
@@ -89,11 +93,13 @@ const chain = [
 
 export function KnowledgeGraphPage() {
   const {data}=useKnowledgeProgress();
+  const {lessons,resume}=useProgress();
   const params=new URLSearchParams(usePath().split("?")[1]);
   const id = params.get("course") ?? "intermediate-ai";
   const course = getAcademyCourse(id) ?? getAcademyCourse("intermediate-ai")!;
   const options=knowledgeRegistry.filter(topic=>topic.course===course.id);
   const selected=options.find(option=>option.id===params.get("topic"));
+  const linkedLegacy=selected && p4LegacyLesson(selected.id);
   const nextTopics=selected ? knowledgeEdges.filter(edge=>edge.to===selected.id&&edge.kind!=="related").map(edge=>findKnowledge(edge.from)).filter(topic=>topic!==undefined) : [];
   const dependents = academyCourses.filter(item => courseDependencies(item).some(target => target.course === course.id));
   return <div className="a2-page">
@@ -115,7 +121,7 @@ export function KnowledgeGraphPage() {
       <Link className="btn secondary" to={courseLink(course.id)}>打开课程入口 ↗</Link>
     </div>
     <div className="a2-two-col">
-      <section className="a2-panel"><h2>{selected?.title??course.title} · 知识关系</h2>{selected&&(findP1Lesson(selected.id)||algorithmTopic(selected.id)||dataTopic(selected.id)||p4Topic(selected.id)||p4LegacyLesson(selected.id))&&<div className="row"><LearningStatus status={knowledgeStatus(data.records[selected.id],Date.now())}/><Link to={"/topics/"+selected.id}>打开课时 ↗</Link></div>}<Prerequisites key={selected?.id??course.id} targets={selected?dependenciesOf(selected.id):courseDependencies(course)} /></section>
+      <section className="a2-panel"><h2>{selected?.title??course.title} · 知识关系</h2>{selected&&(findP1Lesson(selected.id)||algorithmTopic(selected.id)||dataTopic(selected.id)||p4Topic(selected.id)||linkedLegacy)&&<div className="row"><LearningStatus status={linkedLegacy?(lessons[linkedLegacy]?"complete":resume?.lessonId===linkedLegacy?"learning":"new"):knowledgeStatus(data.records[selected.id],Date.now())}/><Link to={"/topics/"+selected.id}>打开课时 ↗</Link></div>}<Prerequisites key={selected?.id??course.id} targets={selected?dependenciesOf(selected.id):courseDependencies(course)} /></section>
       <section className="a2-panel"><h2>{selected?"接续知识点":"接续课程"}</h2>
         <ul className="a2-link-list">{selected?nextTopics.map(topic=><li key={topic.id}><Link to={"/graph?course="+topic.course+"&topic="+topic.id}>{topic.title} ↗</Link></li>):dependents.map(item => <li key={item.id}><Link to={"/graph?course=" + item.id}>{labelTarget({ course: item.id })} ↗</Link></li>)}</ul>
         {!(selected?nextTopics:dependents).length && <p className="muted">当前没有已声明的后续，可转向实践项目。</p>}

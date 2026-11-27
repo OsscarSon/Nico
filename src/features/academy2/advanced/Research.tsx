@@ -31,6 +31,10 @@ export default function Research() {
       <p>
         保存原始问题、可复现条件和实际观察。书目至少收录一项来源，区分文献主张与本次观察。
       </p>
+      <ul className="a2-link-list">
+        <li><Link to="/lab/research?advanced=research-permutation">运行随机化检验并保留结果 ↗</Link></li>
+        <li><Link to="/projects/advanced-security">复现 Dijkstra 的两项算法 ↗</Link></li>
+      </ul>
       <label>
         研究名称
         <input

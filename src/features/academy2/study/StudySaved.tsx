@@ -3,6 +3,14 @@ import { changeStudy, type Study } from "../../../progress/study";
 import { bookmarkPath, readingLink } from "./readingState";
 import { downloadText } from "./files";
 
+function reportLink(kind:"experiment"|"project", topic:string) {
+  if (kind === "project") return "/projects/" + topic;
+  const scenario = /^lab:(math|statistics|algorithms|data|ml|systems|research):([a-z][a-z0-9-]+)$/.exec(topic);
+  if (scenario) return `/lab/${scenario[1]}?advanced=${scenario[2]}`;
+  if (["algorithms", "data", "ml", "research"].includes(topic)) return "/lab/" + topic;
+  return readingLink(topic);
+}
+
 export function BookmarkList({ data }: { data: Study }) {
   const favorites = Object.entries(data.bookmarks)
     .filter(([, row]) => row.active)
@@ -49,7 +57,7 @@ export function BookmarkList({ data }: { data: Study }) {
             </summary>
             <pre className="study-report">{item.markdown}</pre>
             {item.topic && (
-              <Link to={item.kind === "project" ? "/projects/" + item.topic : ["algorithms","data","ml","research"].includes(item.topic)?"/lab/"+item.topic:readingLink(item.topic)}>
+              <Link to={reportLink(item.kind, item.topic)}>
                 相关教学 ↗
               </Link>
             )}

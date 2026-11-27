@@ -2,6 +2,48 @@ import type { Edge } from "../knowledgeGraph";
 
 export const p4Edges: Edge[] = [
   {
+    from: "k-88cd833ec42f",
+    to: "k-3480cb7f26a7",
+    kind: "required",
+    reason: "先确定坐标的单位和方向，再能解释向量分量。",
+  },
+  {
+    from: "k-46b72eb02822",
+    to: "k-46fe981be8f5",
+    kind: "recommended",
+    reason: "使用两个轴的区间交叠来推广到第三轴。",
+  },
+  {
+    from: "k-eb60e755986e",
+    to: "k-c2a7f1e14857",
+    kind: "recommended",
+    reason: "数字 PID 的采样周期进入差分和积分。",
+  },
+  {
+    from: "k-f83593e899a9",
+    to: "k-a7656824dac0",
+    kind: "related",
+    reason: "差速推算可以提供滤波器的运动预测。",
+  },
+  {
+    from: "k-5fc0beb038e9",
+    to: "k-f83593e899a9",
+    kind: "related",
+    reason: "比较递推状态估计和位姿图的批优化。",
+  },
+  {
+    from: "k-0866c19cfef3",
+    to: "k-b6c16354b041",
+    kind: "required",
+    reason: "先认识渲染阶段，再解释不同 Shader 的输入输出。",
+  },
+  {
+    from: "k-64d9c29d15fc",
+    to: "k-82c626c9206d",
+    kind: "recommended",
+    reason: "硬件事件和任务调度共同决定延迟。",
+  },
+  {
     from: "k-26792901cd39",
     to: "im-matrix",
     kind: "required",

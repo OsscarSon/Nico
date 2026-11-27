@@ -9,6 +9,27 @@ export const projectLabs: Record<
     reference?: { title: string; url: string };
   }
 > = {
+  "foundation-applied": {
+    name: "制作触碰检测小游戏",
+    lab: "game-collision",
+    task: "构造边缘接触和正面积碰撞两笔测试。运行状态机和固定步长，再实现 Python 矩形判定。解释测例怎样避免重复结算。",
+    primary: "交集面积",
+    companion: ["game-state", "game-loop"],
+  },
+  "intermediate-applied": {
+    name: "构建差速车控制工程",
+    lab: "robot-control",
+    task: "固定目标和负载，比较两种积分增益。用差速转弯和采样模型核对执行器限制与感知频率，提交误差解释。",
+    primary: "终点误差",
+    companion: ["robot-pose", "signal-sampling"],
+  },
+  "advanced-applied": {
+    name: "定位、感知和路径规划综合研究",
+    lab: "robot-slam",
+    task: "先提供一致与不一致的地标观测，分析残差。随后分别核验路径、像素测量、Kalman 后验与可扩展性。",
+    primary: "平方误差",
+    companion: ["robot-route", "robot-vision", "robot-filter"],
+  },
   "intermediate-programming": {
     name: "用 Python 与 TypeScript 核对学习记录",
     lab: "study-log",

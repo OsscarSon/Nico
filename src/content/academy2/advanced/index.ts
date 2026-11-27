@@ -32,10 +32,14 @@ import { securityCore } from "./securityCore";
 import { advancedSecurity } from "./advancedSecurity";
 import { distributed } from "./distributed";
 import { enrichment } from "./enrichment";
+import { appliedDefinitions, appliedSources, appliedTerms } from "../applied";
+import { reasoningQuestions } from "../applied/reasoning";
+import { appliedEnrichment } from "../applied/enrichment";
+import type { Draft } from "./authoring";
 
 import { mathExtras } from "./mathExtras";
 
-export const definitions = {
+export const definitions: Record<string, Draft> = {
   ...maths,
   ...mathExtras,
   ...statistics,
@@ -63,6 +67,7 @@ export const definitions = {
   ...researchExtras,
   ...productionExtras,
   ...coreExtras,
+  ...appliedDefinitions,
 };
 export function findP4Lesson(id: string) {
   const spec = definitions[id],
@@ -132,22 +137,36 @@ export function findP4Lesson(id: string) {
     },
     ...(spec.extra ?? []),
     ...(enrichment[id] ?? []),
+    ...(appliedEnrichment[id] ?? []),
     {
       type: "summary",
       points: [spec.definition, spec.example.check, spec.mistake],
     },
-    { type: "references", items: [sources[lab.area]] },
+    {
+      type: "references",
+      items: [
+        appliedSources[id] ??
+          (Object.hasOwn(appliedDefinitions, id)
+            ? appliedSources[spec.lab]
+            : undefined) ??
+          sources[lab.area],
+      ],
+    },
   ];
   const programming = advancedProgram(spec.lab);
   const lesson: TopicLesson = {
     id,
     blocks,
-    questions: programming ? [programming.question] : [],
+    questions: [
+      ...reasoningQuestions(id),
+      ...(programming ? [programming.question] : []),
+    ],
   };
   return { ...location, spec, base, lesson, lab, programming };
 }
 
 const terms: Record<string, string> = {
+  ...appliedTerms,
   "k-d18c520a0205": "Numerical stability",
   "k-f3b8a6450bdc": "Floating-point precision",
   "k-26792901cd39": "LU / QR decomposition",

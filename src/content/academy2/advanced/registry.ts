@@ -1,4 +1,5 @@
 import available from "./available.json";
+import applied from "../applied/available.json";
 import { findKnowledge, knowledgeRegistry } from "../knowledgeRegistry";
 
 export const p4Courses = [
@@ -18,11 +19,14 @@ export const p4Courses = [
   "advanced-ai",
   "advanced-software",
   "advanced-security",
+  "foundation-applied",
+  "intermediate-applied",
+  "advanced-applied",
 ] as const;
 
 export const p4Course = (id: string) =>
   (p4Courses as readonly string[]).includes(id);
-const taught = new Set<string>(available);
+const taught = new Set<string>([...available, ...applied]);
 export const p4Topic = (id: string) =>
   taught.has(id) ? findKnowledge(id) : undefined;
 export const p4TopicsIn = (course: string) =>

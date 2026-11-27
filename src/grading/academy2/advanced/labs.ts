@@ -1,4 +1,6 @@
 import type { LabArea } from "../../../content/academy2/advanced/registry";
+import { appliedLabs } from "../applied/labs";
+import { trainingLabs } from "../applied/trainingLabs";
 import {
   compensatedSum,
   constrainedSum,
@@ -138,6 +140,8 @@ const studio = (
 const f = (x: number) => Math.exp(x);
 const stable: Control[] = [control("large", "大分量的指数", 8, 20, 1, 16)];
 export const labs: Record<string, LabDefinition> = {
+  ...appliedLabs,
+  ...trainingLabs,
   precision: math(
     "浮点抵消与补偿求和",
     "提高大分量的数量级，比较表示误差如何吞掉一个增量。",
@@ -2045,13 +2049,14 @@ export function runLab(
 ) {
   const lab = labs[id];
   if (!lab || text.length > 16000) throw Error("找不到实验或输入太长。");
-  for (const { key, min, max } of lab.controls) {
+  for (const { key, min, max, step } of lab.controls) {
     const value = values[key];
     if (
       value === undefined ||
       !Number.isFinite(value) ||
       value < min ||
-      value > max
+      value > max ||
+      (Number.isInteger(min) && Number.isInteger(max) && Number.isInteger(step) && !Number.isInteger(value))
     )
       throw Error("实验参数超出范围。");
   }

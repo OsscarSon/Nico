@@ -1,3 +1,4 @@
+import { usePreferences } from "../../../preferences/store";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { Link } from "../../../app/router";
 import { EmptyState } from "../../../components/ui";
@@ -107,6 +108,7 @@ function PythonPair({
 }
 
 export default function P2Lesson({ id }: { id: string }) {
+  const { showAiLinks } = usePreferences();
   const item = findAlgorithmLesson(id);
   const { data, warning } = useKnowledgeProgress();
   const [focus, setFocus] = useState(false),
@@ -346,26 +348,28 @@ export default function P2Lesson({ id }: { id: string }) {
           </details>
         )}
       </section>
-      <details
-        className="a2-panel"
-        onToggle={(event) => {
-          if (event.currentTarget.open) setOpenTutor(true);
-        }}
-      >
-        <summary>AI 学习帮助</summary>
-        {openTutor && (
-          <Suspense fallback={<p role="status">加载导师…</p>}>
-            <TopicTutor
-              id={id}
-              lesson={item}
-              experiment={{
-                title: model.title,
-                objective: item.material.procedure,
-              }}
-            />
-          </Suspense>
-        )}
-      </details>
+      {showAiLinks && (
+        <details
+          className="a2-panel"
+          onToggle={(event) => {
+            if (event.currentTarget.open) setOpenTutor(true);
+          }}
+        >
+          <summary>AI 学习帮助</summary>
+          {openTutor && (
+            <Suspense fallback={<p role="status">加载导师…</p>}>
+              <TopicTutor
+                id={id}
+                lesson={item}
+                experiment={{
+                  title: model.title,
+                  objective: item.material.procedure,
+                }}
+              />
+            </Suspense>
+          )}
+        </details>
+      )}
       <nav className="study-nav" aria-label="相邻课时">
         {previous && (
           <Link className="btn secondary" to={knowledgeLink(previous)}>

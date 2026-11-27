@@ -11,6 +11,12 @@ import {
   type LabDefinition,
 } from "../../../grading/academy2/advanced/labs";
 import { XYChart } from "../data/Plots";
+import { saveReport } from "../data/workspaces";
+import {
+  directionLabel,
+  evaluateComparison,
+  type Direction,
+} from "../../../grading/academy2/advanced/labEvidence";
 import "../data/data.css";
 import "./advanced.css";
 
@@ -18,9 +24,11 @@ import type { LabRecord } from "../../../grading/academy2/advanced/projectEviden
 export function Lab({
   active,
   onResult,
+  topic,
 }: {
   active: string;
   onResult?: (record: LabRecord) => void;
+  topic?: string;
 }) {
   const definition = labs[active];
   return definition ? (
@@ -29,6 +37,7 @@ export function Lab({
       id={active}
       definition={definition}
       onResult={onResult}
+      topic={topic}
     />
   ) : (
     <p role="status">从实验目录选择一个可运行的场景。</p>
@@ -39,10 +48,12 @@ function Experiment({
   id,
   definition,
   onResult,
+  topic,
 }: {
   id: string;
   definition: LabDefinition;
   onResult?: (record: LabRecord) => void;
+  topic?: string;
 }) {
   const [inputs, setInputs] = useState(() =>
     Object.fromEntries(
@@ -51,6 +62,12 @@ function Experiment({
   );
   const [text, setText] = useState(definition.text?.initial ?? "");
   const [record, setRecord] = useState<LabRecord>();
+  const [baseline, setBaseline] = useState<LabRecord>();
+  const [prediction, setPrediction] = useState<Direction>("up");
+  const [metric, setMetric] = useState("");
+  const [comparison, setComparison] =
+    useState<ReturnType<typeof evaluateComparison>>();
+  const [reportStatus, setReportStatus] = useState("");
   const [error, setError] = useState("");
   const result = record?.result;
   return (
@@ -69,9 +86,16 @@ function Experiment({
           try {
             const record = { inputs, text, result: runLab(id, inputs, text) };
             setRecord(record);
+            setComparison(
+              baseline && metric
+                ? evaluateComparison(baseline, record, metric, prediction)
+                : undefined,
+            );
+            setReportStatus("");
             onResult?.(record);
           } catch (error) {
             setRecord(undefined);
+            setComparison(undefined);
             setError(
               error instanceof Error ? error.message : "此组合无法执行。",
             );
@@ -97,6 +121,48 @@ function Experiment({
             </label>
           ))}
         </div>
+        {baseline && (
+          <fieldset className="a2-panel">
+            <legend>对照预测</legend>
+            <p>
+              对照已保留。改一个参数或一份输入，先写预测，再执行。每个指标以原始计算精度比较。
+            </p>
+            <div className="p3-fields">
+              <label>
+                要预测的指标
+                <select
+                  value={metric}
+                  onChange={(event) => {
+                    setMetric(event.target.value);
+                    setComparison(undefined);
+                  }}
+                >
+                  {baseline.result.metrics
+                    .filter(([, value]) => typeof value === "number")
+                    .map(([label]) => (
+                      <option key={label}>{label}</option>
+                    ))}
+                </select>
+              </label>
+              <label>
+                预计变化
+                <select
+                  value={prediction}
+                  onChange={(event) => {
+                    setPrediction(event.target.value as Direction);
+                    setComparison(undefined);
+                  }}
+                >
+                  {Object.entries(directionLabel).map(([value, label]) => (
+                    <option key={value} value={value}>
+                      {label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+          </fieldset>
+        )}
         {definition.text && (
           <label>
             {definition.text.label}
@@ -122,6 +188,18 @@ function Experiment({
       )}
       {result && (
         <>
+          {comparison && (
+            <p
+              role="status"
+              className={
+                "feedback " + (comparison.status === "correct" ? "ok" : "bad")
+              }
+            >
+              {comparison.status === "invalid"
+                ? comparison.message
+                : `${comparison.status === "correct" ? "预测吻合" : "预测与结果不同"}。${metric}由 ${Number(comparison.before.toPrecision(7))} 变为 ${Number(comparison.after.toPrecision(7))}，${directionLabel[comparison.actual]}。`}
+            </p>
+          )}
           <dl className="p3-values" aria-live="polite">
             {result.metrics.map(([label, value]) => (
               <div key={label}>
@@ -151,6 +229,67 @@ function Experiment({
               {JSON.stringify(result.trace, null, 2)}
             </pre>
           </details>
+          <div className="study-tools">
+            {record &&
+              result.metrics.some(([, value]) => typeof value === "number") && (
+                <button
+                  type="button"
+                  className="btn secondary"
+                  onClick={() => {
+                    setBaseline(record);
+                    setMetric(
+                      result.metrics.find(
+                        ([, value]) => typeof value === "number",
+                      )![0],
+                    );
+                    setComparison(undefined);
+                  }}
+                >
+                  以本次为对照
+                </button>
+              )}
+            {record && (
+              <button
+                type="button"
+                className="btn secondary"
+                onClick={() => {
+                  const details = {
+                    scenario: id,
+                    inputs,
+                    text,
+                    result: result.metrics,
+                    comparison:
+                      comparison && comparison.status !== "invalid"
+                        ? { metric, prediction, ...comparison }
+                        : undefined,
+                  };
+                  const markdown = [
+                    "# " + definition.title,
+                    definition.kind === "计算" ? "真实浏览器计算" : "教学模拟",
+                    definition.objective,
+                    "## 输入、计算结果与对照",
+                    "```json",
+                    JSON.stringify(details, null, 2),
+                    "```",
+                  ].join("\n\n");
+                  const saved = saveReport(
+                    "experiment",
+                    topic ?? `lab:${definition.area}:${id}`,
+                    definition.title,
+                    markdown,
+                  );
+                  setReportStatus(
+                    saved
+                      ? "已下载并保存实验报告。"
+                      : "已下载报告。浏览器存储暂不可用。",
+                  );
+                }}
+              >
+                保存并下载实验报告
+              </button>
+            )}
+          </div>
+          {reportStatus && <p role="status">{reportStatus}</p>}
         </>
       )}
     </section>
@@ -169,7 +308,9 @@ export default function AdvancedLabList({
   return (
     <>
       {from && <Link to={knowledgeLink(from)}>← 返回知识点</Link>}
-      {active && labs[active]?.area === area && <Lab active={active} />}
+      {active && labs[active]?.area === area && (
+        <Lab active={active} topic={from} />
+      )}
       <section className="a2-panel">
         <h2>进阶实验</h2>
         <ul className="a2-link-list">

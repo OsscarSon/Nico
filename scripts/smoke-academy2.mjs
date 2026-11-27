@@ -68,7 +68,11 @@ try {
     assert.equal(await topics.getByRole("checkbox").count(), 5);
     await topics.getByRole("checkbox", { name: "我已掌握：向量点积" }).check();
     assert.match(await topics.innerText(), /自评 1\/5/);
-    await topics.getByRole("link", { name: /向量点积/ }).click();
+    const prerequisite = topics.getByRole("link", { name: /向量点积/ });
+    assert.equal(await prerequisite.getAttribute("href"), "#/topics/fm-dot");
+    await prerequisite.click();
+    await page.getByRole("heading", { name: "向量点积", exact: true, level: 1 }).waitFor();
+    await page.locator(".a2-crumbs a").first().click();
     const review = page.getByRole("link", { name: "向量点积", exact: true }).and(page.locator('[aria-current="location"]'));
     await review.waitFor();
     assert.equal(await review.innerText(), "向量点积");

@@ -5,6 +5,7 @@ import { QuestionCard } from "../teaching/QuestionBank";
 import { Link } from "../../../app/router";
 import { courseLink, getAcademyCourse } from "../../../content/academy2/model";
 import { projectLabs } from "../../../content/academy2/advanced/projects";
+import { codeProjects } from "../../../content/academy2/advanced/codeProjects";
 import { projectKey } from "../../../content/academy2/p1/navigation";
 import { exercise } from "../../../content/academy2/p1/types";
 import { gradeTopic } from "../../../grading/academy2/p1/progress";
@@ -31,7 +32,10 @@ export default function AdvancedProject({ courseId }: { courseId: string }) {
   const program =
     courseId.endsWith("-programming") && course.stage !== "advanced"
       ? advancedProgram("study-log", 7)?.question
-      : undefined;
+      : courseId.endsWith("-applied")
+        ? advancedProgram(project.lab, 7)?.question
+        : undefined;
+  const codeProject = codeProjects[courseId];
   const ready =
     (!program || programPassed) &&
     verifyProject(courseId, evidence) &&
@@ -51,13 +55,37 @@ export default function AdvancedProject({ courseId }: { courseId: string }) {
           <a href={project.reference.url}>{project.reference.title} ↗</a>
         </p>
       )}
+      {codeProject && (
+        <section className="a2-panel">
+          <h2>在本机完成代码交付</h2>
+          <p>{codeProject.notebook}</p>
+          <pre className="p4-trace" tabIndex={0}>
+            python projects/p4/verify.py --only {codeProject.task}
+          </pre>
+          <p>
+            提交源代码、独立检查结果和适用范围。评分时分别检查结果（40）、复现步骤（25）、边界处理（20）和解释（15）。下方浏览器实验保存自己的证据，本机运行结果由读者另行核验。
+          </p>
+          <a
+            href={
+              "https://github.com/OsscarSon/Nico/blob/codex/academy-2-p4-advanced-computing/projects/p4/" +
+              codeProject.path
+            }
+          >
+            打开代码交付物 ↗
+          </a>
+        </section>
+      )}
       <Lab
         active={project.lab}
         onResult={(record) => setEvidence((old) => [...old.slice(-1), record])}
       />
       {program && (
         <section className="a2-panel p1-exercises">
-          <h2>实现汇总函数</h2>
+          <h2>
+            {courseId.endsWith("-applied")
+              ? "实现项目核心函数"
+              : "实现汇总函数"}
+          </h2>
           <QuestionCard
             question={program}
             onAttempt={(response) =>

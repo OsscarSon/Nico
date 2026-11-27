@@ -1,13 +1,21 @@
+import { usePreferences } from "../../../preferences/store";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { Link } from "../../../app/router";
 import { advancedProgram } from "../../../content/academy2/advanced/programs";
 import {
   evaluate,
   recordAnswer,
+  type Response,
 } from "../../../grading/academy2/teaching/questions";
+import type { Question } from "../../../content/academy2/teaching/schema";
 import { QuestionCard } from "../teaching/QuestionBank";
 import { EmptyState } from "../../../components/ui";
 import { findP4Lesson } from "../../../content/academy2/advanced";
+import { microTrainingLinks } from "../../../content/academy2/applied/trainingLinks";
+import {
+  reasoningQuestions,
+  seededReasoning,
+} from "../../../content/academy2/applied/reasoning";
 import {
   p4LabLink,
   p4TopicsIn,
@@ -43,6 +51,7 @@ const Tutor = lazy(() => import("../study/TopicTutor"));
 const levels = ["知识核查", "计算练习", "分析练习", "独立迁移核验"] as const;
 const indexes = [0, 1, 2, 3] as const;
 export default function AdvancedTopic({ id }: { id: string }) {
+  const { showAiLinks } = usePreferences();
   const item = findP4Lesson(id);
   const { data, warning } = useKnowledgeProgress();
   const [focus, setFocus] = useState(false),
@@ -51,6 +60,7 @@ export default function AdvancedTopic({ id }: { id: string }) {
   const [answers, setAnswers] = useState(["", "", "", ""]),
     [outcomes, setOutcomes] = useState<(boolean | undefined)[]>([]);
   const [seed, setSeed] = useState(0);
+  const [reasoningSeed, setReasoningSeed] = useState(1);
   const exists = Boolean(item);
   useEffect(() => {
     if (exists) updateKnowledge((old) => beginTopic(old, id, Date.now()));
@@ -70,6 +80,24 @@ export default function AdvancedTopic({ id }: { id: string }) {
   const record = data.records[id],
     deps = dependenciesOf(id);
   const program = advancedProgram(item.spec.lab, seed)?.question;
+  const training = microTrainingLinks[id];
+  const reasoning = reasoningQuestions(id, reasoningSeed);
+  function recordQuestion(question: Question, response: Response) {
+    const outcome = evaluate(question, response);
+    if (outcome.status !== "correct" && outcome.status !== "incorrect") return;
+    updateKnowledge((state) => ({
+      ...state,
+      questionBank: {
+        ...state.questionBank,
+        [id]: recordAnswer(
+          state.questionBank?.[id] ?? {},
+          question,
+          response,
+          Date.now(),
+        ),
+      },
+    }));
+  }
   return (
     <article
       className={
@@ -131,13 +159,18 @@ export default function AdvancedTopic({ id }: { id: string }) {
             在实验室打开 ↗
           </Link>
         </p>
+        {training && (
+          <p>
+            <Link to={p4LabLink("ml", training[0], id)}>{training[1]} ↗</Link>
+          </p>
+        )}
         {labOpen &&
           (item.spec.lab === "cryptography" ? (
             <Suspense fallback={<p role="status">加载 Web Crypto…</p>}>
               <Crypto />
             </Suspense>
           ) : (
-            <Lab active={item.spec.lab} />
+            <Lab active={item.spec.lab} topic={id} />
           ))}
       </details>
       {item.programming && (
@@ -207,6 +240,30 @@ export default function AdvancedTopic({ id }: { id: string }) {
             </form>
           );
         })}
+        {reasoning.length > 0 && (
+          <details>
+            <summary>结构化推理与独立变式</summary>
+            {seededReasoning.has(id) && (
+              <button
+                className="btn secondary"
+                type="button"
+                onClick={() =>
+                  setReasoningSeed((value) => (value >= 12 ? 1 : value + 1))
+                }
+              >
+                换一组推理参数
+              </button>
+            )}
+            {reasoning.map((question) => (
+              <QuestionCard
+                key={question.id}
+                question={question}
+                last={data.questionBank?.[id]?.[question.id]?.lastCorrect}
+                onAttempt={(response) => recordQuestion(question, response)}
+              />
+            ))}
+          </details>
+        )}
         {program && (
           <details>
             <summary>Python 判题与种子变式</summary>
@@ -221,28 +278,7 @@ export default function AdvancedTopic({ id }: { id: string }) {
               key={program.id}
               question={program}
               last={data.questionBank?.[id]?.[program.id]?.lastCorrect}
-              onAttempt={(response) =>
-                updateKnowledge((state) => {
-                  const evaluated = evaluate(program, response);
-                  if (
-                    evaluated.status !== "correct" &&
-                    evaluated.status !== "incorrect"
-                  )
-                    return state;
-                  return {
-                    ...state,
-                    questionBank: {
-                      ...state.questionBank,
-                      [id]: recordAnswer(
-                        state.questionBank?.[id] ?? {},
-                        program,
-                        response,
-                        Date.now(),
-                      ),
-                    },
-                  };
-                })
-              }
+              onAttempt={(response) => recordQuestion(program, response)}
             />
           </details>
         )}
@@ -253,27 +289,29 @@ export default function AdvancedTopic({ id }: { id: string }) {
           <Prerequisites targets={deps} />
         </section>
       )}
-      <details
-        className="a2-panel"
-        onToggle={(event) => {
-          if (event.currentTarget.open) setTutorOpen(true);
-        }}
-      >
-        <summary>AI 学习帮助</summary>
-        {tutorOpen && (
-          <Suspense fallback={<p role="status">加载导师…</p>}>
-            <Tutor
-              id={id}
-              lesson={item}
-              experiment={{
-                title: item.lab.title,
-                objective: item.lab.objective,
-              }}
-              initialOpen
-            />
-          </Suspense>
-        )}
-      </details>
+      {showAiLinks && (
+        <details
+          className="a2-panel"
+          onToggle={(event) => {
+            if (event.currentTarget.open) setTutorOpen(true);
+          }}
+        >
+          <summary>AI 学习帮助</summary>
+          {tutorOpen && (
+            <Suspense fallback={<p role="status">加载导师…</p>}>
+              <Tutor
+                id={id}
+                lesson={item}
+                experiment={{
+                  title: item.lab.title,
+                  objective: item.lab.objective,
+                }}
+                initialOpen
+              />
+            </Suspense>
+          )}
+        </details>
+      )}
       <nav className="study-nav" aria-label="相邻课时">
         {[seq[position - 1], seq[position + 1]].map(
           (neighbor, i) =>

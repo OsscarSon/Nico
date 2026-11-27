@@ -10,3 +10,7 @@
 .p4-topic > * {
   min-inline-size: 0;
 }
+.p3-lab fieldset {
+  min-inline-size: 0;
+  margin-block: .75rem;
+}

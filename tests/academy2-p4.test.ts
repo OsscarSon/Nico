@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { definitions, findP4Lesson } from "../src/content/academy2/advanced";
 import available from "../src/content/academy2/advanced/available.json";
+import applied from "../src/content/academy2/applied/available.json";
 import { reusedTopics } from "../src/content/academy2/advanced/legacy";
 import { enrichment } from "../src/content/academy2/advanced/enrichment";
 import {
@@ -67,8 +68,8 @@ import { verifyProject } from "../src/grading/academy2/advanced/projectEvidence"
 
 describe("P4 course and experiment contract", () => {
   it("registers only fully linked lesson pages under existing identities", () => {
-    expect([...available].sort()).toEqual(Object.keys(definitions).sort());
-    for (const id of available) {
+    expect([...available, ...applied].sort()).toEqual(Object.keys(definitions).sort());
+    for (const id of [...available, ...applied]) {
       const item = findP4Lesson(id)!;
       expect(item?.id).toBe(id);
       expect(item.spec.questions.length).toBe(4);

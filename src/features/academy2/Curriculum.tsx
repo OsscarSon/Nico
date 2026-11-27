@@ -111,9 +111,12 @@ export function Prerequisites({ targets, label = "建议先修" }: { targets: De
       const items=targets.filter(item=>item.kind===kind);
       return items.length>0&&<div key={kind} className="p1-relation" data-kind={kind}><h4>{name}</h4><ul>{items.map(target=>{
         const key=selfKey(target), title=labelTarget(target);
+        const href = target.id && (availableKnowledge(target.id) || p4LegacyLesson(target.id))
+          ? knowledgeLink(target.id)
+          : courseLink(target.course, target.module, target.topic);
         return <li key={key}>
           {kind!=="related"&&<input aria-label={"我已掌握："+title} type="checkbox" checked={data.selfChecks[key]===true} onChange={event=>setSelfCheck(key,event.target.checked)}/>}
-          <div><Link to={target.id&&(algorithmTopic(target.id)||dataTopic(target.id)||p4Topic(target.id)||p4LegacyLesson(target.id))?knowledgeLink(target.id):courseLink(target.course,target.module,target.topic)}>{title} ↗</Link><small>{target.reason}</small></div>
+          <div><Link to={href}>{title} ↗</Link><small>{target.reason}</small></div>
         </li>;
       })}</ul></div>;
     })}
