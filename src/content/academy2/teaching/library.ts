@@ -1,6 +1,8 @@
 import { academyCourses, courseLink } from "../model";
 import { knowledgeRegistry } from "../knowledgeRegistry";
 import { dataLessons,findDataLesson } from "../data";
+import { findP4Lesson,p4Glossary } from "../advanced";
+import { p4LegacyLesson } from "../advanced/legacy";
 import { algorithmLessons,findAlgorithmLesson } from "../algorithms";
 import { p1Lessons } from "../p1";
 import { allCatalogLessons, getLesson } from "../../index";
@@ -54,6 +56,7 @@ const p1Terminology = [
   ["方差分析", "Analysis of variance · ANOVA", "以组间与组内变异比较组均值。", "is-anova"],
 ] as const;
 export const terminology = [
+  ...p4Glossary,
   ...p1Terminology,
   ...dataLessons.map(lesson=>[lesson.title,lesson.material.english,lesson.material.concept,lesson.id] as const),
   ...algorithmLessons.map(lesson => [lesson.title, lesson.material.term, lesson.material.definition, lesson.id] as const),
@@ -139,7 +142,7 @@ export function studyCatalogue() {
   }));
   const formula: Formula[] = [];
   for (const topic of knowledgeRegistry) {
-    const algorithm=findAlgorithmLesson(topic.id)??findDataLesson(topic.id);
+    const algorithm=findAlgorithmLesson(topic.id)??findDataLesson(topic.id)??findP4Lesson(topic.id);
     const taught = algorithm?.base ?? p1Lessons.find((lesson) => lesson.id === topic.id);
     if (!taught)
       search.push({
@@ -147,7 +150,7 @@ export function studyCatalogue() {
         title: topic.title,
         body: topic.module,
         kind: "知识点",
-        path: courseLink(topic.course, topic.module, topic.title),
+        path: p4LegacyLesson(topic.id) ? "/lesson/"+p4LegacyLesson(topic.id) : courseLink(topic.course, topic.module, topic.title),
       });
     else {
       search.push({

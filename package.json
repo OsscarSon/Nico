@@ -36,7 +36,8 @@
     "smoke:academy2-p15": "node scripts/smoke-academy2-p15.mjs",
     "smoke:academy2-completion": "node scripts/smoke-academy2-completion.mjs",
     "smoke:academy2-algorithms": "node scripts/smoke-academy2-algorithms.mjs",
-    "smoke:academy2-data-ml": "node scripts/smoke-academy2-data-ml.mjs"
+    "smoke:academy2-data-ml": "node scripts/smoke-academy2-data-ml.mjs",
+    "smoke:academy2-advanced": "node scripts/smoke-academy2-advanced.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.0",

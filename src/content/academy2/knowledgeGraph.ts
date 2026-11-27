@@ -1,3 +1,4 @@
+import { p4Edges } from "./advanced/relationships";
 import { dataEdges } from "./data/relationships";
 import { algorithmEdges } from "./algorithms/relationships";
 import curriculum from "./curriculum.json";
@@ -201,6 +202,7 @@ const moduleConnections: Requirement[] = [
 export const knowledgeEdges: readonly Edge[] = [
  ...algorithmEdges,
  ...dataEdges,
+ ...p4Edges,
  ...required.map(([from,to,reason]): Edge => ({from,to,reason,kind:"required"})),
  ...[...recommended,...courseConnections,...moduleConnections].map(([from,to,reason]): Edge => ({from,to,reason,kind:"recommended"})),
  ...related.map(([from,to,reason]): Edge => ({from,to,reason,kind:"related"})),

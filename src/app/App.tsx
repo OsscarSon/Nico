@@ -17,6 +17,12 @@ import { algorithmTopic, isAlgorithmCourse } from "../content/academy2/algorithm
 
 import { dataTopic, isDataCourse } from "../content/academy2/data/registry";
 
+import { p4Topic } from "../content/academy2/advanced/registry";
+import { p4LegacyLesson } from "../content/academy2/advanced/legacy";
+import { projectLabs } from "../content/academy2/advanced/projects";
+
+const P4Lesson=lazy(()=>import("../features/academy2/advanced/Topic"));
+const P4Project=lazy(()=>import("../features/academy2/advanced/Project"));
 const P3Lesson=lazy(()=>import("../features/academy2/data/DataTopicPage"));
 const DataProject=lazy(()=>import("../features/academy2/data/DataProject"));
 const P2Lesson=lazy(()=>import("../features/academy2/algorithms/P2Lesson"));
@@ -73,7 +79,7 @@ export function App() {
         ? <Suspense fallback={<p role="status">加载算法课时…</p>}><P2Lesson key={route.id} id={route.id}/></Suspense>
         : dataTopic(route.id)
         ? <Suspense fallback={<p role="status">加载数据与 AI 课时…</p>}><P3Lesson key={route.id} id={route.id}/></Suspense>
-        : <KnowledgeLessonPage key={route.id} id={route.id} />;
+        : p4Topic(route.id) ? <Suspense fallback={<p role="status">加载进阶课时…</p>}><P4Lesson key={route.id} id={route.id}/></Suspense> : p4LegacyLesson(route.id) ? <LessonPlayer key={route.id} lessonId={p4LegacyLesson(route.id)!}/> : <KnowledgeLessonPage key={route.id} id={route.id} />;
       case "lab": return <LabsHomePage />;
       case "academy-lab": return <AcademyLabPage key={route.id} id={route.id} />;
       case "knowledge": return <KnowledgeGraphPage />;
@@ -86,7 +92,7 @@ export function App() {
         ? <Suspense fallback={<p role="status">加载算法项目…</p>}><AlgorithmProject key={route.id} courseId={route.id}/></Suspense>
         : isDataCourse(route.id)
         ? <Suspense fallback={<p role="status">加载数据与 AI 项目…</p>}><DataProject key={route.id} courseId={route.id}/></Suspense>
-        : <AcademyProjectPage key={route.id} courseId={route.id} />;
+        : projectLabs[route.id] ? <Suspense fallback={<p role="status">加载项目…</p>}><P4Project key={route.id} courseId={route.id}/></Suspense> : <AcademyProjectPage key={route.id} courseId={route.id} />;
       case "me": return <MePage />;
       case "settings": return <><SettingsPage/><section className="panel settings-list" aria-label="完整学习备份">
         <h2>在设备间迁移学习资料</h2><Link to="/study?view=backup" className="btn secondary">打开完整备份 ↗</Link>

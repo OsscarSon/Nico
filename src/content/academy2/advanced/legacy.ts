@@ -1,0 +1,100 @@
+import { curriculum, liveLessonFor } from "../../academy";
+
+// Topic links below point to the existing player and preserve all historical records.
+const bindings: Record<string, string> = {
+  "k-41cdef28272d": "B-I01",
+  "k-1e0b628fa515": "B-I01",
+  "k-5d5c958f965d": "B-I01",
+  "k-617fea1b04c4": "A-I01",
+  "k-551514b1fccb": "A-I02",
+  "k-1ee4804084a5": "A-I03",
+  "k-a37bf82caee2": "A-I04",
+  "k-1ce72d7ca7d6": "B-I04",
+  "k-3ecc23bc8487": "B-I03",
+  "k-f8d18f798d12": "B-I08",
+  "k-1df373892917": "B01",
+  "k-632e838df0a4": "B01",
+  "k-c196e9004130": "B01",
+  "k-d40878a54155": "B02",
+  "k-d05e58bcd3f0": "B03",
+  "k-0e4fe1769048": "B04",
+  "k-a777609f587d": "B05",
+  "k-6508dfce0876": "B06",
+  "k-1450efc55ae9": "B07",
+  "k-07387eec8e2c": "A01",
+  "k-1f3336d21ec6": "A02",
+  "k-8fb0277cef3f": "A02",
+  "k-ed782d0c4990": "A02",
+  "k-c1efaf083d26": "A03",
+  "k-31012821f86c": "A03",
+  "k-f2051e941b56": "A04",
+  "k-50259e6d2daa": "A05",
+  "k-853aedee603c": "A06",
+  "k-5b4841e41fe9": "A07",
+  "k-c9d1c01960e8": "A08",
+  "k-e172ea8ad40f": "A09",
+  "k-4314b0affdf8": "A10",
+  "k-882e1203097b": "A11",
+  "k-b2d166f7263c": "A13",
+  "k-a57d3ca6e891": "A14",
+  "k-7d331db941e6": "A15",
+  "k-2b26774dd390": "A16",
+  "k-8589e058be4a": "A16",
+  "k-17fd2c5ae242": "B08",
+  "k-8987d639b8e8": "B09",
+  "k-300c19919bc3": "B11",
+  "k-93dca6acb2bd": "B11",
+  "k-abe0240d52bc": "B12",
+  "k-864fb031e973": "B13",
+  "k-cd33dfa0bcd3": "B13",
+  "k-ec1eba493af4": "B14",
+  "k-112f90265ccf": "B15",
+  "k-c110cbecc58c": "B16",
+  "k-2d0217e2834a": "B17",
+  "k-aa9dd42d9ef5": "A18",
+  "k-763caebb118e": "A18",
+  "k-40c923b1622e": "A18",
+  "k-155f2ffff48b": "A19",
+  "k-774d3b699a8f": "A20",
+  "k-1c530f3ce3e6": "C15",
+  "k-51cb8bd059e2": "C15",
+  "k-c37353332370": "C16",
+  "k-e95279233326": "B-I01",
+  "k-f3156351b454": "B-I02",
+  "k-d22a1812c35b": "B-I02",
+  "k-4169a2c3e494": "A-I01",
+  "k-9339d8618aba": "A-I01",
+  "k-12a001d0d10e": "A-I01",
+  "k-78aa313695b4": "A-I02",
+  "k-680d35024881": "A-I02",
+  "k-a7a6b930ebae": "A-I03",
+  "k-91f106b279df": "A-I04",
+  "k-a33d36d06343": "A-I04",
+  "k-7e16c294fb1a": "A-I06",
+  "k-f11812a29924": "B-I03",
+  "k-48ca1e5dbcdb": "B-I04",
+  "k-b7b3f5d1f4d7": "B-I08",
+  "k-89effa7be50d": "B-I07",
+  "k-1d462af23f6f": "B-I07",
+  "k-6dbc0763220c": "B-I07",
+  "k-29c7afe90ba0": "A-I03",
+  "k-f7a9577188ed": "A-I05",
+};
+const existing = new Map(curriculum.map((course) => [course.id, course]));
+export const reusedTopics = Object.entries(bindings).flatMap(([topic, id]) => {
+  const course = existing.get(id),
+    lesson = course && liveLessonFor(course);
+  return lesson ? [{ topic, id: lesson.id }] : [];
+});
+const paths = new Map(reusedTopics.map(({ topic, id }) => [topic, id]));
+export const p4LegacyLesson = (topic: string) => paths.get(topic);
+
+export function legacyProject(course: string) {
+  const project: Record<string, string> = {
+    "foundation-systems": "A17",
+    "foundation-software": "B18",
+    "intermediate-software": "B-I08",
+  };
+  const existingProject = existing.get(project[course] ?? "");
+  return existingProject ? liveLessonFor(existingProject)?.id : undefined;
+}

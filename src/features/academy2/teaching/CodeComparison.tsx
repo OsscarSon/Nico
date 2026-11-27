@@ -34,10 +34,10 @@ const examples: Record<string, [string, string, string]> = {
     "from statistics import linear_regression\nprint(linear_regression([0,1,2],[1,3,4]).slope)",
   ],
 };
-export default function CodeComparison({ id }: { id: string }) {
+export default function CodeComparison({ id, override }: { id: string; override?: readonly [string,string,string] }) {
   const [outputs, setOutputs] = useState<(string | null)[]>([null, null]);
   const [open, setOpen] = useState(false);
-  const model = examples[id];
+  const model = override ?? examples[id];
   if (!model) return null;
   const mark = (i: number, value: string | null) =>
     setOutputs((old) => old.map((text, j) => (i === j ? value : text)));

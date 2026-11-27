@@ -1,0 +1,130 @@
+import type { Edge } from "../knowledgeGraph";
+
+export const p4Edges: Edge[] = [
+  {
+    from: "k-26792901cd39",
+    to: "im-matrix",
+    kind: "required",
+    reason: "矩阵乘法和三角矩阵使 PA=LU 的重构可核验。",
+  },
+  {
+    from: "k-26792901cd39",
+    to: "im-projection",
+    kind: "recommended",
+    reason: "用投影解释 QR 的正交列构造。",
+  },
+  {
+    from: "k-ec0de2c9e5b0",
+    to: "im-integral",
+    kind: "required",
+    reason: "复合求积规则近似定积分的面积。",
+  },
+  {
+    from: "k-946bcb1832cc",
+    to: "im-derivative",
+    kind: "required",
+    reason: "初值递推使用沿时间的一阶导数。",
+  },
+  {
+    from: "k-6428532dca21",
+    to: "im-partial",
+    kind: "required",
+    reason: "区分温度的空间偏导和时间偏导。",
+  },
+  {
+    from: "k-b97c1a5c0083",
+    to: "im-hessian",
+    kind: "required",
+    reason: "多元 Newton 步的系数为目标的 Hessian。",
+  },
+  {
+    from: "k-de4fbf9ecdf5",
+    to: "im-gradient",
+    kind: "required",
+    reason: "目标与约束梯度共同定义驻点条件。",
+  },
+  {
+    from: "k-c3f3fff910eb",
+    to: "k-da30ac789fd5",
+    kind: "recommended",
+    reason: "线性松弛是许多整数规划求解法的上界。",
+  },
+  {
+    from: "k-8188da31f891",
+    to: "k-11bcbcd00a08",
+    kind: "required",
+    reason: "比特熵和 KL 由事件的对数信息量导出。",
+  },
+  {
+    from: "k-7940731e1a06",
+    to: "k-6f9d06efbba4",
+    kind: "recommended",
+    reason: "比较先验加入前后的估计。",
+  },
+  {
+    from: "k-7c498f0ff058",
+    to: "k-261db48f1b21",
+    kind: "required",
+    reason: "用转移核和目标平稳分布解释采样法。",
+  },
+  {
+    from: "k-78e350cdc83e",
+    to: "k-a5a322611f0d",
+    kind: "required",
+    reason: "语法分析器读取词法 token 序列。",
+  },
+  {
+    from: "k-f85bfced2ed8",
+    to: "k-78e350cdc83e",
+    kind: "required",
+    reason: "解析产物的结构来自语法和优先级。",
+  },
+  {
+    from: "k-4b9462f2e268",
+    to: "k-f85bfced2ed8",
+    kind: "required",
+    reason: "树的后序规则决定栈 IR 指令次序。",
+  },
+  {
+    from: "k-bfaf496d1673",
+    to: "k-4b9462f2e268",
+    kind: "recommended",
+    reason: "通过栈指令数量和两种执行结果验证常量折叠。",
+  },
+  {
+    from: "k-a950e7b7e641",
+    to: "k-3554d1992099",
+    kind: "recommended",
+    reason: "用深度优先搜索追踪等待环。",
+  },
+  {
+    from: "k-e0f6db5129ce",
+    to: "k-15bea04d0d2f",
+    kind: "related",
+    reason: "对照任期顺序与因果事件排序的职责。",
+  },
+  {
+    from: "k-3224259a7c23",
+    to: "k-b430f60b85fe",
+    kind: "recommended",
+    reason: "把批次去重和质量约束迁移到流式窗口。",
+  },
+  {
+    from: "k-bc8297361aff",
+    to: "k-4562c69444e2",
+    kind: "recommended",
+    reason: "卷积层的通道求和是索引缩并。",
+  },
+  {
+    from: "k-bd83fe10c488",
+    to: "k-e618e14a8bed",
+    kind: "required",
+    reason: "利用注意力掩码证明前缀依赖。",
+  },
+  {
+    from: "k-bd9b81be9853",
+    to: "k-51cb8bd059e2",
+    kind: "related",
+    reason: "将偏见概念与明确分母的组间评估结合。",
+  },
+];

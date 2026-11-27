@@ -1,0 +1,12 @@
+.p4-trace {
+  max-inline-size: 100%;
+  max-block-size: 24rem;
+  overflow: auto;
+  overflow-wrap: normal;
+  padding: 0.8rem;
+  background: var(--a2-surface, var(--panel));
+  border: 1px solid var(--a2-edge);
+}
+.p4-topic > * {
+  min-inline-size: 0;
+}

@@ -131,6 +131,7 @@ export default function DataProject({ courseId }: { courseId: string }) {
         : []),
       ...details(model),
       ...details(other),
+      ...details(ml?.final),
       ...(assistant
         ? [
             "## 助手评估",

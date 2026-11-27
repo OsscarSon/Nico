@@ -4,7 +4,7 @@ export const laboratories = [
   { id: "algorithms", title: "算法竞技场", english: "Algorithm Arena", intro: "输入自己的数据，回放真实执行路径，比较操作次数与复杂度。", available: true, primary: "搜索、排序、数据结构、图算法、计算模型", planned: "", course: "foundation-algorithms", links: [["数据结构实验", "/lesson/b-i06"]] },
   { id: "ml", title: "模型训练实验室", english: "ML Playground", intro: "用真实数据训练、预测、比较模型和指标。", available: true, primary: "监督训练、聚类、智能系统实验", planned: "", course: "intermediate-ai", links: [["AI 助手评测", "/lesson/c18-assistant-project"], ["RAG 工程", "/lesson/c-i05"], ["Prompt 训练场", "/lab/prompt"]] },
   { id: "data", title: "数据科学工作台", english: "Data Studio", intro: "导入并清洗数据，用 SQL、Python 与图表做可复现分析。", available: true, primary: "CSV、SQLite、Python Notebook 与 EDA", planned: "", course: "foundation-data-science", links: [["Python 与 CSV", "/lesson/b-i01"], ["查询与事务", "/lesson/b-i05"], ["数据发布与自动化项目", "/courses/foundation-data-science?module=stories"]] },
-  { id: "research", title: "科研中心", english: "Research Hub", intro: "按领域阅读公开课程、教材与参考框架。", available: false, primary: "公开资源索引", planned: "论文复现任务、研究笔记、实验记录、引用管理与研究报告", course: "intermediate-security", links: [["查看公开教材与课程", "/resources"]] },
+  { id: "research", title: "科研中心", english: "Research Hub", intro: "检查研究证据和评估结论。用合成资料运行公平性与隐私实验。", available: true, primary: "研究复现、公平性与隐私实验", planned: "", course: "intermediate-security", links: [["查看公开教材与课程", "/resources"]] },
   { id: "systems", title: "计算机系统实验室", english: "Systems Lab", intro: "使用位开关、CPU、操作系统和网络实验。", available: true, primary: "位开关与现有系统实验", planned: "内存分配、进程调度、死锁、数据库事务与分布式系统实验", course: "foundation-systems", links: [["逻辑门", "/lesson/a03-logic-gates"], ["CPU 取指执行", "/lesson/a05-cpu-cycle"], ["操作系统", "/lesson/a07-os"], ["TCP 三次握手", "/lesson/a14-tcp"], ["网络工程", "/lesson/a-i04"]] },
 ] as const;
 
@@ -46,6 +46,6 @@ export const roadmap = [
   ["P1", "补齐数学与统计学", "先完成基础和中阶课，并扩展数学及统计实验。", "初始实验可用"],
   ["P2", "独立算法体系", "从数据结构、算法设计到计算理论，扩展算法竞技场。", "初始实验可用"],
   ["P3", "数据科学与机器学习", "完善数据库、统计建模和训练工具。", "规划中"],
-  ["P4", "大学进阶课程", "深度学习、高等统计、分布式系统与科研方法。", "规划中"],
+  ["P4", "大学进阶课程", "深度学习、高等统计、分布式系统与科研方法。", "核心课时和实验可学习，新增课时待试学"],
   ["P5", "跨领域扩展", "游戏、图形学、硬件、科学计算与其他选修。", "规划中"],
 ] as const;

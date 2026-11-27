@@ -257,6 +257,7 @@ export default function MLPlayground({
     [comparison, setComparison] = useState<MLResult>();
   const [finalResult, setFinalResult] = useState<MLResult>();
   const finalized = useRef(new Set<string>());
+  const configurationVersion = useRef(0);
   const [query, setQuery] = useState(""),
     [error, setError] = useState(""),
     [notice, setNotice] = useState(""),
@@ -287,6 +288,7 @@ export default function MLPlayground({
     "minimax",
   ].includes(scenario);
   function clear(nextSource = source) {
+    configurationVersion.current++;
     setError("");
     setNotice("");
     setResult(undefined);
@@ -336,6 +338,8 @@ export default function MLPlayground({
   async function train(
     type: "fit" | "compare" | "leak" | "contrast" | "final",
   ) {
+    const version = configurationVersion.current;
+    const current = () => version === configurationVersion.current;
     setError("");
     setNotice("");
     setBusy(true);
@@ -357,6 +361,7 @@ export default function MLPlayground({
           query: undefined,
           leakDemo: false,
         });
+        if (!current()) return;
         if (!compareOnHoldout(result, next))
           throw Error("数据或评估配置改变，无法比较。");
         setComparison(next);
@@ -367,6 +372,7 @@ export default function MLPlayground({
             "此数据的本次实验已解锁留出测试。后续调参只能使用验证集。",
           );
         const next = await runML(data, result.options, "final");
+        if (!current()) return;
         if (next.fingerprint !== result.fingerprint || !next.test)
           throw Error("数据改变或无法核验最终评估。");
         finalized.current.add(next.fingerprint);
@@ -375,7 +381,8 @@ export default function MLPlayground({
         onEvidence?.({ source, result, comparison, final: next });
       } else if (type === "leak") {
         if (!result) throw Error("先完成按训练集拟合的模型。");
-        setLeak(await runML(data, { ...inputs, leakDemo: true }));
+        const next = await runML(data, { ...inputs, leakDemo: true });
+        if (current()) setLeak(next);
       } else if (type === "contrast") {
         if (!result) throw Error("先取得基准训练结果。");
         const h = result.options;
@@ -402,7 +409,8 @@ export default function MLPlayground({
           };
           title = "L2 系数 " + lambda;
         }
-        setContrast({ title, value: await runML(data, next) });
+        const value = await runML(data, next);
+        if (current()) setContrast({ title, value });
       } else {
         setComparison(undefined);
         setLeak(undefined);
@@ -412,11 +420,13 @@ export default function MLPlayground({
         setShowTest(false);
         onEvidence?.({ source });
         const next = await runML(data, inputs);
+        if (!current()) return;
         setResult(next);
         onEvidence?.({ source, result: next });
       }
     } catch (e) {
-      setError(e instanceof Error ? e.message : "无法完成训练。");
+      if (current())
+        setError(e instanceof Error ? e.message : "无法完成训练。");
     } finally {
       setBusy(false);
     }
