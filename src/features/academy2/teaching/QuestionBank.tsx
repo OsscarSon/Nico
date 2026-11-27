@@ -1,10 +1,12 @@
-import { useId, useState, type FormEvent } from "react";
+import { lazy,Suspense,useId, useState, type FormEvent } from "react";
 import type { Question } from "../../../content/academy2/teaching/schema";
 import {
-  evaluate,
+  evaluate, readNumber,
   type Response,
 } from "../../../grading/academy2/teaching/questions";
 import { RichText } from "./math";
+
+const ProgramQuestion=lazy(()=>import("./ProgramQuestion"));
 
 const captions = {
   concept: "概念",
@@ -25,6 +27,11 @@ export function QuestionCard({
   const [submitted, setSubmitted] = useState<ReturnType<typeof evaluate>>();
   const [response, setResponse] = useState<Response>("");
   const name = useId();
+  const [step,setStep]=useState(0);
+  const [stepFeedback,setStepFeedback]=useState("");
+  const values=Array.isArray(response)?response:[];
+  const change=(i:number,v:string)=>setResponse(previous=>{ const next=Array.isArray(previous)?[...previous]:[]; next[i]=v;return next; });
+  if(question.type==="program")return <Suspense fallback={<p role="status">加载编程题…</p>}><ProgramQuestion question={question} last={last} onAttempt={onAttempt}/></Suspense>;
   function handle(event: FormEvent) {
     event.preventDefault();
     const result = evaluate(question, response);
@@ -50,7 +57,23 @@ export function QuestionCard({
             </small>
           </p>
         )}
-        {question.type === "multi" ? (
+        {question.type==="matrix"? <label>矩阵答案（逗号分隔元素，分号或回车分行）<textarea required rows={3} maxLength={600} onChange={e=>setResponse(e.target.value)} /></label> :
+          question.type==="order"||question.type==="match" ? <div className="study-answer-fields">
+            {(question.type==="order"?question.options.map((_,i)=>"第 "+(i+1)+" 步"):question.rows.map(row=>row.label)).map((label,i)=><label key={i}>{label}
+              <select required value={values[i]??""} onChange={e=>change(i,e.target.value)}><option value="">请选择</option>
+                {question.options.map(option=><option value={option.id} key={option.id}>{option.label}</option>)}
+              </select></label>)}
+          </div> :
+          question.type==="fields"||question.type==="steps" ? <div className="study-answer-fields">{question.fields.slice(0,question.type==="steps"?step+1:undefined).map((field,i)=><label key={i}>{field.label}
+            <input required value={values[i]??""} disabled={question.type==="steps"&&i<step} onChange={e=>change(i,e.target.value)}/></label>)}
+            {question.type==="steps"&&step<question.fields.length-1&&<button type="button" className="btn secondary" onClick={()=>{
+              const value=readNumber(values[step]??"",{fraction:true,percent:true}),field=question.fields[step]!;
+              if(value===null||Math.abs(value-field.answer)>field.tolerance)setStepFeedback(field.hint);
+              else {setStep(step+1);setStepFeedback("");}
+            }}>核对本步</button>}
+            {stepFeedback&&<p role="status">{stepFeedback}</p>}
+          </div> :
+          question.type === "multi" ? (
           question.options.map((option) => (
             <label className="teaching-option" key={option.id}>
               <input
@@ -114,7 +137,7 @@ export function QuestionCard({
           />
         )}
       </fieldset>
-      <button className="btn secondary" type="submit">
+      <button className="btn secondary" type="submit" disabled={question.type==="steps"&&step<question.fields.length-1}>
         {question.type === "open" ? "按检查点自行复核" : "提交答案"}
       </button>
       {submitted && (

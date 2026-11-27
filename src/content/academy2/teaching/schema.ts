@@ -179,17 +179,27 @@ export const questionSchema = z
       answer: z.array(z.number().finite()).min(2).max(16),
       tolerance,
     }),
+    z.object({...q, type:z.literal("matrix"), answer:z.array(z.array(z.number().finite()).min(1).max(8)).min(1).max(8), tolerance}),
+    z.object({...q, type:z.literal("order"), options:choices, answer:z.array(stableId).min(2)}),
+    z.object({...q, type:z.literal("match"), options:choices, rows:z.array(z.object({label:text,answer:stableId})).min(2).max(12)}),
+    z.object({...q, type:z.literal("fields"), fields:z.array(z.object({label:text, answer:z.number().finite(), tolerance, hint:text})).min(2).max(12)}),
+    z.object({...q, type:z.literal("steps"), fields:z.array(z.object({label:text, answer:z.number().finite(), tolerance, hint:text})).min(2).max(12)}),
+    z.object({...q, type:z.literal("program"), starter:text, functionName:text.regex(/^[a-z][a-z0-9_]*$/),
+      cases:z.array(z.object({args:z.array(z.array(z.number().finite()).max(100)).max(3),expected:z.number().finite()})).min(2).max(12),tolerance}),
     z.object({ ...q, type: z.literal("text"), answer: nonempty }),
     z.object({ ...q, type: z.literal("open"), checkpoints: nonempty }),
   ])
   .superRefine((question, context) => {
-    if (question.type !== "single" && question.type !== "multi") return;
+    if(question.type==="matrix"&&question.answer.some(row=>row.length!==question.answer[0]!.length))
+      context.addIssue({code:"custom",message:"矩阵各行须等宽"});
+    if (question.type !== "single" && question.type !== "multi" && question.type!=="order"&&question.type!=="match") return;
     const ids = new Set(question.options.map((item) => item.id));
     const expected =
-      question.type === "single" ? [question.answer] : question.answer;
+      question.type === "single" ? [question.answer] : question.type==="match"?question.rows.map(row=>row.answer):question.answer;
     if (
       ids.size !== question.options.length ||
-      new Set(expected).size !== expected.length ||
+      (question.type!=="match"&&new Set(expected).size !== expected.length) ||
+      (question.type==="order"&&expected.length!==ids.size) ||
       expected.some((id) => !ids.has(id))
     ) {
       context.addIssue({

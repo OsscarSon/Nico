@@ -181,8 +181,9 @@ try {
     await vector.fill("（1/1，5）");
     await vectorForm.getByRole("button", { name: "提交答案" }).click();
     await vectorForm.getByText("已答对", { exact: false }).first().waitFor();
-    await bank.getByRole("radio", { name: /14/ }).first().check();
-    await bank.getByRole("button", { name: "提交答案" }).last().click();
+    const inside=bank.getByRole("radio",{name:/14/}).first();
+    await inside.check();
+    await inside.locator("xpath=ancestor::form").getByRole("button",{name:"提交答案"}).click();
     await page.reload();
     await bank.locator("summary").press("Enter");
     await vectorForm.getByText("已答对", { exact: false }).first().waitFor();

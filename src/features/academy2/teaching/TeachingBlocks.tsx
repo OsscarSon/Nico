@@ -1,3 +1,4 @@
+import { CopyFormula,Favorite } from "../study/reading";
 import {
   lazy,
   Suspense,
@@ -96,8 +97,10 @@ type BlockProps = {
   widgets: Interactives;
   level: number;
   sectionClass?: string;
+  topic?: string;
+  anchor: string;
 };
-function Block({ item, widgets, level, sectionClass }: BlockProps) {
+function Block({ item, widgets, level, sectionClass, topic, anchor }: BlockProps) {
   const Heading = `h${Math.min(level, 6)}` as "h2" | "h3" | "h4" | "h5" | "h6";
   switch (item.type) {
     case "section":
@@ -110,23 +113,24 @@ function Block({ item, widgets, level, sectionClass }: BlockProps) {
           }
         >
           <Heading>{item.title}</Heading>
-          <BlockList blocks={item.blocks} widgets={widgets} level={level + 1} />
+          <BlockList blocks={item.blocks} widgets={widgets} level={level + 1} topic={topic} prefix={anchor} />
         </section>
       );
     case "disclosure":
       return (
         <details className="teaching-disclosure">
           <summary>{item.title}</summary>
-          <BlockList blocks={item.blocks} widgets={widgets} level={level + 1} />
+          <BlockList blocks={item.blocks} widgets={widgets} level={level + 1} topic={topic} prefix={anchor} />
         </details>
       );
     case "paragraph":
       return <p>{rich(item.body)}</p>;
     case "math":
       return (
-        <figure className="teaching-formula">
+        <figure className="teaching-formula" id={topic?anchor:undefined}>
           <MathText latex={item.latex} display />
           {item.caption && <figcaption>{rich(item.caption)}</figcaption>}
+          {topic&&<div className="study-tools"><CopyFormula latex={item.latex}/><Favorite item={{kind:"formula",topic,anchor,title:item.caption??"数学公式",text:item.latex}}/></div>}
         </figure>
       );
     case "note":
@@ -149,11 +153,12 @@ function Block({ item, widgets, level, sectionClass }: BlockProps) {
       );
     case "example":
       return (
-        <section>
+        <section id={topic?anchor:undefined}>
           <Heading>
             {exampleLabels[item.level]}例题 · {item.title}
           </Heading>
           <Example example={item} />
+          {topic&&<Favorite item={{kind:"example",topic,anchor,title:item.title}}/>}
         </section>
       );
     case "table":
@@ -305,11 +310,15 @@ export function BlockList({
   widgets = {},
   level = 2,
   sectionClass,
+  topic,
+  prefix="advanced",
 }: {
   blocks: TeachingBlock[];
   widgets?: Interactives;
   level?: number;
   sectionClass?: string;
+  topic?: string;
+  prefix?: string;
 }) {
   return (
     <>
@@ -320,6 +329,8 @@ export function BlockList({
           widgets={widgets}
           level={level}
           sectionClass={sectionClass}
+          topic={topic}
+          anchor={prefix+"-"+(i+1)}
         />
       ))}
     </>

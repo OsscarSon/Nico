@@ -1,3 +1,6 @@
+import { changeStudy } from "../../progress/study";
+import { downloadText } from "./study/files";
+import { projectMarkdown,rubrics,type ReportData } from "../../content/academy2/p1/reporting";
 import { lazy, Suspense, useEffect, useRef, useState, type FormEvent } from "react";
 import { Link } from "../../app/router";
 import { EmptyState } from "../../components/ui";
@@ -17,6 +20,7 @@ import { Prerequisites, PageHeading, LearningStatus } from "./Curriculum";
 
 import { legacyBlocks } from "../../content/academy2/p1/types";
 import { RichText } from "./teaching/math";
+import { ReadingTools } from "./study/reading";
 import { BlockList } from "./teaching/TeachingBlocks";
 
 const P1Teaching = lazy(() => import("./teaching/P1Teaching"));
@@ -111,6 +115,7 @@ const indexes=[0,1,2,3] as const;
 export function KnowledgeLessonPage({ id }:{id:string}) {
   const location=findKnowledge(id), lesson=findP1Lesson(id);
   const {data,warning}=useKnowledgeProgress();
+  const [focus,setFocus]=useState(false);
   const [answers,setAnswers]=useState(["","","",""]);
   const [feedback,setFeedback]=useState<boolean[]>([]);
   useEffect(()=>{
@@ -120,28 +125,29 @@ export function KnowledgeLessonPage({ id }:{id:string}) {
   const course=getAcademyCourse(location.course)!;
   const module=course.modules.find(m=>m.id===location.module)!;
   const bench=benches[location.course+"/"+location.module]!;
-  const nextTopics=module.chapters.flat();
-  const next=nextTopics[nextTopics.indexOf(location.title)+1];
-  const nextTopic=next&&knowledgeAt(course.id,module.id,next);
+  const sequence=course.modules.flatMap(m=>m.chapters.flat().flatMap(title=>knowledgeAt(course.id,m.id,title)??[]));
+  const current=sequence.findIndex(entry=>entry.id===id);
+  const nextTopic=sequence[current+1],previousTopic=sequence[current-1];
   const record=data.records[id];
   const completed=practicePassed(record);
   const reasoning=proofPractice[id];
-  return <div className="a2-page p1-page">
+  return <div className={"a2-page p1-page study-anchors"+(focus?" study-focus":"")}>
     <div className="a2-crumbs"><Link to={courseLink(course.id,location.module,location.title)}>{course.title}</Link><span>/</span><span>{module.title}</span></div>
     <PageHeading title={location.title} english={id.toUpperCase()} intro="概念、推导、例题与练习" />
     <div className="row"><LearningStatus status={knowledgeStatus(record,Date.now())}/><span className="pill draft">草稿 · 尚未经真实试学</span></div>
     {warning&&<p role="status">{warning}</p>}
-    <div className="p1-teaching"><BlockList blocks={legacyBlocks(lesson)} sectionClass="a2-panel"/></div>
-    <Suspense fallback={<p role="status">正在加载专题例题与进阶练习…</p>}><P1Teaching id={id}/></Suspense>
+    <ReadingTools id={id} title={location.title} focus={focus} onFocus={()=>setFocus(value=>!value)}/>
+    <div className="p1-teaching" id="reading-theory"><BlockList blocks={legacyBlocks(lesson)} sectionClass="a2-panel"/></div>
+    <div id="reading-enhanced"><Suspense fallback={<p role="status">正在加载专题例题与进阶练习…</p>}><P1Teaching id={id}/></Suspense></div>
     {dependenciesOf(id).length>0&&<section className="a2-panel"><h2>先修与关联</h2><Prerequisites targets={dependenciesOf(id)} /></section>}
     {reasoning&&<section className="a2-panel p1-inside"><h2>开放推理练习</h2><p>{reasoning[0]}</p>
       <details><summary>查看论证检查点（自行核对）</summary><p>{reasoning[1]}</p></details>
     </section>}
-    <details className="a2-panel p1-inside"><summary>打开本模块实验、代码与参考资料</summary>
+    <details className="a2-panel p1-inside" id="reading-lab"><summary>打开本模块实验、代码与参考资料</summary>
       <Workbench bench={bench} />
     </details>
     <div className="a2-quick-links"><Link to={benchLink(location.course+"/"+location.module,id)}>在实验室中打开 ↗</Link><Link to={"/projects/"+course.id}>打开本课程实践项目 ↗</Link></div>
-    <section className="a2-panel p1-exercises">
+    <section className="a2-panel p1-exercises" id="reading-practice">
       <h2>练习与迁移核验</h2>
       <p>三道分层练习答对后记录完成。再通过独立迁移题记录掌握。数字可写分数或小数（近似题保留至少三位小数）。</p>
       {indexes.map(index=>{
@@ -161,7 +167,7 @@ export function KnowledgeLessonPage({ id }:{id:string}) {
         </form>;
       })}
     </section>
-    {nextTopic&&<Link className="btn secondary p1-next" to={knowledgeLink(nextTopic.id)}>继续：{nextTopic.title} ↗</Link>}
+    <nav className="study-nav" aria-label="相邻课时">{previousTopic&&<Link className="btn secondary" to={knowledgeLink(previousTopic.id)}>← {previousTopic.title}</Link>}{nextTopic&&<Link className="btn secondary p1-next" to={knowledgeLink(nextTopic.id)}>继续：{nextTopic.title} ↗</Link>}</nav>
   </div>;
 }
 
@@ -172,6 +178,10 @@ export function AcademyProjectPage({ courseId }: {courseId:string}) {
     <div className="a2-crumbs"><Link to={courseLink(course.id)}>{course.title}</Link><span>/</span><span>实践项目</span></div>
     <PageHeading title={project.bench.title} english="PRACTICAL PROJECT" intro="运行实验、提交数值证据并导出自己的报告。" />
     <section className="a2-panel"><h2>项目任务</h2><ol className="p1-task">{project.steps.map(step=><li key={step}>{step}</li>)}</ol></section>
+    <section className="a2-panel"><h2>报告评分标准</h2>
+      <ol>{rubrics[courseId]?.map(rule=><li key={rule}>{rule}</li>)}</ol>
+      <p>自动核验前三项计算证据。对照结果、研究解释和局限按评分标准自评或交给教师复核。</p>
+    </section>
     <ProjectSession project={project} id={courseId} />
   </div>;
 }
@@ -179,7 +189,10 @@ function ProjectSession({project,id}: {project:Project;id:string}) {
   const {data,warning}=useKnowledgeProgress();
   const [result,setResult]=useState<{values:string[];output:Output}|null>(null);
   const [answers,setAnswers]=useState(["","",""]),[notes,setNotes]=useState(""),[message,setMessage]=useState("");
-  const [report,setReport]=useState<string|null>(null);
+  const [report,setReport]=useState<ReportData|null>(null);
+  const [baseline,setBaseline]=useState<{settings:ReportData["settings"];measures:Output["values"]}>();
+  const [limits,setLimits]=useState(""),[saved,setSaved]=useState("");
+  const settingsFor=(values:string[])=>project.bench.fields.map((field,i)=>[field.name,values[i]!] as const);
   let items:ReturnType<Project["evidence"]>|undefined,problem="";
   if (result) {
     try { items=project.evidence(result.values); }
@@ -197,18 +210,20 @@ function ProjectSession({project,id}: {project:Project;id:string}) {
     }
     updateKnowledge(state=>([0,1,2] as const).reduce((p,i)=>gradeTopic(p,projectKey(id),i,questions[i],answers[i]!,Date.now()),state));
     setMessage("配置与三项数值证据通过。文字解释由学习者核对。");
-    setReport(JSON.stringify({title:project.bench.title,settings:project.bench.fields.map((field,i)=>[field.name,result.values[i]]),measures:result.output.values,reference:result.output.source,
-      note:notes,measuredEvidence:questions.map((question,i)=>({prompt:question.prompt,answer:answers[i]}))},null,2));
+    setReport({title:project.bench.title,settings:settingsFor(result.values),measures:result.output.values,reference:result.output.source,
+      note:notes,limits,comparison:baseline,readings:project.bench.sources,measuredEvidence:questions.map((question,i)=>({prompt:question.prompt,answer:answers[i]!}))});
   }
   function download() {
-    if (!report) return;
-    const url=URL.createObjectURL(new Blob([report],{type:"application/json"}));
-    const anchor=document.createElement("a");
-    anchor.href=url;anchor.download="nico-"+id+"-report.json";anchor.click();
-    window.setTimeout(()=>URL.revokeObjectURL(url),0);
+    if(report)downloadText("nico-"+id+"-report.json",JSON.stringify(report,null,2),"application/json");
   }
   return <>
-    <Workbench bench={project.bench} onResult={next=>{setResult(next);setAnswers(["","",""]);setMessage("");setReport(null);}} />
+    <Workbench bench={project.bench} onResult={next=>{setResult(next);setAnswers(["","",""]);setMessage("");setSaved("");setReport(null);}} />
+    {result&&<section className="a2-panel">
+      <h2>对照运行</h2>
+      <p>保存当前结果后修改参数，再完成最终验证。报告将同时保留两个案例的输入与输出。</p>
+      <button className="btn secondary" onClick={()=>{setBaseline({settings:settingsFor(result.values),measures:result.output.values});setReport(null);}}>以当前结果作对照</button>
+      {baseline&&<p>{baseline.measures.length} 项对照结果已准备好。</p>}
+    </section>}
     <section className="a2-panel p1-exercises">
       <h2>验证与导出</h2>
       {practicePassed(data.records[projectKey(id)])&&<LearningStatus status="complete" />}
@@ -218,10 +233,23 @@ function ProjectSession({project,id}: {project:Project;id:string}) {
       {items&&<form onSubmit={assess}>
         <div className="p1-fields">{items.map((item,i)=><label key={item.prompt}>{i+1}. {item.prompt}<input maxLength={80} value={answers[i]} onChange={event=>{ const latest=event.target.value;setAnswers(old=>old.map((a,j)=>i===j?latest:a));setReport(null);}} required /></label>)}</div>
         <label className="p1-notes">分析记录（可选，随报告导出）<textarea value={notes} onChange={event=>{setNotes(event.target.value);setReport(null);}} maxLength={3000} rows={4} /></label>
+        <label className="p1-notes">适用条件或数据局限（可选）<textarea value={limits} maxLength={3000} rows={3} onChange={event=>{setLimits(event.target.value);setReport(null);}}/></label>
         <button className="btn" type="submit">验证项目结果</button>
       </form>}
       {message&&<p role="status">{message}</p>}
-      {report&&<button className="btn secondary" type="button" onClick={download}>导出项目报告</button>}
+      {report&&<>
+        <div className="row">
+          <button className="btn secondary" type="button" onClick={download}>导出项目报告</button>
+          <button className="btn secondary" type="button" onClick={()=>downloadText("nico-"+id+"-report.md",projectMarkdown(report))}>下载可读报告</button>
+          <button className="btn secondary" type="button" onClick={()=>{
+            const at=Date.now(),key=crypto.randomUUID();
+            const ok=changeStudy(old=>({...old,reports:{...old.reports,[key]:{kind:"project",title:report.title,topic:id,at,markdown:projectMarkdown(report),active:true}}}));
+            setSaved(ok?"项目报告已保存。":"浏览器未保存本次报告，仍可下载文件。");
+          }}>保存项目到学习资料</button>
+        </div>
+        <details><summary>预览完整报告</summary><pre className="study-report">{projectMarkdown(report)}</pre></details>
+      </>}
+      {saved&&<p role="status">{saved}</p>}
     </section>
   </>;
 }

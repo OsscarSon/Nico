@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { lazy, Suspense, useEffect, useRef, useState, type FormEvent } from "react";
 import { Link, usePath } from "../../app/router";
 import { Device, EmptyState } from "../../components/ui";
 import { courseLink } from "../../content/academy2/model";
@@ -10,6 +10,8 @@ import { benches, Workbench } from "./P1";
 import { benchLink } from "../../content/academy2/p1/navigation";
 import { findP1Lesson } from "../../content/academy2/p1";
 import { knowledgeLink } from "../../content/academy2/knowledgeRegistry";
+
+const ExperimentPanel=lazy(()=>import("./study/ExperimentPanel"));
 
 function MathWorkbench() {
   const [a, setA] = useState(1), [b, setB] = useState(0), [c, setC] = useState(0);
@@ -104,6 +106,7 @@ export function AcademyLabPage({ id }: { id: string }) {
   const params=new URLSearchParams(usePath().split("?")[1]);
   const bench=params.get("bench");
   const from=params.get("from");
+  const experiment=params.get("experiment");
   const subject=id==="math" ? "-mathematics/" : id==="statistics" ? "-statistics/" : null;
   const labs=subject ? Object.entries(benches).filter(([key])=>key.includes(subject)) : [];
   const selected=labs.find(([key])=>key===bench);
@@ -116,14 +119,15 @@ export function AcademyLabPage({ id }: { id: string }) {
       {from&&findP1Lesson(from)&&<Link to={knowledgeLink(from)}>← 返回知识点学习</Link>}
       <Workbench key={selected[0]} bench={selected[1]} />
     </>}
-    {!selected&&id === "math" && <MathWorkbench />}
-    {!selected&&id === "statistics" && <StatisticsWorkbench />}
+    {(id==="math"||id==="statistics")&&<Suspense fallback={<p role="status">正在加载实验…</p>}><ExperimentPanel domain={id} value={experiment} from={from}/></Suspense>}
+    {!experiment&&!selected&&id === "math" && <MathWorkbench />}
+    {!experiment&&!selected&&id === "statistics" && <StatisticsWorkbench />}
     {labs.length>0&&<section className="a2-panel"><h2>课程配套实验</h2><ul className="a2-link-list">{labs.map(([key,work])=><li key={key}><Link to={benchLink(key)}>{work.title} ↗</Link></li>)}</ul></section>}
     {id === "algorithms" && <AlgorithmWorkbench />}
     {id === "systems" && <Device title="位开关" label="模拟"><p>切换各位，看二进制与十进制之间的关系。</p><BitSwitches mode="free" /></Device>}
     {lab.links.length > 0 && <section className="a2-panel a2-lab-links"><h2>{lab.available ? "继续动手" : lab.primary}</h2><ul className="a2-link-list">
       {lab.links.map(([title, path]) => <li key={path}><Link to={path}>{title} ↗</Link></li>)}
     </ul></section>}
-    <section className="a2-panel a2-lab-links"><h2>后续建设</h2><p>{lab.planned}</p><Link to={courseLink(lab.course)}>查看相关课程入口 ↗</Link></section>
+    {id!=="math"&&id!=="statistics"&&<section className="a2-panel a2-lab-links"><h2>后续建设</h2><p>{lab.planned}</p><Link to={courseLink(lab.course)}>查看相关课程入口 ↗</Link></section>}
   </div>;
 }

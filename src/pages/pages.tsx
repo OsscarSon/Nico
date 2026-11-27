@@ -14,6 +14,7 @@ import { AcademyDashboard } from "../features/academy2/Guides";
 import { useAcademyPath } from "../features/academy2/learningPreference";
 import { recommendedLesson, uniqueLiveCount } from "../content/academy2/model";
 import { getPersonalPath } from "../content/academy2/paths";
+import { ContinueTopic } from "../features/academy2/study/reading";
 import { projectsP1 } from "../content/academy2/p1/projects";
 
 export function HomePage() {
@@ -56,6 +57,7 @@ export function HomePage() {
               <Link to={`/lesson/${targetLesson.id}`} className="btn">
                 {resume ? "继续这一课" : "开始这一课"}
               </Link>
+              {preferences.resumeHome&&<ContinueTopic/>}
             </div>
           </>
         ) : (

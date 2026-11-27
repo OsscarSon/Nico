@@ -34,6 +34,7 @@ export type Match =
   | { name: "academy-lab"; id: string }
   | { name: "knowledge" }
   | { name: "resources" }
+  | { name: "study" }
   | { name: "prompt-lab" }
   | { name: "tutor"; lessonId?: string }
   | { name: "projects" }
@@ -59,6 +60,7 @@ export function matchRoute(path: string): Match {
   if (!b && a === "lab") return { name: "lab" };
   if (a === "lab" && b) return { name: "academy-lab", id: b };
   if (!b && a === "graph") return { name: "knowledge" };
+  if (!b && a === "study") return { name:"study" };
   if (!b && a === "resources") return { name: "resources" };
   if (!b && a === "projects") return { name: "projects" };
   if (a === "projects" && b) return { name: "academy-project", id: b };

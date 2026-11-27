@@ -52,3 +52,5 @@ export function updateKnowledge(update: (state: KnowledgeProgress) => KnowledgeP
 export function setSelfCheck(id: string, checked: boolean) {
   updateKnowledge(state => ({ ...state, selfChecks: { ...state.selfChecks, [id]: checked } }));
 }
+
+export const getKnowledge = () => snapshot().data;

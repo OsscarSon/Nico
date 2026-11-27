@@ -85,6 +85,7 @@ try {
      await go("/projects/"+spec.course);
      await btn(p,"运行计算").click();
      assert.equal(await btn(p,"验证项目结果").count(),0);
+     await btn(p,"以当前结果作对照").click();
      const fields=p.locator(".p1-bench .p1-fields input");
      assert.equal(await fields.count(),spec.project.length);
      for (const [index,value] of spec.project.entries()) await fields.nth(index).fill(value);
@@ -104,6 +105,16 @@ try {
      assert.equal(download.suggestedFilename(),"nico-"+spec.course+"-report.json");
      const report=JSON.parse(readFileSync(await download.path(),"utf8"));
      assert.equal(report.measuredEvidence.length,3);
+     assert.ok(report.comparison?.measures.length>0);
+     const readable=p.waitForEvent("download");
+     await btn(p,"下载可读报告").click();
+     const markdown=readFileSync(await (await readable).path(),"utf8");
+     assert.match(markdown,/独立数值证据/);
+     assert.match(markdown,/对照运行/);
+     assert.match(markdown,/研究解释/);
+     await btn(p,"保存项目到学习资料").click();
+     const saved=await p.evaluate(()=>Object.values(JSON.parse(localStorage.getItem("nico-study-library")).reports));
+     assert.ok(saved.some(item=>item.kind==="project"&&item.markdown.includes(markdown.split("\n")[0])));
      if(spec.phase==="p1b") assert.match(report.reference,/uci/);
      if(width===390) {
        await p.locator(".p1-result").evaluate(node=>node.scrollIntoView({block:"start"}));

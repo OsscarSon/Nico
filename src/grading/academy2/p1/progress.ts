@@ -1,3 +1,4 @@
+import { evaluate } from "../teaching/questions";
 import { z } from "zod";
 import type { Exercise } from "../../../content/academy2/p1/types";
 
@@ -34,13 +35,13 @@ const normalize = (value: string) => value.normalize("NFKC").trim().toLowerCase(
 export function gradeExercise(exercise: Exercise, input: string): boolean {
   const answer = normalize(input).replace(/−/g, "-");
   if (!answer) return false;
-  if (typeof exercise.answer !== "number") return exercise.answer.some(candidate => normalize(candidate) === answer);
-  const parts = answer.split("/");
-  const decimal = /^-?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d{1,3})?$/;
-  if (parts.length > 2 || !parts.every(part => decimal.test(part))) return false;
-  const numeric = parts.length === 2 ? Number(parts[0]) / Number(parts[1]) : Number(parts[0]);
-  const tolerance = exercise.answer!==0&&Math.abs(exercise.answer)<.002 ? Math.abs(exercise.answer)*.01 : .0005;
-  return Number.isFinite(numeric) && Math.abs(numeric - exercise.answer) <= tolerance;
+  const base={id:"legacy-practice",level:"application" as const,prompt:exercise.prompt,explanation:exercise.explanation,hint:"回看这一点的例题。"};
+  if (typeof exercise.answer!=="number") return evaluate({...base,type:"text",answer:exercise.answer.map(normalize)},answer).status==="correct";
+  const parts=answer.split("/");
+  const decimal=/^-?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d{1,3})?$/;
+  if(parts.length>2||!parts.every(part=>decimal.test(part)))return false;
+  const tolerance=exercise.answer!==0&&Math.abs(exercise.answer)<.002?Math.abs(exercise.answer)*.01:.0005;
+  return evaluate({...base,type:"number",answer:exercise.answer,tolerance,allowFraction:true},answer).status==="correct";
 }
 
 export function beginTopic(state: KnowledgeProgress, id: string, time: number): KnowledgeProgress {
@@ -78,4 +79,12 @@ export function progressSummary(state: KnowledgeProgress, ids: readonly string[]
   const finished = [...new Set(ids)].filter(id => practicePassed(state.records[id])).length;
   const stateLabel = counts.review > 0 ? "review" : total > 0 && counts.mastered === total ? "mastered" : total > 0 && finished === total ? "complete" : counts.new < total ? "learning" : "new";
   return { counts, total, finished, status: stateLabel as KnowledgeStatus };
+}
+
+export function recordIndependentVerification(state:KnowledgeProgress,id:string,onlyValidOutcome:boolean,time:number) {
+  const record=state.records[id];
+  if(!record||!practicePassed(record))return state;
+  const attempt = {count:(record.verification?.count??0)+1,lastCorrect:onlyValidOutcome,
+    passed:onlyValidOutcome||record.verification?.passed===true,at:time};
+  return {...state,records:{...state.records,[id]:{...record,verification:attempt}}};
 }

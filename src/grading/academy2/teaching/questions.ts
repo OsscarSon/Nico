@@ -111,6 +111,32 @@ export function evaluate(question: Question, response: Response): Feedback {
         ),
       );
     }
+    case "matrix": {
+      if(typeof response!=="string")return invalid;
+      const rows=normalize(response).split(/[;\n]+/).map(row=>row.split(",").map(value=>readNumber(value,{fraction:true})));
+      if(rows.length!==question.answer.length||rows.some((row,i)=>row.length!==question.answer[i]!.length||row.includes(null)))return invalid;
+      return result(rows.every((row,i)=>row.every((value,j)=>Math.abs(value!-question.answer[i]![j]!)<=question.tolerance)));
+    }
+    case "order":
+    case "match": {
+      if(!Array.isArray(response))return invalid;
+      const answer=question.type==="order"?question.answer:question.rows.map(row=>row.answer);
+      if(response.length!==answer.length||response.some(value=>!question.options.some(option=>option.id===value)))return invalid;
+      if(question.type==="order"&&new Set(response).size!==response.length)return {status:"invalid",message:"排序不能重复使用同一项。"};
+      return result(answer.every((value,i)=>value===response[i]));
+    }
+    case "fields":
+    case "steps": {
+      if(!Array.isArray(response)||response.length!==question.fields.length)return invalid;
+      const nums=response.map(value=>readNumber(value,{fraction:true,percent:true}));
+      const bad=question.fields.findIndex((field,i)=>nums[i]===null||Math.abs(nums[i]!-field.answer)>field.tolerance);
+      return result(bad===-1,bad<0?undefined:question.fields[bad]!.label+"："+question.fields[bad]!.hint);
+    }
+    case "program": {
+      if(!Array.isArray(response)||response.length!==question.cases.length)return invalid;
+      const values=response.map(value=>readNumber(value));
+      return result(values.every((value,i)=>value!==null&&Math.abs(value-question.cases[i]!.expected)<=question.tolerance));
+    }
     case "text":
       return typeof response === "string" && normalize(response)
         ? result(

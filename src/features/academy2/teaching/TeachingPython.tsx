@@ -2,26 +2,33 @@ import { useState, useSyncExternalStore } from "react";
 import { CodeEditor } from "../../../sims/code/CodeEditor";
 import { getPythonRunner, type RunResult } from "../../../runtime/python";
 
-export default function TeachingPython({ initial }: { initial: string }) {
+let runningExample=false;
+export default function TeachingPython({initial,transform,onResult,button="运行 Python",onChangeCode}:{
+  initial:string; transform?:(code:string)=>string;onResult?:(result:RunResult)=>void;button?:string;onChangeCode?:()=>void;
+}) {
   const [code, setCode] = useState(initial),
     [running, setRunning] = useState(false);
   const [result, setResult] = useState<RunResult>();
+  const [notice,setNotice]=useState("");
   const runner = getPythonRunner();
   const canStop = useSyncExternalStore(runner.subscribe, () => runner.running);
   async function run() {
+    if(runningExample||runner.running||runner.status==="loading"){setNotice("有一段教学代码正在运行，请等它结束。");return;}
+    runningExample=true;setNotice("");
     setRunning(true);
     setResult(undefined);
     try {
-      setResult(await runner.run(code));
+      const run=await runner.run(transform?.(code)??code);
+      setResult(run);onResult?.(run);
     } finally {
-      setRunning(false);
+      runningExample=false;setRunning(false);
     }
   }
   return (
     <div className="teaching-python">
       <CodeEditor
         value={code}
-        onChange={setCode}
+        onChange={value=>{setCode(value);onChangeCode?.();}}
         label="Python 教学示例"
         language="python"
       />
@@ -32,7 +39,7 @@ export default function TeachingPython({ initial }: { initial: string }) {
           disabled={running}
           onClick={() => void run()}
         >
-          运行 Python
+          {button}
         </button>
         <button
           type="button"
@@ -47,13 +54,14 @@ export default function TeachingPython({ initial }: { initial: string }) {
           className="btn secondary"
           disabled={running}
           onClick={() => {
-            setCode(initial);
+            setCode(initial);onChangeCode?.();
             setResult(undefined);
           }}
         >
           恢复示例
         </button>
       </div>
+      {notice&&<p role="status">{notice}</p>}
       {running && <p role="status">正在准备或运行 Python…</p>}
       {result && (
         <pre role="status" tabIndex={0}>

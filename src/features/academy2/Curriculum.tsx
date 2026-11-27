@@ -1,3 +1,4 @@
+import { Favorite } from "./study/reading";
 import { useEffect, useRef, useState } from "react";
 import { Link, navigate, usePath } from "../../app/router";
 import { artUrl } from "../../art";
@@ -213,7 +214,7 @@ export function CoursePage({ courseId }: { courseId: string }) {
     <div className="a2-crumbs"><Link to={"/courses?phase=" + course.stage}>课程目录</Link><span>/</span><span>{phase.title} · {domain.title}</span></div>
     <header className={"a2-course-banner " + domain.accent}>
       <DomainMark domain={domain} />
-      <div><p className="a2-kicker">{course.english}</p><h1>{course.title}</h1><p>{course.modules.length} 个模块 · {p1 ? summary.finished+" / "+summary.total+" 个知识点已完成" : live.length ? done + " / " + live.length + " 节已完成" : "大纲已提供 · 课时规划中"}</p>{p1 ? <><LearningStatus status={status}/><small>已掌握 {summary.counts.mastered} · 需要复习 {summary.counts.review}</small></> : live.length>0&&<LearningStatus status={legacyStatus}/>}</div>
+      <div><p className="a2-kicker">{course.english}</p><h1>{course.title}</h1><Favorite item={{kind:"course",topic:course.id,title:course.title}}/><p>{course.modules.length} 个模块 · {p1 ? summary.finished+" / "+summary.total+" 个知识点已完成" : live.length ? done + " / " + live.length + " 节已完成" : "大纲已提供 · 课时规划中"}</p>{p1 ? <><LearningStatus status={status}/><small>已掌握 {summary.counts.mastered} · 需要复习 {summary.counts.review}</small></> : live.length>0&&<LearningStatus status={legacyStatus}/>}</div>
       {nextTopic ? <Link className="btn" to={knowledgeLink(nextTopic)}>{summary.finished===summary.total?"复习知识点":status==="new"?"开始学习":"继续学习"} ↗</Link> : next && <Link className="btn" to={"/lesson/" + next.id}>{done === live.length ? "复习课时" : done ? "继续学习" : "开始学习"} ↗</Link>}
     </header>
     <div className="a2-course-layout">
