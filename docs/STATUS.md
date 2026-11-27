@@ -7,4 +7,5 @@ Nico Academy 2.0 延续 PR #21 的 10 个领域、30 个入口和 120 个模块�
 - 原课时、插图、互动、AI 与学习记录继续通过既有机制。专业路线行为延用 PR #21。
 - P1.5 接入可组合教学块、按需 KaTeX 与通用题库，补强全部 82 页。旧掌握记录继续读取，追加题库保存在同一版本记录的独立字段。[覆盖](academy-2-p15/COVERAGE.md) · [依赖选型](academy-2-p15/TECHNOLOGY.md) · [测试与截图](qa/academy-2-p15/README.md)
 - P1.5 补全 29 个专题实验、学习资料与统一备份，接入参数变式、课内 AI、双栏代码及四项目报告。[验收对照](academy-2-p15/COMPLETION.md)
+- P2 基础、中阶、高阶算法增加 60 个稳定知识点、48 个竞技场模型、17 个 Python 任务及 3 个实践项目，全部算法课时为草稿。[蓝图覆盖](academy-2-p2/COVERAGE.md) · [实施与限制](academy-2-p2/IMPLEMENTATION.md) · [浏览器验收](qa/academy-2-p2/README.md)
 - 后续收集真实试学和开放题反馈。[覆盖表](academy-2-p1/COVERAGE.md) · [教学质量与边界](academy-2-p1/QUALITY.md) · [测试与截图](qa/academy-2-p1/README.md)
