@@ -100,6 +100,10 @@
   padding: 0.35rem 0.6rem;
   max-width: 16rem;
 }
+.p3-table-scroll th {
+  min-width: 5.5rem;
+  overflow-wrap: break-word;
+}
 .p3-table-scroll caption,
 .p3-confusion caption {
   color: var(--muted);

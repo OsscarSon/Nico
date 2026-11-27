@@ -137,6 +137,17 @@ try {
       await missing.getByRole("row").nth(1).textContent(),
       /ozone.*37/,
     );
+    if (width < 600) {
+      const region = page.getByRole("region", {
+        name: "列统计摘要，可横向滚动",
+      });
+      await region.focus();
+      await page.keyboard.press("ArrowRight");
+      await page.waitForFunction(() => document.activeElement?.scrollLeft > 0);
+      await region.evaluate((element) => {
+        element.scrollLeft = 0;
+      });
+    }
     await page.getByLabel("操作列").selectOption("ozone");
     await page.getByLabel("清洗操作").selectOption("median");
     await button(page, "应用清洗").click();
