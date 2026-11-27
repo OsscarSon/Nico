@@ -13,13 +13,14 @@ import { useProgress } from "../../progress/useProgress";
 import { laboratories } from "../../content/academy2/resources";
 import { knowledgeAt, knowledgeLink } from "../../content/academy2/knowledgeRegistry";
 import { algorithmIds, algorithmTopic, algorithmTopics, isAlgorithmCourse } from "../../content/academy2/algorithms/registry";
+import { dataIds, dataTopic, dataTopics, isDataCourse, labOf } from "../../content/academy2/data/registry";
 import { findP1Lesson, isP1Course, p1Courses } from "../../content/academy2/p1";
 import { benchLink, projectKey } from "../../content/academy2/p1/navigation";
 import { knowledgeStatus, practicePassed, progressSummary, statusLabel, type KnowledgeStatus } from "../../grading/academy2/p1/progress";
 import { setSelfCheck, useKnowledgeProgress } from "../../progress/knowledge";
 
-const hasKnowledgeLessons = (id:string) => isP1Course(id) || isAlgorithmCourse(id);
-const availableKnowledge = (id:string) => algorithmTopic(id) ?? findP1Lesson(id);
+const hasKnowledgeLessons = (id:string) => isP1Course(id) || isAlgorithmCourse(id) || isDataCourse(id);
+const availableKnowledge = (id:string) => algorithmTopic(id) ?? dataTopic(id) ?? findP1Lesson(id);
 
 export function PageHeading({ title, intro, english }: { title: string; intro: string; english: string }) {
   return <header className="a2-heading">
@@ -35,7 +36,7 @@ export function DomainMark({ domain }: { domain: ReturnType<typeof getDomain> })
 
 export function CourseCard({ course, focusModule }: { course: AcademyCourse; focusModule?: string }) {
   const domain = getDomain(course.domain);
-  const count = isP1Course(course.id) ? p1Courses[course.id].length : isAlgorithmCourse(course.id) ? algorithmIds(course.id).length : liveLessons(course).length;
+  const count = isP1Course(course.id) ? p1Courses[course.id].length : isAlgorithmCourse(course.id) ? algorithmIds(course.id).length : isDataCourse(course.id) ? dataIds(course.id).length : liveLessons(course).length;
   return <Link className={"a2-course-card " + domain.accent} to={courseLink(course.id, focusModule)} data-course={course.id}>
     <div className="a2-course-top"><DomainMark domain={domain} /><span className="a2-arrow" aria-hidden="true">↗</span></div>
     <div className="a2-course-name"><span>{domain.title} · {domain.english}</span><h3>{course.title}</h3></div>
@@ -77,7 +78,7 @@ export function CurriculumPage() {
         </select>
       </div>
     </div>
-    <div className="a2-catalog-meta"><p role="status">显示 {visible.length} / {academyCourses.length} 个课程入口 · {uniqueLiveCount} 节既有课时 · {Object.values(p1Courses).flat().length} 个数学与统计知识点 · {algorithmTopics.length} 个算法知识点</p>
+    <div className="a2-catalog-meta"><p role="status">显示 {visible.length} / {academyCourses.length} 个课程入口 · {uniqueLiveCount} 节既有课时 · {Object.values(p1Courses).flat().length} 个数学与统计知识点 · {algorithmTopics.length} 个算法知识点 · {dataTopics.length} 个数据与 AI 知识点</p>
       <Link to="/courses?view=legacy">按旧编号查找 ↗</Link>
     </div>
     {phases.map(phase => {
@@ -108,7 +109,7 @@ export function Prerequisites({ targets, label = "建议先修" }: { targets: De
         const key=selfKey(target), title=labelTarget(target);
         return <li key={key}>
           {kind!=="related"&&<input aria-label={"我已掌握："+title} type="checkbox" checked={data.selfChecks[key]===true} onChange={event=>setSelfCheck(key,event.target.checked)}/>}
-          <div><Link to={target.id&&algorithmTopic(target.id)?knowledgeLink(target.id):courseLink(target.course,target.module,target.topic)}>{title} ↗</Link><small>{target.reason}</small></div>
+          <div><Link to={target.id&&(algorithmTopic(target.id)||dataTopic(target.id))?knowledgeLink(target.id):courseLink(target.course,target.module,target.topic)}>{title} ↗</Link><small>{target.reason}</small></div>
         </li>;
       })}</ul></div>;
     })}
@@ -183,7 +184,7 @@ function ModuleOutline({ course, module, index, targetModule, targetTopic }: { c
           })}</ul>
         </section>})}
       </div>}
-      {summary.total>0&&<Link to={isAlgorithmCourse(course.id)?"/lab/algorithms":benchLink(course.id+"/"+module.id)}>打开本模块实验 ↗</Link>}
+      {summary.total>0&&<Link to={isAlgorithmCourse(course.id)?"/lab/algorithms":isDataCourse(course.id)?"/lab/"+labOf(course.id):benchLink(course.id+"/"+module.id)}>打开本模块实验 ↗</Link>}
       <details className="a2-module-check"><summary>模块先修与评估</summary>
         <Prerequisites key={course.id + module.id} targets={moduleDependencies(course, module.id)} />
         <p className="muted">{summary.total ? "模块进度汇总各知识点的分层练习与迁移核验。" : shown.some(item => item.lesson) ? "迁入课时内有原有互动、检查题和迁移练习。模块综合评估仍在规划。" : "本模块正在规划，完成的课时与评估会在这里列出。"}</p>
@@ -206,7 +207,7 @@ export function CoursePage({ courseId }: { courseId: string }) {
   const done = live.filter(lesson => lessons[lesson.id]).length;
   const next = live.find(lesson => !lessons[lesson.id]) ?? live[0];
   const structured=hasKnowledgeLessons(course.id);
-  const ids=isP1Course(course.id)?p1Courses[course.id].map(topic=>topic.id):algorithmIds(course.id);
+  const ids=isP1Course(course.id)?p1Courses[course.id].map(topic=>topic.id):isAlgorithmCourse(course.id)?algorithmIds(course.id):dataIds(course.id);
   const summary=progressSummary(data,ids,Date.now());
   const capstone=practicePassed(data.records[projectKey(course.id)]);
   const status=(summary.status==="complete"||summary.status==="mastered")&&!capstone?"learning":summary.status;

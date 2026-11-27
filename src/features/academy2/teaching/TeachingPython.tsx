@@ -1,34 +1,73 @@
-import { useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { CodeEditor } from "../../../sims/code/CodeEditor";
 import { getPythonRunner, type RunResult } from "../../../runtime/python";
+import {
+  createNotebookPythonRunner,
+  type TeachingPackage,
+} from "../../../runtime/notebookPython";
 
-let runningExample=false;
-export default function TeachingPython({initial,transform,onResult,button="运行 Python",onChangeCode}:{
-  initial:string; transform?:(code:string)=>string;onResult?:(result:RunResult)=>void;button?:string;onChangeCode?:()=>void;
+let runningExample = false;
+export default function TeachingPython({
+  initial,
+  transform,
+  onResult,
+  button = "运行 Python",
+  onChangeCode,
+  packages,
+  onCode,
+}: {
+  initial: string;
+  transform?: (code: string) => string;
+  onResult?: (result: RunResult) => void;
+  button?: string;
+  onChangeCode?: () => void;
+  packages?: readonly TeachingPackage[];
+  onCode?: (code: string) => void;
 }) {
   const [code, setCode] = useState(initial),
     [running, setRunning] = useState(false);
   const [result, setResult] = useState<RunResult>();
-  const [notice,setNotice]=useState("");
-  const runner = getPythonRunner();
+  const [notice, setNotice] = useState("");
+  const packageKey = [...new Set(packages)].sort().join(",");
+  const runner = useMemo(
+    () =>
+      packageKey ? createNotebookPythonRunner(packageKey) : getPythonRunner(),
+    [packageKey],
+  );
+  useEffect(
+    () => () => {
+      if (packageKey) runner.dispose();
+    },
+    [runner, packageKey],
+  );
   const canStop = useSyncExternalStore(runner.subscribe, () => runner.running);
   async function run() {
-    if(runningExample||runner.running||runner.status==="loading"){setNotice("有一段教学代码正在运行，请等它结束。");return;}
-    runningExample=true;setNotice("");
+    if (runningExample || runner.running || runner.status === "loading") {
+      setNotice("有一段教学代码正在运行，请等它结束。");
+      return;
+    }
+    runningExample = true;
+    setNotice("");
     setRunning(true);
     setResult(undefined);
     try {
-      const run=await runner.run(transform?.(code)??code);
-      setResult(run);onResult?.(run);
+      const run = await runner.run(transform?.(code) ?? code);
+      setResult(run);
+      onResult?.(run);
     } finally {
-      runningExample=false;setRunning(false);
+      runningExample = false;
+      setRunning(false);
     }
   }
   return (
     <div className="teaching-python">
       <CodeEditor
         value={code}
-        onChange={value=>{setCode(value);onChangeCode?.();}}
+        onChange={(value) => {
+          setCode(value);
+          onCode?.(value);
+          onChangeCode?.();
+        }}
         label="Python 教学示例"
         language="python"
       />
@@ -54,14 +93,16 @@ export default function TeachingPython({initial,transform,onResult,button="运�
           className="btn secondary"
           disabled={running}
           onClick={() => {
-            setCode(initial);onChangeCode?.();
+            setCode(initial);
+            onCode?.(initial);
+            onChangeCode?.();
             setResult(undefined);
           }}
         >
           恢复示例
         </button>
       </div>
-      {notice&&<p role="status">{notice}</p>}
+      {notice && <p role="status">{notice}</p>}
       {running && <p role="status">正在准备或运行 Python…</p>}
       {result && (
         <pre role="status" tabIndex={0}>

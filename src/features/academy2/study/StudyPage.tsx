@@ -7,6 +7,7 @@ import {
   topicTitle,
 } from "../../../content/academy2/teaching/library";
 import { changeStudy, useStudy } from "../../../progress/study";
+import { dataLessons } from "../../../content/academy2/data";
 import { algorithmLessons } from "../../../content/academy2/algorithms";
 import { p1Lessons } from "../../../content/academy2/p1";
 import { MathText, RichText } from "../teaching/math";
@@ -221,7 +222,7 @@ export default function StudyPage() {
             )}
             {tab === "summaries" && (
               <ul className="study-search">
-                {[...p1Lessons,...algorithmLessons.map(item=>item.base)]
+                {[...p1Lessons,...algorithmLessons.map(item=>item.base),...dataLessons.map(item=>item.base)]
                   .filter((lesson) =>
                     (topicTitle(lesson.id) + " " + lesson.concept).toLowerCase().includes(filter),
                   )

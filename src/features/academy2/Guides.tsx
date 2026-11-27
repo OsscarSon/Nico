@@ -1,5 +1,6 @@
 import { useKnowledgeProgress } from "../../progress/knowledge";
 import { knowledgeStatus } from "../../grading/academy2/p1/progress";
+import { dataTopic } from "../../content/academy2/data/registry";
 import { algorithmTopic } from "../../content/academy2/algorithms/registry";
 import { findP1Lesson } from "../../content/academy2/p1";
 import { Link, navigate, usePath } from "../../app/router";
@@ -112,7 +113,7 @@ export function KnowledgeGraphPage() {
       <Link className="btn secondary" to={courseLink(course.id)}>打开课程入口 ↗</Link>
     </div>
     <div className="a2-two-col">
-      <section className="a2-panel"><h2>{selected?.title??course.title} · 知识关系</h2>{selected&&(findP1Lesson(selected.id)||algorithmTopic(selected.id))&&<div className="row"><LearningStatus status={knowledgeStatus(data.records[selected.id],Date.now())}/><Link to={"/topics/"+selected.id}>打开正式课时 ↗</Link></div>}<Prerequisites key={selected?.id??course.id} targets={selected?dependenciesOf(selected.id):courseDependencies(course)} /></section>
+      <section className="a2-panel"><h2>{selected?.title??course.title} · 知识关系</h2>{selected&&(findP1Lesson(selected.id)||algorithmTopic(selected.id)||dataTopic(selected.id))&&<div className="row"><LearningStatus status={knowledgeStatus(data.records[selected.id],Date.now())}/><Link to={"/topics/"+selected.id}>打开正式课时 ↗</Link></div>}<Prerequisites key={selected?.id??course.id} targets={selected?dependenciesOf(selected.id):courseDependencies(course)} /></section>
       <section className="a2-panel"><h2>{selected?"接续知识点":"接续课程"}</h2>
         <ul className="a2-link-list">{selected?nextTopics.map(topic=><li key={topic.id}><Link to={"/graph?course="+topic.course+"&topic="+topic.id}>{topic.title} ↗</Link></li>):dependents.map(item => <li key={item.id}><Link to={"/graph?course=" + item.id}>{labelTarget({ course: item.id })} ↗</Link></li>)}</ul>
         {!(selected?nextTopics:dependents).length && <p className="muted">当前没有已声明的后续，可转向实践项目。</p>}

@@ -15,6 +15,10 @@ import { KnowledgeLessonPage, AcademyProjectPage } from "../features/academy2/P1
 
 import { algorithmTopic, isAlgorithmCourse } from "../content/academy2/algorithms/registry";
 
+import { dataTopic, isDataCourse } from "../content/academy2/data/registry";
+
+const P3Lesson=lazy(()=>import("../features/academy2/data/DataTopicPage"));
+const DataProject=lazy(()=>import("../features/academy2/data/DataProject"));
 const P2Lesson=lazy(()=>import("../features/academy2/algorithms/P2Lesson"));
 const AlgorithmProject=lazy(()=>import("../features/academy2/algorithms/AlgorithmProject"));
 const StudyPage=lazy(()=>import("../features/academy2/study/StudyPage"));
@@ -67,6 +71,8 @@ export function App() {
       case "lesson": return <LessonPlayer lessonId={route.lessonId} />;
       case "knowledge-lesson": return algorithmTopic(route.id)
         ? <Suspense fallback={<p role="status">加载算法课时…</p>}><P2Lesson key={route.id} id={route.id}/></Suspense>
+        : dataTopic(route.id)
+        ? <Suspense fallback={<p role="status">加载数据与 AI 课时…</p>}><P3Lesson key={route.id} id={route.id}/></Suspense>
         : <KnowledgeLessonPage key={route.id} id={route.id} />;
       case "lab": return <LabsHomePage />;
       case "academy-lab": return <AcademyLabPage key={route.id} id={route.id} />;
@@ -78,6 +84,8 @@ export function App() {
       case "projects": return <ProjectsPage />;
       case "academy-project": return isAlgorithmCourse(route.id)
         ? <Suspense fallback={<p role="status">加载算法项目…</p>}><AlgorithmProject key={route.id} courseId={route.id}/></Suspense>
+        : isDataCourse(route.id)
+        ? <Suspense fallback={<p role="status">加载数据与 AI 项目…</p>}><DataProject key={route.id} courseId={route.id}/></Suspense>
         : <AcademyProjectPage key={route.id} courseId={route.id} />;
       case "me": return <MePage />;
       case "settings": return <><SettingsPage/><section className="panel settings-list" aria-label="完整学习备份">

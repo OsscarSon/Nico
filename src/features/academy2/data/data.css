@@ -1,0 +1,202 @@
+.p3-lab,
+.p3-card,
+.p3-notebook-cell,
+.p3-workspaces,
+.p3-lesson {
+  min-width: 0;
+}
+.p3-lab,
+.p3-card,
+.p3-notebook-cell,
+.p3-workspaces {
+  display: grid;
+  gap: 0.85rem;
+}
+.p3-lab > .row {
+  flex-wrap: wrap;
+}
+.p3-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+.p3-ml-grid {
+  grid-template-columns: minmax(290px, 0.78fr) minmax(0, 1.22fr);
+}
+.p3-card :is(h2, h3, p),
+.p3-chart,
+.p3-measure h3 {
+  margin: 0;
+}
+.p3-card :is(p, code, td, dd, blockquote),
+.p3-lesson p {
+  overflow-wrap: anywhere;
+}
+.p3-fields,
+.p3-feature-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.6rem;
+}
+.p3-lab :is(label, fieldset, .p3-fields, figure, details),
+.p3-lesson :is(figure, section, dd) {
+  min-width: 0;
+}
+.p3-lab label:not(.p3-check),
+.p3-project label {
+  display: grid;
+  gap: 0.35rem;
+}
+.p3-fields label:not(.p3-check) {
+  flex: 1 1 7.8rem;
+}
+.p3-lab :is(input:not([type="checkbox"]), select, textarea),
+.p3-project textarea {
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.p3-lab fieldset {
+  margin: 0;
+  border: 1px solid var(--a2-edge);
+  min-width: 0;
+  padding: 0.7rem;
+}
+.p3-lab fieldset > :is(details, fieldset, .p3-fields, label) {
+  margin-block: 0.7rem;
+}
+.p3-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 40px;
+  overflow-wrap: anywhere;
+}
+.p3-check input {
+  flex: 0 0 auto;
+}
+.p3-tables,
+.p3-table-scroll {
+  min-width: 0;
+  max-width: 100%;
+}
+.p3-table-scroll {
+  overflow-x: auto;
+  border-radius: 0.55rem;
+  border: 1px solid var(--a2-edge);
+}
+.p3-table-scroll table,
+.p3-confusion {
+  border-collapse: collapse;
+  width: 100%;
+  font-variant-numeric: tabular-nums;
+  text-align: left;
+}
+.p3-table-scroll :is(th, td),
+.p3-confusion :is(th, td) {
+  border-bottom: 1px solid var(--a2-edge);
+  padding: 0.35rem 0.6rem;
+  max-width: 16rem;
+}
+.p3-table-scroll caption,
+.p3-confusion caption {
+  color: var(--muted);
+  text-align: left;
+  padding: 0.4rem 0.6rem;
+}
+.p3-table-scroll + .row {
+  margin-block-start: 0.4rem;
+}
+.p3-chart svg {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  margin: 0.45rem 0;
+}
+.p3-chart figcaption {
+  display: block;
+}
+.p3-chart figcaption p {
+  margin: 0.25rem 0;
+  color: var(--muted);
+}
+.p3-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr));
+  gap: 0.5rem;
+  margin: 0.45rem 0;
+}
+.p3-values div {
+  border: 1px solid var(--a2-edge);
+  padding: 0.55rem 0.7rem;
+  border-radius: 0.55rem;
+  min-width: 0;
+}
+.p3-values dt {
+  color: var(--muted);
+}
+.p3-values dd {
+  margin: 0;
+  font-size: 1.1rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+}
+.p3-notebook-cell {
+  padding: 1rem;
+  border: 1px solid var(--a2-edge);
+  border-radius: 0.85rem;
+}
+.p3-notebook-cell textarea,
+.p3-code pre {
+  font-family: ui-monospace, monospace;
+  min-width: 0;
+}
+.p3-lab .row,
+.p3-project .row {
+  flex-wrap: wrap;
+}
+.p3-grid-map {
+  width: min(100%, 19rem);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+.p3-grid-map span {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--a2-edge);
+}
+.p3-grid-map span[data-route="true"] {
+  border-color: #75baff;
+  background: #1a5293;
+  color: #fff;
+}
+.p3-reading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.85rem;
+}
+.p3-lesson .p3-reading :is(.teaching-example, .teaching-note) {
+  background: var(--panel);
+  min-width: 0;
+}
+.p3-project textarea {
+  margin-bottom: 0.65rem;
+}
+@media (max-width: 1050px) {
+  .p3-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 430px) {
+  .p3-notebook-cell {
+    padding: 0.65rem;
+  }
+  .p3-lab,
+  .p3-card {
+    gap: 0.65rem;
+  }
+}
