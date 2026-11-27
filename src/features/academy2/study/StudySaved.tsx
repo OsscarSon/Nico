@@ -49,7 +49,7 @@ export function BookmarkList({ data }: { data: Study }) {
             </summary>
             <pre className="study-report">{item.markdown}</pre>
             {item.topic && (
-              <Link to={item.kind === "project" ? "/projects/" + item.topic : readingLink(item.topic)}>
+              <Link to={item.kind === "project" ? "/projects/" + item.topic : item.topic==="algorithms"?"/lab/algorithms":readingLink(item.topic)}>
                 相关教学 ↗
               </Link>
             )}
