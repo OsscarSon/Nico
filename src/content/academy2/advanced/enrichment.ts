@@ -41,6 +41,14 @@ const proof = (
 });
 
 export const enrichment: Record<string, TeachingBlock[]> = {
+  "k-fbd42f2ffb88": [
+    {
+      type: "note",
+      tone: "application",
+      title: "在本机检查已冻结的模型服务",
+      body: "在项目根目录运行 python scripts/p4-model-serving.py。它先以六个合成点训练并保存模型，再重载 JSON，在临时本机端口提供 HTTP 推理。四个独立留出点走真实请求检查。另发送错误特征长度与过期版本，分别验证推理质量与请求契约。脚本退出后关闭服务。",
+    },
+  ],
   "k-d18c520a0205": [
     example(
       "变式 · 避免二次方程小根的抵消",
