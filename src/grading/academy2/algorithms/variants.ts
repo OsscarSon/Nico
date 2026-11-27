@@ -1,6 +1,7 @@
 import type { Question } from "../../../content/academy2/teaching/schema";
 import { modelById } from "./index";
 import type { Scalar } from "./trace";
+import { independentVariantResult } from "./variantReference";
 
 type Challenge = {
   input: string;
@@ -54,6 +55,13 @@ function problem(id: string, seed: number): Challenge {
         input: array(a),
         parameter: seed % 2 ? "选择" : "归并",
         objective: "写出升序结果",
+        format: "使用逗号分隔",
+      };
+    case "random":
+      return {
+        input: array(a),
+        parameter: String(seed % 100001),
+        objective: "给出随机枢轴快速排序的最终升序结果。不同种子不改变顺序",
         format: "使用逗号分隔",
       };
     case "hash":
@@ -174,6 +182,7 @@ const featured = new Set([
   "linear",
   "binary",
   "sort",
+  "random",
   "hash",
   "recursive",
   "bfs",
@@ -208,7 +217,13 @@ export function algorithmVariant(
   if (!featured.has(id)) return undefined;
   const challenge = problem(id, seed),
     model = modelById(id)!;
-  const outcome = model.run(challenge.input, challenge.parameter).answer;
+  const outcome = independentVariantResult(
+    id,
+    challenge.input,
+    challenge.parameter,
+  );
+  if (outcome !== model.run(challenge.input, challenge.parameter).answer)
+    throw Error("随机变式与独立参考算法不一致 " + id);
   const base = {
     id: (verification ? "verify-" : "variant-") + id + "-" + seed,
     level: verification ? ("transfer" as const) : ("application" as const),

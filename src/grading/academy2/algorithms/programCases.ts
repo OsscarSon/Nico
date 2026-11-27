@@ -125,6 +125,7 @@ export function verificationCases(
           );
       return [{ args: [data, [w]], expected: Math.max(...windows) }];
     }
+    case "segment":
     case "fenwick": {
       const updated = [...data];
       updated[rank] = value;
@@ -154,6 +155,82 @@ export function verificationCases(
         { args: [bits], expected: Number(bits.slice(-3).join("") === "101") },
       ];
     }
+    case "avl":
+      return [{ args: [[a, a + b + 5, a + b]], expected: a + b }];
+    case "trie": {
+      const words = [a, 10 * a + (b % 10), 100 * a, 10 * a + (b % 10), 910 + a];
+      return [
+        {
+          args: [words, [a]],
+          expected: [...new Set(words)].filter((x) =>
+            String(x).startsWith(String(a)),
+          ).length,
+        },
+      ];
+    }
+    case "union":
+      return [{ args: [[0, 1, 1, 2, 2, 0], [size]], expected: size - 2 }];
+    case "dfs":
+      return [
+        {
+          args: [[0, 1, 1, 2, 2, 0, 2, 3], [seed % 2 ? 0 : 3]],
+          expected: seed % 2 ? 4 : 1,
+        },
+      ];
+    case "topo":
+      return [
+        {
+          args: [[0, 1, 1, 2, 2, seed % 2 ? 3 : 0], [size]],
+          expected: seed % 2 ? 1 : 0,
+        },
+      ];
+    case "bellman":
+      return [
+        {
+          args: [
+            [0, 1, a + b + 1, 0, 2, a, 2, 1, -b],
+            [0, 1],
+          ],
+          expected: a - b,
+        },
+      ];
+    case "mst":
+      return [
+        {
+          args: [[0, 1, a, 1, 2, b, 0, 2, a + b + 1, 4, 5, -2]],
+          expected: a + b - 2,
+        },
+      ];
+    case "queens": {
+      const n = (seed % 4) + 4;
+      return [{ args: [[n]], expected: [2, 10, 4, 40][n - 4]! }];
+    }
+    case "flow":
+      return [
+        {
+          args: [
+            [0, 1, a, 0, 2, b, 1, 2, 1, 1, 3, a + 1, 2, 3, b + 1],
+            [0, 3],
+          ],
+          expected: a + b,
+        },
+      ];
+    case "matching":
+      return [
+        {
+          args: [
+            seed % 2 ? [0, 0, 0, 1, 1, 0, 2, 1, 2, 2] : [0, 1, 1, 1, 2, 1],
+          ],
+          expected: seed % 2 ? 3 : 1,
+        },
+      ];
+    case "geometry":
+      return [
+        {
+          args: [[0, 0, 2 * a, 0, 2 * a, 2 * b, 0, 2 * b, a, b, 0, b]],
+          expected: 4,
+        },
+      ];
     default:
       return [];
   }
