@@ -5,6 +5,7 @@ import { lessons, validateContent } from "../src/content";
 import { curriculum, liveLessonFor } from "../src/content/academy";
 import { lessonSchema } from "../src/content/schema";
 import { gradeChoice } from "../src/grading/quiz";
+import { protectedBytes } from "./fixtures/protectedBytes";
 import protectedFiles from "../docs/p3a/PROTECTED_BASELINE.json";
 describe("P3-A teaching integration and protected baseline", () => {
   for (const id of ["b13-fetch-json", "b16-github", "b17-pages"]) it(`${id}: complete sourced draft with free operation, challenge and diagnostic assessment`, () => {
@@ -28,7 +29,7 @@ describe("P3-A teaching integration and protected baseline", () => {
     const redesigned = new Set(["src/pages/pages.tsx", "src/features/profile/ProfilePage.tsx", "src/features/profile/ProfileEditor.tsx"]);
     for (const [file, hash] of Object.entries(protectedFiles)) {
       if (redesigned.has(file)) continue; // These three shell files have behavioral coverage in smoke:academy2 and smoke:p2.
-      expect(createHash("sha256").update(readFileSync(file)).digest("hex"), file).toBe(hash);
+      expect(createHash("sha256").update(protectedBytes(file)).digest("hex"), file).toBe(hash);
     }
     expect(validateContent()).toEqual([]);
   });

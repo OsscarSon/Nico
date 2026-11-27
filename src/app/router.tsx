@@ -29,13 +29,16 @@ export type Match =
   | { name: "course"; courseId: string }
   | { name: "track"; trackId: string }
   | { name: "lesson"; lessonId: string }
+  | { name: "knowledge-lesson"; id: string }
   | { name: "lab" }
   | { name: "academy-lab"; id: string }
   | { name: "knowledge" }
   | { name: "resources" }
+  | { name: "study" }
   | { name: "prompt-lab" }
   | { name: "tutor"; lessonId?: string }
   | { name: "projects" }
+  | { name: "academy-project"; id: string }
   | { name: "me" }
   | { name: "settings" }
   | { name: "notfound" };
@@ -53,11 +56,14 @@ export function matchRoute(path: string): Match {
   if (a === "paths" && !b) return { name: "paths" };
   if (a === "paths" && b) return { name: "track", trackId: b };
   if (a === "lesson" && b) return { name: "lesson", lessonId: b };
+  if (a === "topics" && b) return { name: "knowledge-lesson", id: b };
   if (!b && a === "lab") return { name: "lab" };
   if (a === "lab" && b) return { name: "academy-lab", id: b };
   if (!b && a === "graph") return { name: "knowledge" };
+  if (!b && a === "study") return { name:"study" };
   if (!b && a === "resources") return { name: "resources" };
   if (!b && a === "projects") return { name: "projects" };
+  if (a === "projects" && b) return { name: "academy-project", id: b };
   if (!b && a === "me") return { name: "me" };
   if (!b && a === "settings") return { name: "settings" };
   return { name: "notfound" };

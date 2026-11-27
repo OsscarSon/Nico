@@ -1,10 +1,15 @@
+import { useKnowledgeProgress } from "../../progress/knowledge";
+import { knowledgeStatus } from "../../grading/academy2/p1/progress";
+import { findP1Lesson } from "../../content/academy2/p1";
 import { Link, navigate, usePath } from "../../app/router";
 import { artUrl } from "../../art";
 import { academyCourses, courseDependencies, courseLink, getAcademyCourse, getDomain, getPhase, labelTarget, moduleLessons, phases, uniqueLiveCount } from "../../content/academy2/model";
 import { getPersonalPath, personalPaths, studyAllocation, studyTimeline } from "../../content/academy2/paths";
 import { laboratories, roadmap, teachingStandard, universityResources } from "../../content/academy2/resources";
+import { dependenciesOf, knowledgeEdges } from "../../content/academy2/knowledgeGraph";
+import { findKnowledge, knowledgeRegistry } from "../../content/academy2/knowledgeRegistry";
 import { useProgress } from "../../progress/useProgress";
-import { PageHeading, Prerequisites } from "./Curriculum";
+import { LearningStatus,PageHeading, Prerequisites } from "./Curriculum";
 import { setAcademyPath, useAcademyPath } from "./learningPreference";
 
 export function AcademyDashboard() {
@@ -31,7 +36,7 @@ export function AcademyDashboard() {
       </Link>)}</div>
     </section>
     <div className="a2-quick-links">
-      <Link to="/graph">知识关联图 ↗</Link><Link to="/paths">选择专业主线 ↗</Link><Link to="/lab">7 个实验室 ↗</Link><Link to="/resources">公开教材与建设计划 ↗</Link>
+      <Link to="/graph">知识关联图 ↗</Link><Link to="/paths">选择专业主线 ↗</Link><Link to="/lab">7 个实验室 ↗</Link><Link to="/resources">公开教材与建设计划 ↗</Link><Link to="/study">搜索课文与学习资料 ↗</Link>
     </div>
   </>;
 }
@@ -79,8 +84,13 @@ const chain = [
 ] as const;
 
 export function KnowledgeGraphPage() {
-  const id = new URLSearchParams(usePath().split("?")[1]).get("course") ?? "intermediate-ai";
+  const {data}=useKnowledgeProgress();
+  const params=new URLSearchParams(usePath().split("?")[1]);
+  const id = params.get("course") ?? "intermediate-ai";
   const course = getAcademyCourse(id) ?? getAcademyCourse("intermediate-ai")!;
+  const options=knowledgeRegistry.filter(topic=>topic.course===course.id);
+  const selected=options.find(option=>option.id===params.get("topic"));
+  const nextTopics=selected ? knowledgeEdges.filter(edge=>edge.to===selected.id&&edge.kind!=="related").map(edge=>findKnowledge(edge.from)).filter(topic=>topic!==undefined) : [];
   const dependents = academyCourses.filter(item => courseDependencies(item).some(target => target.course === course.id));
   return <div className="a2-page">
     <PageHeading title="知识关联图" english="KNOWLEDGE GRAPH" intro="从学习目标往前看所需知识，或从已会的内容找到下一步。先修可自评，也可直接开始。" />
@@ -95,13 +105,16 @@ export function KnowledgeGraphPage() {
       <label>选择课程<select value={course.id} onChange={event => navigate("/graph?course=" + event.target.value)}>
         {phases.map(phase => <optgroup key={phase.id} label={phase.title + "阶段"}>{academyCourses.filter(item => item.stage === phase.id).map(item => <option key={item.id} value={item.id}>{item.title}</option>)}</optgroup>)}
       </select></label>
+      <label>选择知识点<select value={selected?.id??""} onChange={event=>navigate("/graph?course="+course.id+(event.target.value?"&topic="+event.target.value:""))}>
+        <option value="">整个课程</option>{options.map(topic=><option key={topic.id} value={topic.id}>{topic.title}</option>)}
+      </select></label>
       <Link className="btn secondary" to={courseLink(course.id)}>打开课程入口 ↗</Link>
     </div>
     <div className="a2-two-col">
-      <section className="a2-panel"><h2>{course.title} · 建议先修</h2><Prerequisites key={course.id} targets={courseDependencies(course)} /></section>
-      <section className="a2-panel"><h2>接续课程</h2>
-        <ul className="a2-link-list">{dependents.map(item => <li key={item.id}><Link to={"/graph?course=" + item.id}>{labelTarget({ course: item.id })} ↗</Link></li>)}</ul>
-        {!dependents.length && <p className="muted">可转向实践项目，或通过相关模块继续探索。</p>}
+      <section className="a2-panel"><h2>{selected?.title??course.title} · 知识关系</h2>{selected&&findP1Lesson(selected.id)&&<div className="row"><LearningStatus status={knowledgeStatus(data.records[selected.id],Date.now())}/><Link to={"/topics/"+selected.id}>打开正式课时 ↗</Link></div>}<Prerequisites key={selected?.id??course.id} targets={selected?dependenciesOf(selected.id):courseDependencies(course)} /></section>
+      <section className="a2-panel"><h2>{selected?"接续知识点":"接续课程"}</h2>
+        <ul className="a2-link-list">{selected?nextTopics.map(topic=><li key={topic.id}><Link to={"/graph?course="+topic.course+"&topic="+topic.id}>{topic.title} ↗</Link></li>):dependents.map(item => <li key={item.id}><Link to={"/graph?course=" + item.id}>{labelTarget({ course: item.id })} ↗</Link></li>)}</ul>
+        {!(selected?nextTopics:dependents).length && <p className="muted">当前没有已声明的后续，可转向实践项目。</p>}
       </section>
     </div>
     <p><Link to={courseLink("advanced-ai", "attention", "Attention")}>查看示例：Attention 的五项先修 ↗</Link></p>
@@ -111,6 +124,7 @@ export function KnowledgeGraphPage() {
 export function ResourcesPage() {
   return <div className="a2-page">
     <PageHeading title="教材、教学标准与建设计划" english="ACADEMIC RESOURCES" intro="用公开课程、教材及大学框架核对内容范围。每个领域的正式课时持续建设。" />
+    <div className="a2-quick-links"><Link to="/study?view=terms">中英文术语词典 ↗</Link><Link to="/study?view=formulas">公式手册 ↗</Link><Link to="/study?view=summaries">知识总结 ↗</Link></div>
     <section className="a2-resource-section"><h2>大学公开资源</h2><div className="a2-resource-grid">{universityResources.map(([title, area, url]) => <a className="a2-panel" key={title} href={url} target="_blank" rel="noreferrer"><strong>{title} <span aria-hidden="true">↗</span></strong><p>{area}</p></a>)}</div></section>
     <section className="a2-resource-section"><h2>模块教学标准</h2><p>算法和 AI 采用先从零理解与实现，再用专业库实践的教学方式。</p>
       <dl className="a2-resource-grid">{teachingStandard.map(([title, en, detail]) => <div className="a2-panel" key={en}><dt><strong>{title}</strong> <small>{en}</small></dt><dd>{detail}</dd></div>)}</dl>

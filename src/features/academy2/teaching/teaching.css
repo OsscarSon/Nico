@@ -1,0 +1,172 @@
+.teaching-engine,
+.teaching-engine .a2-panel,
+.teaching-engine :is(section, details, figure, fieldset, dd) {
+  min-inline-size: 0;
+}
+.teaching-engine {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  margin-block: 1rem;
+}
+.teaching-engine p,
+.teaching-engine li {
+  line-height: 1.8;
+}
+.teaching-engine :is(section, pre, .teaching-table) {
+  margin-block: 1rem;
+}
+.teaching-engine .teaching-section:first-child {
+  margin-block-start: 0;
+}
+.teaching-engine .teaching-section > section {
+  border-top: 1px solid var(--a2-edge);
+  padding-top: 0.85rem;
+}
+.teaching-engine :is(.teaching-example, .teaching-note, .teaching-disclosure) {
+  border: 1px solid var(--a2-edge);
+  border-radius: 0.75rem;
+  padding: clamp(0.7rem, 2vw, 1.25rem);
+}
+.teaching-note[data-tone="warning"],
+.teaching-note[data-tone="mistake"] {
+  border-inline-start: 3px solid var(--trace);
+}
+.teaching-example dl {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.4rem 1rem;
+  margin-block-start: 0;
+}
+.teaching-example dt {
+  font-weight: 700;
+}
+.teaching-example dd {
+  margin: 0;
+}
+.teaching-engine :is(summary, legend) {
+  cursor: pointer;
+  font-weight: 700;
+}
+.teaching-engine legend {
+  cursor: auto;
+}
+.teaching-engine :is(summary, .teaching-math-scroll):focus-visible {
+  outline: 2px solid var(--trace);
+  outline-offset: 3px;
+}
+.teaching-engine .teaching-steps {
+  padding-inline-start: 1.25rem;
+}
+.teaching-steps li {
+  padding-inline-start: 0.3rem;
+  margin-block: 0.65rem;
+}
+.teaching-math-inline {
+  white-space: normal;
+  max-inline-size: 100%;
+}
+.teaching-math-inline > span {
+  display: inline-block;
+  vertical-align: middle;
+  max-inline-size: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.teaching-math-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-inline-size: 100%;
+  padding: 0.15rem 0.25rem;
+}
+.teaching-math-scroll .katex-display {
+  min-width: max-content;
+  margin: 0.65em 0;
+  padding-inline: 0.15em;
+}
+.teaching-math-text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 0.9em;
+}
+.teaching-formula,
+.teaching-image {
+  margin: 1rem 0;
+}
+.teaching-formula figcaption,
+.teaching-image figcaption {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.teaching-image img,
+.teaching-tree svg {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+  margin-inline: auto;
+}
+.teaching-table,
+.teaching-code pre,
+.teaching-python pre {
+  overflow-x: auto;
+  max-inline-size: 100%;
+}
+.teaching-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.teaching-table :is(td, th) {
+  border: 1px solid var(--a2-edge);
+  padding: 0.45rem;
+  text-align: start;
+}
+.teaching-table th {
+  background: var(--panel);
+}
+.teaching-code pre,
+.teaching-python pre {
+  border: 1px solid var(--a2-edge);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+}
+.teaching-bank fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.teaching-bank textarea,
+.teaching-bank input:not([type]) {
+  display: block;
+  width: min(100%, 36rem);
+}
+.teaching-option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  padding-block: 0.15rem;
+  cursor: pointer;
+}
+.teaching-option input {
+  flex: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0;
+}
+.teaching-tree label {
+  display: grid;
+  gap: 0.3rem;
+  margin: 0.7rem 0;
+}
+.teaching-tree svg {
+  max-width: 40rem;
+  width: 100%;
+}
+@media (max-width: 520px) {
+  .teaching-example dl {
+    display: block;
+  }
+  .teaching-example dt {
+    margin-block-start: 0.65rem;
+  }
+}

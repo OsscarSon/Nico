@@ -1,0 +1,148 @@
+.study-lab,
+.study-experiment,
+.study-library,
+.study-course,
+.study-toolbar {
+  min-inline-size: 0;
+}
+.study-lab {
+  display: grid;
+  gap: 1rem;
+  margin-block: 1rem;
+}
+.study-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 0.45rem;
+}
+.study-cards a {
+  padding: 0.7rem;
+  border: 1px solid var(--a2-edge);
+  border-radius: 0.5rem;
+  overflow-wrap: anywhere;
+  min-height: 44px;
+}
+.study-cards a[aria-current] {
+  border-color: var(--trace);
+}
+.study-plot {
+  margin: 1rem 0;
+}
+.study-plot svg {
+  max-inline-size: 100%;
+  width: 46rem;
+  height: auto;
+}
+.study-plot figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+}
+.study-plot figcaption i {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  margin-inline-end: 0.3rem;
+}
+.study-result dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: 0.65rem;
+}
+.study-result dt {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.study-result dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.study-result textarea,
+.study-library textarea,
+.study-note textarea {
+  display: block;
+  width: 100%;
+}
+.study-toolbar .btn {
+  margin-block: 0.15rem;
+}
+.study-toolbar summary,
+.study-library summary {
+  cursor: pointer;
+}
+.study-library .a2-panel + .a2-panel {
+  margin-top: 1rem;
+}
+.study-library input[type="search"] {
+  display: block;
+  width: min(100%, 36rem);
+}
+.study-library .teaching-formula {
+  overflow: auto;
+}
+.study-search {
+  display: grid;
+  gap: 0.6rem;
+  padding-inline-start: 1.2rem;
+}
+.study-search li {
+  overflow-wrap: anywhere;
+}
+.study-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+.study-anchors :is(section, details)[id] {
+  scroll-margin-top: 4.25rem;
+}
+.study-note {
+  margin-block: 1rem;
+}
+.study-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-block: 0.15rem 0.6rem;
+}
+.app:has(.study-focus) :is(.sidenav, .bottomnav, .academy-topbar) {
+  display: none;
+}
+.app:has(.study-focus) .main {
+  margin-inline: 0;
+  width: 100%;
+  grid-column: 1/-1;
+  padding-inline: clamp(0.65rem, 4vw, 3rem);
+}
+.study-focus {
+  max-width: 65rem;
+  margin-inline: auto;
+}
+.study-tutor textarea {
+  width: 100%;
+  display: block;
+}
+.study-answer-fields {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+}
+.study-answer-fields label {
+  display: grid;
+  gap: 0.2rem;
+}
+.study-report {
+  max-inline-size: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.study-search {
+  grid-template-columns: minmax(0, 1fr);
+}
+.study-search > li {
+  min-inline-size: 0;
+}

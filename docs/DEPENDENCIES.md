@@ -38,3 +38,11 @@
 
 ## 将来可能引入（Phase 3 起，引入前先复核许可证）
 Pyodide、CodeMirror、HyperFormula（GPLv3 / 商业双许可，公开发布前必须复核）、Phaser。
+
+## Academy 2.0 · P1.5 教学引擎
+
+| 新依赖 | 用途与许可证 | 选择依据 |
+| --- | --- | --- |
+| KaTeX 0.19.1 | 行内和独立 LaTeX、MathML 与数学字体。MIT，字体 SIL OFL 1.1。 | 由教学页按需加载，本地打包字体。关闭信任能力，限制命令展开，解析失败显示原文。与 MathJax 相比，本阶段只需已支持的 LaTeX 命令及轻量的同步排版。Markdown 则继续走现有 marked Lexer，结构化块直接声明公式，无需第二条 HTML 管线。 |
+
+开源候选、浏览器与实现边界见 [P1.5 技术选型](academy-2-p15/TECHNOLOGY.md)。发布构建包含 [MIT 许可](../public/third-party/KaTeX-MIT.txt) 和 [字体 OFL 许可](../public/third-party/KaTeX-fonts-OFL.txt)。

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 220">
+  <rect x="4" y="4" width="432" height="212" rx="16" fill="#0c192c" stroke="#6b87ad" stroke-width="2"/>
+  <circle cx="174" cy="113" r="78" fill="#266eac" stroke="#91d6ff" stroke-width="3"/>
+  <circle cx="266" cy="113" r="78" fill="#a8681a" fill-opacity=".75" stroke="#f5b965" stroke-width="3"/>
+  <g fill="white" font-family="system-ui, sans-serif" font-size="18" text-anchor="middle">
+    <text x="154" y="118">A ∖ B</text>
+    <text x="220" y="118">A ∩ B</text>
+    <text x="286" y="118">B ∖ A</text>
+    <text x="48" y="36">U</text>
+    <text x="374" y="189">(A ∪ B)ᶜ</text>
+  </g>
+</svg>

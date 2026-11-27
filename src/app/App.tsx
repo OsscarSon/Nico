@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { lazy, Suspense, useEffect, useRef } from "react";
 import { Link, matchRoute, usePath } from "./router";
 import { Logo, NavIcon } from "../components/ui";
 import { LessonPlayer } from "../features/lesson/LessonPlayer";
@@ -11,11 +11,14 @@ import { SettingsPage } from "../features/settings/SettingsPage";
 import { CurriculumPage, CoursePage } from "../features/academy2/Curriculum";
 import { KnowledgeGraphPage, LabsHomePage, LearningPathsPage, ResourcesPage } from "../features/academy2/Guides";
 import { AcademyLabPage } from "../features/academy2/Labs";
+import { KnowledgeLessonPage, AcademyProjectPage } from "../features/academy2/P1";
+
+const StudyPage=lazy(()=>import("../features/academy2/study/StudyPage"));
 
 const nav = [
   { to: "/", label: "首页", icon: "home", match: (p: string) => p === "/" },
   { to: "/paths", label: "路线", icon: "paths", match: (p: string) => p.startsWith("/paths") || p === "/graph" },
-  { to: "/courses", label: "课程", icon: "courses", match: (p: string) => p.startsWith("/courses") || p.startsWith("/lesson") },
+  { to: "/courses", label: "课程", icon: "courses", match: (p: string) => p.startsWith("/courses") || p.startsWith("/lesson") || p.startsWith("/topics") },
   { to: "/lab", label: "实验", icon: "lab", match: (p: string) => p.startsWith("/lab") },
   { to: "/projects", label: "作品", icon: "projects", match: (p: string) => p.startsWith("/projects") },
   { to: "/me", label: "我的", icon: "me", match: (p: string) => p.startsWith("/me") },
@@ -58,15 +61,20 @@ export function App() {
       case "course": return <CoursePage key={route.courseId} courseId={route.courseId} />;
       case "track": return <TrackPage trackId={route.trackId} />;
       case "lesson": return <LessonPlayer lessonId={route.lessonId} />;
+      case "knowledge-lesson": return <KnowledgeLessonPage key={route.id} id={route.id} />;
       case "lab": return <LabsHomePage />;
       case "academy-lab": return <AcademyLabPage key={route.id} id={route.id} />;
       case "knowledge": return <KnowledgeGraphPage />;
       case "resources": return <ResourcesPage />;
+      case "study": return <Suspense fallback={<p role="status">加载学习资料…</p>}><StudyPage/></Suspense>;
       case "prompt-lab": return <PromptLab />;
       case "tutor": return <TutorPage lessonId={route.lessonId} />;
       case "projects": return <ProjectsPage />;
+      case "academy-project": return <AcademyProjectPage key={route.id} courseId={route.id} />;
       case "me": return <MePage />;
-      case "settings": return <SettingsPage />;
+      case "settings": return <><SettingsPage/><section className="panel settings-list" aria-label="完整学习备份">
+        <h2>在设备间迁移学习资料</h2><Link to="/study?view=backup" className="btn secondary">打开完整备份 ↗</Link>
+      </section></>;
       default: return <NotFoundPage />;
     }
   })();

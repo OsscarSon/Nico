@@ -14,6 +14,8 @@ import { AcademyDashboard } from "../features/academy2/Guides";
 import { useAcademyPath } from "../features/academy2/learningPreference";
 import { recommendedLesson, uniqueLiveCount } from "../content/academy2/model";
 import { getPersonalPath } from "../content/academy2/paths";
+import { ContinueTopic } from "../features/academy2/study/reading";
+import { projectsP1 } from "../content/academy2/p1/projects";
 
 export function HomePage() {
   const progress = useProgress();
@@ -55,6 +57,7 @@ export function HomePage() {
               <Link to={`/lesson/${targetLesson.id}`} className="btn">
                 {resume ? "继续这一课" : "开始这一课"}
               </Link>
+              {preferences.resumeHome&&<ContinueTopic/>}
             </div>
           </>
         ) : (
@@ -110,6 +113,8 @@ export function ProjectsPage() {
   return (
     <>
       <header className="page-head"><h1>作品</h1></header>
+      <section className="a2-page"><h2>P1 数学与统计实践项目</h2><div className="a2-resource-grid">{Object.entries(projectsP1).map(([id,project])=>
+        <Link className="a2-panel" key={id} to={"/projects/"+id}><strong>{project.bench.title} ↗</strong><p>{project.bench.intro}</p></Link>)}</div></section>
       <EmptyState title="作品功能还在准备中" art="empty-no-projects.png" wide action={<Link to="/paths/a" className="btn">去学路线 A</Link>}>
         每条路线结尾都会有一个小项目，做完后会收集在这里。
       </EmptyState>
