@@ -1,7 +1,9 @@
 import type { Question } from "../teaching/schema";
 import type { TeachingPackage } from "../../../runtime/notebookPython";
 
-type Program = {
+import { p4DataPrograms } from "./p4Python";
+
+export type Program = {
   functionName: string;
   signature: string;
   hint: string;
@@ -338,12 +340,12 @@ const programs: Record<string, Program> = {
   },
 };
 export function codeLesson(id: string) {
-  const item = programs[id];
+  const item = programs[id] ?? p4DataPrograms[id];
   if (!item) return undefined;
   const call =
     "\n\nprint(round(" + item.functionName + "(" + item.sample + "), 8))";
   const question: Extract<Question, { type: "program" }> = {
-    id: "p3-code-" + id,
+    id: (id in p4DataPrograms ? "p4-code-" : "p3-code-") + id,
     type: "program",
     level: "transfer",
     prompt: item.prompt,

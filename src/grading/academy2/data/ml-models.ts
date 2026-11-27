@@ -4,6 +4,7 @@ export type ModelKind =
   | "linear"
   | "ridge"
   | "logistic"
+  | "softmax"
   | "knn"
   | "bayes"
   | "tree"
@@ -54,6 +55,8 @@ const mean = (samples: Sample[]) =>
 const clamp = (x: number) => Math.max(1e-9, Math.min(1 - 1e-9, x));
 export const logLoss = (y: number, score: number) =>
   -(y * Math.log(clamp(score)) + (1 - y) * Math.log(1 - clamp(score)));
+export const logitLoss = (y: number, logit: number) =>
+  Math.max(logit, 0) - y * logit + Math.log1p(Math.exp(-Math.abs(logit)));
 
 function gradient(kind: ModelKind, train: Sample[], h: Hyper): Fitted {
   const weights = new Array<number>(train[0]!.x.length).fill(0),
@@ -85,7 +88,7 @@ function gradient(kind: ModelKind, train: Sample[], h: Hyper): Fitted {
         kind === "svm"
           ? Math.max(1 - sign * s, 0)
           : kind === "logistic"
-            ? logLoss(y, p)
+            ? logitLoss(y, s)
             : (p - y) ** 2;
       shift += step;
       for (const [j, value] of x.entries())
@@ -266,10 +269,8 @@ function ensemble(kind: ModelKind, train: Sample[], h: Hyper): Fitted {
       scores[i]! += h.rate * predictTree(root, x);
     });
     losses.push(
-      train.reduce(
-        (total, row, i) => total + logLoss(row.y, sigmoid(scores[i]!)),
-        0,
-      ) / train.length,
+      train.reduce((total, row, i) => total + logitLoss(row.y, scores[i]!), 0) /
+        train.length,
     );
   }
   return {
@@ -281,6 +282,47 @@ function ensemble(kind: ModelKind, train: Sample[], h: Hyper): Fitted {
     details: "二分类梯度提升。树拟合 log-loss 的负梯度，每轮缩减步长。",
   };
 }
+export type NeuralParameters = {
+  input: Vector[];
+  hiddenBias: Vector;
+  output: Vector;
+  bias: number;
+};
+const activations = (x: Vector, p: NeuralParameters) =>
+  p.input.map((w, j) => Math.tanh(dot(w, x) + p.hiddenBias[j]!));
+
+export function neuralObjective(
+  train: Sample[],
+  p: NeuralParameters,
+  lambda: number,
+) {
+  const gradient: NeuralParameters = {
+    input: p.input.map((row) => row.map((weight) => lambda * weight)),
+    hiddenBias: p.hiddenBias.map(() => 0),
+    output: p.output.map((w) => lambda * w),
+    bias: 0,
+  };
+  let total = 0;
+  for (const { x, y } of train) {
+    const hidden = activations(x, p),
+      logit = dot(p.output, hidden) + p.bias;
+    const error = (sigmoid(logit) - y) / train.length;
+    total += logitLoss(y, logit);
+    gradient.bias += error;
+    for (const [j, value] of hidden.entries()) {
+      const delta = error * p.output[j]! * (1 - value ** 2);
+      gradient.hiddenBias[j]! += delta;
+      gradient.output[j]! += error * value;
+      for (const [k, feature] of x.entries())
+        gradient.input[j]![k]! += delta * feature;
+    }
+  }
+  const penalty =
+    dot(p.output, p.output) +
+    p.input.reduce((sum, row) => sum + dot(row, row), 0);
+  return { loss: total / train.length + (lambda * penalty) / 2, gradient };
+}
+
 function neural(train: Sample[], h: Hyper): Fitted {
   const d = train[0]!.x.length,
     m = Math.min(h.k, 12),
@@ -294,47 +336,29 @@ function neural(train: Sample[], h: Hyper): Fitted {
     { length: m },
     () => (0.8 * (rand() - 0.5)) / Math.sqrt(m),
   );
-  let bias = 0;
-  const forward = (x: Vector) =>
-    input.map((w, j) => Math.tanh(dot(w, x) + hiddenBias[j]!));
-  const predict = (x: Vector) => sigmoid(dot(output, forward(x)) + bias);
+  const params = { input, hiddenBias, output, bias: 0 };
+  const predict = (x: Vector) =>
+    sigmoid(dot(output, activations(x, params)) + params.bias);
   for (let epoch = 0; epoch < h.epochs; epoch++) {
-    const gx = input.map((row) => row.map((w) => h.lambda * w)),
-      gb = hiddenBias.map(() => 0),
-      gw = output.map((w) => h.lambda * w);
-    let gbOut = 0,
-      total = 0;
-    for (const { x, y } of train) {
-      const hidden = forward(x),
-        p = sigmoid(dot(output, hidden) + bias),
-        error = p - y;
-      gbOut += error / train.length;
-      total += logLoss(y, p);
-      for (let j = 0; j < m; j++) {
-        const gradient =
-          (error * output[j]! * (1 - hidden[j]! ** 2)) / train.length;
-        gb[j]! += gradient;
-        gw[j]! += (error * hidden[j]!) / train.length;
-        for (let k = 0; k < d; k++) gx[j]![k]! += gradient * x[k]!;
-      }
-    }
-    losses.push(
-      total / train.length +
-        (h.lambda *
-          (dot(output, output) +
-            input.reduce((total, w) => total + dot(w, w), 0))) /
-          2,
-    );
+    const { loss, gradient } = neuralObjective(train, params, h.lambda);
+    if (!Number.isFinite(loss))
+      throw Error("优化发散。请降低学习率或标准化输入。");
+    losses.push(loss);
     for (let j = 0; j < m; j++) {
-      output[j]! -= h.rate * gw[j]!;
-      hiddenBias[j]! -= h.rate * gb[j]!;
-      for (let k = 0; k < d; k++) input[j]![k]! -= h.rate * gx[j]![k]!;
+      output[j]! -= h.rate * gradient.output[j]!;
+      hiddenBias[j]! -= h.rate * gradient.hiddenBias[j]!;
+      for (let k = 0; k < d; k++)
+        input[j]![k]! -= h.rate * gradient.input[j]![k]!;
     }
-    bias -= h.rate * gbOut;
+    params.bias -= h.rate * gradient.bias;
   }
+  const weights = [params.bias, ...hiddenBias, ...output, ...input.flat()];
+  if (weights.some((value) => !Number.isFinite(value)))
+    throw Error("优化发散。请降低学习率或标准化输入。");
   return {
     predict,
     losses,
+    weights,
     details:
       "单隐藏层 tanh，输出 sigmoid。全部梯度由链式法则逐层计算。隐藏单元 " + m,
   };

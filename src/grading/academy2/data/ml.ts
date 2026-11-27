@@ -1,4 +1,4 @@
-import { columnIndex, numberSummary, type Table } from "./table";
+import { columnIndex, numberSummary, type Cell, type Table } from "./table";
 import {
   cluster,
   fit,
@@ -11,8 +11,12 @@ import {
   type Vector,
 } from "./ml-models";
 import { classification, eigenvectors, regression } from "./ml-metrics";
+import { argmax, multiclassMetrics, trainMulticlass } from "./ml-multiclass";
+import { tableFingerprint } from "./tableFingerprint";
 
-export type Mode = "classification" | "regression" | "clustering";
+export type Mode =
+  "classification" | "multiclass" | "regression" | "clustering";
+export type Evaluation = "development" | "final";
 export type SplitOptions = Hyper & {
   model: ModelKind;
   mode: Mode;
@@ -35,6 +39,7 @@ export const modelNames: Record<ModelKind, string> = {
   linear: "线性回归",
   ridge: "岭回归",
   logistic: "逻辑回归",
+  softmax: "Softmax 多项逻辑回归",
   knn: "K 近邻",
   bayes: "高斯朴素贝叶斯",
   tree: "CART 决策树",
@@ -47,6 +52,7 @@ export const modelNames: Record<ModelKind, string> = {
   dbscan: "DBSCAN",
 };
 export function models(mode: Mode): ModelKind[] {
+  if (mode === "multiclass") return ["softmax", "knn"];
   return mode === "classification"
     ? [
         "logistic",
@@ -121,6 +127,28 @@ function extract(table: Table, h: SplitOptions) {
   const target = h.mode === "clustering" ? -1 : columnIndex(table, h.target);
   const rows: Row[] = [],
     dropped: number[] = [];
+  const unique =
+    h.mode === "multiclass"
+      ? [
+          ...new Set(
+            table.rows.flatMap((row) =>
+              row[target] == null ? [] : [row[target]],
+            ),
+          ),
+        ].sort((a, b) => (JSON.stringify(a) < JSON.stringify(b) ? -1 : 1))
+      : [];
+  const hasAmbiguousLabels = new Set(unique.map(String)).size < unique.length;
+  const categories = unique.map((value) =>
+    hasAmbiguousLabels ? JSON.stringify(value) : String(value),
+  );
+  const categoryOf = new Map<Cell, number>(
+    unique.map((value, i) => [value, i]),
+  );
+  if (
+    h.mode === "multiclass" &&
+    (categories.length < 2 || categories.length > 12)
+  )
+    throw Error("多类别实验需要 2–12 个有效类别。");
   for (const [index, data] of table.rows.entries()) {
     const y = target === -1 ? 0 : data[target];
     if (y === null || y === undefined) {
@@ -132,7 +160,9 @@ function extract(table: Table, h: SplitOptions) {
     const label =
       h.mode === "classification"
         ? Number(String(y) === h.positive)
-        : Number(y);
+        : h.mode === "multiclass"
+          ? categoryOf.get(y)!
+          : Number(y);
     const values = features.map((i) => {
       const x = data[i];
       if (x === null) return x;
@@ -146,9 +176,15 @@ function extract(table: Table, h: SplitOptions) {
   }
   if (rows.length < 9 || rows.length > 600)
     throw Error("机器学习实验使用 9–600 条带有效标签的记录。");
-  return { rows, dropped };
+  return { rows, dropped, categories };
 }
 function groups(rows: Row[], h: SplitOptions) {
+  if (h.mode === "multiclass") {
+    const labels = [...new Set(rows.map((row) => row.label))].sort(
+      (a, b) => a - b,
+    );
+    return labels.map((label) => rows.filter((row) => row.label === label));
+  }
   if (h.mode !== "classification") return [rows];
   return [rows.filter((row) => !row.label), rows.filter((row) => row.label)];
 }
@@ -229,12 +265,30 @@ function overSample(samples: Sample[], seed: number) {
     ),
   ]);
 }
-function training(rows: Row[], universe: Row[], h: SplitOptions) {
+function training(
+  rows: Row[],
+  universe: Row[],
+  h: SplitOptions,
+  classes: number,
+) {
   const preparing = preprocess(h.leakDemo ? universe : rows, h);
   const data = rows.map((row) => ({
     x: preparing.transform(row.values),
     y: row.label,
   }));
+  if (h.model === "softmax" || (h.mode === "multiclass" && h.model === "knn")) {
+    const fitted = trainMulticlass(h.model, data, classes, h);
+    return {
+      preparing,
+      count: data.length,
+      pseudo: 0,
+      fitted: {
+        ...fitted,
+        predict: (x: Vector) => argmax(fitted.probabilities(x)),
+      },
+      probabilities: fitted.probabilities,
+    };
+  }
   let selected = data,
     pseudo = 0;
   if (h.mode === "classification" && h.selfTrain) {
@@ -267,7 +321,7 @@ function training(rows: Row[], universe: Row[], h: SplitOptions) {
     pseudo,
   };
 }
-function crossValidate(rows: Row[], h: SplitOptions) {
+function crossValidate(rows: Row[], h: SplitOptions, categories: string[]) {
   if (!h.folds) return [];
   const slices: Row[][] = Array.from({ length: h.folds }, () => []);
   const rand = random(h.seed + 41);
@@ -277,17 +331,24 @@ function crossValidate(rows: Row[], h: SplitOptions) {
   }
   return slices.map((sample, i) => {
     const remaining = slices.flatMap((group, j) => (i !== j ? group : []));
-    const { fitted, preparing } = training(remaining, rows, {
-      ...h,
-      leakDemo: false,
-    });
+    const { fitted, preparing } = training(
+      remaining,
+      rows,
+      {
+        ...h,
+        leakDemo: false,
+      },
+      categories.length,
+    );
     const labels = sample.map((row) => row.label),
       scores = sample.map((row) =>
         fitted.predict(preparing.transform(row.values)),
       );
     return h.mode === "classification"
       ? classification(labels, scores, h.threshold).accuracy
-      : regression(labels, scores).rmse;
+      : h.mode === "multiclass"
+        ? multiclassMetrics(labels, scores, categories).accuracy
+        : regression(labels, scores).rmse;
   });
 }
 function readMetrics(
@@ -295,8 +356,11 @@ function readMetrics(
   scores: number[],
   mode: Mode,
   threshold: number,
+  categories: string[],
 ) {
   const labels = rows.map((row) => row.label);
+  if (mode === "multiclass")
+    return multiclassMetrics(labels, scores, categories);
   return mode === "classification"
     ? {
         kind: "classification" as const,
@@ -306,6 +370,8 @@ function readMetrics(
 }
 export type Metrics = ReturnType<typeof readMetrics>;
 export type MLResult = {
+  fingerprint: string;
+  evaluation: Evaluation;
   elapsed: number;
   model: ModelKind;
   options: SplitOptions;
@@ -329,19 +395,30 @@ export type MLResult = {
   median: number[];
   variances?: number[];
   queryPrediction?: number;
+  classNames?: string[];
+  queryProbabilities?: number[];
   trainBCE?: number;
   gap?: number;
   pseudo?: number;
 };
-export function experiment(table: Table, h: SplitOptions): MLResult {
+export function experiment(
+  table: Table,
+  h: SplitOptions,
+  evaluation: Evaluation = h.leakDemo ? "development" : "final",
+): MLResult {
   validate(h);
+  if (evaluation === "final" && h.leakDemo)
+    throw Error("泄漏对照不能进入最终评估。");
   const time = performance.now(),
-    { rows, dropped } = extract(table, h);
+    { rows, dropped, categories } = extract(table, h);
+  const fingerprint = tableFingerprint(table);
   if (h.mode === "clustering") {
     const prep = preprocess(rows, h),
       vectors = rows.map((row) => prep.transform(row.values));
     const result = cluster(h.model, vectors, h);
     return {
+      fingerprint,
+      evaluation,
       elapsed: performance.now() - time,
       model: h.model,
       options: h,
@@ -366,11 +443,18 @@ export function experiment(table: Table, h: SplitOptions): MLResult {
     };
   }
   const { train, validation, test } = splitRows(rows, h),
-    { fitted, preparing: prep, count, pseudo } = training(train, rows, h);
+    {
+      fitted,
+      preparing: prep,
+      count,
+      pseudo,
+      probabilities,
+    } = training(train, rows, h, categories.length);
   const predict = (row: (number | null)[]) =>
     fitted.predict(prep.transform(row));
+  const final = evaluation === "final" && !h.leakDemo;
   const v = validation.map((row) => predict(row.values)),
-    t = test.map((row) => predict(row.values)),
+    t = final ? test.map((row) => predict(row.values)) : [],
     trainScores = train.map((row) => predict(row.values));
   const predictRows = (set: Row[], scores: number[], subset: string) =>
     set.map((row, i) => ({
@@ -379,13 +463,17 @@ export function experiment(table: Table, h: SplitOptions): MLResult {
       label: row.label,
       prediction: scores[i]!,
     }));
-  const points = test.map((row, i) => ({
+  const observed = final ? test : validation;
+  const observedScores = final ? t : v;
+  const points = observed.map((row, i) => ({
     x: row.values[0] ?? prep.median[0]!,
     y: h.features.length > 1 ? (row.values[1] ?? prep.median[1]!) : 0,
     label: row.label,
-    score: t[i]!,
+    score: observedScores[i]!,
   }));
   const output: MLResult = {
+    fingerprint,
+    evaluation,
     model: h.model,
     options: h,
     details: fitted.details,
@@ -399,45 +487,52 @@ export function experiment(table: Table, h: SplitOptions): MLResult {
     testSize: test.length,
     fittedSize: count,
     dropped: dropped.length,
-    cv: crossValidate(train, h),
-    validation: readMetrics(validation, v, h.mode, h.threshold),
-    test: readMetrics(test, t, h.mode, h.threshold),
+    cv: crossValidate(train, h, categories),
+    validation: readMetrics(validation, v, h.mode, h.threshold, categories),
+    test: final
+      ? readMetrics(test, t, h.mode, h.threshold, categories)
+      : undefined,
     partition: {
       train: train.map((row) => row.index),
       validation: validation.map((row) => row.index),
-      test: test.map((row) => row.index),
+      test: final ? test.map((row) => row.index) : [],
     },
     values: [
       ...predictRows(train, trainScores, "train"),
       ...predictRows(validation, v, "validation"),
-      ...predictRows(test, t, "test"),
+      ...(final ? predictRows(test, t, "test") : []),
     ],
     median: prep.median,
     variances: prep.variances,
     weights: fitted.weights,
+    classNames: categories.length ? categories : undefined,
   };
-  if (h.mode === "classification") {
-    const trainMetrics = classification(
-      train.map((row) => row.label),
-      trainScores,
-      h.threshold,
-    );
-    output.gap =
-      trainMetrics.accuracy -
-      classification(
-        validation.map((row) => row.label),
-        v,
+  if (h.mode === "classification" || h.mode === "multiclass") {
+    if (h.mode === "classification") {
+      const trainMetrics = classification(
+        train.map((row) => row.label),
+        trainScores,
         h.threshold,
-      ).accuracy;
-    if (h.model !== "svm")
-      output.trainBCE =
-        train.reduce(
-          (sum, row, i) => sum + logLoss(row.label, trainScores[i]!),
-          0,
-        ) / train.length;
+      );
+      output.gap =
+        trainMetrics.accuracy -
+        classification(
+          validation.map((row) => row.label),
+          v,
+          h.threshold,
+        ).accuracy;
+      if (h.model !== "svm")
+        output.trainBCE =
+          train.reduce(
+            (sum, row, i) => sum + logLoss(row.label, trainScores[i]!),
+            0,
+          ) / train.length;
+    }
     if (h.features.length >= 2) {
       const axis = (i: number) => {
-        const raw = rows.map((row) => row.values[i] ?? prep.median[i]!),
+        const raw = [...train, ...validation].map(
+            (row) => row.values[i] ?? prep.median[i]!,
+          ),
           low = Math.min(...raw),
           high = Math.max(...raw);
         return Array.from(
@@ -451,9 +546,12 @@ export function experiment(table: Table, h: SplitOptions): MLResult {
         x,
         y,
         labels: y.flatMap((y) =>
-          x.map((x) =>
-            Number(predict([x, y, ...prep.median.slice(2)]) >= h.threshold),
-          ),
+          x.map((x) => {
+            const score = predict([x, y, ...prep.median.slice(2)]);
+            return h.mode === "multiclass"
+              ? score
+              : Number(score >= h.threshold);
+          }),
         ),
       };
     }
@@ -465,6 +563,7 @@ export function experiment(table: Table, h: SplitOptions): MLResult {
     )
       throw Error("每个所选特征需要一个可用的输入数值。");
     output.queryPrediction = predict(h.query);
+    output.queryProbabilities = probabilities?.(prep.transform(h.query));
     if (!Number.isFinite(output.queryPrediction))
       throw Error("预测超出数值范围。");
   }

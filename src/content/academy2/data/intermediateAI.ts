@@ -794,7 +794,7 @@ export const intermediateAI = {
   ),
   "k-ab7dcafe7b99": d(
     "Stable softmax",
-    "temperature",
+    "softmax",
     "一组 logits 有的上千。直接取指数得 Infinity，归一化为何仍可精确计算？",
     "Softmax 把向量变成概率单纯形，给所有 logits 加共同常数不改变分布。交叉熵多分类取真实类别的负对数概率。",
     "先减最大项 m，然后计算 exp(z−m)。在 log-sum-exp 中用 m+logΣexp，避免溢出并保留正确对数。",

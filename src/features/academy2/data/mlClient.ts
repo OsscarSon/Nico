@@ -1,7 +1,15 @@
-import type { SplitOptions, MLResult } from "../../../grading/academy2/data/ml";
+import type {
+  Evaluation,
+  SplitOptions,
+  MLResult,
+} from "../../../grading/academy2/data/ml";
 import type { Table } from "../../../grading/academy2/data/table";
 
-export function runML(table: Table, options: SplitOptions): Promise<MLResult> {
+export function runML(
+  table: Table,
+  options: SplitOptions,
+  evaluation: Evaluation = "development",
+): Promise<MLResult> {
   return new Promise((resolve, reject) => {
     const worker = new Worker(
       new URL("../../../grading/academy2/data/ml.worker.ts", import.meta.url),
@@ -24,6 +32,6 @@ export function runML(table: Table, options: SplitOptions): Promise<MLResult> {
       finish();
       reject(Error("机器学习 Worker 无法加载。"));
     };
-    worker.postMessage({ table, options });
+    worker.postMessage({ table, options, evaluation });
   });
 }

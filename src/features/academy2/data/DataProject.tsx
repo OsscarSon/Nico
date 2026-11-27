@@ -91,7 +91,7 @@ export default function DataProject({ courseId }: { courseId: string }) {
           )
         : courseId === "foundation-ai"
           ? Boolean(
-              model?.test?.kind === "classification" &&
+              model?.validation?.kind === "classification" &&
               !model.options.leakDemo &&
               assistant?.passed === assistant?.table.length &&
               assistant?.passed,

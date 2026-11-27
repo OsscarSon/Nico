@@ -230,6 +230,12 @@ export default function DataTopicPage({ id }: { id: string }) {
         </div>
       </section>
       <Examples program={item.programming} />
+      {item.extension && (
+        <section className="a2-panel">
+          <h2>扩展编程 · {item.extension.question.functionName}</h2>
+          <Examples program={item.extension} />
+        </section>
+      )}
       <section
         id="reading-practice"
         className="a2-panel p1-exercises teaching-engine"
@@ -366,6 +372,21 @@ export default function DataTopicPage({ id }: { id: string }) {
               }
               last={
                 data.questionBank?.[id]?.[item.programming.question.id]
+                  ?.lastCorrect
+              }
+            />
+          </details>
+        )}
+        {item.extension && (
+          <details>
+            <summary>
+              扩展编程判题 · {item.extension.question.functionName}
+            </summary>
+            <QuestionCard
+              question={item.extension.question}
+              onAttempt={(response) => save(item.extension!.question, response)}
+              last={
+                data.questionBank?.[id]?.[item.extension.question.id]
                   ?.lastCorrect
               }
             />
