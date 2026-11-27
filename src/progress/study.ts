@@ -39,12 +39,20 @@ const report = z.object({
   markdown: z.string().max(30000),
   active: z.boolean(),
 });
+const workspace = z.object({
+  kind: z.enum(["data", "ml"]),
+  title,
+  at: time,
+  payload: z.string().max(500_000),
+  active: z.boolean(),
+});
 export const studySchema = z.object({
   version: z.literal(1),
   notes: z.record(safeKey, note),
   bookmarks: z.record(safeKey, bookmark),
   visits: z.record(safeKey, visit),
   reports: z.record(safeKey, report),
+  workspaces: z.record(safeKey, workspace).optional(),
 });
 export type Study = z.infer<typeof studySchema>;
 export type SavedReport = z.infer<typeof report>;
@@ -132,5 +140,6 @@ export function mergeStudy(mine: Study, other: Study): Study {
     bookmarks: mergeTimestamped(mine.bookmarks, other.bookmarks),
     visits: mergeTimestamped(mine.visits, other.visits),
     reports: mergeTimestamped(mine.reports, other.reports),
+    ...((mine.workspaces || other.workspaces) && {workspaces: mergeTimestamped(mine.workspaces ?? {}, other.workspaces ?? {})}),
   };
 }

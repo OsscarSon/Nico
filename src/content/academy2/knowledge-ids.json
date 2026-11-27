@@ -594,5 +594,13 @@
   ["k-9d219250bcaa", "advanced-applied", "interdisciplinary", "计算生物学"],
   ["k-5bd5247cfcd4", "advanced-applied", "interdisciplinary", "GIS"],
   ["k-ffb230146b84", "advanced-applied", "interdisciplinary", "金融数据建模"],
-  ["k-74f74b2295b6", "advanced-applied", "interdisciplinary", "量子计算入门"]
+  ["k-74f74b2295b6", "advanced-applied", "interdisciplinary", "量子计算入门"],
+  ["fd-outliers", "foundation-data-science", "cleaning", "异常值"],
+  ["fd-eda", "foundation-data-science", "stories", "探索性数据分析"],
+  ["fa-ethics", "foundation-ai", "prompts", "AI 伦理"],
+  ["ml-hierarchy", "intermediate-ai", "unsupervised", "层次聚类"],
+  ["ml-split", "intermediate-ai", "evaluation", "数据切分"],
+  ["ml-loss-gradient", "intermediate-ai", "evaluation", "损失函数与梯度下降"],
+  ["ml-bias-reg", "intermediate-ai", "evaluation", "正则化与偏差方差"],
+  ["ml-imbalance", "intermediate-ai", "evaluation", "类别不平衡"]
 ]

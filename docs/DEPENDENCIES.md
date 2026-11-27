@@ -46,3 +46,10 @@ Pyodide、CodeMirror、HyperFormula（GPLv3 / 商业双许可，公开发布前�
 | KaTeX 0.19.1 | 行内和独立 LaTeX、MathML 与数学字体。MIT，字体 SIL OFL 1.1。 | 由教学页按需加载，本地打包字体。关闭信任能力，限制命令展开，解析失败显示原文。与 MathJax 相比，本阶段只需已支持的 LaTeX 命令及轻量的同步排版。Markdown 则继续走现有 marked Lexer，结构化块直接声明公式，无需第二条 HTML 管线。 |
 
 开源候选、浏览器与实现边界见 [P1.5 技术选型](academy-2-p15/TECHNOLOGY.md)。发布构建包含 [MIT 许可](../public/third-party/KaTeX-MIT.txt) 和 [字体 OFL 许可](../public/third-party/KaTeX-fonts-OFL.txt)。
+
+## Academy 2.0 · P3 数据与机器学习
+
+| 依赖 | 用途与许可证 | 选择依据 |
+| --- | --- | --- |
+| sql.js（SQLite WebAssembly）、@types/sql.js（仅开发） | Data Studio 的本地 SQL、关系模型、事务与窗口函数。sql.js 为 MIT、SQLite 为公有领域，类型声明为 MIT。 | Worker 里执行实际 SQLite。Vite 只发布一个按需加载的 WebAssembly 变体，适配 GitHub Pages。替代是 DuckDB-Wasm，适合更大列式工作负载，本轮的教学数据规模以浏览器可交互为先。 |
+| Pyodide 官方可选包 NumPy、Pandas、Polars、Matplotlib、scikit-learn，加上固定 Seaborn 0.13.2 wheel | 专业库对照，NumPy、Pandas、scikit-learn、Seaborn 为 BSD-3-Clause，Polars 为 MIT，Matplotlib 使用基于 PSF 的 Matplotlib License。 | 保留原 Worker 和默认运行模式。只有学习者选择运行专业库示例时才下载，对版本固定的官方资源使用显式包名。Seaborn 是固定的纯 Python 官方 PyPI wheel，作为按需静态资产发布。 |

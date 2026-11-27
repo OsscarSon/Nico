@@ -1,5 +1,6 @@
 import { academyCourses, courseLink } from "../model";
 import { knowledgeRegistry } from "../knowledgeRegistry";
+import { dataLessons,findDataLesson } from "../data";
 import { algorithmLessons,findAlgorithmLesson } from "../algorithms";
 import { p1Lessons } from "../p1";
 import { allCatalogLessons, getLesson } from "../../index";
@@ -54,6 +55,7 @@ const p1Terminology = [
 ] as const;
 export const terminology = [
   ...p1Terminology,
+  ...dataLessons.map(lesson=>[lesson.title,lesson.material.english,lesson.material.concept,lesson.id] as const),
   ...algorithmLessons.map(lesson => [lesson.title, lesson.material.term, lesson.material.definition, lesson.id] as const),
 ];
 
@@ -137,7 +139,7 @@ export function studyCatalogue() {
   }));
   const formula: Formula[] = [];
   for (const topic of knowledgeRegistry) {
-    const algorithm=findAlgorithmLesson(topic.id);
+    const algorithm=findAlgorithmLesson(topic.id)??findDataLesson(topic.id);
     const taught = algorithm?.base ?? p1Lessons.find((lesson) => lesson.id === topic.id);
     if (!taught)
       search.push({

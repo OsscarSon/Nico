@@ -22,9 +22,11 @@ export default function TopicTutor({
   id,
   experiment,
   lesson,
+  initialOpen,
 }: {
   id: string;
   lesson?: { base:LegacyTopicLesson; lesson:TopicLesson };
+  initialOpen?: boolean;
   experiment?: { title: string; objective: string };
 }) {
   const [mode, setMode] = useState<TutorMode>("解释知识");
@@ -36,7 +38,7 @@ export default function TopicTutor({
     location = findKnowledge(id);
   if (!legacy || !location || !prefs.showAiLinks) return null;
   return (
-    <details className="a2-panel study-tutor">
+    <details className="a2-panel study-tutor" open={initialOpen}>
       <summary>课内 AI 导师</summary>
       {aiEnabled() ? (
         <form

@@ -1,8 +1,9 @@
 import { verificationCases } from "../../../grading/academy2/algorithms/programCases";
+import { additionalPrograms } from "./extraPython";
 import type { Question } from "../teaching/schema";
 
 type Case = [args: number[][], result: number];
-type Exercise = {
+export type AlgorithmProgramming = {
   title: string;
   prompt: string;
   implementation: string;
@@ -11,7 +12,8 @@ type Exercise = {
   cases: Case[];
   hint: string;
 };
-const exercises: Record<string, Exercise> = {
+const exercises: Record<string, AlgorithmProgramming> = {
+  ...additionalPrograms,
   invariant: {
     title: "阈值计数",
     prompt: "输入 data 和一元素列表 bound。返回大于等于 bound[0] 的元素个数。",
@@ -375,7 +377,7 @@ const exercises: Record<string, Exercise> = {
     hint: "必须读到输入结尾才判断。接受态之后还有定义好的转移。",
   },
 };
-const parameters = (entry: Exercise) => entry.implementation.split("\n", 1)[0]!;
+const parameters = (entry: AlgorithmProgramming) => entry.implementation.split("\n", 1)[0]!;
 export function algorithmCode(model: string, seed?: number) {
   const entry = exercises[model];
   if (!entry) return undefined;

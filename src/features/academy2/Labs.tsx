@@ -12,6 +12,10 @@ import { findP1Lesson } from "../../content/academy2/p1";
 import { algorithmTopic } from "../../content/academy2/algorithms/registry";
 import { knowledgeLink } from "../../content/academy2/knowledgeRegistry";
 
+import { dataTopic } from "../../content/academy2/data/registry";
+import LabTutor from "./data/LabTutor";
+const DataStudio=lazy(()=>import("./data/DataStudio"));
+const MLPlayground=lazy(()=>import("./data/MLPlayground"));
 const Arena=lazy(()=>import("./algorithms/Arena"));
 const ExperimentPanel=lazy(()=>import("./study/ExperimentPanel"));
 
@@ -130,10 +134,18 @@ export function AcademyLabPage({ id }: { id: string }) {
       <Suspense fallback={<p role="status">正在加载算法竞技场…</p>}><Arena key={params.get("model")} initial={params.get("model")??undefined} compare topic={from&&algorithmTopic(from)?from:undefined}/></Suspense>
       {!params.has("model")&&<AlgorithmWorkbench />}
     </>}
+    {id === "data" && <Suspense fallback={<p role="status">加载 Data Studio…</p>}>
+      <DataStudio key={experiment} scenario={experiment??undefined} topic={from&&dataTopic(from)?from:undefined}/>
+    </Suspense>}
+    {id === "ml" && <Suspense fallback={<p role="status">加载 ML Playground…</p>}>
+      <MLPlayground key={experiment} scenario={experiment??undefined} topic={from&&dataTopic(from)?from:undefined}/>
+    </Suspense>}
+    {(id==="data"||id==="ml")&&<LabTutor key={from??experiment} kind={id} scenario={experiment??undefined}
+      topic={from&&dataTopic(from)?from:undefined}/>}
     {id === "systems" && <Device title="位开关" label="模拟"><p>切换各位，看二进制与十进制之间的关系。</p><BitSwitches mode="free" /></Device>}
     {lab.links.length > 0 && <section className="a2-panel a2-lab-links"><h2>{lab.available ? "继续动手" : lab.primary}</h2><ul className="a2-link-list">
       {lab.links.map(([title, path]) => <li key={path}><Link to={path}>{title} ↗</Link></li>)}
     </ul></section>}
-    {id!=="math"&&id!=="statistics"&&id!=="algorithms"&&<section className="a2-panel a2-lab-links"><h2>后续建设</h2><p>{lab.planned}</p><Link to={courseLink(lab.course)}>查看相关课程入口 ↗</Link></section>}
+    {id!=="math"&&id!=="statistics"&&id!=="algorithms"&&id!=="data"&&id!=="ml"&&<section className="a2-panel a2-lab-links"><h2>后续建设</h2><p>{lab.planned}</p><Link to={courseLink(lab.course)}>查看相关课程入口 ↗</Link></section>}
   </div>;
 }
