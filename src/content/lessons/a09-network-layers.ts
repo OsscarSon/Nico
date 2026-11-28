@@ -139,6 +139,8 @@ export const a09: Lesson = lessonSchema.parse({
       next: "a10-ip-subnet",
     },
   ],
-  sources: [],
+  sources: [
+    { title: "RFC 1122 §1.1.3 · Internet Protocol Suite", url: "https://www.rfc-editor.org/rfc/rfc1122#section-1.1.3" },
+  ],
   quality: { state: "draft" },
 });

@@ -1,0 +1,24 @@
+{
+  "p2": {
+    "package-lock.json": "1c3d7afc5516984a16137abaa5ffb5a0f20db2ad4747230eeb0712b6ff93a1a8",
+    "src/content/lessons/a01-binary.ts": "d7b5e5081463040a5c211d07ba8abcc56caf44f797ee5673d1fd11ec2895f0e4",
+    "src/content/lessons/a02-hex-encoding.ts": "613396bff280a2bf178b7f2a117ffd1984ca8801f4f5ece6b22e5a15f473af1f",
+    "src/content/lessons/a03-logic-gates.ts": "03e8b5dc2ba347ce8e053a8c659b6936064472196dd61124b9d090e97f80ecd4",
+    "src/content/lessons/a04-adder.ts": "9e77bcd6c1fdde592fde7f851f3e2e57a2c6868cb6ca4d6d7cf12fe8d630593b",
+    "src/content/lessons/a05-cpu-cycle.ts": "1a395250c2f785c9c47130f5b9b82ae549b5bc537cff5c0cf76e4484545141c1",
+    "src/content/lessons/a09-network-layers.ts": "ed34af36eb9e38143dd6fd3bf84565e65ca1e695943c1b71b23fb734f81a5a93",
+    "src/content/lessons/a10-ip-subnet.ts": "79246c56c8ed96eef75658f2c6fb8fd2866b403d9bb31d3f41aef8c93aad4640",
+    "src/content/lessons/a13-dns.ts": "c94139c20a6b71a1c400c6c41821622df1571fdc36abeeda4809781f6f752b11"
+  },
+  "p3a": {
+    "package-lock.json": "1c3d7afc5516984a16137abaa5ffb5a0f20db2ad4747230eeb0712b6ff93a1a8",
+    "src/content/lessons/a01-binary.ts": "7f375a625768663d8c49d945af3dd7b681d1d11dfbc5333ceb1cb39b546d6b59",
+    "src/content/lessons/a02-hex-encoding.ts": "a8ff29bae781fd48a57d4b55780964eb4b43bdbd2002f0224910dd6c486b941b",
+    "src/content/lessons/a03-logic-gates.ts": "d26bdac3beee146f157739cac6ab40ea13ed8db7dd881833d2172d44a5e94225",
+    "src/content/lessons/a04-adder.ts": "057f915f12cf7de24ded0988d18588bfa718f9157a08e7c81e1cfc2dd399781e",
+    "src/content/lessons/a05-cpu-cycle.ts": "df85be9e368112aa1ceb0a74361d3f5f8d788f8e1d307ddadbac753ee38a2fc1",
+    "src/content/lessons/a09-network-layers.ts": "b533dd9a3f1ecdc3c4f0e836a7681ca72c633cf2204976a5e6f697dc6baa3296",
+    "src/content/lessons/a10-ip-subnet.ts": "7a57493be2f335bcaf12b88cbe2404a861e864134c0c59df100b8440aad30153",
+    "src/content/lessons/a13-dns.ts": "4e2cb82c783875f4bb37cdd5d3a69393b2c083a2b05dc3e45448972ede547749"
+  }
+}

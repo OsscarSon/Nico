@@ -118,6 +118,8 @@ export const a01: Lesson = lessonSchema.parse({
       next: "a02-hex-encoding",
     },
   ],
-  sources: [],
+  sources: [
+    { title: "MIT OCW · Computation Structures", url: "https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/" },
+  ],
   quality: { state: "draft" },
 });

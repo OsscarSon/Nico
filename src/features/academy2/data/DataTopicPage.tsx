@@ -1,3 +1,4 @@
+import { usePreferences } from "../../../preferences/store";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { Link } from "../../../app/router";
 import { EmptyState } from "../../../components/ui";
@@ -99,6 +100,7 @@ function Examples({
   );
 }
 export default function DataTopicPage({ id }: { id: string }) {
+  const { showAiLinks } = usePreferences();
   const item = findDataLesson(id);
   const { data, warning } = useKnowledgeProgress();
   const [focus, setFocus] = useState(false),
@@ -230,6 +232,12 @@ export default function DataTopicPage({ id }: { id: string }) {
         </div>
       </section>
       <Examples program={item.programming} />
+      {item.extension && (
+        <section className="a2-panel">
+          <h2>扩展编程 · {item.extension.question.functionName}</h2>
+          <Examples program={item.extension} />
+        </section>
+      )}
       <section
         id="reading-practice"
         className="a2-panel p1-exercises teaching-engine"
@@ -371,6 +379,21 @@ export default function DataTopicPage({ id }: { id: string }) {
             />
           </details>
         )}
+        {item.extension && (
+          <details>
+            <summary>
+              扩展编程判题 · {item.extension.question.functionName}
+            </summary>
+            <QuestionCard
+              question={item.extension.question}
+              onAttempt={(response) => save(item.extension!.question, response)}
+              last={
+                data.questionBank?.[id]?.[item.extension.question.id]
+                  ?.lastCorrect
+              }
+            />
+          </details>
+        )}
       </section>
       {dependenciesOf(id).length > 0 && (
         <section className="a2-panel">
@@ -378,26 +401,28 @@ export default function DataTopicPage({ id }: { id: string }) {
           <Prerequisites targets={dependenciesOf(id)} />
         </section>
       )}
-      <details
-        className="a2-panel"
-        onToggle={(e) => {
-          if (e.currentTarget.open) setShowTutor(true);
-        }}
-      >
-        <summary>AI 学习帮助</summary>
-        {showTutor && (
-          <Suspense fallback={<p>加载导师…</p>}>
-            <Tutor
-              id={id}
-              lesson={item}
-              experiment={{
-                title: lab === "data" ? "Data Studio" : "ML Playground",
-                objective: material.aim,
-              }}
-            />
-          </Suspense>
-        )}
-      </details>
+      {showAiLinks && (
+        <details
+          className="a2-panel"
+          onToggle={(e) => {
+            if (e.currentTarget.open) setShowTutor(true);
+          }}
+        >
+          <summary>AI 学习帮助</summary>
+          {showTutor && (
+            <Suspense fallback={<p>加载导师…</p>}>
+              <Tutor
+                id={id}
+                lesson={item}
+                experiment={{
+                  title: lab === "data" ? "Data Studio" : "ML Playground",
+                  objective: material.aim,
+                }}
+              />
+            </Suspense>
+          )}
+        </details>
+      )}
       <nav className="study-nav" aria-label="相邻课时">
         {previous && (
           <Link className="btn secondary" to={knowledgeLink(previous)}>

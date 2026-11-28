@@ -2,6 +2,7 @@ import type { TeachingBlock, TopicLesson } from "../teaching/schema";
 import { exercise, type Exercise, type LegacyTopicLesson } from "../p1/types";
 import { dataTopic } from "./registry";
 import { codeLesson } from "./python";
+import { additionalCodeByTopic } from "./p4Python";
 
 export const q = (
   prompt: string,
@@ -97,6 +98,7 @@ export function teach(id: string, m: Material) {
   const topic = dataTopic(id);
   if (!topic) throw Error("P3 知识点 ID 未注册 " + id);
   const programming = codeLesson(m.recipe ?? m.lab);
+  const extension = codeLesson(additionalCodeByTopic[id] ?? "");
   const blocks: TeachingBlock[] = [
     {
       type: "section",
@@ -164,7 +166,9 @@ export function teach(id: string, m: Material) {
   const lesson: TopicLesson = {
     id,
     blocks,
-    questions: programming ? [programming.question] : [],
+    questions: [programming, extension].flatMap((example) =>
+      example ? [example.question] : [],
+    ),
   };
-  return { ...topic, material: m, base, lesson, programming };
+  return { ...topic, material: m, base, lesson, programming, extension };
 }

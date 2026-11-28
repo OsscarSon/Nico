@@ -10,6 +10,7 @@ import { protectedBytes } from "./fixtures/protectedBytes";
 import protectedArt from "../docs/p2/PROTECTED_ART.json";
 import protectedImplementation from "../docs/p2/PROTECTED_IMPLEMENTATION.json";
 import installed from "../docs/p2/ASSET_INSTALLATION.json";
+import finalQaRevisions from "./fixtures/final-qa-legacy-revisions.json";
 const storage = (values: Record<string, string>) => ({ getItem: (key: string) => values[key] ?? null });
 const hash = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 describe("P2 versioned independent preferences", () => {
@@ -62,8 +63,13 @@ describe("P2 deterministic route consistency without new lesson semantics", () =
 });
 describe("P2 art and implementation protection", () => {
   it("preserves all 86 baseline art files byte for byte", () => { expect(Object.keys(protectedArt)).toHaveLength(86); for (const [file, digest] of Object.entries(protectedArt)) expect(hash(readFileSync(file)), file).toBe(digest); });
-  it("preserves all teaching, grading, simulator, AI and progress implementations, permitting art metadata and the audited teaching dependency", () => {
-    for (const [file, entry] of Object.entries(protectedImplementation.files)) { let b = protectedBytes(file); if (entry.mode === "lesson-art") b = b.toString().replace(/\bart(?:Pending)?\s*:\s*(?:"[^"]+"|true|false)\s*,?/g, "ART_METADATA,"); expect(hash(b), file).toBe(entry.sha256); }
+  it("checks all protected implementations against the baseline or the pinned Final QA lesson revisions", () => {
+    const revised: Record<string, string> = finalQaRevisions.p2;
+    for (const [file, entry] of Object.entries(protectedImplementation.files)) {
+      let bytes = protectedBytes(file);
+      if (entry.mode === "lesson-art") bytes = bytes.toString().replace(/\bart(?:Pending)?\s*:\s*(?:"[^"]+"|true|false)\s*,?/g, "ART_METADATA,");
+      expect(hash(bytes), file).toBe(revised[file] ?? entry.sha256);
+    }
   });
   it("installs exact independent PNG/SVG resources, 16:9 course canvases and never the contact sheet", () => {
     expect(installed.files).toHaveLength(28);

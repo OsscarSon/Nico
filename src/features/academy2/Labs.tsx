@@ -1,7 +1,6 @@
 import { lazy, Suspense, useEffect, useRef, useState, type FormEvent } from "react";
 import { Link, usePath } from "../../app/router";
 import { Device, EmptyState } from "../../components/ui";
-import { courseLink } from "../../content/academy2/model";
 import { laboratories } from "../../content/academy2/resources";
 import { initialSortInput, insertionFrames, parseSortInput, sampleBernoulliDistribution, samplePolynomial } from "../../grading/academy2/labs";
 import { BitSwitches } from "../../sims/BitSwitches";
@@ -14,6 +13,9 @@ import { knowledgeLink } from "../../content/academy2/knowledgeRegistry";
 
 import { dataTopic } from "../../content/academy2/data/registry";
 import LabTutor from "./data/LabTutor";
+const Crypto=lazy(()=>import("./advanced/Crypto"));
+const Research=lazy(()=>import("./advanced/Research"));
+const AdvancedLab=lazy(()=>import("./advanced/Lab"));
 const DataStudio=lazy(()=>import("./data/DataStudio"));
 const MLPlayground=lazy(()=>import("./data/MLPlayground"));
 const Arena=lazy(()=>import("./algorithms/Arena"));
@@ -111,6 +113,7 @@ function AlgorithmWorkbench() {
 export function AcademyLabPage({ id }: { id: string }) {
   const params=new URLSearchParams(usePath().split("?")[1]);
   const bench=params.get("bench");
+  const advanced=params.get("advanced");
   const from=params.get("from");
   const experiment=params.get("experiment");
   const subject=id==="math" ? "-mathematics/" : id==="statistics" ? "-statistics/" : null;
@@ -125,27 +128,30 @@ export function AcademyLabPage({ id }: { id: string }) {
       {from&&findP1Lesson(from)&&<Link to={knowledgeLink(from)}>← 返回知识点学习</Link>}
       <Workbench key={selected[0]} bench={selected[1]} />
     </>}
-    {(id==="math"||id==="statistics")&&<Suspense fallback={<p role="status">正在加载实验…</p>}><ExperimentPanel domain={id} value={experiment} from={from}/></Suspense>}
-    {!experiment&&!selected&&id === "math" && <MathWorkbench />}
-    {!experiment&&!selected&&id === "statistics" && <StatisticsWorkbench />}
+    {!advanced&&(id==="math"||id==="statistics")&&<Suspense fallback={<p role="status">正在加载实验…</p>}><ExperimentPanel domain={id} value={experiment} from={from}/></Suspense>}
+    {!advanced&&!experiment&&!selected&&id === "math" && <MathWorkbench />}
+    {!advanced&&!experiment&&!selected&&id === "statistics" && <StatisticsWorkbench />}
     {labs.length>0&&<section className="a2-panel"><h2>课程配套实验</h2><ul className="a2-link-list">{labs.map(([key,work])=><li key={key}><Link to={benchLink(key)}>{work.title} ↗</Link></li>)}</ul></section>}
-    {id === "algorithms" && <>
+    {!advanced&&id === "algorithms" && <>
       {from&&algorithmTopic(from)&&<Link to={knowledgeLink(from)}>← 返回知识点学习</Link>}
       <Suspense fallback={<p role="status">正在加载算法竞技场…</p>}><Arena key={params.get("model")} initial={params.get("model")??undefined} compare topic={from&&algorithmTopic(from)?from:undefined}/></Suspense>
       {!params.has("model")&&<AlgorithmWorkbench />}
     </>}
-    {id === "data" && <Suspense fallback={<p role="status">加载 Data Studio…</p>}>
+    {!advanced&&id === "data" && <Suspense fallback={<p role="status">加载 Data Studio…</p>}>
       <DataStudio key={experiment} scenario={experiment??undefined} topic={from&&dataTopic(from)?from:undefined}/>
     </Suspense>}
-    {id === "ml" && <Suspense fallback={<p role="status">加载 ML Playground…</p>}>
+    {!advanced&&id === "ml" && <Suspense fallback={<p role="status">加载 ML Playground…</p>}>
       <MLPlayground key={experiment} scenario={experiment??undefined} topic={from&&dataTopic(from)?from:undefined}/>
     </Suspense>}
-    {(id==="data"||id==="ml")&&<LabTutor key={from??experiment} kind={id} scenario={experiment??undefined}
+    {!advanced&&(id==="data"||id==="ml")&&<LabTutor key={from??experiment} kind={id} scenario={experiment??undefined}
       topic={from&&dataTopic(from)?from:undefined}/>}
-    {id === "systems" && <Device title="位开关" label="模拟"><p>切换各位，看二进制与十进制之间的关系。</p><BitSwitches mode="free" /></Device>}
+    {!advanced&&id === "systems" && <Device title="位开关" label="模拟"><p>切换各位，看二进制与十进制之间的关系。</p><BitSwitches mode="free" /></Device>}
+    {id==="research"&&(params.has("crypto")||!advanced)&&<Suspense fallback={<p role="status">加载密码学实验…</p>}><Crypto/></Suspense>}
+    {id==="research"&&!advanced&&!params.has("crypto")&&<Suspense fallback={<p role="status">加载研究工作台…</p>}><Research/></Suspense>}
+    <Suspense fallback={<p role="status">加载进阶实验…</p>}><AdvancedLab area={lab.id} active={advanced??undefined} from={advanced || params.has("crypto") ?from??undefined:undefined}/></Suspense>
     {lab.links.length > 0 && <section className="a2-panel a2-lab-links"><h2>{lab.available ? "继续动手" : lab.primary}</h2><ul className="a2-link-list">
       {lab.links.map(([title, path]) => <li key={path}><Link to={path}>{title} ↗</Link></li>)}
     </ul></section>}
-    {id!=="math"&&id!=="statistics"&&id!=="algorithms"&&id!=="data"&&id!=="ml"&&<section className="a2-panel a2-lab-links"><h2>后续建设</h2><p>{lab.planned}</p><Link to={courseLink(lab.course)}>查看相关课程入口 ↗</Link></section>}
+
   </div>;
 }

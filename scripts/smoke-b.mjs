@@ -5,9 +5,10 @@
 //   PowerShell：$env:BASE_URL = "http://localhost:4173"; npm run smoke:b
 //   macOS/Linux：BASE_URL=http://localhost:4173 npm run smoke:b
 // 默认使用真实的 Pyodide（从 jsDelivr 下载，需要联网，首次约几十秒）。
-// 离线 / 无法联网的环境：设置 PYODIDE_STUB=某个 JS 文件路径，它会代替 jsDelivr 上的 pyodide.mjs。
+// 也可以让 PYODIDE_ASSET_DIR 指向同版本的本地 Pyodide 发行件。
 const { chromium } = await import(process.env.PW_PATH ?? "playwright");
 import { readFileSync } from "node:fs";
+import { pythonAssetsRoute, serveCachedPython } from "./smoke-python-assets.mjs";
 const BASE = process.env.BASE_URL ?? "http://localhost:4173";
 const STUB = process.env.PYODIDE_STUB;
 const CDN = "https://cdn.jsdelivr.net/pyodide/**";
@@ -35,6 +36,8 @@ const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
 if (STUB) {
   const body = readFileSync(STUB, "utf8");
   await ctx.route(CDN, (r) => r.fulfill({ status: 200, contentType: "application/javascript", body }));
+} else {
+  await serveCachedPython(ctx);
 }
 const page = await ctx.newPage();
 const errors = [];
@@ -449,6 +452,7 @@ await soon("参考答案显示出来，并且可以继续", async () => (await p
 // ---- 没网：诚实的提示，而且之后可以重试 ----
 await page.unroute?.(CDN).catch(() => {});
 await ctx.unroute(CDN).catch(() => {});
+await ctx.unroute(pythonAssetsRoute);
 await ctx.route(CDN, (r) => r.abort());
 await page.evaluate(() => localStorage.clear());
 await page.goto("about:blank");

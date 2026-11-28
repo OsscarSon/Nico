@@ -23,6 +23,8 @@ export function verifyMonthly(raw: Table, result: Table) {
 export function compareOnHoldout(a: MLResult, b: MLResult) {
   return Boolean(
     a.model !== b.model &&
+    a.fingerprint === b.fingerprint &&
+    a.evaluation === b.evaluation &&
     a.partition &&
     b.partition &&
     !a.options.leakDemo &&
@@ -33,6 +35,7 @@ export function compareOnHoldout(a: MLResult, b: MLResult) {
     a.options.positive === b.options.positive &&
     a.options.standard === b.options.standard &&
     a.options.pca === b.options.pca &&
+    a.options.threshold === b.options.threshold &&
     a.options.balance === b.options.balance &&
     a.options.selfTrain === b.options.selfTrain &&
     a.options.features.join("\0") === b.options.features.join("\0"),

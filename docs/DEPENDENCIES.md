@@ -53,3 +53,10 @@ Pyodide、CodeMirror、HyperFormula（GPLv3 / 商业双许可，公开发布前�
 | --- | --- | --- |
 | sql.js（SQLite WebAssembly）、@types/sql.js（仅开发） | Data Studio 的本地 SQL、关系模型、事务与窗口函数。sql.js 为 MIT、SQLite 为公有领域，类型声明为 MIT。 | Worker 里执行实际 SQLite。Vite 只发布一个按需加载的 WebAssembly 变体，适配 GitHub Pages。替代是 DuckDB-Wasm，适合更大列式工作负载，本轮的教学数据规模以浏览器可交互为先。 |
 | Pyodide 官方可选包 NumPy、Pandas、Polars、Matplotlib、scikit-learn，加上固定 Seaborn 0.13.2 wheel | 专业库对照，NumPy、Pandas、scikit-learn、Seaborn 为 BSD-3-Clause，Polars 为 MIT，Matplotlib 使用基于 PSF 的 Matplotlib License。 | 保留原 Worker 和默认运行模式。只有学习者选择运行专业库示例时才下载，对版本固定的官方资源使用显式包名。Seaborn 是固定的纯 Python 官方 PyPI wheel，作为按需静态资产发布。 |
+
+## Academy 2.0 · Final QA
+
+Vitest（MIT，仅开发）从 3.2.7 升到 4.1.12，使新版 mocker 修复公告中的问题，并从测试依赖树移除 Tinypool。沿用 Vitest 保留既有断言和 CI 入口。该版本支持 CI 的 Node 22、现有 Vite 7 和本机 Node 24。浏览器生产依赖及版本固定的运行时资源不受影响。数值参考脚本使用单独环境的 NumPy 与 SciPy，均为 BSD-3-Clause。
+
+- [Vitest mocker 公告](https://github.com/advisories/GHSA-82fw-gwwq-j7x9) · [手动 mock 注册公告](https://github.com/advisories/GHSA-qxg6-89mg-rqv8)
+- [Tinypool 公告 1](https://github.com/advisories/GHSA-5gmw-xhrv-c9v3) · [Tinypool 公告 2](https://github.com/advisories/GHSA-85c8-ppgw-ccpr)

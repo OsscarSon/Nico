@@ -292,6 +292,7 @@ describe("restore and teaching lookup", () => {
     expect(() => applyBackup(storage, backup)).toThrow(/恢复此前/);
     expect(store.get("nico-progress")).toBe("previous");
     expect(store.has("nico-knowledge-progress")).toBe(false);
+    expect([...store.keys()].some(key => key.startsWith("nico-recovery-"))).toBe(false);
   });
   it("finds full-term content and keeps private grading data out of AI context", () => {
     const { search, formula } = studyCatalogue();

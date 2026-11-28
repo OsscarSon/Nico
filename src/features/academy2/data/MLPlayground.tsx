@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { z } from "zod";
 import {
   irisTable,
@@ -23,6 +23,7 @@ import {
   type Table,
 } from "../../../grading/academy2/data/table";
 import type { ModelKind } from "../../../grading/academy2/data/ml-models";
+import { compareOnHoldout } from "../../../grading/academy2/data/projects";
 import { runML } from "./mlClient";
 import { XYChart } from "./Plots";
 import Reasoning from "./Reasoning";
@@ -39,7 +40,7 @@ const numerical = (table: Table) =>
   );
 const settingsSchema = z.object({
   model: z.string(),
-  mode: z.enum(["classification", "regression", "clustering"]),
+  mode: z.enum(["classification", "multiclass", "regression", "clustering"]),
   features: z.array(z.string()).max(8),
   target: z.string(),
   positive: z.string(),
@@ -72,6 +73,7 @@ const scenarioModel: Record<string, ModelKind> = {
   linear: "linear",
   ridge: "ridge",
   logistic: "logistic",
+  softmax: "softmax",
   knn: "knn",
   bayes: "bayes",
   tree: "tree",
@@ -83,9 +85,15 @@ const scenarioModel: Record<string, ModelKind> = {
   dbscan: "dbscan",
   neural: "neural",
 };
-const relevantModes: Mode[] = ["classification", "regression", "clustering"];
+const relevantModes: Mode[] = [
+  "classification",
+  "multiclass",
+  "regression",
+  "clustering",
+];
 const modeLabels: Record<Mode, string> = {
   classification: "二元分类",
+  multiclass: "多类别分类",
   regression: "连续回归",
   clustering: "无监督聚类",
 };
@@ -95,15 +103,19 @@ const pick = (mode: Mode, options: SplitOptions) => ({
   ...options,
   mode,
   model: models(mode)[0]!,
+  balance: mode === "classification" && options.balance,
+  selfTrain: mode === "classification" && options.selfTrain,
 });
 function settings(scenario: string) {
   const model = scenarioModel[scenario] ?? "logistic";
   const mode: Mode =
-    model === "linear" || model === "ridge"
-      ? "regression"
-      : models("clustering").includes(model)
-        ? "clustering"
-        : "classification";
+    model === "softmax"
+      ? "multiclass"
+      : model === "linear" || model === "ridge"
+        ? "regression"
+        : models("clustering").includes(model)
+          ? "clustering"
+          : "classification";
   return {
     ...initialOptions,
     model,
@@ -122,8 +134,16 @@ export type MLEvidence = {
   source: DatasetKind;
   result?: MLResult;
   comparison?: MLResult;
+  final?: MLResult;
 };
 function metricRows(m: Metrics) {
+  if (m.kind === "multiclass")
+    return [
+      ["Accuracy", m.accuracy],
+      ["Macro F1", m.macroF1],
+      ["Micro F1", m.microF1],
+      ["Weighted F1", m.weightedF1],
+    ] as const;
   return m.kind === "classification"
     ? ([
         ["Accuracy", m.accuracy],
@@ -158,6 +178,10 @@ function summarize(result: MLResult) {
   const { options: h } = result;
   return [
     "# " + modelNames[result.model] + " · 训练报告",
+    "数据内容指纹 " + result.fingerprint,
+    result.evaluation === "final"
+      ? "Final Evaluation · 最终评估"
+      : "Development · 验证集调参",
     "任务=" +
       modeLabels[h.mode] +
       "，数据划分种子=" +
@@ -169,8 +193,7 @@ function summarize(result: MLResult) {
       h.features.join(", ") +
       "；目标字段 " +
       (h.mode !== "clustering" ? h.target : "无") +
-      "；正类 " +
-      h.positive +
+      (h.mode === "classification" ? "；正类 " + h.positive : "") +
       "。",
     "训练 " +
       result.trainSize +
@@ -197,7 +220,7 @@ function summarize(result: MLResult) {
       : []),
     ...(result.test
       ? [
-          "## 测试",
+          "## 最终测试",
           ...metricRows(result.test).map(
             ([name, value]) => "- " + name + " " + format(value),
           ),
@@ -227,9 +250,14 @@ export default function MLPlayground({
   const [options, setOptions] = useState<SplitOptions>(() =>
       settings(scenario),
     ),
-    [other, setOther] = useState<ModelKind>("tree");
+    [other, setOther] = useState<ModelKind>(
+      scenario === "softmax" ? "knn" : "tree",
+    );
   const [result, setResult] = useState<MLResult>(),
     [comparison, setComparison] = useState<MLResult>();
+  const [finalResult, setFinalResult] = useState<MLResult>();
+  const finalized = useRef(new Set<string>());
+  const configurationVersion = useRef(0);
   const [query, setQuery] = useState(""),
     [error, setError] = useState(""),
     [notice, setNotice] = useState(""),
@@ -260,9 +288,11 @@ export default function MLPlayground({
     "minimax",
   ].includes(scenario);
   function clear(nextSource = source) {
+    configurationVersion.current++;
     setError("");
     setNotice("");
     setResult(undefined);
+    setFinalResult(undefined);
     setComparison(undefined);
     setLeak(undefined);
     setContrast(undefined);
@@ -305,7 +335,11 @@ export default function MLPlayground({
     clear();
     setOptions((current) => ({ ...current, [key]: value }));
   }
-  async function train(type: "fit" | "compare" | "leak" | "contrast") {
+  async function train(
+    type: "fit" | "compare" | "leak" | "contrast" | "final",
+  ) {
+    const version = configurationVersion.current;
+    const current = () => version === configurationVersion.current;
     setError("");
     setNotice("");
     setBusy(true);
@@ -327,11 +361,28 @@ export default function MLPlayground({
           query: undefined,
           leakDemo: false,
         });
+        if (!current()) return;
+        if (!compareOnHoldout(result, next))
+          throw Error("数据或评估配置改变，无法比较。");
         setComparison(next);
-        onEvidence?.({ source, result, comparison: next });
+        onEvidence?.({ source, result, comparison: next, final: finalResult });
+      } else if (type === "final") {
+        if (!result || finalized.current.has(result.fingerprint))
+          throw Error(
+            "此数据的本次实验已解锁留出测试。后续调参只能使用验证集。",
+          );
+        const next = await runML(data, result.options, "final");
+        if (!current()) return;
+        if (next.fingerprint !== result.fingerprint || !next.test)
+          throw Error("数据改变或无法核验最终评估。");
+        finalized.current.add(next.fingerprint);
+        setFinalResult(next);
+        setShowTest(true);
+        onEvidence?.({ source, result, comparison, final: next });
       } else if (type === "leak") {
         if (!result) throw Error("先完成按训练集拟合的模型。");
-        setLeak(await runML(data, { ...inputs, leakDemo: true }));
+        const next = await runML(data, { ...inputs, leakDemo: true });
+        if (current()) setLeak(next);
       } else if (type === "contrast") {
         if (!result) throw Error("先取得基准训练结果。");
         const h = result.options;
@@ -358,20 +409,24 @@ export default function MLPlayground({
           };
           title = "L2 系数 " + lambda;
         }
-        setContrast({ title, value: await runML(data, next) });
+        const value = await runML(data, next);
+        if (current()) setContrast({ title, value });
       } else {
         setComparison(undefined);
         setLeak(undefined);
         setContrast(undefined);
         setResult(undefined);
+        setFinalResult(undefined);
         setShowTest(false);
         onEvidence?.({ source });
         const next = await runML(data, inputs);
+        if (!current()) return;
         setResult(next);
         onEvidence?.({ source, result: next });
       }
     } catch (e) {
-      setError(e instanceof Error ? e.message : "无法完成训练。");
+      if (current())
+        setError(e instanceof Error ? e.message : "无法完成训练。");
     } finally {
       setBusy(false);
     }
@@ -572,7 +627,9 @@ export default function MLPlayground({
                         ? "ridge"
                         : mode === "classification"
                           ? "tree"
-                          : "hierarchy",
+                          : mode === "multiclass"
+                            ? "knn"
+                            : "hierarchy",
                     );
                   }}
                 >
@@ -777,7 +834,16 @@ export default function MLPlayground({
               )}
               {result.queryPrediction !== undefined && (
                 <p role="status">
-                  自定义输入预测 {format(result.queryPrediction)}
+                  自定义输入预测{" "}
+                  {result.classNames?.[result.queryPrediction] ??
+                    format(result.queryPrediction)}
+                </p>
+              )}
+              {result.queryProbabilities && (
+                <p>
+                  {result.queryProbabilities
+                    .map((p, i) => result.classNames?.[i] + " " + format(p))
+                    .join(" · ")}
                 </p>
               )}
               {result.validation && (
@@ -832,20 +898,34 @@ export default function MLPlayground({
                   yLabel={result.features[1]}
                 />
               )}
-              {result.test && (
-                <button
-                  type="button"
-                  className="btn secondary"
-                  disabled={busy}
-                  onClick={() => setShowTest((value) => !value)}
-                >
-                  {showTest ? "收起测试集结果" : "显示留出测试集"}
-                </button>
+              {result.options.mode !== "clustering" && (
+                <section aria-label="Final Evaluation · 最终评估">
+                  <h3>Final Evaluation · 最终评估</h3>
+                  <p>
+                    先用验证集选模型和参数。确认本轮方案后，再运行留出评估。同一工作台会话内，每份数据只解锁一次。测试集已经查看时，继续调参属于探索。
+                  </p>
+                  <button
+                    type="button"
+                    className="btn secondary"
+                    disabled={
+                      busy ||
+                      (!finalResult &&
+                        finalized.current.has(result.fingerprint))
+                    }
+                    onClick={() =>
+                      finalResult
+                        ? setShowTest((value) => !value)
+                        : void train("final")
+                    }
+                  >
+                    {showTest ? "收起测试集结果" : "显示留出测试集"}
+                  </button>
+                </section>
               )}
-              {showTest && result.test && (
+              {showTest && finalResult?.test && (
                 <>
-                  <Measure title="测试集指标" result={result.test} />
-                  {result.test.kind === "classification" && (
+                  <Measure title="测试集指标" result={finalResult.test} />
+                  {finalResult.test.kind === "classification" && (
                     <>
                       <table className="p3-confusion" aria-label="混淆矩阵">
                         <caption>混淆矩阵（行是真实标签）</caption>
@@ -859,33 +939,36 @@ export default function MLPlayground({
                         <tbody>
                           <tr>
                             <th scope="row">负</th>
-                            <td>{result.test.tn}</td>
-                            <td>{result.test.fp}</td>
+                            <td>{finalResult.test.tn}</td>
+                            <td>{finalResult.test.fp}</td>
                           </tr>
                           <tr>
                             <th scope="row">正</th>
-                            <td>{result.test.fn}</td>
-                            <td>{result.test.tp}</td>
+                            <td>{finalResult.test.fn}</td>
+                            <td>{finalResult.test.tp}</td>
                           </tr>
                         </tbody>
                       </table>
-                      {!!result.test.roc.length && (
+                      {!!finalResult.test.roc.length && (
                         <XYChart
                           title="ROC 曲线"
-                          points={result.test.roc.map(([x, y]) => ({ x, y }))}
+                          points={finalResult.test.roc.map(([x, y]) => ({
+                            x,
+                            y,
+                          }))}
                           xLabel="FPR"
                           yLabel="TPR"
                           line
                         />
                       )}
-                      {!!result.boundary && (
+                      {!!finalResult.boundary && (
                         <XYChart
                           title="模型决策边界与测试观测"
-                          points={result.points.map((row) => ({
+                          points={finalResult.points.map((row) => ({
                             ...row,
                             group: row.label,
                           }))}
-                          boundary={result.boundary}
+                          boundary={finalResult.boundary}
                           xLabel={result.features[0]}
                           yLabel={result.features[1]}
                           caption="背景按预测阈值着色；点的颜色为实际标签（蓝负、橙正）。其余特征固定于拟合中位数。"
@@ -893,12 +976,46 @@ export default function MLPlayground({
                       )}
                     </>
                   )}
-                  {result.test.kind === "regression" && (
+                  {finalResult.test.kind === "multiclass" && (
+                    <div
+                      className="p3-table-scroll"
+                      tabIndex={0}
+                      role="region"
+                      aria-label="多类别混淆矩阵，可横向滚动"
+                    >
+                      <table aria-label="多类别混淆矩阵">
+                        <caption>
+                          混淆矩阵。行是真实类别，列是预测类别。
+                        </caption>
+                        <thead>
+                          <tr>
+                            <th scope="col">实际 / 预测</th>
+                            {finalResult.test.perClass.map(({ label }) => (
+                              <th scope="col" key={label}>
+                                {label}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {finalResult.test.matrix.map((row, i) => (
+                            <tr key={i}>
+                              <th scope="row">{finalResult.classNames?.[i]}</th>
+                              {row.map((count, j) => (
+                                <td key={j}>{count}</td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                  {finalResult.test.kind === "regression" && (
                     <XYChart
                       title="实际值与模型预测"
                       xLabel="实际"
                       yLabel="预测"
-                      points={(result.values ?? [])
+                      points={(finalResult.values ?? [])
                         .filter((row) => row.subset === "test")
                         .map((row) => ({ x: row.label, y: row.prediction }))}
                     />
@@ -1033,7 +1150,8 @@ export default function MLPlayground({
             onClick={() => {
               const text =
                 summarize(result) +
-                (comparison ? "\n\n" + summarize(comparison) : "");
+                (comparison ? "\n\n" + summarize(comparison) : "") +
+                (finalResult ? "\n\n" + summarize(finalResult) : "");
               setNotice(
                 saveReport(
                   "experiment",
@@ -1057,7 +1175,7 @@ export default function MLPlayground({
                   "nico-predictions.csv",
                   tableCSV({
                     columns: ["subset", "row", "label", "prediction"],
-                    rows: result.values!.map((row) => [
+                    rows: (finalResult?.values ?? result.values!).map((row) => [
                       row.subset,
                       row.row,
                       row.label,

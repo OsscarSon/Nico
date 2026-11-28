@@ -19,8 +19,12 @@ import { benchLink, projectKey } from "../../content/academy2/p1/navigation";
 import { knowledgeStatus, practicePassed, progressSummary, statusLabel, type KnowledgeStatus } from "../../grading/academy2/p1/progress";
 import { setSelfCheck, useKnowledgeProgress } from "../../progress/knowledge";
 
-const hasKnowledgeLessons = (id:string) => isP1Course(id) || isAlgorithmCourse(id) || isDataCourse(id);
-const availableKnowledge = (id:string) => algorithmTopic(id) ?? dataTopic(id) ?? findP1Lesson(id);
+import { p4Course,p4Topic,p4TopicsIn } from "../../content/academy2/advanced/registry";
+import { legacyProject,p4LegacyLesson } from "../../content/academy2/advanced/legacy";
+import { projectLabs } from "../../content/academy2/advanced/projects";
+
+const hasKnowledgeLessons = (id:string) => isP1Course(id) || isAlgorithmCourse(id) || isDataCourse(id) || p4TopicsIn(id).length>0;
+const availableKnowledge = (id:string) => algorithmTopic(id) ?? dataTopic(id) ?? findP1Lesson(id) ?? p4Topic(id);
 
 export function PageHeading({ title, intro, english }: { title: string; intro: string; english: string }) {
   return <header className="a2-heading">
@@ -36,7 +40,7 @@ export function DomainMark({ domain }: { domain: ReturnType<typeof getDomain> })
 
 export function CourseCard({ course, focusModule }: { course: AcademyCourse; focusModule?: string }) {
   const domain = getDomain(course.domain);
-  const count = isP1Course(course.id) ? p1Courses[course.id].length : isAlgorithmCourse(course.id) ? algorithmIds(course.id).length : isDataCourse(course.id) ? dataIds(course.id).length : liveLessons(course).length;
+  const count = isP1Course(course.id) ? p1Courses[course.id].length : isAlgorithmCourse(course.id) ? algorithmIds(course.id).length : isDataCourse(course.id) ? dataIds(course.id).length : p4TopicsIn(course.id).length || liveLessons(course).length;
   return <Link className={"a2-course-card " + domain.accent} to={courseLink(course.id, focusModule)} data-course={course.id}>
     <div className="a2-course-top"><DomainMark domain={domain} /><span className="a2-arrow" aria-hidden="true">↗</span></div>
     <div className="a2-course-name"><span>{domain.title} · {domain.english}</span><h3>{course.title}</h3></div>
@@ -107,9 +111,12 @@ export function Prerequisites({ targets, label = "建议先修" }: { targets: De
       const items=targets.filter(item=>item.kind===kind);
       return items.length>0&&<div key={kind} className="p1-relation" data-kind={kind}><h4>{name}</h4><ul>{items.map(target=>{
         const key=selfKey(target), title=labelTarget(target);
+        const href = target.id && (availableKnowledge(target.id) || p4LegacyLesson(target.id))
+          ? knowledgeLink(target.id)
+          : courseLink(target.course, target.module, target.topic);
         return <li key={key}>
           {kind!=="related"&&<input aria-label={"我已掌握："+title} type="checkbox" checked={data.selfChecks[key]===true} onChange={event=>setSelfCheck(key,event.target.checked)}/>}
-          <div><Link to={target.id&&(algorithmTopic(target.id)||dataTopic(target.id))?knowledgeLink(target.id):courseLink(target.course,target.module,target.topic)}>{title} ↗</Link><small>{target.reason}</small></div>
+          <div><Link to={href}>{title} ↗</Link><small>{target.reason}</small></div>
         </li>;
       })}</ul></div>;
     })}
@@ -167,7 +174,7 @@ function ModuleOutline({ course, module, index, targetModule, targetTopic }: { c
     <summary><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{module.title}</h3><small>{module.chapters.length} 个章节 · {summary.total ? summary.finished + "/" + summary.total + " 个知识点完成" : legacyIds.length ? legacyDone+"/"+legacyIds.length+" 节已完成" : "课时规划中"}</small>{summary.total>0 ? <LearningStatus status={summary.status} /> : legacyIds.length>0&&<LearningStatus status={legacyStatus} />}</div><span aria-hidden="true" className="a2-plus">＋</span></summary>
     <div className="a2-module-body">
       {shown.length > 0 && <div><h4>迁入课时</h4><EntryList items={shown} /></div>}
-      {(preferences.showPlanned||summary.total>0) && <div><h4>章节与知识点</h4>
+      {(preferences.showPlanned||summary.total>0||module.chapters.flat().some(title=>p4LegacyLesson(knowledgeAt(course.id,module.id,title)?.id??""))) && <div><h4>章节与知识点</h4>
         {module.chapters.map((topics, chapter) => {
           const chapterStatus=progressSummary(data,topicsFor(topics),now);
           return <section className="a2-chapter" key={topics[0]}>
@@ -175,16 +182,17 @@ function ModuleOutline({ course, module, index, targetModule, targetTopic }: { c
           <ul>{topics.map(topic => {
             const active = selected && targetTopic === topic;
             const identity=knowledgeAt(course.id,module.id,topic), lesson=identity&&availableKnowledge(identity.id);
-            if (!preferences.showPlanned&&!lesson) return null;
+            const previous=identity&&p4LegacyLesson(identity.id);
+            if (!preferences.showPlanned&&!lesson&&!previous) return null;
             return <li key={topic}>
-              <Link ref={active ? topicRef : undefined} to={lesson ? knowledgeLink(lesson.id) : courseLink(course.id, module.id, topic)} aria-current={active ? "location" : undefined}>{topic}</Link>
-              {lesson&&<LearningStatus status={knowledgeStatus(data.records[lesson.id],now)} />}
+              <Link ref={active ? topicRef : undefined} to={lesson ? knowledgeLink(lesson.id) : previous ? "/lesson/"+previous : courseLink(course.id, module.id, topic)} aria-current={active ? "location" : undefined}>{topic}</Link>
+              {lesson ? <LearningStatus status={knowledgeStatus(data.records[lesson.id],now)} /> : previous&&<LearningStatus status={progress.lessons[previous]?"complete":progress.resume?.lessonId===previous?"learning":"new"}/>}
               {active && <Prerequisites key={topic} targets={topicPrerequisites(course, module, topic)} label="知识点先修" />}
             </li>;
           })}</ul>
         </section>})}
       </div>}
-      {summary.total>0&&<Link to={isAlgorithmCourse(course.id)?"/lab/algorithms":isDataCourse(course.id)?"/lab/"+labOf(course.id):benchLink(course.id+"/"+module.id)}>打开本模块实验 ↗</Link>}
+      {summary.total>0&&<Link to={isAlgorithmCourse(course.id)?"/lab/algorithms":isDataCourse(course.id)?"/lab/"+labOf(course.id):p4TopicsIn(course.id).length?"/lab":benchLink(course.id+"/"+module.id)}>打开本模块实验 ↗</Link>}
       <details className="a2-module-check"><summary>模块先修与评估</summary>
         <Prerequisites key={course.id + module.id} targets={moduleDependencies(course, module.id)} />
         <p className="muted">{summary.total ? "模块进度汇总各知识点的分层练习与迁移核验。" : shown.some(item => item.lesson) ? "迁入课时内有原有互动、检查题和迁移练习。模块综合评估仍在规划。" : "本模块正在规划，完成的课时与评估会在这里列出。"}</p>
@@ -207,10 +215,18 @@ export function CoursePage({ courseId }: { courseId: string }) {
   const done = live.filter(lesson => lessons[lesson.id]).length;
   const next = live.find(lesson => !lessons[lesson.id]) ?? live[0];
   const structured=hasKnowledgeLessons(course.id);
-  const ids=isP1Course(course.id)?p1Courses[course.id].map(topic=>topic.id):isAlgorithmCourse(course.id)?algorithmIds(course.id):dataIds(course.id);
+  const ids=isP1Course(course.id)?p1Courses[course.id].map(topic=>topic.id):isAlgorithmCourse(course.id)?algorithmIds(course.id):isDataCourse(course.id)?dataIds(course.id):p4TopicsIn(course.id);
   const summary=progressSummary(data,ids,Date.now());
   const capstone=practicePassed(data.records[projectKey(course.id)]);
-  const status=(summary.status==="complete"||summary.status==="mastered")&&!capstone?"learning":summary.status;
+  const remaining=p4Course(course.id)?course.modules.reduce((sum,module)=>sum+module.chapters.flat().filter(title=>{
+    const id=knowledgeAt(course.id,module.id,title)?.id;
+    return !id||(!p4Topic(id)&&!p4LegacyLesson(id));
+  }).length,0):0;
+  const allMappedLegacyComplete= !p4Course(course.id)||course.modules.every(module=>module.chapters.flat().every(title=>{
+    const id=knowledgeAt(course.id,module.id,title)?.id, previous=id&&p4LegacyLesson(id);
+    return !previous||Boolean(lessons[previous]);
+  }));
+  const status=(summary.status==="complete"||summary.status==="mastered")&&(!capstone||remaining>0||!allMappedLegacyComplete)?"learning":summary.status;
   const legacyStatus=done===live.length ? "complete" : done || live.some(lesson=>lesson.id===resume?.lessonId) ? "learning" : "new";
   const nextTopic=ids.find(id=>!practicePassed(data.records[id]))??ids[0];
   const shown = preferences.showPlanned || structured ? course.modules : course.modules.filter(module => [...module.entries, ...module.related].some(entry => entry.lesson));
@@ -219,7 +235,9 @@ export function CoursePage({ courseId }: { courseId: string }) {
     <div className="a2-crumbs"><Link to={"/courses?phase=" + course.stage}>课程目录</Link><span>/</span><span>{phase.title} · {domain.title}</span></div>
     <header className={"a2-course-banner " + domain.accent}>
       <DomainMark domain={domain} />
-      <div><p className="a2-kicker">{course.english}</p><h1>{course.title}</h1><Favorite item={{kind:"course",topic:course.id,title:course.title}}/><p>{course.modules.length} 个模块 · {structured ? summary.finished+" / "+summary.total+" 个知识点已完成" : live.length ? done + " / " + live.length + " 节已完成" : "大纲已提供 · 课时规划中"}</p>{structured ? <><LearningStatus status={status}/><small>已掌握 {summary.counts.mastered} · 需要复习 {summary.counts.review}</small></> : live.length>0&&<LearningStatus status={legacyStatus}/>}</div>
+      <div><p className="a2-kicker">{course.english}</p><h1>{course.title}</h1><Favorite item={{kind:"course",topic:course.id,title:course.title}}/><p>{course.modules.length} 个模块 · {structured ? summary.finished+" / "+summary.total+" 个知识点已完成" : live.length ? done + " / " + live.length + " 节已完成" : "大纲已提供 · 课时规划中"}</p>{structured ? <><LearningStatus status={status}/><small>已掌握 {summary.counts.mastered} · 需要复习 {summary.counts.review}</small></> : live.length>0&&<LearningStatus status={legacyStatus}/>}
+        {remaining>0&&structured&&<p className="muted">另有 {remaining} 个知识点在规划中。</p>}
+      </div>
       {nextTopic ? <Link className="btn" to={knowledgeLink(nextTopic)}>{summary.finished===summary.total?"复习知识点":status==="new"?"开始学习":"继续学习"} ↗</Link> : next && <Link className="btn" to={"/lesson/" + next.id}>{done === live.length ? "复习课时" : done ? "继续学习" : "开始学习"} ↗</Link>}
     </header>
     <div className="a2-course-layout">
@@ -229,7 +247,7 @@ export function CoursePage({ courseId }: { courseId: string }) {
         {!shown.length && <p className="a2-panel">课程大纲已按设置隐藏。可在 <Link to="/settings">设置</Link> 中显示规划课程。</p>}
       </section>
       <aside className="a2-course-aside">
-        <section className="a2-panel"><p className="a2-kicker">PROJECT</p><h2>实践项目</h2><p>{course.project}</p>{structured ? <Link to={"/projects/"+course.id}>{capstone?"复习与重新导出":"开始项目"} ↗</Link> : <small className="muted">蓝图中的实践目标</small>}</section>
+        <section className="a2-panel"><p className="a2-kicker">PROJECT</p><h2>实践项目</h2><p>{projectLabs[course.id]?.task??course.project}</p>{(isP1Course(course.id)||isAlgorithmCourse(course.id)||isDataCourse(course.id)||projectLabs[course.id]) ? <Link to={"/projects/"+course.id}>{capstone?"复习与重新导出":"开始项目"} ↗</Link> : legacyProject(course.id) ? <Link to={"/lesson/"+legacyProject(course.id)}>打开既有项目 ↗</Link> : <small className="muted">蓝图中的实践目标</small>}</section>
         {lab && <section className="a2-panel"><h2>相关实验室</h2><p>{lab.primary}</p><Link to={"/lab/" + lab.id}>打开{lab.title} ↗</Link></section>}
         <section className="a2-panel"><h2>开始前</h2><Prerequisites key={course.id} targets={courseDependencies(course)} /><Link to="/graph">查看知识关联 ↗</Link></section>
         <section className="a2-panel"><h2>同领域课程</h2><ul className="a2-link-list">{phases.filter(p => p.id !== course.stage).map(p => <li key={p.id}><Link to={courseLink(p.id + "-" + course.domain)}>{p.title} · {getAcademyCourse(p.id + "-" + course.domain)?.title} ↗</Link></li>)}</ul></section>

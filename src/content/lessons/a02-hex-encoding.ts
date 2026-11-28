@@ -44,8 +44,8 @@ export const a02: Lesson = lessonSchema.parse({
       type: "explain",
       title: "颜色：三个字节拼在一起",
       body: [
-        "屏幕上的每个颜色由红（Red）、绿（Green）、蓝（Blue）三种光混合而成，每种光的强度用 1 个字节表示，范围 0 到 255。",
-        "网页颜色 #RRGGBB 就是把这三个字节依次写成两位十六进制。#FF8000 的意思是：红 FF（255，最亮），绿 80（128，一半亮），蓝 00（0，不亮），混起来是橙色。",
+        "屏幕上的每个颜色由红（Red）、绿（Green）、蓝（Blue）三种光混合而成，在这种网页颜色写法里，每个通道记作 0 到 255 的一个 sRGB 码值。",
+        "网页颜色 #RRGGBB 就是把这三个字节依次写成两位十六进制。#FF8000 的意思是：红 FF（255，最大码值），绿 80（128，码值约在中间），蓝 00（0，最小码值），混起来是橙色。",
         "所以 #FF0000 是纯红，#00FF00 是纯绿，#FFFFFF 三种光全满，是白色。",
       ],
     },
@@ -55,10 +55,10 @@ export const a02: Lesson = lessonSchema.parse({
       body: [
         "电脑没法直接存\u201C字母 A\u201D，只能存数字。于是大家约定一张表：哪个数字代表哪个字符。",
         "最早的常用表是 **ASCII**，只有 128 个字符，包含英文字母、数字和常见符号。在这张表里，大写 A 是 65（十六进制 0x41），小写 a 是 97（0x61）。",
-        "ASCII 放不下中文和 emoji，所以有了 **Unicode**：给世界上几乎所有文字的每个字符一个编号，例如\u201C你\u201D的编号是 U+4F60。在文件里实际怎么存这些编号，最常见的方式叫 UTF-8。",
+        "ASCII 放不下中文和 emoji，所以有了 **Unicode**：为文字、符号和组合成分分配码位，例如\u201C你\u201D的编号是 U+4F60。在文件里实际怎么存这些编号，最常见的方式叫 UTF-8。",
       ],
       callout:
-        "这里做了简化：Unicode 的编号和它在文件里存成几个字节是两回事。本课只讲编号这一层，UTF-8 的细节以后再讲。",
+        "这里做了简化：Unicode 的编号和它在文件里存成几个字节是两回事。同一屏幕字符可以由多个码位组成，例如字母与组合重音。UTF-8 则把一个 Unicode 标量值编码成一到四字节。",
     },
     {
       type: "sim",
@@ -118,7 +118,7 @@ export const a02: Lesson = lessonSchema.parse({
         "某个网页颜色是 #00FF80。它的蓝色分量是 80（十六进制）。这个蓝色分量换成十进制是多少？",
       answer: 128,
       hint: "别把 80 当成十进制的 80。它是十六进制：左边的 8 在 16 的位置。",
-      why: "十六进制 80 = 8 × 16 + 0 = 128，正好是 0 到 255 的一半，所以蓝光只有一半亮。",
+      why: "十六进制 80 = 8 × 16 + 0 = 128，约为最大 sRGB 码值的 50.2%。这是编码比例，显示亮度还取决于 sRGB 的非线性转换和设备。",
     },
     {
       type: "summary",
@@ -130,6 +130,10 @@ export const a02: Lesson = lessonSchema.parse({
       next: "a03-logic-gates",
     },
   ],
-  sources: [],
+  sources: [
+    { title: "RFC 20 · ASCII Format for Network Interchange", url: "https://www.rfc-editor.org/rfc/rfc20" },
+    { title: "Unicode Standard · General Structure", url: "https://www.unicode.org/versions/Unicode16.0.0/core-spec/chapter-2/" },
+    { title: "W3C CSS Color 4 · The RGB functions", url: "https://www.w3.org/TR/css-color-4/#hex-notation" },
+  ],
   quality: { state: "draft" },
 });
