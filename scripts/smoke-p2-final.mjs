@@ -39,7 +39,16 @@ try {
     await p.getByRole("button", { name: "探索学习路线 ↗", exact: true }).focus(); await p.keyboard.press("Enter");
     await p.waitForURL(url => url.hash === "#/paths"); check(`${width}: CTA keyboard navigation`, new URL(p.url()).hash === "#/paths");
     await go(p, "/settings");
-    check(`${width}: four functioning groups, three removed modules absent`, await p.locator(".settings-list").count() === 4 && !/关于 Nico|v0\.1\.0|配置状态|已配置服务地址|未检测连接|尚未提供：/.test(await p.locator("main").innerText()) && await p.locator(".profile-editor").count() === 0 && await p.getByRole("link", { name: "查看我的学习档案", exact: true }).count() === 0 && await p.getByRole("checkbox", { name: "显示AI快捷入口", exact: true }).count() === 1 && !await overflow(p));
+    check(`${width}: four settings groups and the later full backup panel; removed modules stay absent`,
+      await p.locator(".settings-grid .settings-list").count() === 4 &&
+      await p.getByRole("region", { name: "完整学习备份", exact: true })
+        .getByRole("link", { name: "打开完整备份 ↗", exact: true })
+        .getAttribute("href") === "#/study?view=backup" &&
+      !/关于 Nico|v0\.1\.0|配置状态|已配置服务地址|未检测连接|尚未提供：/.test(await p.locator("main").innerText()) &&
+      await p.locator(".profile-editor").count() === 0 &&
+      await p.getByRole("link", { name: "查看我的学习档案", exact: true }).count() === 0 &&
+      await p.getByRole("checkbox", { name: "显示AI快捷入口", exact: true }).count() === 1 &&
+      !await overflow(p));
     if ([1440, 390].includes(width)) await p.screenshot({ path: `${OUT}/settings-dark-${width}.png`, fullPage: true });
     // The old persistence assertions remain in smoke:p2. Here confirm the new exclusive entry,
     // including an existing record surviving Settings navigation without a progress write.
