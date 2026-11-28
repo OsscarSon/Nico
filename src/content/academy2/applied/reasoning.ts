@@ -1,4 +1,5 @@
 import type { Question } from "../teaching/schema";
+import { qaFixedQuestions, qaVariants } from "../advanced/qaQuestions";
 
 const help = (
   id: string,
@@ -320,12 +321,16 @@ function generated(id: string, seed: number): Question | undefined {
   return undefined;
 }
 export const reasoningQuestions = (id: string, seed = 1): Question[] => {
-  const question = known[id];
-  const variant = generated(id, seed);
-  return [...(question ? [question] : []), ...(variant ? [variant] : [])];
+  return [
+    known[id],
+    generated(id, seed),
+    qaFixedQuestions[id],
+    qaVariants[id]?.(seed),
+  ].filter((question) => question !== undefined);
 };
 export const seededReasoning = new Set([
   "k-ec0de2c9e5b0",
   "k-46fe981be8f5",
   "k-f83593e899a9",
+  ...Object.keys(qaVariants),
 ]);

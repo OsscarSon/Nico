@@ -35,6 +35,7 @@ import { enrichment } from "./enrichment";
 import { appliedDefinitions, appliedSources, appliedTerms } from "../applied";
 import { reasoningQuestions } from "../applied/reasoning";
 import { appliedEnrichment } from "../applied/enrichment";
+import { qaEnrichment, qaSources } from "./qaEnrichment";
 import type { Draft } from "./authoring";
 
 import { mathExtras } from "./mathExtras";
@@ -138,6 +139,7 @@ export function findP4Lesson(id: string) {
     ...(spec.extra ?? []),
     ...(enrichment[id] ?? []),
     ...(appliedEnrichment[id] ?? []),
+    ...(qaEnrichment[id] ?? []),
     {
       type: "summary",
       points: [spec.definition, spec.example.check, spec.mistake],
@@ -145,6 +147,7 @@ export function findP4Lesson(id: string) {
     {
       type: "references",
       items: [
+        ...(qaSources[id] ? [qaSources[id]] : []),
         appliedSources[id] ??
           (Object.hasOwn(appliedDefinitions, id)
             ? appliedSources[spec.lab]

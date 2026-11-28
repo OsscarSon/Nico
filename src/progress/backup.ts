@@ -107,6 +107,7 @@ export function applyBackup(storage: Storage, backup: Backup) {
   const recovery = "nico-recovery-" + Date.now();
   storage.setItem(recovery, JSON.stringify(Object.fromEntries(snapshot)));
   let committed = 0;
+  let rolledBack = false;
   try {
     for (const [key, value] of updates) {
       storage.setItem(key, value);
@@ -121,7 +122,12 @@ export function applyBackup(storage: Storage, backup: Backup) {
     } catch {
       throw Error("浏览器禁止自动恢复。原数据仍保存在本机恢复点 " + recovery + "。");
     }
-    throw Error("浏览器拒绝保存，已恢复此前的记录。");
+    rolledBack = true;
   }
-  storage.removeItem(recovery);
+  try {
+    storage.removeItem(recovery);
+  } catch {
+    // The import or rollback already finished. A stale recovery copy is safe.
+  }
+  if (rolledBack) throw Error("浏览器拒绝保存，已恢复此前的记录。");
 }

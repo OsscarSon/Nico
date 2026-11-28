@@ -7,6 +7,7 @@ import { lessonSchema } from "../src/content/schema";
 import { gradeChoice } from "../src/grading/quiz";
 import { protectedBytes } from "./fixtures/protectedBytes";
 import protectedFiles from "../docs/p3a/PROTECTED_BASELINE.json";
+import finalQaRevisions from "./fixtures/final-qa-legacy-revisions.json";
 describe("P3-A teaching integration and protected baseline", () => {
   for (const id of ["b13-fetch-json", "b16-github", "b17-pages"]) it(`${id}: complete sourced draft with free operation, challenge and diagnostic assessment`, () => {
     const l = lessons[id]!;
@@ -25,11 +26,12 @@ describe("P3-A teaching integration and protected baseline", () => {
     const c = curriculum.find(c => c.id === id.split("-")[0]!.toUpperCase())!; expect(c.status).toBe("live"); expect(liveLessonFor(c)?.id).toBe(id);
     expect(lessonSchema.safeParse({ ...l, quality: { state: "published" } }).success).toBe(false);
   });
-  it("keeps the P3-A protected baseline outside the Academy 2.0 home/profile redesign", () => {
+  it("checks the P3-A protected baseline and the pinned Final QA lesson revisions", () => {
     const redesigned = new Set(["src/pages/pages.tsx", "src/features/profile/ProfilePage.tsx", "src/features/profile/ProfileEditor.tsx"]);
+    const revised: Record<string, string> = finalQaRevisions.p3a;
     for (const [file, hash] of Object.entries(protectedFiles)) {
       if (redesigned.has(file)) continue; // These three shell files have behavioral coverage in smoke:academy2 and smoke:p2.
-      expect(createHash("sha256").update(protectedBytes(file)).digest("hex"), file).toBe(hash);
+      expect(createHash("sha256").update(protectedBytes(file)).digest("hex"), file).toBe(revised[file] ?? hash);
     }
     expect(validateContent()).toEqual([]);
   });

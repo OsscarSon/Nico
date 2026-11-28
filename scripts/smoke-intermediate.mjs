@@ -2,6 +2,7 @@
 import assert from "node:assert/strict";
 import { mkdirSync } from "node:fs";
 import { chromium } from "playwright";
+import { serveCachedPython } from "./smoke-python-assets.mjs";
 
 const base = process.env.BASE_URL ?? "http://localhost:4173";
 const out = process.env.SCREENSHOT_DIR ?? "test-results/intermediate";
@@ -124,6 +125,7 @@ let passed = 0;
 try {
   for (const width of [1440, 390, 360]) {
     const context = await browser.newContext({ viewport: { width, height: width === 1440 ? 1000 : 844 }, hasTouch: width < 900 });
+    await serveCachedPython(context);
     const p = await context.newPage();
     p.setDefaultTimeout(18000);
     const errors = [], ai = [];

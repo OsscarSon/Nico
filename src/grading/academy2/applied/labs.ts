@@ -239,6 +239,7 @@ export const appliedLabs = {
           ["交集面积", trace.area],
           ["水平交叠", trace.horizontal],
           ["垂直交叠", trace.vertical],
+          ["共享边界线段", trace.edgeContact ? "是" : "否"],
         ],
         trace,
       };

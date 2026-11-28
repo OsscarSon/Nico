@@ -198,28 +198,71 @@ export function kalman(
   processVariance: number,
   sensorVariance: number,
 ) {
-  if (priorVariance < 0 || processVariance < 0 || sensorVariance <= 0)
+  if (
+    ![priorVariance, processVariance, sensorVariance, ...observations].every(
+      Number.isFinite,
+    ) ||
+    priorVariance < 0 ||
+    processVariance < 0 ||
+    sensorVariance <= 0
+  )
     throw Error("方差应非负，观测方差须为正。");
   let mean = 0,
     variance = priorVariance;
   return observations.map((observation) => {
     const predictedVariance = variance + processVariance;
-    const gain = predictedVariance / (predictedVariance + sensorVariance);
+    if (!Number.isFinite(predictedVariance))
+      throw Error("预测方差超出数值范围。");
+    const gain =
+      predictedVariance >= sensorVariance
+        ? 1 / (1 + sensorVariance / predictedVariance)
+        : predictedVariance /
+          sensorVariance /
+          (1 + predictedVariance / sensorVariance);
     mean += gain * (observation - mean);
-    variance = (1 - gain) * predictedVariance;
+    // P*R/(P+R) without multiplying large variances or subtracting 1-K.
+    variance =
+      predictedVariance >= sensorVariance
+        ? sensorVariance / (1 + sensorVariance / predictedVariance)
+        : predictedVariance / (1 + predictedVariance / sensorVariance);
     return { observation, mean, variance, gain };
   });
 }
 export function binomialTail(n: number, p: number, lower: number) {
-  if (p === 0) return Number(lower <= 0);
-  if (p === 1) return Number(lower <= n);
-  let mass = (1 - p) ** n,
-    total = 0;
-  for (let value = 0; value <= n; value++) {
-    if (value >= lower) total += mass;
-    mass *= ((n - value) / (value + 1)) * (p / (1 - p));
+  if (
+    !Number.isSafeInteger(n) ||
+    n < 0 ||
+    !Number.isFinite(p) ||
+    p < 0 ||
+    p > 1 ||
+    !Number.isFinite(lower)
+  )
+    throw Error("二项分布需要非负试验次数、有限阈值及 0 到 1 的成功概率。");
+  if (lower <= 0) return 1;
+  if (lower > n) return 0;
+  if (p === 0) return 0;
+  if (p === 1) return 1;
+  if (lower > n - 1) return p ** n;
+  // Relative mass at a mode is 1. Walk in both directions before normalizing.
+  // A recurrence starting at k=0 can underflow even when the right tail is large.
+  const mode = Math.min(n, Math.floor((n + 1) * p));
+  let mass = 1,
+    all = 1,
+    tail = Number(mode >= lower);
+  for (let k = mode; k > 0; k--) {
+    mass *= (k / (n - k + 1)) * ((1 - p) / p);
+    if (!mass) break;
+    all += mass;
+    if (k - 1 >= lower) tail += mass;
   }
-  return Math.min(1, total);
+  mass = 1;
+  for (let k = mode; k < n; k++) {
+    mass *= ((n - k) / (k + 1)) * (p / (1 - p));
+    if (!mass) break;
+    all += mass;
+    if (k + 1 >= lower) tail += mass;
+  }
+  return Math.min(1, tail / all);
 }
 export function binomialPower(
   n: number,
@@ -227,8 +270,24 @@ export function binomialPower(
   p1: number,
   alpha: number,
 ) {
-  let threshold = 0;
-  while (threshold <= n && binomialTail(n, p0, threshold) > alpha) threshold++;
+  if (!Number.isFinite(alpha) || alpha < 0 || alpha >= 1)
+    throw Error("显著性水平应在 [0,1) 内。");
+  if (alpha === 0) {
+    const threshold = p0 === 0 ? 1 : n + 1;
+    return {
+      threshold,
+      typeOne: binomialTail(n, p0, threshold),
+      power: binomialTail(n, p1, threshold),
+    };
+  }
+  let low = 0,
+    high = n + 1;
+  while (low < high) {
+    const middle = low + Math.floor((high - low) / 2);
+    if (binomialTail(n, p0, middle) > alpha) low = middle + 1;
+    else high = middle;
+  }
+  const threshold = low;
   return {
     threshold,
     typeOne: binomialTail(n, p0, threshold),

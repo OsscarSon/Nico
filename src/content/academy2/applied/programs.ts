@@ -2,7 +2,7 @@ import type { ProgramSpec } from "../advanced/programs";
 
 type Fixture = [args: number[][], expected: number];
 const entry = ([args, expected]: Fixture) => ({ args, expected });
-function program(
+export function program(
   name: string,
   parameters: string,
   prompt: string,

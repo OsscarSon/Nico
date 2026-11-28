@@ -9,7 +9,8 @@ export function classification(
     !labels.length ||
     labels.length !== scores.length ||
     labels.some((x) => x !== 0 && x !== 1) ||
-    scores.some((x) => !Number.isFinite(x))
+    scores.some((x) => !Number.isFinite(x)) ||
+    !Number.isFinite(threshold)
   )
     throw Error("分类评估需要对齐的二元标签和有限分数。");
   let tp = 0,
@@ -69,7 +70,8 @@ export function regression(labels: number[], predictions: number[]) {
   if (
     labels.length !== predictions.length ||
     !labels.length ||
-    predictions.some((x) => !Number.isFinite(x))
+    predictions.some((x) => !Number.isFinite(x)) ||
+    labels.some((x) => !Number.isFinite(x))
   )
     throw Error("回归评估需要对齐的有限预测。");
   const avg = labels.reduce((a, b) => a + b, 0) / labels.length,
@@ -85,63 +87,83 @@ export function regression(labels: number[], predictions: number[]) {
     residuals,
   };
 }
+/** Orthogonal plane rotations for the small, real symmetric covariance in this lab. */
 export function eigenvectors(rows: Vector[], rank: number) {
-  const d = rows[0]!.length,
-    mean = rows[0]!.map(
-      (_, i) => rows.reduce((sum, row) => sum + row[i]!, 0) / rows.length,
-    );
+  const dimension = rows[0]?.length ?? 0;
+  if (
+    !dimension ||
+    !Number.isInteger(rank) ||
+    rank < 0 ||
+    rows.some(
+      (row) => row.length !== dimension || row.some((x) => !Number.isFinite(x)),
+    )
+  )
+    throw Error("PCA 需要规则的有限数据矩阵与非负整数分量数。");
+  const mean = rows[0]!.map(
+    (_, i) => rows.reduce((sum, row) => sum + row[i]!, 0) / rows.length,
+  );
   const centered = rows.map((row) => row.map((value, i) => value - mean[i]!));
-  const cov = mean.map((_, i) =>
+  const covariance = mean.map((_, i) =>
     mean.map(
       (_, j) =>
         centered.reduce((sum, row) => sum + row[i]! * row[j]!, 0) /
         Math.max(1, rows.length - 1),
     ),
   );
-  const basis: Vector[] = [],
-    variances: number[] = [];
-  const euclid = (xs: Vector) => Math.hypot(...xs);
-  const mul = (v: Vector) =>
-    cov.map((row) => row.reduce((total, w, j) => total + w * v[j]!, 0));
-  const orthogonal = (value: Vector) => {
-    let next = [...value];
-    for (const vector of basis) {
-      const factor = next.reduce((total, x, i) => total + x * vector[i]!, 0);
-      next = next.map((x, i) => x - factor * vector[i]!);
-    }
-    return next;
-  };
-  for (let k = 0; k < Math.min(rank, d); k++) {
-    // Start power iteration from every axis and keep the largest Rayleigh quotient.
-    // This avoids a single initialization exactly orthogonal to the leading eigenspace.
-    let best = -Infinity,
-      chosen: Vector | undefined;
-    for (let axis = 0; axis < d; axis++) {
-      let vector = orthogonal(mean.map((_, i) => Number(i === axis)));
-      const startNorm = euclid(vector);
-      if (startNorm < 1e-10) continue;
-      vector = vector.map((x) => x / startNorm);
-      for (let step = 0; step < 55; step++) {
-        const next = orthogonal(mul(vector)),
-          norm = euclid(next);
-        if (norm < 1e-14) break;
-        vector = next.map((x) => x / norm);
+  const scale = Math.max(...covariance.flat().map(Math.abs));
+  if (!Number.isFinite(scale))
+    throw Error("PCA 协方差超出数值范围，请缩放输入。");
+  const vectors = mean.map((_, i) => mean.map((_, j) => Number(i === j)));
+  if (scale) {
+    const matrix = covariance.map((row) => row.map((x) => x / scale));
+    for (let rotation = 0; rotation < 32 * dimension * dimension; rotation++) {
+      let p = 0,
+        q = 0,
+        magnitude = 0;
+      for (let i = 0; i < dimension; i++)
+        for (let j = i + 1; j < dimension; j++) {
+          const off = Math.abs(matrix[i]![j]!);
+          if (off > magnitude) {
+            p = i;
+            q = j;
+            magnitude = off;
+          }
+        }
+      if (magnitude <= Number.EPSILON) break;
+      const off = matrix[p]![q]!;
+      const tau = (matrix[q]![q]! - matrix[p]![p]!) / (2 * off);
+      const tangent = (tau < 0 ? -1 : 1) / (Math.abs(tau) + Math.hypot(1, tau));
+      const cosine = 1 / Math.hypot(1, tangent),
+        sine = tangent * cosine;
+      matrix[p]![p]! -= tangent * off;
+      matrix[q]![q]! += tangent * off;
+      matrix[p]![q] = matrix[q]![p] = 0;
+      for (let i = 0; i < dimension; i++) {
+        if (i !== p && i !== q) {
+          const a = matrix[i]![p]!,
+            b = matrix[i]![q]!;
+          matrix[i]![p] = matrix[p]![i] = cosine * a - sine * b;
+          matrix[i]![q] = matrix[q]![i] = sine * a + cosine * b;
+        }
+        const left = vectors[i]![p]!,
+          right = vectors[i]![q]!;
+        vectors[i]![p] = cosine * left - sine * right;
+        vectors[i]![q] = sine * left + cosine * right;
       }
-      const eigen = mul(vector).reduce((sum, x, i) => sum + x * vector[i]!, 0);
-      if (eigen > best) {
-        best = eigen;
-        chosen = vector;
-      }
     }
-    if (chosen) {
-      basis.push(chosen);
-      variances.push(Math.max(0, best));
-    }
+    matrix.forEach((row, i) => {
+      covariance[i]![i] = row[i]! * scale;
+    });
   }
+  const order = covariance
+    .map((row, i) => ({ index: i, variance: Math.max(0, row[i]!) }))
+    .sort((a, b) => b.variance - a.variance)
+    .slice(0, rank);
+  const basis = order.map(({ index }) => vectors.map((row) => row[index]!));
   return {
     mean,
     basis,
-    variances,
+    variances: order.map(({ variance }) => variance),
     project: (row: Vector) =>
       basis.map((vector) =>
         row.reduce((sum, x, i) => sum + (x - mean[i]!) * vector[i]!, 0),

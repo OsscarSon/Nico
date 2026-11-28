@@ -55,19 +55,24 @@ export function parse(tokens: Token[]): Expression {
   return root;
 }
 
-function operation(op: Operator, a: number, b: number) {
-  const value = op === "+" ? a + b : op === "-" ? a - b : a * b;
+const arithmetic = (op: Operator, a: number, b: number) =>
+  op === "+" ? a + b : op === "-" ? a - b : a * b;
+function safeInteger(value: number) {
   if (!Number.isSafeInteger(value)) throw Error("运算超出安全整数范围。");
   return value;
 }
+const operation = (op: Operator, a: number, b: number) =>
+  safeInteger(arithmetic(op, a, b));
 
 export function fold(root: Expression): Expression {
   if (root.kind !== "binary") return root;
   const left = fold(root.left),
     right = fold(root.right);
-  return left.kind === "constant" && right.kind === "constant"
-    ? { kind: "constant", value: operation(root.op, left.value, right.value) }
-    : { ...root, left, right };
+  if (left.kind === "constant" && right.kind === "constant") {
+    const value = arithmetic(root.op, left.value, right.value);
+    if (Number.isSafeInteger(value)) return { kind: "constant", value };
+  }
+  return { ...root, left, right };
 }
 export function interpret(
   root: Expression,
@@ -77,7 +82,7 @@ export function interpret(
   if (root.kind === "symbol") {
     const value = bindings.get(root.name);
     if (value === undefined) throw Error("未定义的变量 " + root.name);
-    return value;
+    return safeInteger(value);
   }
   return operation(
     root.op,
@@ -102,12 +107,12 @@ export function run(
   const stack: number[] = [];
   const trace: { instruction: Instruction; stack: number[] }[] = [];
   for (const instruction of instructions) {
-    if (instruction.op === "push") stack.push(instruction.operand);
+    if (instruction.op === "push") stack.push(safeInteger(instruction.operand));
     else if (instruction.op === "load") {
       const value = variables.get(instruction.operand);
       if (value === undefined)
         throw Error("未定义的变量 " + instruction.operand);
-      stack.push(value);
+      stack.push(safeInteger(value));
     } else {
       const right = stack.pop(),
         left = stack.pop();

@@ -132,6 +132,8 @@ export const a05: Lesson = lessonSchema.parse({
       next: "a06-memory",
     },
   ],
-  sources: [],
+  sources: [
+    { title: "MIT OCW · Computation Structures · Instruction Set Architecture", url: "https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/" },
+  ],
   quality: { state: "draft" },
 });

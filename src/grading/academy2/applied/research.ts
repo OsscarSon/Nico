@@ -13,11 +13,21 @@ export function exactRandomization(text: string, groupSize: number) {
     groupSize > entries.length - 2
   )
     throw Error("输入 4–12 个有限读数，每组至少 2 个。输入前段为 A。");
-  const total = entries.reduce((sum, value) => sum + value, 0);
+  // Re-center and scale before comparing the magnitudes of statistics.
+  // An absolute floor on the tolerance changes the result when units change.
+  const offsets = entries.map((value) => value - entries[0]!);
+  const scale = Math.max(...offsets.map(Math.abs)) || 1;
+  const observedA =
+    offsets.slice(0, groupSize).reduce((sum, x) => sum + x, 0) / groupSize;
+  const observedB =
+    offsets.slice(groupSize).reduce((sum, x) => sum + x, 0) /
+    (entries.length - groupSize);
+  const normalized = offsets.map((value) => value / scale);
+  const total = normalized.reduce((sum, value) => sum + value, 0);
   const statistic = (sum: number) =>
     sum / groupSize - (total - sum) / (entries.length - groupSize);
   const observed = statistic(
-    entries.slice(0, groupSize).reduce((sum, value) => sum + value, 0),
+    normalized.slice(0, groupSize).reduce((sum, value) => sum + value, 0),
   );
   const distribution: number[] = [];
   function choose(index: number, left: number, subtotal: number) {
@@ -26,18 +36,18 @@ export function exactRandomization(text: string, groupSize: number) {
       return;
     }
     for (let i = index; i <= entries.length - left; i++)
-      choose(i + 1, left - 1, subtotal + entries[i]!);
+      choose(i + 1, left - 1, subtotal + normalized[i]!);
   }
   choose(0, groupSize, 0);
-  const boundary = Math.abs(observed) - 1e-9 * Math.max(1, Math.abs(observed));
+  const boundary = Math.abs(observed) - 16 * Number.EPSILON;
   const extreme = distribution.filter(
     (value) => Math.abs(value) >= boundary,
   ).length;
   return {
-    observed,
+    observed: observedA - observedB,
     p: extreme / distribution.length,
     extreme,
     draws: distribution.length,
-    distribution,
+    distribution: distribution.map((value) => value * scale),
   };
 }

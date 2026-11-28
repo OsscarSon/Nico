@@ -34,7 +34,7 @@ export const a13: Lesson = lessonSchema.parse({
         "你的设备先问一个叫**解析器**的帮手（通常由运营商或公共 DNS 提供）。它替你一站一站去问：",
         "先问**根服务器**：\u201C谁管 `.com`？\u201D根服务器不知道最终答案，但告诉它去问 `.com` 的服务器（**TLD 服务器**）。",
         "再问 TLD 服务器：\u201C谁管 `example.com`？\u201D它指向 `example.com` 自己的**权威服务器**。",
-        "最后问权威服务器：\u201C`www.example.com` 的地址是什么？\u201D这一次才拿到真正的答案。前两步都只是\u201C该去问谁\u201D。",
+        "最后问权威服务器：\u201C`www.example.com` 的地址是什么？\u201D在本次无缓存、无别名的演练中，此时获得答案。前两步都只是\u201C该去问谁\u201D。",
       ],
     },
     {
@@ -45,7 +45,7 @@ export const a13: Lesson = lessonSchema.parse({
         "所以第二次查同一个名字，几乎不用再问外面的服务器；就算查的是同一个域名下的另一个名字，也能跳过根服务器和 TLD 服务器，直接问权威服务器。",
       ],
       callout:
-        "这里做了简化：真实世界的根服务器有很多组，还有 DNSSEC 等安全机制；演示里的缓存也不会自动过期。示例用的 `example.com` 和 `203.0.113.x` 是专门留给文档的名字和地址。",
+        "这里做了简化：真实解析还可能返回别名、IPv6 记录或不存在的结果。符合条件的否定结果也可按规则缓存。演示里的缓存不会自动过期。示例用的 `example.com` 和 `203.0.113.x` 是专门留给文档的名字和地址。",
     },
     {
       type: "sim",
@@ -128,12 +128,15 @@ export const a13: Lesson = lessonSchema.parse({
       type: "summary",
       points: [
         "DNS 把域名翻译成 IP 地址，域名从右往左一层层由不同的服务器管。",
-        "解析器依次问根服务器、TLD 服务器、权威服务器；前两个只回答\u201C该去问谁\u201D，只有权威服务器给出最终答案。",
+        "在本课的冷缓存演练里，解析器依次问根、TLD、权威服务器；前两步回答\u201C该去问谁\u201D，只有权威服务器给出最终答案。",
         "缓存把答案和\u201C该问谁\u201D存起来，让后面的查询少问甚至不问服务器，直到 TTL 过期。",
       ],
       next: "a14-tcp",
     },
   ],
-  sources: [],
+  sources: [
+    { title: "RFC 1034 · Domain Names: Concepts and Facilities", url: "https://www.rfc-editor.org/rfc/rfc1034" },
+    { title: "RFC 2308 · Negative Caching of DNS Queries", url: "https://www.rfc-editor.org/rfc/rfc2308" },
+  ],
   quality: { state: "draft" },
 });

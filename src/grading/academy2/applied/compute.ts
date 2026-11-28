@@ -37,12 +37,16 @@ export function overlap(
   ow: number,
   oh: number,
 ) {
-  const horizontal = Math.max(
-    0,
-    Math.min(x + width, ox + ow) - Math.max(x, ox),
-  );
-  const vertical = Math.max(0, Math.min(y + height, oy + oh) - Math.max(y, oy));
-  return { horizontal, vertical, area: horizontal * vertical };
+  const dx = Math.min(x + width, ox + ow) - Math.max(x, ox);
+  const dy = Math.min(y + height, oy + oh) - Math.max(y, oy);
+  const horizontal = Math.max(0, dx),
+    vertical = Math.max(0, dy);
+  return {
+    horizontal,
+    vertical,
+    area: horizontal * vertical,
+    edgeContact: (dx === 0 && dy > 0) || (dy === 0 && dx > 0),
+  };
 }
 
 export type GameState = "idle" | "running" | "paused" | "finished";
